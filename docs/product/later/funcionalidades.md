@@ -54,4 +54,8 @@ O [PRD de Now](https://github.com/prumod/cairn-web/issues/104) fica com as inter
 - **L23 — Citar a partir de linhas, da tabela de comparação e do texto do anúncio:** além da consulta do concurso e das respostas do assistente, que ficam em Now.
 - **L24 — Confirmação por esforço:** confirmar o descarte conforme o trabalho perdido, por exemplo uma seleção a partir de 10 unidades ou um comentário sem texto a partir de 3 (valores de protótipo, a calibrar). Em Now só se confirma apagar um comentário com texto.
 
+## Fontes de anúncios
+
+- **L25 — Portal BASE como fonte:** recolher anúncios também da API do Portal BASE, quando houver token do IMPIC, juntando-os aos do Diário da República pelo IdIncm. Em Now, a única fonte é o Diário da República. Base: [Which source feeds works announcements?](https://github.com/prumod/cairn/issues/142).
+
 As integrações reais e a persistência são trabalho técnico posterior ao protótipo com dados fictícios, não uma funcionalidade adicional nem uma integração já aprovada. As fontes públicas, APIs, mapas e cobertura de dados precisam de validação separada (T2 §§2, 19, 22–24).
