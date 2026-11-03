@@ -55,4 +55,4 @@ Design: #<design>. PRD: #<prd>, stories <numbers>.
 
 ## 5. Report
 
-List the issues in order with links, and the next step: `implement-spec` with the first unblocked issue.
+List the issues in order with links, and the next step: `implement-spec` with the design issue.

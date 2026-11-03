@@ -4,7 +4,7 @@ Autor: @[login]
 
 `[Spec](<spec issue URL>) | [Design](<design issue URL>) | [PRD](<PRD issue URL>)`, stories [numbers]
 
-Closes #[spec]
+Closes #[spec], #[ticket], …
 
 ## Problem context
 

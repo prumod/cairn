@@ -37,7 +37,7 @@ Create or update exactly one pull request for the current branch. Keep the descr
    Fill the template in memory:
 
    - Author line: `Autor: @<login>`, the GitHub login the commits were attributed to.
-   - Header links: include the spec, design, and PRD issues when available; omit unavailable links. Add `Closes #<spec>` when the PR completes the spec issue.
+   - Header links: include the spec, design, and PRD issues when available; omit unavailable links. Add `Closes #<n>` for the spec and for every ticket the PR completes.
    - User-facing changes and implementation: use GitHub PR file and line permalinks where useful.
    - Problem context: link the PRD stories instead of reproducing them; keep a concise explanation of the change's purpose for reviewers.
    - Deviations: compare against the PRD stories, the approved design, and the spec; otherwise state which context was not supplied. Flag unresolved consequential deviations for the owning human decision before presenting the work as complete.
