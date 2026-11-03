@@ -64,6 +64,6 @@ O escalão do valor máximo das obras que a empresa pode executar numa subcatego
 _Evitar_: classe da empresa (o alvará atribui uma classe a cada subcategoria, não à empresa)
 _Fonte_: [Lei n.º 41/2015](https://diariodarepublica.pt/dr/detalhe/lei/41-2015-67377968), art. 3.º, alínea e), art. 6.º, n.º 2, e art. 8.º ([legislação consolidada do Diário da República, versão de 14-6-2018, pp. 3, 5 e 6](https://www.madeira.gov.pt//Portals/19/Documentos/Legislacao/Lei_41.2015_Consolidada_2018_Atividade_Constru%C3%A7%C3%A3o.pdf#page=3)); valores das 9 classes: Portaria n.º 212/2022 ([resumo da Cuatrecasas, p. 2](https://www.cuatrecasas.com/resources/legal-flash-portaria-212-2022-atualizacao-valores-classes-alvaras-construcao-630e35547c5cc454220208.pdf#page=2))
 
-A Lei n.º 41/2015 aplica-se a todo o território nacional (art. 2.º). As páginas citadas da Lei n.º 41/2015 são da legislação consolidada do Diário da República, na versão de 14-6-2018. As páginas citadas do CCP são de um texto consolidado não oficial, até ao DL 78/2022. Alterações posteriores não foram verificadas.
+O estatuto de cada fonte (oficial ou não, versão e limites) está em [Fontes](docs/product/fontes.md).
 
 Os termos em aberto estão em [termos por definir](docs/product/now/termos-por-definir.md).

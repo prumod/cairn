@@ -4,6 +4,7 @@
 
 - [Now](https://github.com/prumod/cairn-web/issues/104): PRD das funcionalidades prioritárias, numa GitHub Issue.
 - [Termos por definir (Now)](now/termos-por-definir.md): vocabulário a confirmar.
+- [Fontes](fontes.md): cada fonte citada, se é oficial e para que a usamos.
 - [Later](later/funcionalidades.md): funcionalidades pretendidas para depois.
 - [Maybe](maybe/funcionalidades.md): ideias a validar antes de compromisso.
 - [Never](never/funcionalidades.md): exclusões deliberadas.
@@ -50,6 +51,8 @@ Uma funcionalidade que muda de nível recebe um identificador novo nesse nível;
 A classificação é uma decisão de produto, não uma divisão da interface. O protótipo interativo cobre toda a experiência de Now, Later e Maybe. Demonstrar uma capacidade não altera a prioridade, não confirma a viabilidade de integração e não constitui compromisso de produção. Gantt/Microsoft Project permanece Maybe.
 
 ## Estatuto das fontes e convenções
+
+As fontes legais e documentais estão descritas em [Fontes](fontes.md).
 
 As prioridades foram acordadas com o utilizador, mas ainda precisam de validação com o entrevistado. As entrevistas são textos revistos com trechos incertos; não são regras jurídicas nem documentação de APIs. T1, T2 e T3 identificam as entrevistas, não versões de documentos derivados. T1 e T2 citam secções; T3 cita instantes da gravação.
 
