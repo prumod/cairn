@@ -10,7 +10,7 @@ The goal is the entire spec implemented on a single **integration branch**, with
 
 The spec's sub-issues are its tickets ([issue tracker](../../../docs/agents/issue-tracker.md)). They are not a list of steps but a **task graph** with blocking edges, so there is always a **frontier** of tickets ready to grab. A ticket joins the frontier when every ticket blocking it is merged into the integration branch; issues close only when the pull request merges. A spec without sub-issues is a graph of one ticket: the spec itself.
 
-Inside the spec, routine implementation is yours and your workers' to decide. Stop the affected work for the user only at a boundary change: evidence that contradicts the spec or what it references, a consequential decision the spec leaves open, or an irreversible action the spec does not cover. Report the evidence, the impact, and the decision needed; continue with unaffected tickets.
+Inside the spec, routine implementation is yours and your workers' to decide. Stop the affected work for the user only at a boundary change: evidence that contradicts the spec or what it references, a consequential decision the spec leaves open, an irreversible action the spec does not cover, or weakening a gate (skipping or loosening a test, a scenario, a lint rule, a hook, or a `bun run check` step). Report the evidence, the impact, and the decision needed; continue with unaffected tickets and keep their completed work. A failing test, build, or check is not a boundary change: diagnose and fix it within the spec.
 
 Start every worker with a fresh context. Keep communication with workers sparse: brief them through **context pointers** (the spec, ticket, design and PRD issues, research notes, previous commits) rather than restating what those hold.
 
@@ -18,7 +18,7 @@ Start every worker with a fresh context. Keep communication with workers sparse:
 
 1. **Read the task graph.** Read the spec and every ticket with comments, the design issue and PRD stories they reference, and, for tickets that deliver UI, the part of `apps/web/references/final-visual/` they replicate.
 
-2. **Create the integration branch** from current `origin/main`.
+2. **Create the integration branch** from current `origin/main`. When resuming, use the existing integration branch instead: tickets merged into it are done unless something shows otherwise, and each unmerged ticket's worker is resumed or restarted from the branch tip. Continue from the step the branch has reached.
 
 3. **Approve the scenarios.** Call the Skill tool with "atdd" for the acceptance behavior of every ticket, and stop after the approved feature files are written; implementers drive them to green. Commit the approved `.feature` files to the integration branch. This keeps scenario approval with the user and lets workers run without asking.
 
@@ -39,8 +39,10 @@ Start every worker with a fresh context. Keep communication with workers sparse:
 
 8. **Review.** Call the Skill tool with "code-review" on the integration branch against `origin/main`. Fix every finding in a single fresh implementer worker, merge it, and pass `bun run check`.
 
-9. **Finish.** When the integration branch completes the replication of `final-visual/`, delete `apps/web/references/final-visual/` in the same branch. Call the Skill tool with "prd-describe-pr" to describe the pull request; it closes the spec and every ticket. Mark the pull request ready for review.
+9. **Manual checks.** Collect the acceptance criteria that need human judgment, such as matching `final-visual/`, from every ticket. Ask the user for those specific checks on the integration branch and wait. Fix reported issues in a fresh implementer worker and ask again.
 
-10. **Clean up** every worker worktree.
+10. **Finish.** When the integration branch completes the replication of `final-visual/`, delete `apps/web/references/final-visual/` in the same branch. Call the Skill tool with "prd-describe-pr" to describe the pull request; it closes the spec and every ticket. Mark the pull request ready for review.
 
-**Done:** every ticket is merged into the integration branch, `bun run check` passes on it, code-review findings are fixed, and the ready pull request closes the spec and every ticket.
+11. **Clean up** every worker worktree.
+
+**Done:** every ticket is merged into the integration branch, `bun run check` passes on it, code-review findings are fixed, the user has confirmed the manual checks, and the ready pull request closes the spec and every ticket. When work stops short of that, report exactly which tickets are merged and which remain, and why.
