@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 # Technical design for a PRD
 
-Second step of the PRD workflow: `prd-research` → `prd-design` → `prd-slices` → `prd-implement`.
+Second step of the PRD workflow: `prd-research` → `prd-design` → `prd-slices` → `implement-spec`; work that fits one pull request skips `prd-slices`.
 
 The design says how the system delivers the PRD's stories and replicates `apps/web/references/final-visual/`. It never changes product behavior. When the design reveals a product gap or contradiction, list it under **PRD changes** in your report, with the story number, so the user applies it to the PRD and `final-visual/`. Continue with the parts it does not block.
 
@@ -39,4 +39,4 @@ Create a GitHub issue titled `Technical design: <scope>` from `design.md`, and a
 
 ## 4. Report
 
-Give the issue link, any **PRD changes**, and the next step: `prd-slices` with the design issue number.
+Give the issue link, any **PRD changes**, and the next step with the design issue number: `implement-spec` when the work fits one pull request, otherwise `prd-slices`.

@@ -2,9 +2,9 @@ Autor: @[login]
 
 # Header Links
 
-`[Slice](<slice issue URL>) | [Design](<design issue URL>) | [PRD](<PRD issue URL>)`, stories [numbers]
+`[Spec](<spec issue URL>) | [Design](<design issue URL>) | [PRD](<PRD issue URL>)`, stories [numbers]
 
-Closes #[slice]
+Closes #[spec]
 
 ## Problem context
 
