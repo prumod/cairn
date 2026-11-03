@@ -4,7 +4,7 @@ Lista de trabalho para resolver o vocabulário de [Now](https://github.com/prumo
 
 Nenhum destes termos é tratado como definitivamente resolvido. O [GLOSSARY.md](../../../GLOSSARY.md) fica reservado às definições sem incerteza; não contém atualmente estas definições propostas.
 
-Uma caixa marcada significa que o significado e o nome do termo foram confirmados e que a definição correspondente foi atualizada no glossário. Confirmar um termo não equivale a validar regras jurídicas, contabilísticas ou técnicas.
+Quando o significado e o nome de um termo são confirmados, o termo passa para o glossário e sai desta lista. Confirmar um termo não equivale a validar regras jurídicas, contabilísticas ou técnicas.
 
 Os grupos estabelecem a ordem por certeza. Dentro de cada grupo, não se atribui uma diferença de certeza entre termos. As referências T3 indicam instantes da [transcrição 3](../transcriptions/transcricao_3_gestao_obras.txt).
 
@@ -12,29 +12,23 @@ Os grupos estabelecem a ordem por certeza. Dentro de cada grupo, não se atribui
 
 O significado central está explícito nas fontes. Falta confirmar a redação e o nome canónico; isso não impede que existam relações ou pormenores ainda por definir.
 
-- [ ] **Empresa** — Confirmar que designa a organização que avalia oportunidades e prepara propostas, não a entidade adjudicante.
-- [ ] **Anúncio** — Confirmar a distinção entre a publicação e o procedimento que ela anuncia.
 - [ ] **Diário da República** — Confirmar a definição como fonte de anúncios neste percurso, distinta da plataforma do procedimento.
 - [ ] **Data de publicação** — Confirmar que designa a publicação do anúncio e não a receção de um convite.
 - [ ] **Localização da obra** — Confirmar a distinção relativamente à localização da empresa e da entidade adjudicante.
 - [ ] **Prazo de submissão da proposta** — Confirmar o nome para a data e hora limite de entrega, distinto da duração da obra. A T3 diz que este prazo se consulta na plataforma e não no Diário da República (T3 [00:32:04]).
 - [ ] **Prazo de execução da obra** — Confirmar o nome para o período previsto de execução, sem assumir a data em que começa a contar. Na T3 também se diz «tempo de obra» ou «duração da obra» e é conhecido quando o anúncio sai (T3 [00:29:21], [01:09:05]).
-- [ ] **Raio de pesquisa** — Distância em linha reta a partir da localização da empresa, configurada uma vez por empresa (por exemplo, 30 ou 50 km). Não é trajeto, tempo de deslocação nem distrito (T3 [00:07:52], [01:15:53]–[01:17:31]). Confirmar o nome.
 - [ ] **Custo** — O que a empresa gasta para executar a obra; distinto do valor da obra: «É o valor da obra, não é custo» (T3 [00:29:57]). Confirmar o nome.
-- [ ] **Alvará** — Documento da empresa que indica as categorias e subcategorias de trabalhos que pode executar e a classe, que limita o valor das obras (T3 [00:30:16]–[00:30:45]). Confirmar a relação com «Habilitações da empresa» e «Licença».
 
 ## Certeza intermédia — definição parcialmente sustentada
 
 As fontes sustentam o conceito ou uma distinção importante, mas o nome, o alcance ou parte da definição ainda depende de interpretação.
 
 - [ ] **Entidade adjudicante** — Confirmar o nome e a definição da entidade que promove a contratação.
-- [ ] **Localização de referência** — Confirmar que é a localização da empresa, centro do raio de pesquisa (T3 [01:15:58]).
-- [ ] **Perfil de referência da empresa** — Confirmar o nome para o conjunto de dados da empresa usado na pesquisa, no mapa e nos filtros.
 - [ ] **Plataforma do procedimento** — Confirmar este nome como termo comum para os serviços externos onde se consultam peças e se interage formalmente com o procedimento.
 - [ ] **Valor anunciado / valor da obra** — São o mesmo valor? A T3 usa «valor da obra» (T3 [00:29:57]). Pode ser chamado «preço base» ou essa equivalência não está confirmada?
 - [ ] **Habilitações da empresa** — Que qualificações engloba este termo e como se relaciona com classe, licenças e alvará?
 - [ ] **Requisito de participação** — Confirmar o que engloba, incluindo o alvará exigido (categoria, subcategoria e classe), e como se distingue dos requisitos sobre o conteúdo da proposta.
-- [ ] **Categoria / subcategoria do alvará** — Confirmar os nomes oficiais e a relação com o tipo de obra usado nos filtros. A T3 dá eletricidade, escavação e jardinagem como exemplos (T3 [00:30:16]).
+- [ ] **Tipo de obra e subcategoria do alvará** — O tipo de obra usado nos filtros corresponde a uma categoria ou subcategoria do alvará? A T3 dá eletricidade, escavação e jardinagem como exemplos (T3 [00:30:16]).
 - [ ] **Tipo de obra** — Classificação atribuída a cada anúncio para filtrar, por exemplo escavação, muro, infraestrutura, betuminoso ou requalificação (T3 [01:07:50]). O Diário da República não a fornece; é atribuída por um classificador (T3 [00:10:17]). É igual à categoria do alvará?
 - [ ] **Categoria prioritária** — Tipo de obra que a empresa executa com mais frequência e que deve aparecer primeiro (T3 [01:07:50]–[01:08:32]). Confirmar que ordena ou destaca e nunca exclui.
 - [ ] **Filtro** — Confirmar o conjunto: local, data, valor, prazo, entidade adjudicante e tipo de obra (T3 [01:06:57]). Os filtros aplicam-se a todas as vistas (T3 [01:30:40]).
@@ -47,11 +41,8 @@ As fontes sustentam o conceito ou uma distinção importante, mas o nome, o alca
 
 Há interpretações concorrentes ou informação insuficiente para escolher uma definição segura.
 
-- [ ] **Concurso / procedimento** — Usamos «procedimento» como conceito geral e «concurso público» apenas para um tipo específico, ou «concurso» como nome abrangente também para oportunidades por convite? A T3 diz «concurso» em todos os casos.
 - [ ] **Oportunidade** — É qualquer procedimento descoberto ou recebido, ou apenas um que a empresa já considera interessante? Continua a ser uma oportunidade depois da decisão de não concorrer?
-- [ ] **Obra** — Tem dois sentidos: o trabalho previsto antes da execução e o tipo de contrato (obras, por oposição a refeições escolares ou transportes; T3 [01:05:14]–[01:05:53]). Qual é o termo para o tipo de contrato, e «obra» pode ser sinónimo de concurso na interface?
 - [ ] **Concurso aberto** — A T3 quer ver «só os concursos abertos» (T3 [00:24:59]). Significa prazo de submissão não ultrapassado, procedimento não encerrado ou outra coisa?
-- [ ] **Classe da empresa** — O que classifica exatamente e como se distingue das restantes habilitações? A T3 indica classes de 1 a 5, com 1 até cerca de 200 mil euros (T3 [00:30:45]); estes limites não estão confirmados.
 - [ ] **Licença** — Que título ou autorização concreta é designado por esta palavra nas entrevistas? É distinto de alvará e de habilitação?
 - [ ] **Origem** — Na T3 aparece entre os filtros (T3 [01:06:57]). Designa a fonte do anúncio (Diário da República, convite), a entidade adjudicante ou outra coisa?
 
@@ -59,7 +50,7 @@ Há interpretações concorrentes ou informação insuficiente para escolher uma
 
 Estas questões permanecem abertas, mas não devem ser transformadas em definições de termos:
 
-- Limites monetários e efeitos legais das classes do alvará.
+- Efeitos legais das classes do alvará. Os limites monetários das 9 classes estão na Portaria n.º 212/2022 ([resumo da Cuatrecasas, p. 2](https://www.cuatrecasas.com/resources/legal-flash-portaria-212-2022-atualizacao-valores-classes-alvaras-construcao-630e35547c5cc454220208.pdf#page=2)).
 - Âmbito, validade e suficiência das habilitações, licenças e alvarás aplicáveis a cada procedimento.
 - O que o tamanho dos marcadores do mapa representa: valor, número de concursos ou urgência (T3 [01:16:56]–[01:17:19]).
 - Se o prazo de submissão aparece no anúncio do Diário da República.
