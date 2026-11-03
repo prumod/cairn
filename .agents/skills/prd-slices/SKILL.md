@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 # Slice a technical design
 
-Third step of the PRD workflow: `prd-research` → `prd-design` → `prd-slices` → `prd-implement`.
+Third step of the PRD workflow: `prd-research` → `prd-design` → `prd-slices` → `implement-spec`; work that fits one pull request skips `prd-slices`.
 
 ## 1. Load context
 
@@ -55,4 +55,4 @@ Design: #<design>. PRD: #<prd>, stories <numbers>.
 
 ## 5. Report
 
-List the issues in order with links, and the next step: `prd-implement` with the first unblocked issue.
+List the issues in order with links, and the next step: `implement-spec` with the design issue.

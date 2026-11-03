@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 # Research the code for a PRD
 
-First step of the PRD workflow: `prd-research` → `prd-design` → `prd-slices` → `prd-implement`.
+First step of the PRD workflow: `prd-research` → `prd-design` → `prd-slices` → `implement-spec`; work that fits one pull request skips `prd-slices`.
 
 The product side is already settled. The PRD issue owns the problem and behavior; `apps/web/references/final-visual/` owns the appearance and interactions ([evolution method](../../../docs/product/system/prototype.md#método-de-evolução)). Research establishes only what is true in the code today, so design can state the delta. It is descriptive: record what exists, never what should exist.
 

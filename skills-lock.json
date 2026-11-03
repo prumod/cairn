@@ -19,6 +19,12 @@
       "skillPath": "behavior-specification/SKILL.md",
       "computedHash": "11ac1a09ad44b3872adc3cc3c00e1621112b96548706d1525801ceabacdf78c6"
     },
+    "code-review": {
+      "source": "TiagoJacinto/skills",
+      "sourceType": "github",
+      "skillPath": "code-review/SKILL.md",
+      "computedHash": "b82caba6cd977413f79c6b02053c7cd19bc5af2a2dbbd35dd55c97dde0ac6c1c"
+    },
     "codebase-design": {
       "source": "TiagoJacinto/skills",
       "sourceType": "github",

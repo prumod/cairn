@@ -5,6 +5,7 @@
     ".agents/skills/atdd/**",
     ".agents/skills/before-and-after/**",
     ".agents/skills/behavior-specification/**",
+    ".agents/skills/code-review/**",
     ".agents/skills/codebase-design/**",
     ".agents/skills/gherkin/**",
     ".agents/skills/high-value-testing/**",
