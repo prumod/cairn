@@ -1,0 +1,69 @@
+<!doctype html><html lang="pt"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PROTOTYPE lotes</title>
+<style>
+body{margin:0;font:13px var(--font-sans,system-ui)}
+.bar{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+button{font:inherit;padding:4px 10px;border:1px solid var(--border);background:var(--card);color:var(--foreground);border-radius:6px;cursor:pointer}
+button.on{background:var(--primary);color:var(--primary-foreground)}
+.note{color:var(--muted-foreground,#888);font-size:12px;margin:0 0 8px}
+.loc{font-weight:600;margin:12px 0 4px;display:flex;justify-content:space-between}
+.card{border:1px solid var(--border);border-radius:8px;background:var(--card);margin-bottom:6px;overflow:hidden}
+.row{display:flex;gap:8px;align-items:center;padding:7px 10px}
+.row+.row{border-top:1px solid var(--border)}
+.row.lote{padding-left:30px;background:var(--secondary)}
+.row .t{flex:1}.sub{color:var(--muted-foreground,#888);font-size:12px}
+.hd{cursor:pointer;font-weight:600}.badge{font-size:11px;padding:1px 6px;border-radius:99px;background:var(--accent);color:var(--accent-foreground)}
+.hid{color:var(--warning);font-size:12px;padding:5px 10px;border-top:1px dashed var(--border)}
+.sel{background:var(--accent-surface,rgba(80,120,255,.15))}
+.cmp{margin-top:10px;padding:8px;border:1px dashed var(--border);border-radius:8px}
+</style></head><body>
+<div class="bar" id="vars"></div>
+<div class="bar">Distância máx.: <input type="range" id="d" min="10" max="150" step="5" value="150"> <b id="dv"></b> km
+<span class="sub" id="state"></span></div>
+<p class="note" id="desc"></p><div id="out"></div><div class="cmp" id="cmp"></div>
+<script>
+// PROTOTYPE – dados fictícios
+const C=[
+{id:1,t:"Requalificação da Escola EB1 de Alvito",loc:"Alvito",km:12,lotes:[]},
+{id:2,t:"Pavimentação de arruamentos do concelho",loc:"Cuba",km:25,lotes:[
+ {n:1,loc:"Cuba",km:25,obra:"Pavimentação Rua Nova"},{n:2,loc:"Cuba",km:27,obra:"Pavimentação Zona Industrial"},
+ {n:3,loc:"Vidigueira",km:48,obra:"Pavimentação EM 258"},{n:4,loc:"Alvito",km:12,obra:"Passeios Largo da Vila"}]},
+{id:3,t:"Rede de águas pluviais",loc:"Beja",km:70,lotes:[
+ {n:1,loc:"Beja",km:70,obra:"Coletor Norte"},{n:2,loc:"Beja",km:72,obra:"Coletor Sul"}]},
+{id:4,t:"Reabilitação do Mercado Municipal",loc:"Vidigueira",km:48,lotes:[]},
+{id:5,t:"Ciclovia e iluminação pública",loc:"Ferreira do Alentejo",km:110,lotes:[
+ {n:1,loc:"Ferreira do Alentejo",km:110,obra:"Ciclovia"},{n:2,loc:"Alfundão",km:120,obra:"Iluminação LED"},{n:3,loc:"Alfundão",km:121,obra:"Quadros elétricos"}]}];
+let V="A",D=150,open={},sel=new Set(),cm=new Set();
+const vis=c=>c.lotes.filter(l=>l.km<=D);
+const show=c=>c.lotes.length?vis(c).length>0:c.km<=D;
+const D_={A:"A · Grupo por concurso: cabeçalho recolhível com o nome do concurso; localidades do grupo listadas no cabeçalho; seleção/comparação por lote (o cabeçalho seleciona os visíveis).",
+B:"B · Por localidade: cada lote vive na sua localidade (respeita o agrupamento do PRD); mostra concurso + «Lote n de N». Um concurso aparece em várias localidades.",
+C:"C · Lista plana por distância: o concurso é uma linha (distância = a do lote mais próximo); lotes expandem-se a pedido. Seleção/comparação por concurso."};
+function chk(k,lbl){return `<input type=checkbox ${sel.has(k)?'checked':''} onclick="event.stopPropagation();tg('${k}')"> `}
+function tg(k){sel.has(k)?sel.delete(k):sel.add(k);r()}
+function cp(k){cm.has(k)?cm.delete(k):cm.add(k);r()}
+function op(i){open[i]=!open[i];r()}
+function loteRow(c,l,full){const k=c.id+"."+l.n;return `<div class="row lote ${sel.has(k)?'sel':''}">${chk(k)}<div class="t">${full?`<b>${c.t}</b> · `:''}Lote ${l.n} de ${c.lotes.length} — ${l.obra}<div class="sub">${l.loc} · ${l.km} km</div></div><button onclick="cp('${k}')">${cm.has(k)?'✓ comparar':'comparar'}</button></div>`}
+function plain(c,k){return `<div class="row ${sel.has(k)?'sel':''}">${chk(k)}<div class="t">${c.t}<div class="sub">${c.loc} · ${c.km} km</div></div><button onclick="cp('${k}')">${cm.has(k)?'✓ comparar':'comparar'}</button></div>`}
+function r(){
+ document.getElementById("dv").textContent=D;
+ document.getElementById("desc").textContent=D_[V];
+ document.querySelectorAll("#vars button").forEach(b=>b.className=b.dataset.v==V?"on":"");
+ let h="";
+ if(V=="A"){C.filter(show).forEach(c=>{
+  if(!c.lotes.length){h+=`<div class=card>${plain(c,c.id)}</div>`;return}
+  const v=vis(c),hid=c.lotes.length-v.length,locs=[...new Set(v.map(l=>l.loc))].join(", "),o=open[c.id]!==false;
+  const all=v.every(l=>sel.has(c.id+"."+l.n));
+  h+=`<div class=card><div class="row hd" onclick="op(${c.id})">${o?'▾':'▸'} <input type=checkbox ${all?'checked':''} onclick="event.stopPropagation()"onchange="${v.map(l=>`sel[${all}?'delete':'add']('${c.id}.${l.n}')`).join(';')};r()"><div class=t>${c.t}<div class="sub">${locs}</div></div><span class=badge>${v.length} de ${c.lotes.length} lotes</span></div>${o?v.map(l=>loteRow(c,l)).join(""):""}${hid&&o?`<div class=hid>${hid} lote(s) escondido(s) pelo filtro</div>`:""}</div>`})}
+ if(V=="B"){const g={};C.forEach(c=>{if(!c.lotes.length){if(c.km<=D)(g[c.loc]??=[]).push({c,k:c.id})}else vis(c).forEach(l=>(g[l.loc]??=[]).push({c,l}))});
+  Object.keys(g).sort().forEach(loc=>{h+=`<div class=loc><span>${loc}</span><span class=sub>${g[loc].length} obra(s)</span></div><div class=card>${g[loc].map(x=>x.l?loteRow(x.c,x.l,true):plain(x.c,x.k)).join("")}</div>`})}
+ if(V=="C"){C.filter(show).sort((a,b)=>(a.lotes.length?Math.min(...vis(a).map(l=>l.km)):a.km)-(b.lotes.length?Math.min(...vis(b).map(l=>l.km)):b.km)).forEach(c=>{
+  if(!c.lotes.length){h+=`<div class=card>${plain(c,c.id)}</div>`;return}
+  const v=vis(c),o=open[c.id];
+  h+=`<div class="card"><div class="row ${sel.has(c.id)?'sel':''}">${chk(c.id)}<div class=t>${c.t}<div class=sub>${v.length} de ${c.lotes.length} lotes · desde ${Math.min(...v.map(l=>l.km))} km</div></div><button onclick="cp('${c.id}')">${cm.has(c.id)?'✓ comparar':'comparar'}</button><button onclick="op(${c.id})">${o?'esconder':'lotes'}</button></div>${o?v.map(l=>`<div class="row lote"><div class=t>Lote ${l.n} de ${c.lotes.length} — ${l.obra}<div class=sub>${l.loc} · ${l.km} km</div></div></div>`).join(""):""}</div>`})}
+ if(!h)h="<p class=sub>Nada dentro desta distância.</p>";
+ out.innerHTML=h;
+ state.textContent=`· ${sel.size} selecionado(s)`;
+ cmp.innerHTML=`<b>Comparar (${cm.size}):</b> `+(cm.size?[...cm].join(", "):"—")+` <span class=sub>(chaves: concurso ou concurso.lote)</span>`}
+["A","B","C"].forEach(v=>{const b=document.createElement("button");b.textContent=v;b.dataset.v=v;b.onclick=()=>{V=v;sel.clear();cm.clear();r()};vars.appendChild(b)});
+d.oninput=()=>{D=+d.value;r()};r();
+</script></body></html>
