@@ -32,6 +32,11 @@ Uma publicação no Diário da República sobre um concurso. A retificação de 
 _Evitar_: concurso (no sentido de publicação)
 _Fonte_: [CCP, art. 130.º, p. 77](https://nca.tecnico.ulisboa.pt/files/sites/35/ccp_vdl_78_2022.pdf#page=77)
 
+**Concelho**:
+A divisão administrativa onde se executa uma obra, abaixo do distrito e acima da freguesia. «Município de Lisboa» designa a entidade adjudicante, não o território.
+_Evitar_: município (no sentido de território)
+_Fonte_: [Portaria n.º 318-A/2023, Anexo I, 9.6 Concelho, p. 7](https://files.diariodarepublica.pt/1s/2023/10/20701/0000200016.pdf#page=7)
+
 **Entidade adjudicante**:
 A entidade pública que abre o concurso e adjudica as empreitadas, por exemplo um município, um instituto público ou um ramo das Forças Armadas. A sua morada no anúncio não é o local onde a obra se executa.
 _Evitar_: cliente, entidade
