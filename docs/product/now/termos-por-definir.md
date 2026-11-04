@@ -35,7 +35,7 @@ As fontes sustentam o conceito ou uma distinção importante, mas o nome, o alca
 - [ ] **Assistente / chatbot** — Confirmar o nome para o chat que pesquisa, responde e aplica filtros (T3 [01:28:08]). Na T3 diz-se «chatbot» e «inteligência artificial».
 - [ ] **Contexto da conversa** — O concurso ou conjunto de concursos selecionados que o assistente usa nas respostas (T3 [00:09:42]–[00:10:03]). Confirmar o nome e quando é limpo.
 - [ ] **Vista do concurso** — A janela aberta ao selecionar um concurso, com valor, prazos e alvará exigido. No quadro, «Concurso View» (T3 [00:31:32], [01:28:30]). Confirmar o nome em português.
-- [ ] **Localidade** — A unidade selecionada no mapa para listar as obras: cidade, freguesia ou município? (T3 [01:20:51]–[01:21:00]).
+- [ ] **Localidade** — A unidade selecionada no mapa para listar as obras: cidade, freguesia ou município? (T3 [01:20:51]–[01:21:00]). A lista de descoberta já não agrupa por localidade ([#146](https://github.com/prumod/cairn/issues/146)); falta definir o termo para o mapa.
 
 ## Menor certeza — ambiguidades por resolver
 

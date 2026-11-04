@@ -23,7 +23,7 @@ _Evitar_: raio, zona, área de atuação
 _Fonte_: [T3 [00:07:52]](docs/product/transcriptions/transcricao_3_gestao_obras.txt#L95), [T3 [01:15:53]](docs/product/transcriptions/transcricao_3_gestao_obras.txt#L391)
 
 **Concurso**:
-O procedimento, publicado em um ou mais anúncios, que põe à concorrência uma ou mais empreitadas.
+O procedimento, publicado em um ou mais anúncios, que põe à concorrência uma ou mais empreitadas. Na lei e nos anúncios, o termo geral é «procedimento», e o concurso público é um dos seus tipos; no Cairn, «concurso» designa qualquer procedimento publicado na 2.ª série, Parte L, do Diário da República.
 _Evitar_: procedimento, obra (no sentido de concurso), oportunidade
 _Fonte_: [CCP, art. 16.º, n.º 1 (tipos de procedimento), p. 24](https://nca.tecnico.ulisboa.pt/files/sites/35/ccp_vdl_78_2022.pdf#page=24); [CCP, art. 130.º (publicação por anúncio), p. 77](https://nca.tecnico.ulisboa.pt/files/sites/35/ccp_vdl_78_2022.pdf#page=77)
 
