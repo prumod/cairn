@@ -58,4 +58,8 @@ O [PRD de Now](https://github.com/prumod/cairn-web/issues/104) fica com as inter
 
 - **L25 — Portal BASE como fonte:** recolher anúncios também da API do Portal BASE, quando houver token do IMPIC, juntando-os aos do Diário da República pelo IdIncm. Em Now, a única fonte é o Diário da República. Base: [Which source feeds works announcements?](https://github.com/prumod/cairn/issues/142).
 
+## Descoberta
+
+- **L26 — Rever as colunas de local:** depois de uso real, decidir se a tabela de descoberta mantém as três colunas Distrito, Concelho e Freguesia ou encurta alguma. Em Now, a tabela mostra as três. Base: [Where is a lote located, for distance purposes?](https://github.com/prumod/cairn/issues/146).
+
 As integrações reais e a persistência são trabalho técnico posterior ao protótipo com dados fictícios, não uma funcionalidade adicional nem uma integração já aprovada. As fontes públicas, APIs, mapas e cobertura de dados precisam de validação separada (T2 §§2, 19, 22–24).

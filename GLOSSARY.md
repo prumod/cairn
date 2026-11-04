@@ -23,7 +23,7 @@ _Evitar_: raio, zona, área de atuação
 _Fonte_: [T3 [00:07:52]](docs/product/transcriptions/transcricao_3_gestao_obras.txt#L95), [T3 [01:15:53]](docs/product/transcriptions/transcricao_3_gestao_obras.txt#L391)
 
 **Concurso**:
-O procedimento, publicado em um ou mais anúncios, que põe à concorrência uma ou mais empreitadas.
+O procedimento, publicado em um ou mais anúncios, que põe à concorrência uma ou mais empreitadas. Na lei e nos anúncios, o termo geral é «procedimento», e o concurso público é um dos seus tipos; no Cairn, «concurso» designa qualquer procedimento publicado na 2.ª série, Parte L, do Diário da República.
 _Evitar_: procedimento, obra (no sentido de concurso), oportunidade
 _Fonte_: [CCP, art. 16.º, n.º 1 (tipos de procedimento), p. 24](https://nca.tecnico.ulisboa.pt/files/sites/35/ccp_vdl_78_2022.pdf#page=24); [CCP, art. 130.º (publicação por anúncio), p. 77](https://nca.tecnico.ulisboa.pt/files/sites/35/ccp_vdl_78_2022.pdf#page=77)
 
@@ -31,6 +31,16 @@ _Fonte_: [CCP, art. 16.º, n.º 1 (tipos de procedimento), p. 24](https://nca.te
 Uma publicação no Diário da República sobre um concurso. A retificação de um anúncio é outro anúncio do mesmo concurso.
 _Evitar_: concurso (no sentido de publicação)
 _Fonte_: [CCP, art. 130.º, p. 77](https://nca.tecnico.ulisboa.pt/files/sites/35/ccp_vdl_78_2022.pdf#page=77)
+
+**Concelho**:
+A divisão administrativa onde se executa uma obra, abaixo do distrito e acima da freguesia. «Município de Lisboa» designa a entidade adjudicante, não o território.
+_Evitar_: município (no sentido de território)
+_Fonte_: [Portaria n.º 318-A/2023, Anexo I, 9.6 Concelho, p. 7](https://files.diariodarepublica.pt/1s/2023/10/20701/0000200016.pdf#page=7)
+
+**Entidade adjudicante**:
+A entidade pública que abre o concurso e adjudica as empreitadas, por exemplo um município, um instituto público ou um ramo das Forças Armadas. A sua morada no anúncio não é o local onde a obra se executa.
+_Evitar_: cliente, entidade
+_Fonte_: [CCP, art. 2.º (entidades adjudicantes), p. 15](https://nca.tecnico.ulisboa.pt/files/sites/35/ccp_vdl_78_2022.pdf#page=15); [Portaria n.º 318-A/2023, Anexo I, secção 1, p. 5](https://files.diariodarepublica.pt/1s/2023/10/20701/0000200016.pdf#page=5) e [secção 9, p. 7](https://files.diariodarepublica.pt/1s/2023/10/20701/0000200016.pdf#page=7)
 
 **Lote**:
 Uma parte de um concurso que dá origem à sua própria empreitada. Um concurso sem lotes tem um único lote.
