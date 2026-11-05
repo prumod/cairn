@@ -1,0 +1,1754 @@
+<title>Árvore de locais</title>
+<meta name="claude:viewport-fit-sides" content="cover" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap"
+  rel="stylesheet"
+/>
+<!--
+  PROTÓTIPO DESCARTÁVEL · dados fictícios.
+  Pergunta: How does the place tree look and behave in the list and on the map? (prumod/cairn#179)
+  Três variantes do seletor de locais, trocadas com #a, #b, #c ou com a barra inferior.
+  Aspeto tirado de apps/web/references/final-visual/ (tokens copiados).
+-->
+<style>
+  /* Layout: barra de filtros em cima, tabela de lotes e painel de estado; o seletor de locais muda por variante. */
+  :root {
+    --canvas: #edf0f4;
+    --panel: #fff;
+    --panel2: #f1f4f8;
+    --line: #d3dae3;
+    --fg: #17202b;
+    --muted: #566474;
+    --accent: #1d5fd6;
+    --onaccent: #fff;
+    --amber: #b45309;
+    --accentSoft: #e4edfc;
+    --amberSoft: #fbebd7;
+    --danger: #b42318;
+    --shadow: rgba(23, 32, 43, 0.18);
+    --proto: #2b1d4a;
+    --onproto: #f3eefe;
+    --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --canvas: #06080b;
+      --panel: #121923;
+      --panel2: #1a222e;
+      --line: #2a3646;
+      --fg: #e1e8f0;
+      --muted: #8e9cae;
+      --accent: #5ba8f5;
+      --onaccent: #04121f;
+      --amber: #f5b041;
+      --accentSoft: #142538;
+      --amberSoft: #33270f;
+      --danger: #f2706a;
+      --shadow: rgba(0, 0, 0, 0.6);
+      --proto: #e9e0ff;
+      --onproto: #1b1130;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --canvas: #06080b;
+    --panel: #121923;
+    --panel2: #1a222e;
+    --line: #2a3646;
+    --fg: #e1e8f0;
+    --muted: #8e9cae;
+    --accent: #5ba8f5;
+    --onaccent: #04121f;
+    --amber: #f5b041;
+    --accentSoft: #142538;
+    --amberSoft: #33270f;
+    --danger: #f2706a;
+    --shadow: rgba(0, 0, 0, 0.6);
+    --proto: #e9e0ff;
+    --onproto: #1b1130;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    background: var(--canvas);
+    color: var(--fg);
+    font: 13.5px/1.45 var(--sans);
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    padding-block: 14px 90px;
+  }
+  .mono {
+    font-family: var(--mono);
+    font-variant-numeric: tabular-nums;
+  }
+  .mut {
+    color: var(--muted);
+  }
+  h1 {
+    font-size: 16px;
+    margin: 0;
+    text-wrap: balance;
+  }
+  h2 {
+    font-size: 14px;
+    margin: 0;
+  }
+  h3 {
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 6px;
+  }
+  .btn {
+    font: inherit;
+    font-size: 12.5px;
+    border: 1px solid var(--line);
+    background: var(--panel);
+    color: var(--fg);
+    border-radius: 6px;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  .btn:hover {
+    border-color: var(--accent);
+  }
+  .btn.primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--onaccent);
+  }
+  .btn:disabled {
+    opacity: 0.45;
+    cursor: default;
+  }
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+  .top {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 18px;
+    align-items: center;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 10px 12px;
+  }
+  .top .sp {
+    flex: 1;
+  }
+  .proto-note {
+    font-size: 11.5px;
+    background: var(--amberSoft);
+    color: var(--fg);
+    border-radius: 6px;
+    padding: 3px 8px;
+  }
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    align-items: center;
+  }
+  .chip {
+    font: inherit;
+    font-size: 12px;
+    border: 1px solid var(--line);
+    background: var(--panel2);
+    color: var(--fg);
+    border-radius: 999px;
+    padding: 3px 9px;
+    cursor: pointer;
+  }
+  .chip.on {
+    background: var(--accentSoft);
+    border-color: var(--accent);
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .lbl {
+    font-size: 11px;
+    color: var(--muted);
+    margin-right: 2px;
+  }
+  .main {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 290px;
+    gap: 12px;
+    margin-top: 12px;
+  }
+  .main.withside {
+    grid-template-columns: 340px minmax(0, 1fr) 270px;
+  }
+  @media (max-width: 1100px) {
+    .main,
+    .main.withside {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+  .card {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 12px;
+    min-width: 0;
+  }
+  .tw {
+    overflow-x: auto;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 12.5px;
+  }
+  th {
+    font-size: 10.5px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: left;
+    font-weight: 600;
+    padding: 6px 8px;
+    border-bottom: 1px solid var(--line);
+    white-space: nowrap;
+  }
+  td {
+    padding: 6px 8px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+  td.n {
+    text-align: right;
+    white-space: nowrap;
+  }
+  tr.grp td {
+    background: var(--panel2);
+    font-weight: 600;
+    font-size: 12px;
+  }
+  .warn {
+    color: var(--amber);
+    font-weight: 600;
+  }
+  .approx {
+    color: var(--amber);
+  }
+  .state dl {
+    margin: 0;
+    display: grid;
+    gap: 8px;
+  }
+  .state dt {
+    font-size: 10.5px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  .state dd {
+    margin: 2px 0 0;
+    font-size: 12.5px;
+  }
+  .tag {
+    display: inline-block;
+    background: var(--panel2);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 0 5px;
+    margin: 1px 2px 1px 0;
+    font-size: 11.5px;
+  }
+  .ctx {
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 6px;
+    margin-top: 6px;
+    background: var(--panel2);
+  }
+  .ctx textarea {
+    width: 100%;
+    font: inherit;
+    font-size: 12.5px;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    background: var(--panel);
+    color: var(--fg);
+    padding: 4px;
+    resize: vertical;
+  }
+  .explain {
+    font-size: 12px;
+    border-left: 3px solid var(--accent);
+    padding: 4px 0 4px 10px;
+    margin: 8px 0 0;
+    color: var(--fg);
+  }
+  .explain b {
+    font-weight: 600;
+  }
+  /* picker */
+  dialog {
+    border: 0;
+    padding: 0;
+    border-radius: 10px;
+    background: var(--panel);
+    color: var(--fg);
+    box-shadow: 0 18px 50px var(--shadow);
+    width: min(1080px, calc(100vw - 24px));
+    max-height: calc(100vh - 24px);
+  }
+  dialog::backdrop {
+    background: rgba(10, 14, 20, 0.45);
+  }
+  .pk {
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100vh - 24px);
+  }
+  .pk header,
+  .pk footer {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--line);
+  }
+  .pk footer {
+    border-top: 1px solid var(--line);
+    border-bottom: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+  }
+  .pk footer .sp {
+    flex: 1;
+  }
+  .pkb {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 0;
+    min-height: 0;
+    overflow: auto;
+  }
+  @media (max-width: 760px) {
+    .pkb {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+  .mapw {
+    background: var(--panel2);
+    border-right: 1px solid var(--line);
+    padding: 8px;
+    min-width: 0;
+  }
+  .mapw svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    max-height: 62vh;
+  }
+  .treew {
+    padding: 10px 12px;
+    overflow: auto;
+    max-height: 66vh;
+    min-width: 0;
+  }
+  /* tree */
+  .tree {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .tree .tree {
+    padding-left: 18px;
+  }
+  .row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 2px 4px;
+    border-radius: 4px;
+    min-height: 26px;
+  }
+  .row:hover {
+    background: var(--panel2);
+  }
+  .row.sel {
+    background: var(--accentSoft);
+    box-shadow: inset 0 0 0 1px var(--accent);
+  }
+  .row .tw2 {
+    width: 16px;
+    height: 16px;
+    border: 0;
+    background: none;
+    color: var(--muted);
+    cursor: pointer;
+    padding: 0;
+    font-size: 11px;
+    flex: none;
+  }
+  .row .tw2.leaf {
+    visibility: hidden;
+  }
+  .row input {
+    margin: 0;
+    flex: none;
+    accent-color: var(--accent);
+  }
+  .row .nm {
+    flex: 1;
+    min-width: 0;
+    cursor: default;
+  }
+  .row .nm.click {
+    cursor: pointer;
+  }
+  .row .cnt {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--muted);
+    min-width: 2ch;
+    text-align: right;
+  }
+  .row .part {
+    font-size: 11px;
+    color: var(--accent);
+    white-space: nowrap;
+  }
+  .row.zero .nm,
+  .row.zero .cnt {
+    color: var(--muted);
+    opacity: 0.65;
+  }
+  .row.zero .nm::after {
+    content: " · sem lotes";
+    font-size: 11px;
+  }
+  .row.special .nm {
+    font-style: italic;
+  }
+  .row .hint {
+    font-size: 11px;
+    color: var(--muted);
+    font-style: normal;
+  }
+  .more {
+    font-size: 12px;
+    color: var(--accent);
+    background: none;
+    border: 0;
+    cursor: pointer;
+    padding: 2px 4px 2px 26px;
+    font: inherit;
+    font-size: 12px;
+  }
+  .lvl-d > .row .nm {
+    font-weight: 700;
+  }
+  .lvl-c > .row .nm {
+    font-weight: 600;
+  }
+  /* map */
+  .pin {
+    cursor: pointer;
+  }
+  .pin circle.dot {
+    fill: var(--accent);
+    fill-opacity: 0.85;
+    stroke: var(--panel);
+    stroke-width: 2;
+  }
+  .pin.zero circle.dot {
+    fill: var(--panel);
+    fill-opacity: 1;
+    stroke: var(--muted);
+    stroke-dasharray: 3 3;
+    stroke-width: 1.5;
+  }
+  .pin.on circle.ring {
+    stroke: var(--fg);
+    stroke-width: 3;
+    fill: none;
+  }
+  .pin.half circle.ring {
+    stroke: var(--fg);
+    stroke-width: 3;
+    fill: none;
+    stroke-dasharray: 4 4;
+  }
+  .pin.sel circle.ring {
+    stroke: var(--amber);
+    stroke-width: 3;
+    fill: none;
+  }
+  .pin text {
+    font: 600 11px var(--sans);
+    fill: var(--fg);
+    text-anchor: middle;
+    pointer-events: none;
+  }
+  .pin text.c {
+    fill: var(--onaccent);
+  }
+  .pin.zero text.c {
+    fill: var(--muted);
+  }
+  .pin.urg circle.dot {
+    fill: var(--amber);
+  }
+  .pin:focus-visible {
+    outline: none;
+  }
+  .pin:focus-visible circle.dot {
+    stroke: var(--fg);
+    stroke-width: 3;
+  }
+  .maplbl {
+    font: 500 11px var(--sans);
+    fill: var(--muted);
+  }
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 14px;
+    font-size: 11.5px;
+    color: var(--muted);
+    padding: 6px 4px 0;
+  }
+  /* side panel (C) */
+  .tabs {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 8px;
+  }
+  .tab {
+    font: inherit;
+    font-size: 12.5px;
+    background: none;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 4px 10px;
+    cursor: pointer;
+    color: var(--fg);
+  }
+  .tab.on {
+    background: var(--accentSoft);
+    border-color: var(--accent);
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .pend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+    background: var(--amberSoft);
+    border-radius: 6px;
+    padding: 6px 8px;
+    margin-top: 8px;
+    font-size: 12px;
+  }
+  .pend .sp {
+    flex: 1;
+  }
+  /* switcher */
+  .sw {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+    background: var(--proto);
+    color: var(--onproto);
+    border-radius: 999px;
+    padding: 6px 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 8px 24px var(--shadow);
+    z-index: 50;
+    max-width: calc(100vw - 32px);
+  }
+  .sw button {
+    font: inherit;
+    background: none;
+    border: 0;
+    color: inherit;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 2px 10px;
+    border-radius: 999px;
+  }
+  .sw button:hover {
+    background: rgba(127, 127, 127, 0.25);
+  }
+  .sw span {
+    font-size: 12.5px;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      transition: none !important;
+    }
+  }
+</style>
+
+<div class="top">
+  <h1>Concursos · árvore de locais</h1>
+  <span class="proto-note"
+    >Protótipo descartável · dados fictícios · empresa em Leiria, raio 50 km</span
+  >
+  <span class="sp"></span>
+  <div class="chips" id="fDist"><span class="lbl">Distância até</span></div>
+  <div class="chips" id="fCat"><span class="lbl">Categoria</span></div>
+  <button class="btn" id="openPk">Locais…</button>
+  <button class="btn" id="clearAll">Limpar filtros</button>
+</div>
+
+<div class="main" id="main">
+  <section class="card" id="side" hidden></section>
+  <section class="card">
+    <div style="display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap">
+      <h2 id="count"></h2>
+      <span class="mut" id="locNote"></span>
+    </div>
+    <div class="tw"><table id="tbl"></table></div>
+  </section>
+  <aside class="card state" id="state"></aside>
+</div>
+
+<dialog id="pk" aria-labelledby="pkT">
+  <div class="pk">
+    <header>
+      <h2 id="pkT">Locais</h2>
+      <div class="mut" style="font-size: 11.5px" id="pkHelp"></div>
+    </header>
+    <div class="pkb">
+      <div class="mapw" id="pkMap"></div>
+      <div class="treew" id="pkTree"></div>
+    </div>
+    <footer>
+      <span class="mut" id="pkC"></span><span class="sp"></span>
+      <button class="btn" id="pkClr">Limpar escolha</button>
+      <button class="btn" id="pkCom">Comentar</button>
+      <button class="btn" id="pkNo">Cancelar</button>
+      <button class="btn primary" id="pkOk">Confirmar</button>
+    </footer>
+  </div>
+</dialog>
+
+<nav class="sw" aria-label="Variantes do protótipo">
+  <button id="swP" aria-label="Variante anterior">←</button>
+  <span id="swL"></span>
+  <button id="swN" aria-label="Variante seguinte">→</button>
+</nav>
+
+<script>
+  const $ = (s, r = document) => r.querySelector(s),
+    $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const esc = (s) =>
+    String(s).replace(
+      /[&<>"']/g,
+      (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c],
+    );
+  const eur = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " €";
+  const TODAY = "2026-10-22";
+
+  /* ---------- geografia fictícia (nomes reais, posições aproximadas) ---------- */
+  const HQ = { lat: 39.744, lon: -8.807 };
+  const DIST = [
+    { id: "lei", n: "Leiria" },
+    { id: "san", n: "Santarém" },
+    { id: "coi", n: "Coimbra" },
+  ];
+  const CONC = [
+    {
+      id: "leiria",
+      n: "Leiria",
+      d: "lei",
+      lat: 39.744,
+      lon: -8.807,
+      f: [
+        "Amor",
+        "Arrabal",
+        "Bajouca",
+        "Bidoeira de Cima",
+        "Caranguejeira",
+        "Coimbrão",
+        "Colmeias e Memória",
+        "Leiria, Pousos, Barreira e Cortes",
+        "Maceira",
+        "Marrazes e Barosa",
+        "Milagres",
+        "Monte Real e Carvide",
+        "Monte Redondo e Carreira",
+        "Parceiros e Azoia",
+        "Regueira de Pontes",
+        "Santa Catarina da Serra e Chainça",
+        "Santa Eufémia e Boa Vista",
+        "Souto da Carpalhosa e Ortigosa",
+      ],
+    },
+    {
+      id: "batalha",
+      n: "Batalha",
+      d: "lei",
+      lat: 39.66,
+      lon: -8.825,
+      f: ["Batalha", "Golpilheira", "Reguengo do Fetal", "São Mamede"],
+    },
+    {
+      id: "mgrande",
+      n: "Marinha Grande",
+      d: "lei",
+      lat: 39.749,
+      lon: -8.932,
+      f: ["Marinha Grande", "Moita", "Vieira de Leiria"],
+    },
+    {
+      id: "pmos",
+      n: "Porto de Mós",
+      d: "lei",
+      lat: 39.602,
+      lon: -8.818,
+      f: [
+        "Alqueidão da Serra",
+        "Alvados e Alcaria",
+        "Arrimal e Mendiga",
+        "Calvaria de Cima",
+        "Juncal",
+        "Mira de Aire",
+        "Pedreiras",
+        "Porto de Mós – São João Baptista e São Pedro",
+        "São Bento",
+        "Serro Ventoso",
+      ],
+    },
+    {
+      id: "pombal",
+      n: "Pombal",
+      d: "lei",
+      lat: 39.916,
+      lon: -8.628,
+      f: [
+        "Abiúl",
+        "Almagreira",
+        "Carnide",
+        "Guia, Ilha e Mata Mourisca",
+        "Louriçal",
+        "Meirinhas",
+        "Pelariga",
+        "Pombal",
+        "Redinha",
+        "Santiago e São Simão de Litém e Albergaria dos Doze",
+        "Vermoil",
+        "Vila Cã",
+      ],
+    },
+    {
+      id: "alcobaca",
+      n: "Alcobaça",
+      d: "lei",
+      lat: 39.552,
+      lon: -8.977,
+      f: [
+        "Alcobaça e Vestiaria",
+        "Alfeizerão",
+        "Aljubarrota",
+        "Bárrio",
+        "Benedita",
+        "Cela",
+        "Coz, Alpedriz e Montes",
+        "Évora de Alcobaça",
+        "Maiorga",
+        "Pataias e Martingança",
+        "São Martinho do Porto",
+        "Turquel",
+        "Vimeiro",
+      ],
+    },
+    {
+      id: "nazare",
+      n: "Nazaré",
+      d: "lei",
+      lat: 39.602,
+      lon: -9.07,
+      f: ["Famalicão", "Nazaré", "Valado dos Frades"],
+    },
+    {
+      id: "alvaiazere",
+      n: "Alvaiázere",
+      d: "lei",
+      lat: 39.826,
+      lon: -8.383,
+      f: ["Almoster", "Alvaiázere", "Maçãs de Dona Maria", "Pelmá", "Pussos São Pedro"],
+    },
+    {
+      id: "ansiao",
+      n: "Ansião",
+      d: "lei",
+      lat: 39.911,
+      lon: -8.436,
+      f: ["Alvorge", "Ansião", "Avelar", "Chão de Couce", "Pousaflores", "Santiago da Guarda"],
+    },
+    {
+      id: "ourem",
+      n: "Ourém",
+      d: "san",
+      lat: 39.664,
+      lon: -8.578,
+      f: [
+        "Alburitel",
+        "Atouguia",
+        "Caxarias",
+        "Espite",
+        "Fátima",
+        "Freixianda, Ribeira do Fárrio e Formigais",
+        "Gondemaria e Olival",
+        "Matas e Cercal",
+        "Nossa Senhora das Misericórdias",
+        "Rio de Couros e Casal dos Bernardos",
+        "Seiça",
+        "Urqueira",
+      ],
+    },
+    {
+      id: "soure",
+      n: "Soure",
+      d: "coi",
+      lat: 40.059,
+      lon: -8.626,
+      f: [
+        "Alfarelos",
+        "Degracias e Pombalinho",
+        "Figueiró do Campo",
+        "Gesteira e Brunhós",
+        "Granja do Ulmeiro",
+        "Samuel",
+        "Soure",
+        "Tapéus",
+        "Vila Nova de Anços",
+        "Vinha da Rainha",
+      ],
+    },
+  ];
+  const km = (lat, lon) => ({ x: (lon - HQ.lon) * 85, y: -(lat - HQ.lat) * 111 });
+  const NODES = new Map(); // id -> {id,kind,n,parent,children,leaves,x,y,c}
+  function node(o) {
+    NODES.set(o.id, o);
+    return o;
+  }
+  const ROOT = DIST.map((d) => node({ id: "d:" + d.id, kind: "d", n: d.n, children: [] }));
+  CONC.forEach((c) => {
+    const p = km(c.lat, c.lon),
+      dn = NODES.get("d:" + c.d);
+    const cn = node({
+      id: "c:" + c.id,
+      kind: "c",
+      n: c.n,
+      parent: dn.id,
+      children: [],
+      x: p.x,
+      y: p.y,
+      c: c.id,
+    });
+    dn.children.push(cn.id);
+    c.f.forEach((f, i) => {
+      const a = i * 2.4 + c.n.length,
+        r = (c.id === "leiria" ? 3.5 : 2.2) + (i % 4) * (c.id === "leiria" ? 2.2 : 1.3);
+      cn.children.push(
+        node({
+          id: `f:${c.id}:${i}`,
+          kind: "f",
+          n: f,
+          parent: cn.id,
+          x: p.x + Math.cos(a) * r,
+          y: p.y + Math.sin(a) * r,
+          c: c.id,
+        }).id,
+      );
+    });
+    cn.T = node({
+      id: "T:" + c.id,
+      kind: "T",
+      n: "Todas",
+      parent: cn.id,
+      x: p.x,
+      y: p.y,
+      c: c.id,
+    }).id;
+    cn.U = node({
+      id: "U:" + c.id,
+      kind: "U",
+      n: "Freguesia por identificar",
+      parent: cn.id,
+      x: p.x,
+      y: p.y,
+      c: c.id,
+    }).id;
+  });
+  function leaves(id) {
+    const n = NODES.get(id);
+    if (n.kind === "f" || n.kind === "T" || n.kind === "U") return [id];
+    if (n.kind === "c") return [...n.children, n.T, n.U];
+    return n.children.flatMap(leaves);
+  }
+  const ALL_LEAVES = ROOT.flatMap((d) => leaves(d.id));
+  const F = (c, name) => {
+    const cn = NODES.get("c:" + c);
+    return cn.children.find((id) => NODES.get(id).n === name);
+  };
+
+  /* ---------- lotes fictícios ---------- */
+  const LOTES = [
+    {
+      id: 1,
+      t: "Requalificação da Escola Básica de Marrazes",
+      leaf: F("leiria", "Marrazes e Barosa"),
+      v: 412000,
+      cat: "1.ª",
+      del: "2026-10-28 17:00",
+      pub: "2026-10-21",
+    },
+    {
+      id: 2,
+      t: "Arranjo do Largo da Igreja de Maceira",
+      leaf: F("leiria", "Maceira"),
+      v: 210000,
+      cat: "2.ª",
+      del: "2026-11-04 17:00",
+      pub: "2026-10-21",
+    },
+    {
+      id: 3,
+      t: "Reabilitação do Moinho da Ponte",
+      leaf: "U:leiria",
+      raw: "Pousos",
+      v: 95000,
+      cat: "1.ª",
+      del: "2026-10-24 12:00",
+      pub: "2026-10-20",
+    },
+    {
+      id: 4,
+      t: "Pavilhão desportivo da Batalha",
+      leaf: F("batalha", "Batalha"),
+      v: 780000,
+      cat: "1.ª",
+      del: "2026-11-10 17:00",
+      pub: "2026-10-20",
+    },
+    {
+      id: 5,
+      t: "Saneamento em Vieira de Leiria",
+      leaf: F("mgrande", "Vieira de Leiria"),
+      v: 640000,
+      cat: "2.ª",
+      del: "2026-11-12 17:00",
+      pub: "2026-10-19",
+    },
+    {
+      id: 6,
+      t: "Repavimentação da rede viária municipal",
+      leaf: "T:mgrande",
+      v: 450000,
+      cat: "2.ª",
+      del: null,
+      pub: "2026-10-19",
+    },
+    {
+      id: 7,
+      t: "Limpeza e regularização de linhas de água",
+      leaf: "T:pmos",
+      v: 85000,
+      cat: "3.ª",
+      del: "2026-11-03 16:00",
+      pub: "2026-10-18",
+    },
+    {
+      id: 8,
+      t: "Muro de suporte na EM 361, Mira de Aire",
+      leaf: F("pmos", "Mira de Aire"),
+      v: 120000,
+      cat: "5.ª",
+      del: "2026-10-30 17:00",
+      pub: "2026-10-18",
+    },
+    {
+      id: 9,
+      t: "Mercado municipal de Pombal",
+      leaf: F("pombal", "Pombal"),
+      v: 1250000,
+      cat: "1.ª",
+      del: "2026-11-20 17:00",
+      pub: "2026-10-17",
+    },
+    {
+      id: 10,
+      t: "Pavimentação de estradas municipais 2026",
+      lote: "Lote 1 de 3",
+      o: "Estradas do Louriçal",
+      leaf: F("pombal", "Louriçal"),
+      v: 320000,
+      cat: "2.ª",
+      del: "2026-11-06 17:00",
+      pub: "2026-10-17",
+      g: "P26",
+    },
+    {
+      id: 11,
+      t: "Pavimentação de estradas municipais 2026",
+      lote: "Lote 2 de 3",
+      o: "Estradas da Redinha",
+      leaf: F("pombal", "Redinha"),
+      v: 280000,
+      cat: "2.ª",
+      del: "2026-11-06 17:00",
+      pub: "2026-10-17",
+      g: "P26",
+    },
+    {
+      id: 12,
+      t: "Pavimentação de estradas municipais 2026",
+      lote: "Lote 3 de 3",
+      o: "Sinalização em todo o concelho",
+      leaf: "T:pombal",
+      v: 190000,
+      cat: "2.ª",
+      del: "2026-11-06 17:00",
+      pub: "2026-10-17",
+      g: "P26",
+    },
+    {
+      id: 13,
+      t: "Centro de saúde de Alcobaça",
+      leaf: F("alcobaca", "Alcobaça e Vestiaria"),
+      v: 2100000,
+      cat: "1.ª",
+      del: "2026-11-25 17:00",
+      pub: "2026-10-16",
+    },
+    {
+      id: 14,
+      t: "Requalificação da marginal da Nazaré",
+      leaf: F("nazare", "Nazaré"),
+      v: 360000,
+      cat: "Por classificar",
+      del: "2026-11-02 17:00",
+      pub: "2026-10-16",
+    },
+    {
+      id: 15,
+      t: "Ampliação do cemitério de Fátima",
+      leaf: F("ourem", "Fátima"),
+      v: 150000,
+      cat: "1.ª",
+      del: "2026-10-29 17:00",
+      pub: "2026-10-15",
+    },
+    {
+      id: 16,
+      t: "Ponte sobre a ribeira de Samuel",
+      leaf: F("soure", "Samuel"),
+      v: 230000,
+      cat: "2.ª",
+      del: "2026-11-09 17:00",
+      pub: "2026-10-15",
+    },
+    {
+      id: 17,
+      t: "Beneficiação de caminhos rurais",
+      leaf: "U:ansiao",
+      raw: "Lagarteira e Torre de Vale de Todos",
+      v: 170000,
+      cat: "Por classificar",
+      del: "2026-11-05 17:00",
+      pub: "2026-10-14",
+    },
+    {
+      id: 18,
+      t: "Conservação de escolas de Leiria e Batalha",
+      leaf: null,
+      warn: "vários locais",
+      v: 300000,
+      cat: "1.ª",
+      del: "2026-11-08 17:00",
+      pub: "2026-10-14",
+    },
+    {
+      id: 19,
+      t: "Sinalização na rede de estradas do distrito",
+      leaf: null,
+      warn: "«Todos» no concelho",
+      v: 540000,
+      cat: "2.ª",
+      del: "2026-11-15 17:00",
+      pub: "2026-10-13",
+    },
+  ];
+  LOTES.forEach((l) => {
+    if (!l.leaf) return;
+    const n = NODES.get(l.leaf);
+    l.dist = Math.round(Math.hypot(n.x, n.y));
+  });
+
+  /* ---------- estado ---------- */
+  const S = {
+    v: "a",
+    dist: 50,
+    cat: null,
+    applied: null,
+    draft: new Set(),
+    sel: new Set(),
+    ctx: [],
+    open: new Set(),
+    showZero: false,
+    cTab: "tree",
+    anchor: null,
+  };
+  const listed = () =>
+    LOTES.filter((l) => passOther(l) && (l.warn || !S.applied || S.applied.has(l.leaf)));
+  function passOther(l) {
+    if (S.cat && l.cat !== S.cat) return false;
+    if (!l.warn && l.dist > S.dist) return false;
+    return true;
+  }
+  const countMap = () => {
+    const m = new Map();
+    LOTES.forEach((l) => {
+      if (l.warn || !passOther(l)) return;
+      let id = l.leaf;
+      while (id) {
+        m.set(id, (m.get(id) || 0) + 1);
+        id = NODES.get(id).parent;
+      }
+    });
+    return m;
+  };
+  const sumMap = () => {
+    const m = new Map();
+    LOTES.forEach((l) => {
+      if (l.warn || !passOther(l)) return;
+      m.set(l.leaf, (m.get(l.leaf) || 0) + l.v);
+    });
+    return m;
+  };
+  const urgMap = () => {
+    const m = new Map();
+    LOTES.forEach((l) => {
+      if (l.warn || !passOther(l) || !l.del) return;
+      const d = (Date.parse(l.del.slice(0, 10)) - Date.parse(TODAY)) / 864e5;
+      if (d <= 3) {
+        let id = l.leaf;
+        while (id) {
+          m.set(id, true);
+          id = NODES.get(id).parent;
+        }
+      }
+    });
+    return m;
+  };
+  function tickState(id, set) {
+    const L = leaves(id);
+    let k = 0;
+    L.forEach((x) => set.has(x) && k++);
+    return { all: k === L.length, some: k > 0 && k < L.length, k, n: L.length };
+  }
+  function toggle(id, set) {
+    const L = leaves(id),
+      st = tickState(id, set);
+    L.forEach((x) => (st.all ? set.delete(x) : set.add(x)));
+  }
+  function compress(set) {
+    const out = [];
+    const walk = (id) => {
+      const st = tickState(id, set);
+      if (st.all) {
+        out.push(id);
+        return;
+      }
+      if (!st.k) return;
+      const n = NODES.get(id);
+      if (n.kind === "c") [...n.children, n.T, n.U].forEach(walk);
+      else n.children.forEach(walk);
+    };
+    ROOT.forEach((d) => walk(d.id));
+    return out;
+  }
+  function label(id) {
+    const n = NODES.get(id),
+      c = n.parent && NODES.get(n.parent);
+    if (n.kind === "d") return "Distrito de " + n.n;
+    if (n.kind === "c") return "Concelho de " + n.n;
+    if (n.kind === "f") return n.n + " (" + c.n + ")";
+    if (n.kind === "T") return c.n + " · Freguesia: Todas";
+    return c.n + " · Freguesia por identificar";
+  }
+  const tags = (ids) =>
+    ids.length
+      ? ids.map((i) => `<span class="tag">${esc(label(i))}</span>`).join("")
+      : '<span class="mut">nenhum</span>';
+
+  /* ---------- variantes ---------- */
+  const V = {
+    a: {
+      name: "A · Diálogo: mapa de concelhos + árvore completa",
+      help: "Árvore com todos os locais dentro do raio. Clique num marcador escolhe esse concelho; Ctrl/⌘+clique alterna. Marcar um nó marca todos os seus descendentes. «Comentar» comenta os locais escolhidos. A escolha só vale ao confirmar; Cancelar, Escape ou clique fora descartam.",
+      tree: {
+        zero: "all",
+        partial: "freg",
+        special: "top",
+        tLabel: "Todo o concelho",
+        tHint: "anúncio diz «Freguesia: Todas»",
+        uLabel: "Freguesia por identificar",
+        uHint: "nome que não está na CAOP",
+        selMode: "ticks",
+      },
+      map: { level: "c", size: "count" },
+      why: [
+        [
+          "Árvore",
+          "todos os locais do raio; os que não têm lotes ficam esbatidos com «sem lotes».",
+        ],
+        ["Pai parcial", "caixa «−» e «3 de 18» (folhas marcadas)."],
+        ["Mapa", "um marcador por concelho; o tamanho e o número são os lotes."],
+        [
+          "Folhas especiais",
+          "no topo do concelho: «Todo o concelho» e «Freguesia por identificar», com explicação.",
+        ],
+        [
+          "Comentar",
+          "comenta o que está marcado, dito ao nível mais alto (ex.: «Concelho de Pombal»).",
+        ],
+      ],
+    },
+    b: {
+      name: "B · Diálogo: mapa de freguesias + árvore só com lotes",
+      help: "Árvore só com os locais que têm lotes nos filtros atuais; «Mostrar locais sem lotes» revela os outros. Clique num marcador escolhe essa freguesia; Ctrl/⌘+clique alterna. A escolha só vale ao confirmar.",
+      tree: {
+        zero: "hide",
+        partial: "lotes",
+        special: "bottom",
+        tLabel: "Freguesia: Todas",
+        tHint: "",
+        uLabel: "Freguesia por identificar",
+        uHint: "",
+        selMode: "ticks",
+      },
+      map: { level: "f", size: "value" },
+      why: [
+        ["Árvore", "só locais com lotes; um botão mostra os outros."],
+        ["Pai parcial", "caixa «−» e «4 de 9 lotes» (lotes incluídos)."],
+        [
+          "Mapa",
+          "um ponto por freguesia, tamanho = valor anunciado somado; «Todas» e «por identificar» num quadrado no centro do concelho.",
+        ],
+        ["Folhas especiais", "no fim do concelho, com o texto do anúncio: «Freguesia: Todas»."],
+        ["Comentar", "igual a A: comenta o que está marcado."],
+      ],
+    },
+    c: {
+      name: "C · Painel lateral: árvore fixa, mapa em separador",
+      help: "",
+      tree: {
+        zero: "collapse",
+        partial: "none",
+        special: "topIfAny",
+        tLabel: "Todas",
+        tHint: "",
+        uLabel: "Por identificar",
+        uHint: "",
+        selMode: "split",
+      },
+      map: { level: "c", size: "fixed" },
+      why: [
+        [
+          "Árvore",
+          "sempre ao lado da tabela; locais sem lotes resumidos numa linha «+ n sem lotes».",
+        ],
+        ["Pai parcial", "só a caixa «−»."],
+        [
+          "Mapa",
+          "separador no mesmo painel; marcador por concelho de tamanho fixo, âmbar quando um prazo acaba em 3 dias ou menos.",
+        ],
+        ["Folhas especiais", "no topo, só quando têm lotes: «Todas» e «Por identificar»."],
+        [
+          "Comentar",
+          "seleção própria: clicar no nome seleciona (Ctrl/⌘ alterna, Shift intervalo) para comentar; a caixa marca o filtro. As marcações valem com «Aplicar».",
+        ],
+      ],
+    },
+  };
+  const cfg = () => V[S.v];
+
+  /* ---------- árvore ---------- */
+  function treeHTML(set) {
+    const t = cfg().tree,
+      cm = countMap();
+    const rowFor = (id, depth) => {
+      const n = NODES.get(id),
+        c = cm.get(id) || 0,
+        st = tickState(id, set),
+        isLeaf = n.kind === "f" || n.kind === "T" || n.kind === "U";
+      const sp = n.kind === "T" || n.kind === "U";
+      let nm = sp ? (n.kind === "T" ? t.tLabel : t.uLabel) : n.n,
+        hint = sp ? (n.kind === "T" ? t.tHint : t.uHint) : "";
+      let part = "";
+      if (st.some && t.partial === "freg") part = `<span class="part">${st.k} de ${st.n}</span>`;
+      if (st.some && t.partial === "lotes") {
+        const inc = LOTES.filter(
+          (l) => !l.warn && passOther(l) && set.has(l.leaf) && leaves(id).includes(l.leaf),
+        ).length;
+        part = `<span class="part">${inc} de ${c} lotes</span>`;
+      }
+      const open = S.open.has(id);
+      const cls = [
+        "row",
+        c ? "" : "zero",
+        sp ? "special" : "",
+        S.sel.has(id) && t.selMode === "split" ? "sel" : "",
+      ].join(" ");
+      return `<div class="${cls}" data-id="${id}">
+      <button class="tw2${isLeaf ? " leaf" : ""}" data-tw="${id}" aria-label="${open ? "Fechar" : "Abrir"} ${esc(n.n)}" tabindex="${isLeaf ? -1 : 0}">${open ? "▾" : "▸"}</button>
+      <input type="checkbox" data-ck="${id}" ${st.all ? "checked" : ""} aria-label="Marcar ${esc(label(id))}">
+      <span class="nm${t.selMode === "split" ? " click" : ""}" data-nm="${id}">${esc(nm)}${hint ? ` <span class="hint">· ${esc(hint)}</span>` : ""}</span>${part}<span class="cnt" title="lotes nos filtros atuais">${c}</span></div>`;
+    };
+    const kids = (id) => {
+      const n = NODES.get(id);
+      if (n.kind !== "c") return n.children;
+      const T = n.T,
+        U = n.U,
+        f = n.children;
+      if (t.special === "top") return [T, U, ...f];
+      if (t.special === "bottom") return [...f, T, U];
+      return [...[T, U].filter((x) => cm.get(x)), ...f];
+    };
+    const walk = (id, depth) => {
+      const n = NODES.get(id),
+        c = cm.get(id) || 0;
+      if (t.zero === "hide" && !c && !S.showZero) return "";
+      let h = `<li class="lvl-${n.kind}">${rowFor(id, depth)}`;
+      if (S.open.has(id) && (n.kind === "d" || n.kind === "c")) {
+        let ks = kids(id);
+        if (t.zero === "collapse" && !S.open.has("z:" + id)) {
+          const zero = ks.filter((k) => !(cm.get(k) || 0));
+          ks = ks.filter((k) => cm.get(k) || 0);
+          h += `<ul class="tree">${ks.map((k) => walk(k, depth + 1)).join("")}</ul>`;
+          if (zero.length)
+            h += `<button class="more" data-more="${id}">+ ${zero.length} ${n.kind === "d" ? "concelhos" : "freguesias"} sem lotes</button>`;
+        } else h += `<ul class="tree">${ks.map((k) => walk(k, depth + 1)).join("")}</ul>`;
+      }
+      return h + "</li>";
+    };
+    let h = "";
+    if (t.zero === "hide") {
+      const hidden = ALL_LEAVES.filter((x) => !cm.get(x)).length;
+      h += `<label style="display:flex;gap:6px;align-items:center;font-size:12px;margin-bottom:6px"><input type="checkbox" id="showZero" ${S.showZero ? "checked" : ""}> Mostrar locais sem lotes</label>`;
+    }
+    const full =
+        tickState("d:lei", set).all && tickState("d:san", set).all && tickState("d:coi", set).all,
+      any = set.size > 0;
+    h += `<label class="row" style="font-weight:600"><span class="tw2 leaf"></span><input type="checkbox" id="ckAll" ${full ? "checked" : ""}> Todos os locais do raio</label>`;
+    return h + `<ul class="tree">${ROOT.map((d) => walk(d.id, 0)).join("")}</ul>`;
+  }
+  function wireTree(root, set, repaint) {
+    root.onclick = (e) => {
+      const tw = e.target.closest("[data-tw]");
+      if (tw && !tw.classList.contains("leaf")) {
+        const id = tw.dataset.tw;
+        S.open.has(id) ? S.open.delete(id) : S.open.add(id);
+        repaint();
+        return;
+      }
+      const mo = e.target.closest("[data-more]");
+      if (mo) {
+        S.open.add("z:" + mo.dataset.more);
+        repaint();
+        return;
+      }
+      const nm = e.target.closest("[data-nm]");
+      if (nm && cfg().tree.selMode === "split") {
+        selClick(nm.dataset.nm, e);
+        repaint();
+        return;
+      }
+    };
+    root.onchange = (e) => {
+      if (e.target.id === "showZero") {
+        S.showZero = e.target.checked;
+        repaint();
+        return;
+      }
+      if (e.target.id === "ckAll") {
+        const all = e.target.checked;
+        set.clear();
+        if (all) ALL_LEAVES.forEach((x) => set.add(x));
+        repaint();
+        return;
+      }
+      const ck = e.target.dataset.ck;
+      if (ck) {
+        toggle(ck, set);
+        repaint();
+      }
+    };
+    $$("[data-ck]", root).forEach((i) => {
+      const st = tickState(i.dataset.ck, set);
+      i.indeterminate = st.some;
+    });
+    const ca = $("#ckAll", root);
+    if (ca) ca.indeterminate = set.size > 0 && !ca.checked;
+  }
+  /* seleção para comentar (variante C): estilo explorador, sem ordem no mapa */
+  function visibleOrder() {
+    return $$("#side [data-nm]").map((x) => x.dataset.nm);
+  }
+  function selClick(id, e) {
+    if (e.shiftKey && S.anchor) {
+      const o = visibleOrder(),
+        a = o.indexOf(S.anchor),
+        b = o.indexOf(id);
+      if (a >= 0 && b >= 0) {
+        S.sel = new Set(o.slice(Math.min(a, b), Math.max(a, b) + 1));
+        return;
+      }
+    }
+    if (e.ctrlKey || e.metaKey) {
+      S.sel.has(id) ? S.sel.delete(id) : S.sel.add(id);
+    } else S.sel = new Set([id]);
+    S.anchor = id;
+  }
+
+  /* ---------- mapa ---------- */
+  const PX = 5,
+    CX = 300,
+    CY = 290; // 5 px por km
+  function mapSVG(set) {
+    const m = cfg().map,
+      cm = countMap(),
+      sm = sumMap(),
+      um = urgMap(),
+      R = 50 * PX,
+      R2 = S.dist * PX;
+    let pins = "";
+    if (m.level === "c") {
+      CONC.forEach((c) => {
+        const id = "c:" + c.id,
+          n = NODES.get(id),
+          k = cm.get(id) || 0,
+          st = tickState(id, set);
+        const r = m.size === "count" ? (k ? 11 + 5 * Math.sqrt(k) : 9) : 13;
+        const on = m.size === "fixed" ? S.sel.has(id) : st.all,
+          half = m.size !== "fixed" && st.some;
+        const cls = [
+          "pin",
+          k ? "" : "zero",
+          on ? (m.size === "fixed" ? "sel" : "on") : "",
+          half ? "half" : "",
+          m.size === "fixed" && um.get(id) ? "urg" : "",
+        ].join(" ");
+        pins += `<g class="${cls}" data-pin="${id}" tabindex="0" role="checkbox" aria-checked="${on}" aria-label="${esc(c.n)}, ${k} lotes" transform="translate(${CX + n.x * PX} ${CY + n.y * PX})"><circle class="ring" r="${r + 4}" fill="none"/><circle class="dot" r="${r}"/><text class="c" y="4">${k}</text><text y="${r + 14}">${esc(c.n)}</text></g>`;
+      });
+    } else {
+      CONC.forEach((c) => {
+        const cn = NODES.get("c:" + c.id);
+        const sq = [cn.T, cn.U].filter((x) => cm.get(x));
+        cn.children.forEach((id) => {
+          const n = NODES.get(id),
+            k = cm.get(id) || 0;
+          if (!k && !S.showZero) return;
+          const st = tickState(id, set),
+            r = k ? 4 + Math.sqrt((sm.get(id) || 0) / 9000) : 3;
+          pins += `<g class="pin${k ? "" : " zero"}${st.all ? " on" : ""}" data-pin="${id}" tabindex="0" role="checkbox" aria-checked="${st.all}" aria-label="${esc(n.n)}, ${k} lotes, ${eur(sm.get(id) || 0)}" transform="translate(${CX + n.x * PX} ${CY + n.y * PX})"><circle class="ring" r="${r + 3}" fill="none"/><circle class="dot" r="${r}"/>${k && r > 12 ? `<text y="${r + 12}">${esc(n.n.split(",")[0])}</text>` : ""}</g>`;
+        });
+        sq.forEach((id, i) => {
+          const n = NODES.get(id),
+            on = set.has(id),
+            k = cm.get(id);
+          pins += `<g class="pin${on ? " on" : ""}" data-pin="${id}" tabindex="0" role="checkbox" aria-checked="${on}" aria-label="${esc(label(id))}, ${k} lotes" transform="translate(${CX + n.x * PX + (i ? 12 : -12)} ${CY + n.y * PX - 16})"><rect x="-8" y="-8" width="16" height="16" rx="3" fill="var(--amber)" stroke="${on ? "var(--fg)" : "var(--panel)"}" stroke-width="${on ? 3 : 2}"/><text y="4" style="fill:var(--panel);font-size:10px">${n.kind === "T" ? "T" : "?"}</text></g>`;
+        });
+        pins += `<text class="maplbl" x="${CX + cn.x * PX}" y="${CY + cn.y * PX + 26}" text-anchor="middle">${esc(c.n)}</text>`;
+      });
+    }
+    return `<svg viewBox="0 0 600 580" role="group" aria-label="Mapa estilizado da zona de Leiria">
+   <rect width="600" height="580" fill="var(--panel2)"/>
+   <path d="M0 0H95C80 120 120 220 85 330S60 480 95 580H0Z" fill="var(--accent)" opacity=".10"/>
+   <circle cx="${CX}" cy="${CY}" r="${R}" fill="var(--accent)" fill-opacity=".04" stroke="var(--accent)" stroke-width="2" stroke-dasharray="7 6"/>
+   ${S.dist < 50 ? `<circle cx="${CX}" cy="${CY}" r="${R2}" fill="none" stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="2 4"/><text class="maplbl" x="${CX}" y="${CY - R2 - 4}" text-anchor="middle">filtro ${S.dist} km</text>` : ""}
+   <text class="maplbl" x="${CX + R * 0.7}" y="${CY - R * 0.7 - 4}">raio 50 km</text>
+   <g transform="translate(${CX} ${CY})"><path d="M0-9L9 0 0 9-9 0Z" fill="var(--fg)" stroke="var(--panel)" stroke-width="2"/></g>
+   <text class="maplbl" x="${CX}" y="${CY + 22}" text-anchor="middle" style="fill:var(--fg)">Empresa</text>${pins}</svg>`;
+  }
+  function legendHTML() {
+    const m = cfg().map;
+    if (m.level === "c" && m.size === "count")
+      return `<div class="legend"><span>● tamanho e número = lotes nos filtros atuais</span><span>○ tracejado = sem lotes</span><span>anel cheio = concelho todo escolhido; tracejado = parte</span></div>`;
+    if (m.level === "f")
+      return `<div class="legend"><span>● um ponto por freguesia; tamanho = valor anunciado somado</span><span><b style="color:var(--amber)">T</b> lotes com «Freguesia: Todas»</span><span><b style="color:var(--amber)">?</b> freguesia por identificar</span><span>locais sem lotes só com «Mostrar locais sem lotes»</span></div>`;
+    return `<div class="legend"><span>● número = lotes; todos do mesmo tamanho</span><span style="color:var(--amber)">● âmbar = um prazo acaba em ≤ 3 dias</span><span>○ tracejado = sem lotes</span><span>clique seleciona para comentar (não filtra)</span></div>`;
+  }
+  function wireMap(root, set, repaint) {
+    root.onclick = (e) => {
+      const p = e.target.closest("[data-pin]");
+      if (!p) return;
+      const id = p.dataset.pin;
+      if (cfg().tree.selMode === "split") {
+        if (e.ctrlKey || e.metaKey) {
+          S.sel.has(id) ? S.sel.delete(id) : S.sel.add(id);
+        } else S.sel = new Set([id]);
+        S.anchor = id;
+        repaint();
+        return;
+      }
+      if (e.ctrlKey || e.metaKey) toggle(id, set);
+      else {
+        set.clear();
+        leaves(id).forEach((x) => set.add(x));
+      }
+      repaint();
+      $(`[data-pin="${id}"]`, root)?.focus();
+    };
+    root.onkeydown = (e) => {
+      const p = e.target.closest("[data-pin]");
+      if (!p) return;
+      const id = p.dataset.pin;
+      if (e.key === " ") {
+        e.preventDefault();
+        if (cfg().tree.selMode === "split") {
+          S.sel.has(id) ? S.sel.delete(id) : S.sel.add(id);
+        } else toggle(id, set);
+        repaint();
+        $(`[data-pin="${id}"]`, root)?.focus();
+      }
+    };
+  }
+
+  /* ---------- diálogo (A, B) ---------- */
+  function paintPk() {
+    $("#pkTree").innerHTML = treeHTML(S.draft);
+    wireTree($("#pkTree"), S.draft, paintPk);
+    $("#pkMap").innerHTML = mapSVG(S.draft) + legendHTML();
+    wireMap($("#pkMap"), S.draft, paintPk);
+    const lv = LOTES.filter((l) => !l.warn && passOther(l) && S.draft.has(l.leaf)).length;
+    $("#pkC").textContent = S.draft.size
+      ? `Escolhidos: ${compress(S.draft).length} locais · ${lv} lotes`
+      : "Nenhum local escolhido: a confirmar, entram todos";
+    $("#pkCom").disabled = !S.draft.size;
+  }
+  function openPk() {
+    S.draft = new Set(S.applied || []);
+    if (!S.open.size) {
+      ROOT.forEach((d) => S.open.add(d.id));
+      if (S.v === "b") CONC.forEach((c) => S.open.add("c:" + c.id));
+    }
+    $("#pkHelp").textContent = cfg().help;
+    paintPk();
+    $("#pk").showModal();
+  }
+  $("#openPk").onclick = openPk;
+  $("#pkNo").onclick = () => $("#pk").close();
+  $("#pk").addEventListener("click", (e) => {
+    if (e.target === $("#pk")) $("#pk").close();
+  });
+  $("#pkClr").onclick = () => {
+    S.draft.clear();
+    paintPk();
+  };
+  $("#pkOk").onclick = () => {
+    S.applied = S.draft.size ? new Set(S.draft) : null;
+    $("#pk").close();
+    render();
+  };
+  $("#pkCom").onclick = () => {
+    addCtx(compress(S.draft));
+    paintPk();
+  };
+
+  /* ---------- painel lateral (C) ---------- */
+  function paintSide() {
+    const el = $("#side");
+    const dirty =
+      JSON.stringify([...S.draft].sort()) !== JSON.stringify([...(S.applied || [])].sort());
+    el.innerHTML = `<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><h2 style="flex:1">Locais</h2>
+    <button class="btn" id="cCom" ${S.sel.size ? "" : "disabled"}>Comentar ${S.sel.size ? "(" + S.sel.size + ")" : ""}</button></div>
+    <div class="tabs"><button class="tab${S.cTab === "tree" ? " on" : ""}" data-tab="tree">Lista</button><button class="tab${S.cTab === "map" ? " on" : ""}" data-tab="map">Mapa</button></div>
+    <div id="cBody"></div>
+    ${dirty ? `<div class="pend"><span>${S.draft.size ? compress(S.draft).length + " locais marcados" : "Sem locais marcados"} · por aplicar</span><span class="sp"></span><button class="btn" id="cNo">Descartar</button><button class="btn primary" id="cOk">Aplicar</button></div>` : ""}
+    <p class="explain">Caixa = filtro (vale com «Aplicar»; Escape descarta). Clique no nome = seleção para comentar (Ctrl/⌘ alterna, Shift intervalo).</p>`;
+    const b = $("#cBody", el);
+    if (S.cTab === "tree") {
+      b.innerHTML = treeHTML(S.draft);
+      wireTree(b, S.draft, paintSide);
+    } else {
+      b.innerHTML = `<div class="mapw" style="border:1px solid var(--line);border-radius:6px">${mapSVG(S.draft)}${legendHTML()}</div>`;
+      wireMap(b, S.draft, paintSide);
+    }
+    $$("[data-tab]", el).forEach(
+      (t) =>
+        (t.onclick = () => {
+          S.cTab = t.dataset.tab;
+          paintSide();
+        }),
+    );
+    $("#cCom", el).onclick = () => {
+      addCtx([...S.sel]);
+      S.sel.clear();
+      paintSide();
+    };
+    const ok = $("#cOk", el),
+      no = $("#cNo", el);
+    if (ok)
+      ok.onclick = () => {
+        S.applied = S.draft.size ? new Set(S.draft) : null;
+        render();
+      };
+    if (no)
+      no.onclick = () => {
+        S.draft = new Set(S.applied || []);
+        render();
+      };
+    renderState();
+  }
+  document.addEventListener("keydown", (e) => {
+    if (S.v === "c" && e.key === "Escape" && !e.target.closest("textarea")) {
+      S.draft = new Set(S.applied || []);
+      S.sel.clear();
+      render();
+    }
+  });
+
+  /* ---------- contexto (comentários) ---------- */
+  function addCtx(ids) {
+    if (!ids.length) return;
+    S.ctx.push({ ids, text: "" });
+    renderState();
+    const t = $$("#state textarea");
+    t[t.length - 1]?.focus();
+  }
+
+  /* ---------- tabela e estado ---------- */
+  function where(l) {
+    if (l.warn) return `<span class="warn">⚠ ${esc(l.warn)}</span>`;
+    const n = NODES.get(l.leaf),
+      c = NODES.get(n.parent),
+      d = NODES.get(c.parent);
+    const f =
+      n.kind === "T"
+        ? "Todas"
+        : n.kind === "U"
+          ? `<span class="approx">≈ ${esc(l.raw)}</span> <span class="mut">(por identificar)</span>`
+          : esc(n.n);
+    return `${esc(d.n)} / ${esc(c.n)} / ${f}`;
+  }
+  function render() {
+    const isC = S.v === "c";
+    $("#main").classList.toggle("withside", isC);
+    $("#side").hidden = !isC;
+    $("#openPk").hidden = isC;
+    if (isC && !S.open.size) ROOT.forEach((d) => S.open.add(d.id));
+    const L = listed().sort((a, b) => b.pub.localeCompare(a.pub));
+    $("#count").textContent = L.length + " lotes";
+    $("#locNote").innerHTML = S.applied ? "Local: " + tags(compress(S.applied)) : "";
+    let h = `<thead><tr><th>Obra</th><th>Distrito / Concelho / Freguesia</th><th class="n">km</th><th class="n">Valor</th><th>Cat.</th><th>Publicado</th></tr></thead><tbody>`;
+    const seen = new Set();
+    L.forEach((l) => {
+      if (l.g && !seen.has(l.g)) {
+        seen.add(l.g);
+        h += `<tr class="grp"><td colspan="6">▾ ${esc(l.t)}</td></tr>`;
+      }
+      h += `<tr><td>${l.g ? `<span class="mut">${l.lote}</span> · ${esc(l.o)}` : esc(l.t)}</td><td>${where(l)}</td><td class="n mono">${l.warn ? "—" : (NODES.get(l.leaf).kind === "U" ? "≈" : "") + l.dist}</td><td class="n mono">${eur(l.v)}</td><td>${esc(l.cat)}</td><td class="mono">${l.pub.slice(8, 10)}/${l.pub.slice(5, 7)}</td></tr>`;
+    });
+    if (!L.length)
+      h += `<tr><td colspan="6" class="mut">Os filtros excluem todos os lotes.</td></tr>`;
+    $("#tbl").innerHTML = h + "</tbody>";
+    $("#swL").textContent = cfg().name;
+    if (isC) paintSide();
+    else renderState();
+  }
+  function renderState() {
+    const c = cfg();
+    $("#state").innerHTML = `<h3>Estado</h3><dl>
+   <dt>Filtro de local aplicado</dt><dd>${S.applied ? tags(compress(S.applied)) : '<span class="mut">nenhum (todos os locais)</span>'}</dd>
+   <dt>Escolha por confirmar</dt><dd>${tags(compress(S.draft))}</dd>
+   ${c.tree.selMode === "split" ? `<dt>Locais selecionados (para comentar)</dt><dd>${tags([...S.sel])}</dd>` : ""}
+   <dt>Contexto para o assistente</dt><dd>${S.ctx.length ? S.ctx.map((x, i) => `<div class="ctx">${tags(x.ids)}<textarea id="ctx${i}" data-i="${i}" rows="2" placeholder="Comentário sobre estes locais…">${esc(x.text)}</textarea></div>`).join("") : '<span class="mut">nenhum comentário</span>'}</dd>
+  </dl><h3 style="margin-top:14px">O que esta variante decide</h3>${c.why.map(([k, v]) => `<p class="explain"><b>${k}:</b> ${esc(v)}</p>`).join("")}`;
+    $$("#state textarea").forEach((t) => (t.oninput = () => (S.ctx[+t.dataset.i].text = t.value)));
+  }
+
+  /* ---------- filtros de topo ---------- */
+  [50, 30, 20].forEach((d) =>
+    $("#fDist").insertAdjacentHTML(
+      "beforeend",
+      `<button class="chip" data-d="${d}">${d} km</button>`,
+    ),
+  );
+  [null, "1.ª", "2.ª", "3.ª", "5.ª", "Por classificar"].forEach((c) =>
+    $("#fCat").insertAdjacentHTML(
+      "beforeend",
+      `<button class="chip" data-c="${c ?? ""}">${c ?? "Todas"}</button>`,
+    ),
+  );
+  function paintChips() {
+    $$("#fDist .chip").forEach((b) => b.classList.toggle("on", +b.dataset.d === S.dist));
+    $$("#fCat .chip").forEach((b) => b.classList.toggle("on", (b.dataset.c || null) === S.cat));
+  }
+  $("#fDist").onclick = (e) => {
+    const b = e.target.closest("[data-d]");
+    if (!b) return;
+    S.dist = +b.dataset.d;
+    paintChips();
+    render();
+  };
+  $("#fCat").onclick = (e) => {
+    const b = e.target.closest("[data-c]");
+    if (!b) return;
+    S.cat = b.dataset.c || null;
+    paintChips();
+    render();
+  };
+  $("#clearAll").onclick = () => {
+    S.dist = 50;
+    S.cat = null;
+    S.applied = null;
+    S.draft.clear();
+    S.sel.clear();
+    paintChips();
+    render();
+  };
+
+  /* ---------- troca de variante ---------- */
+  const KEYS = ["a", "b", "c"];
+  function go(k) {
+    S.v = k;
+    S.draft = new Set(S.applied || []);
+    S.sel.clear();
+    S.open.clear();
+    S.showZero = false;
+    if ($("#pk").open) $("#pk").close();
+    if (location.hash !== "#" + k) history.replaceState(null, "", "#" + k);
+    render();
+  }
+  const step = (d) => go(KEYS[(KEYS.indexOf(S.v) + d + KEYS.length) % KEYS.length]);
+  $("#swP").onclick = () => step(-1);
+  $("#swN").onclick = () => step(1);
+  document.addEventListener("keydown", (e) => {
+    if (e.target.closest("input,textarea,[contenteditable]") || $("#pk").open) return;
+    if (e.key === "ArrowLeft") step(-1);
+    if (e.key === "ArrowRight") step(1);
+  });
+  addEventListener("hashchange", () => {
+    const k = location.hash.slice(1);
+    if (KEYS.includes(k) && k !== S.v) go(k);
+  });
+  paintChips();
+  go(KEYS.includes(location.hash.slice(1)) ? location.hash.slice(1) : "a");
+</script>
