@@ -9,7 +9,7 @@ A organização que usa o Cairn para descobrir concursos e preparar propostas. N
 _Evitar_: cliente, organização
 
 **Perfil da empresa**:
-Os dados da empresa que a descoberta usa como referência: nome, morada, localização da empresa, alvará (as subcategorias e a classe de cada uma), raio de pesquisa e categorias prioritárias.
+Os dados da empresa que a descoberta usa como referência: nome, morada, localização da empresa, alvará (as subcategorias e a classe de cada uma) e raio de pesquisa.
 _Evitar_: perfil de referência da empresa, referência da empresa
 
 **Localização da empresa**:
@@ -62,12 +62,18 @@ _Evitar_: licença, certificado (é outra autorização, de âmbito mais limitad
 _Fonte_: [Lei n.º 41/2015](https://diariodarepublica.pt/dr/detalhe/lei/41-2015-67377968), art. 3.º, alínea a), e art. 6.º, n.º 2 ([legislação consolidada do Diário da República, versão de 14-6-2018, pp. 3 e 5](https://www.madeira.gov.pt//Portals/19/Documentos/Legislacao/Lei_41.2015_Consolidada_2018_Atividade_Constru%C3%A7%C3%A3o.pdf#page=3))
 
 **Categoria**:
-Um tipo de obra ou de trabalho especializado em que se agrupam as subcategorias do alvará, por exemplo Edifícios e património construído.
+Um grupo de subcategorias do alvará que reúne obras ou trabalhos especializados do mesmo género, por exemplo Edifícios e património construído. Cada lote tem uma categoria: a da sua obra principal.
+_Evitar_: tipo de obra
 _Fonte_: [Lei n.º 41/2015](https://diariodarepublica.pt/dr/detalhe/lei/41-2015-67377968), art. 3.º, alínea c) ([legislação consolidada do Diário da República, versão de 14-6-2018, p. 3](https://www.madeira.gov.pt//Portals/19/Documentos/Legislacao/Lei_41.2015_Consolidada_2018_Atividade_Constru%C3%A7%C3%A3o.pdf#page=3)); a lista das categorias está no anexo I do [texto original](https://diariodarepublica.pt/dr/detalhe/lei/41-2015-67377968)
 
 **Subcategoria**:
 Uma divisão de uma categoria. É a unidade que o alvará lista e a que atribui uma classe.
 _Fonte_: [Lei n.º 41/2015](https://diariodarepublica.pt/dr/detalhe/lei/41-2015-67377968), art. 3.º, alínea q), e art. 6.º, n.º 2 ([legislação consolidada do Diário da República, versão de 14-6-2018, pp. 4 e 5](https://www.madeira.gov.pt//Portals/19/Documentos/Legislacao/Lei_41.2015_Consolidada_2018_Atividade_Constru%C3%A7%C3%A3o.pdf#page=4))
+
+**Subcategoria principal**:
+A subcategoria que o anúncio exige na classe correspondente ao valor global da obra. O concorrente tem de a ter no seu próprio alvará; as outras subcategorias exigidas, na classe do valor dos seus trabalhos, podem ser cobertas por um subempreiteiro.
+_Evitar_: subcategoria única, categoria principal
+_Fonte_: Portaria n.º 372/2017, art. 3.º, n.os 1 e 2; [CCP, art. 81.º, n.º 2](https://nca.tecnico.ulisboa.pt/files/sites/35/ccp_vdl_78_2022.pdf); resumo em [lote-subcategorias](https://github.com/prumod/cairn/blob/research/lote-subcategorias/docs/research/lote-subcategorias.md)
 
 **Classe**:
 O escalão do valor máximo das obras que a empresa pode executar numa subcategoria do alvará.
