@@ -1,0 +1,1792 @@
+{
+  "total": 473,
+  "total_lotes": 567,
+  "rules": [
+    {
+      "prefix": "45000000",
+      "label": "Construção",
+      "cat": "PC",
+      "flag": "decidido",
+      "note": "Código genérico «Construção».",
+      "n": 14,
+      "lotes": 15,
+      "codes": [
+        {
+          "code": "45000000",
+          "label": "Construção",
+          "n": 14
+        }
+      ],
+      "titles": [
+        "CONCURSO PÚBLICO COM PUBLICAÇÃO NO JOUE DE CONCEÇÃO-CONSTRUÇÃO,",
+        "EMPREITADA HVB REQUALIFICAÇÃO DA RUA DE S. JOSÉ (TROÇO SUL), LARGO DA",
+        "Execução do Saneamento Básico na Rua Alexandre José Moniz ¿ Calhetas",
+        "Sistema de Qualificação de Fornecedores do Grupo REN"
+      ],
+      "s12": {
+        "1": 4,
+        "2": 1
+      }
+    },
+    {
+      "prefix": "451",
+      "label": "Preparação dos locais para construção",
+      "cat": "5",
+      "flag": "",
+      "note": "Preparação dos locais: demolições, movimento de terras, sondagens (5.ª 1.ª, 2.ª, 3.ª).",
+      "n": 5,
+      "lotes": 5,
+      "codes": [
+        {
+          "code": "45111230",
+          "label": "Estabilização do terreno",
+          "n": 2
+        },
+        {
+          "code": "45111000",
+          "label": "Demolição, preparação e limpeza dos locais para construção",
+          "n": 1
+        },
+        {
+          "code": "45110000",
+          "label": "Demolição e destruição de edifícios e movimento de terras",
+          "n": 1
+        },
+        {
+          "code": "45111100",
+          "label": "Demolição",
+          "n": 1
+        }
+      ],
+      "titles": [
+        "EMPREITADA N.º 1/DMMC/DHM/DIH/26 - DEMOLIÇÃO DE CONSTRUÇÕES JUNTO À",
+        "Empreitada - L. DOURO - PK 156,203, PK157,800 E PK158,440 - ESTABILIZAÇÃO -",
+        "Enquadramento Paisagístico do Jardim da Valada - Rio Meão",
+        "Demolição do Edifício do Cine-Bustos e Dois Edifícios na Envolvente, seus anexos e"
+      ],
+      "s12": {
+        "5": 2,
+        "2": 1
+      }
+    },
+    {
+      "prefix": "451127",
+      "label": "Trabalhos de paisagismo",
+      "cat": "2",
+      "flag": "",
+      "note": "Paisagismo: ajardinamentos (2.ª 9.ª).",
+      "n": 11,
+      "lotes": 11,
+      "codes": [
+        {
+          "code": "45112711",
+          "label": "Trabalhos de paisagismo em parques",
+          "n": 6
+        },
+        {
+          "code": "45112710",
+          "label": "Trabalhos de paisagismo em áreas verdes",
+          "n": 3
+        },
+        {
+          "code": "45112720",
+          "label": "Trabalhos de paisagismo em campos de desporto e zonas de recreio",
+          "n": 1
+        },
+        {
+          "code": "45112723",
+          "label": "Trabalhos de paisagismo em áreas de recreação",
+          "n": 1
+        }
+      ],
+      "titles": [
+        "Beneficiação dos pavimentos em Deck e outros trabalhos de conservação no Parque",
+        "Empreitada de obras públicas de “PARQUE DE AUTOCARAVANISMO DE VILARINHO DE",
+        "Requalificação dos Arranjos Exteriores do Acesso Sul da Vila de Oleiros Requalificação",
+        "Parque Urbano do Neudel – Execução de Obras de Requalificação"
+      ],
+      "s12": {
+        "1": 1,
+        "2": 4
+      }
+    },
+    {
+      "prefix": "4511129",
+      "label": "Obras de infra-estrutura para urbanização de terrenos",
+      "cat": "2",
+      "flag": "",
+      "note": "Infraestrutura para urbanização de terrenos (2.ª).",
+      "n": 0,
+      "lotes": 0,
+      "codes": [],
+      "titles": [],
+      "s12": {}
+    },
+    {
+      "prefix": "45113",
+      "label": "Obras no local",
+      "cat": "PC",
+      "flag": "rever",
+      "note": "«Obras no local»: o rótulo não diz o tipo de obra; títulos misturam edifícios, condutas e cemitérios.",
+      "n": 10,
+      "lotes": 12,
+      "codes": [
+        {
+          "code": "45113000",
+          "label": "Obras no local",
+          "n": 10
+        }
+      ],
+      "titles": [
+        "CP01/ETAP/2026",
+        "Reabilitação Parcial de Elementos em Betão Armado CEAS (SC)",
+        "Centro Distrital de Évora - Serviço Atendimento Arraiolos -Reabilitação do Edificado e",
+        "Obras de reabilitação das instalações no Serviço de Atendimento de Viana do Alentejo"
+      ],
+      "s12": {
+        "1": 3,
+        "2": 1
+      }
+    },
+    {
+      "prefix": "45200000",
+      "label": "Obras de construção total ou parcial e de engenharia civil",
+      "cat": "PC",
+      "flag": "decidido",
+      "note": "Código genérico «Obras de construção total ou parcial e de engenharia civil».",
+      "n": 22,
+      "lotes": 24,
+      "codes": [
+        {
+          "code": "45200000",
+          "label": "Obras de construção total ou parcial e de engenharia civil",
+          "n": 22
+        }
+      ],
+      "titles": [
+        "Projecto de Requalificação de Espaço Público Urbano e Construção de Edifício de",
+        "Empreitada de trabalhos de construção civil para criação de rampa de acessibilidade",
+        "CONCURSO PÚBLICO, SEM PUBLICAÇÃO DE ANÚNCIO NO JORNAL OFICIAL DA UNIÃO",
+        "CONCURSO PÚBLICO, SEM PUBLICAÇÃO DE ANÚNCIO NO JORNAL OFICIAL DA UNIÃO"
+      ],
+      "s12": {
+        "1": 13
+      }
+    },
+    {
+      "prefix": "4521",
+      "label": "Construção de edifícios",
+      "cat": "1",
+      "flag": "",
+      "note": "Construção de edifícios (1.ª).",
+      "n": 74,
+      "lotes": 75,
+      "codes": [
+        {
+          "code": "45210000",
+          "label": "Construção de edifícios",
+          "n": 14
+        },
+        {
+          "code": "45214200",
+          "label": "Construção de edifícios escolares",
+          "n": 9
+        },
+        {
+          "code": "45212000",
+          "label": "Obras de construção de edifícios relacionados com recreio, desporto, cultura, alojamento e restauração",
+          "n": 6
+        },
+        {
+          "code": "45212290",
+          "label": "Reparação e manutenção de instalações desportivas",
+          "n": 6
+        },
+        {
+          "code": "45211360",
+          "label": "Obras de urbanização",
+          "n": 4
+        },
+        {
+          "code": "45215400",
+          "label": "Obras relacionadas com cemitérios",
+          "n": 4
+        },
+        {
+          "code": "45212300",
+          "label": "Construção de edifícios para usos culturais e artísticos",
+          "n": 2
+        },
+        {
+          "code": "45211300",
+          "label": "Construção de moradias",
+          "n": 2
+        },
+        {
+          "code": "45215212",
+          "label": "Construção de lar para idosos",
+          "n": 2
+        },
+        {
+          "code": "45212212",
+          "label": "Construção de piscinas",
+          "n": 2
+        },
+        {
+          "code": "45216200",
+          "label": "Construção de edifícios e instalações militares",
+          "n": 2
+        },
+        {
+          "code": "45216110",
+          "label": "Obras de construção de edifícios destinados às forças policiais",
+          "n": 2
+        },
+        {
+          "code": "45212410",
+          "label": "Obras de construção de edifícios relacionados com alojamento",
+          "n": 1
+        },
+        {
+          "code": "45215110",
+          "label": "Construção de estação termal",
+          "n": 1
+        },
+        {
+          "code": "45216121",
+          "label": "Construção de quartel de bombeiros",
+          "n": 1
+        },
+        {
+          "code": "45215221",
+          "label": "Construção de centro de dia",
+          "n": 1
+        },
+        {
+          "code": "45212330",
+          "label": "Construção de biblioteca",
+          "n": 1
+        },
+        {
+          "code": "45212313",
+          "label": "Construção de museu",
+          "n": 1
+        },
+        {
+          "code": "45213220",
+          "label": "Obras de construção de armazéns",
+          "n": 1
+        },
+        {
+          "code": "45212110",
+          "label": "Construção de centro de lazer",
+          "n": 1
+        },
+        {
+          "code": "45213250",
+          "label": "Construção de edifícios industriais",
+          "n": 1
+        },
+        {
+          "code": "45213251",
+          "label": "Construção de unidades industriais",
+          "n": 1
+        },
+        {
+          "code": "45214300",
+          "label": "Construção de edifícios para ensino superior",
+          "n": 1
+        },
+        {
+          "code": "45212314",
+          "label": "Construção de monumento ou memorial histórico",
+          "n": 1
+        },
+        {
+          "code": "45215100",
+          "label": "Obras de construção de edifícios relacionados com serviços de saúde",
+          "n": 1
+        },
+        {
+          "code": "45215200",
+          "label": "Construção de edifícios destinados a serviços sociais",
+          "n": 1
+        },
+        {
+          "code": "45212350",
+          "label": "Edifícios de especial interesse histórico ou arquitectónico",
+          "n": 1
+        },
+        {
+          "code": "45212200",
+          "label": "Construção de instalações desportivas",
+          "n": 1
+        },
+        {
+          "code": "45212360",
+          "label": "Construção de edifícios religiosos",
+          "n": 1
+        },
+        {
+          "code": "45216111",
+          "label": "Construção de esquadra de polícia",
+          "n": 1
+        },
+        {
+          "code": "45211000",
+          "label": "Construção de edifícios de vários fogos e de moradias independentes",
+          "n": 1
+        }
+      ],
+      "titles": [
+        "EM-26/00067 - Empreitada de Construção de Futuras Instalações Associação Juvenil",
+        "NÚCLEO MUSEOLÓGICO CASA MANUEL TEIXEIRA GOMES",
+        "Requalificação Urbanística do Bairro Ribeirinho em Faro",
+        "Empreitada de construção de 10 Módulos Habitacionais, 5 T1 e 5 T2 a lançar ao abrigo"
+      ],
+      "s12": {
+        "1": 41,
+        "4": 3,
+        "2": 1
+      }
+    },
+    {
+      "prefix": "45212213",
+      "label": "Marcações desportivas",
+      "cat": "2",
+      "flag": "rever",
+      "note": "Marcações desportivas: infraestrutura de desporto (2.ª 10.ª).",
+      "n": 0,
+      "lotes": 0,
+      "codes": [],
+      "titles": [],
+      "s12": {}
+    },
+    {
+      "prefix": "45212221",
+      "label": "Construção de estruturas para campo de desportos",
+      "cat": "2",
+      "flag": "rever",
+      "note": "Estruturas para campo de desportos (2.ª 10.ª). Os restantes 452122… (piscinas, pavilhões, estádios) ficam em edifícios, como no CPV.",
+      "n": 3,
+      "lotes": 3,
+      "codes": [
+        {
+          "code": "45212221",
+          "label": "Construção de estruturas para campo de desportos",
+          "n": 3
+        }
+      ],
+      "titles": [
+        "4026002459/DA/EOP 40.341.105.011/26 - PM 001/AMADORA - Quartel nº 1 da",
+        "4026002568/DA/EOP 40.341.106.012/26 - PM 003/Caldas da Rainha (ESE) -",
+        "Construção/finalização do estádio municipal de futebol incluindo balneários"
+      ],
+      "s12": {
+        "2": 2,
+        "1": 1
+      }
+    },
+    {
+      "prefix": "4522",
+      "label": "Obras de engenharia civil e construção de estruturas",
+      "cat": "PC",
+      "flag": "rever",
+      "note": "«Obras de engenharia civil e construção de estruturas»: genérico. Títulos: muros de suporte, miradouros, estações, passagens de nível.",
+      "n": 12,
+      "lotes": 14,
+      "codes": [
+        {
+          "code": "45220000",
+          "label": "Obras de engenharia civil e construção de estruturas",
+          "n": 10
+        },
+        {
+          "code": "45223110",
+          "label": "Instalação de estruturas metálicas",
+          "n": 1
+        },
+        {
+          "code": "45223300",
+          "label": "Construção de parque de estacionamento",
+          "n": 1
+        }
+      ],
+      "titles": [
+        "4026012135/DA/EOP 40.341.126.060/26 - PM 001/CONSTÂNCIA - Campo de",
+        "CONSTRUÇÃO E CONSOLIDAÇÃO DE MUROS DE SUPORTE NA VIA PÚBLICA",
+        "4026000016/DA/EOP 40.341.132.079/25 - PM 005/Lamego - Centro de Tropas de",
+        "Construção de muros de suporte em alvenaria de granito e outras infraestruturas -"
+      ],
+      "s12": {
+        "1": 8,
+        "2": 1,
+        "4": 1
+      }
+    },
+    {
+      "prefix": "452211",
+      "label": "Construção de pontes",
+      "cat": "2",
+      "flag": "",
+      "note": "Pontes e viadutos (2.ª 3.ª, 4.ª).",
+      "n": 1,
+      "lotes": 1,
+      "codes": [
+        {
+          "code": "45221119",
+          "label": "Obras de renovação de pontes",
+          "n": 1
+        }
+      ],
+      "titles": ["Empreitada - L.VOUGA - PONTE RIO ÁGUEDA AO PK22,502 - PROTEÇÃO E REFORÇO"],
+      "s12": {
+        "5": 1
+      }
+    },
+    {
+      "prefix": "452212",
+      "label": "Construção de túneis, poços e passagens subterrâneas",
+      "cat": "5",
+      "flag": "",
+      "note": "Túneis, poços e passagens subterrâneas (5.ª 3.ª).",
+      "n": 0,
+      "lotes": 0,
+      "codes": [],
+      "titles": [],
+      "s12": {}
+    },
+    {
+      "prefix": "452221",
+      "label": "Construção de estação de tratamento de resíduos",
+      "cat": "4",
+      "flag": "",
+      "note": "Estação de tratamento ou depósito de resíduos (4.ª 13.ª).",
+      "n": 0,
+      "lotes": 0,
+      "codes": [],
+      "titles": [],
+      "s12": {}
+    },
+    {
+      "prefix": "4523",
+      "label": "Construção de condutas de longa distância, de linhas para comunicação e transporte de energia, vias rápidas, estradas, aeródromos e vias férreas; nivelamento do terreno",
+      "cat": "2",
+      "flag": "",
+      "note": "Condutas, estradas, vias férreas, aeródromos, nivelamento (2.ª).",
+      "n": 127,
+      "lotes": 161,
+      "codes": [
+        {
+          "code": "45231300",
+          "label": "Construção de condutas para água e águas residuais",
+          "n": 15
+        },
+        {
+          "code": "45233200",
+          "label": "Obras diversas de pavimentação",
+          "n": 14
+        },
+        {
+          "code": "45232460",
+          "label": "Obras de saneamento",
+          "n": 13
+        },
+        {
+          "code": "45232150",
+          "label": "Obras relacionadas com condutas para abastecimento de água",
+          "n": 8
+        },
+        {
+          "code": "45232151",
+          "label": "Obras de renovação de condutas de água",
+          "n": 8
+        },
+        {
+          "code": "45233140",
+          "label": "Obras em estradas",
+          "n": 8
+        },
+        {
+          "code": "45233223",
+          "label": "Renovação do pavimento das faixas de rodagem",
+          "n": 7
+        },
+        {
+          "code": "45233142",
+          "label": "Reparação de estradas",
+          "n": 6
+        },
+        {
+          "code": "45233221",
+          "label": "Obras de sinalização horizontal de estradas",
+          "n": 5
+        },
+        {
+          "code": "45233220",
+          "label": "Pavimentação de estradas",
+          "n": 5
+        },
+        {
+          "code": "45233251",
+          "label": "Renovação de pavimentos",
+          "n": 4
+        },
+        {
+          "code": "45233252",
+          "label": "Pavimentação de ruas",
+          "n": 4
+        },
+        {
+          "code": "45233141",
+          "label": "Manutenção de estradas",
+          "n": 4
+        },
+        {
+          "code": "45232451",
+          "label": "Obras de drenagem e pavimentação",
+          "n": 3
+        },
+        {
+          "code": "45236119",
+          "label": "Obras de reparação de campos desportivos",
+          "n": 3
+        },
+        {
+          "code": "45230000",
+          "label": "Construção de condutas de longa distância, de linhas para comunicação e transporte de energia, vias rápidas, estradas, aeródromos e vias férreas; nivelamento do terreno",
+          "n": 3
+        },
+        {
+          "code": "45233120",
+          "label": "Construção de estradas",
+          "n": 2
+        },
+        {
+          "code": "45232400",
+          "label": "Obras de construção de esgotos",
+          "n": 2
+        },
+        {
+          "code": "45233294",
+          "label": "Instalação de sinalização rodoviária",
+          "n": 2
+        },
+        {
+          "code": "45233000",
+          "label": "Construção, fundação e pavimentação de vias rápidas e estradas",
+          "n": 2
+        },
+        {
+          "code": "45232411",
+          "label": "Construção de condutas para águas residuais",
+          "n": 1
+        },
+        {
+          "code": "45232100",
+          "label": "Obras anexas relacionadas com condutas para o transporte de água",
+          "n": 1
+        },
+        {
+          "code": "45232410",
+          "label": "Obras de construção de sistemas colectores",
+          "n": 1
+        },
+        {
+          "code": "45233260",
+          "label": "Construção de vias pedestres",
+          "n": 1
+        },
+        {
+          "code": "45233123",
+          "label": "Construção de estrada secundária",
+          "n": 1
+        },
+        {
+          "code": "45234100",
+          "label": "Construção de vias férreas",
+          "n": 1
+        },
+        {
+          "code": "45233262",
+          "label": "Construção de zona pedonal",
+          "n": 1
+        },
+        {
+          "code": "45236290",
+          "label": "Reparação de zonas de recreio",
+          "n": 1
+        },
+        {
+          "code": "45232452",
+          "label": "Obras de drenagem",
+          "n": 1
+        }
+      ],
+      "titles": [
+        "Execução dos emissários da zona sul de Mafra e beneficiação da drenagem pluvial na",
+        "EM-26/00065 - Empreitada de Requalificação do Logradouro da EB Ana de Castro",
+        "Empreitada para manutenção do Espaço Público por lotes, em regime de fornecimento",
+        "Empreitada de Beneficiação da Rede Abastecimento Água"
+      ],
+      "s12": {
+        "2": 64,
+        "1": 4,
+        "5": 2,
+        "4": 1
+      }
+    },
+    {
+      "prefix": "452314",
+      "label": "Construção de linhas para o transporte de electricidade",
+      "cat": "4",
+      "flag": "",
+      "note": "Linhas de transporte de eletricidade (4.ª 4.ª, 5.ª).",
+      "n": 0,
+      "lotes": 0,
+      "codes": [],
+      "titles": [],
+      "s12": {}
+    },
+    {
+      "prefix": "452315",
+      "label": "Obras relacionadas com condutas de longa distância para ar comprimido",
+      "cat": "4",
+      "flag": "",
+      "note": "Condutas de ar comprimido (4.ª 16.ª).",
+      "n": 0,
+      "lotes": 0,
+      "codes": [],
+      "titles": [],
+      "s12": {}
+    },
+    {
+      "prefix": "452316",
+      "label": "Construção de linhas para comunicação",
+      "cat": "4",
+      "flag": "",
+      "note": "Linhas de comunicação (4.ª 9.ª).",
+      "n": 0,
+      "lotes": 0,
+      "codes": [],
+      "titles": [],
+      "s12": {}
+    },
+    {
+      "prefix": "452322",
+      "label": "Obras anexas relacionadas com linhas para o transporte de electricidade",
+      "cat": "4",
+      "flag": "",
+      "note": "Linhas elétricas e subestações (4.ª).",
+      "n": 0,
+      "lotes": 1,
+      "codes": [],
+      "titles": [],
+      "s12": {}
+    },
+    {
+      "prefix": "452323",
+      "label": "Construção de linhas telefónicas e de comunicação e obras anexas",
+      "cat": "4",
+      "flag": "",
+      "note": "Linhas telefónicas e de comunicação (4.ª 9.ª).",
+      "n": 0,
+      "lotes": 0,
+      "codes": [],
+      "titles": [],
+      "s12": {}
+    },
+    {
+      "prefix": "45232420",
+      "label": "Construção de estações de depuração de águas residuais",
+      "cat": "4",
+      "flag": "",
+      "note": "Estações de depuração de águas residuais (4.ª 13.ª).",
+      "n": 1,
+      "lotes": 1,
+      "codes": [
+        {
+          "code": "45232420",
+          "label": "Construção de estações de depuração de águas residuais",
+          "n": 1
+        }
+      ],
+      "titles": ["205CP26 Empreitada de Reforço da Laje da Sala do Flotador - ETAR Sobreiras"],
+      "s12": {}
+    },
+    {
+      "prefix": "45232421",
+      "label": "Tratamento de águas residuais",
+      "cat": "4",
+      "flag": "",
+      "note": "Tratamento de águas residuais (4.ª 13.ª).",
+      "n": 1,
+      "lotes": 1,
+      "codes": [
+        {
+          "code": "45232421",
+          "label": "Tratamento de águas residuais",
+          "n": 1
+        }
+      ],
+      "titles": ["Processo n.º 34/2026.DCP - Construção da ETAR de Fragoso."],
+      "s12": {}
+    },
+    {
+      "prefix": "45232422",
+      "label": "Estação de tratamento de lamas",
+      "cat": "4",
+      "flag": "",
+      "note": "Estação de tratamento de lamas (4.ª 13.ª).",
+      "n": 0,
+      "lotes": 0,
+      "codes": [],
+      "titles": [],
+      "s12": {}
+    },
+    {
+      "prefix": "45232430",
+      "label": "Tratamento de águas",
+      "cat": "4",
+      "flag": "",
+      "note": "Tratamento de águas (4.ª 13.ª).",
+      "n": 2,
+      "lotes": 2,
+      "codes": [
+        {
+          "code": "45232430",
+          "label": "Tratamento de águas",
+          "n": 2
+        }
+      ],
+      "titles": [
+        "PRC_0207/2026_GAE-O1336 - Empreitada de Reparação de Problemas de Infiltrações",
+        "PRC_0208/2026_GAE-O1337 - Empreitada de Reparação de Problemas de Infiltrações"
+      ],
+      "s12": {}
+    },
+    {
+      "prefix": "45234115",
+      "label": "Obras de sinalização ferroviária",
+      "cat": "4",
+      "flag": "",
+      "note": "Sinalização ferroviária (4.ª 17.ª).",
+      "n": 0,
+      "lotes": 0,
+      "codes": [],
+      "titles": [],
+      "s12": {}
+    },
+    {
+      "prefix": "45234160",
+      "label": "Obras de construção de catenária",
+      "cat": "4",
+      "flag": "",
+      "note": "Catenária (4.ª 8.ª).",
+      "n": 0,
+      "lotes": 0,
+      "codes": [],
+      "titles": [],
+      "s12": {}
+    },
+    {
+      "prefix": "45234170",
+      "label": "Obras de construção de subestações para locomotivas",
+      "cat": "4",
+      "flag": "",
+      "note": "Subestações para locomotivas (4.ª 8.ª).",
+      "n": 0,
+      "lotes": 0,
+      "codes": [],
+      "titles": [],
+      "s12": {}
+    },
+    {
+      "prefix": "45234181",
+      "label": "Construção de postos de seccionamento",
+      "cat": "4",
+      "flag": "",
+      "note": "Postos de seccionamento (4.ª 8.ª).",
+      "n": 0,
+      "lotes": 0,
+      "codes": [],
+      "titles": [],
+      "s12": {}
+    },
+    {
+      "prefix": "452342",
+      "label": "Sistemas de transporte por cabos",
+      "cat": "PC",
+      "flag": "rever",
+      "note": "Transporte por cabos (teleféricos, funiculares): mistura obra civil e instalação mecânica.",
+      "n": 0,
+      "lotes": 0,
+      "codes": [],
+      "titles": [],
+      "s12": {}
+    },
+    {
+      "prefix": "45237",
+      "label": "Construção de palco",
+      "cat": "PC",
+      "flag": "rever",
+      "note": "Construção de palco: o rótulo não diz o tipo de obra.",
+      "n": 0,
+      "lotes": 0,
+      "codes": [],
+      "titles": [],
+      "s12": {}
+    },
+    {
+      "prefix": "4524",
+      "label": "Construção relacionada com projectos de engenharia hidráulica",
+      "cat": "3",
+      "flag": "",
+      "note": "Obras hidráulicas: portos, defesa costeira, dragagens, cursos de água, barragens (3.ª).",
+      "n": 6,
+      "lotes": 6,
+      "codes": [
+        {
+          "code": "45246200",
+          "label": "Obras de protecção de margens",
+          "n": 2
+        },
+        {
+          "code": "45247220",
+          "label": "Construção de açude",
+          "n": 1
+        },
+        {
+          "code": "45245000",
+          "label": "Obras de dragagem e bombagem para instalações de tratamento de água",
+          "n": 1
+        },
+        {
+          "code": "45246510",
+          "label": "Construção de passadiço",
+          "n": 1
+        },
+        {
+          "code": "45243500",
+          "label": "Construção de defesas marítimas",
+          "n": 1
+        }
+      ],
+      "titles": [
+        "PROJETO INTEGRADO DE REABILITAÇÃO DA MARGEM ESQUERDA DO RIO MINHO E",
+        "CONSTRUÇÃO DE AÇUDES NA RIBEIRA DA ROCHA SERRA DÁGUA",
+        "PROLONGAMENTO DO CANAL DA RIBEIRA DA RIGUINHA - Conceção / Construção",
+        "Alvará"
+      ],
+      "s12": {
+        "1": 2,
+        "3": 1
+      }
+    },
+    {
+      "prefix": "45243510",
+      "label": "Construção de taludes",
+      "cat": "PC",
+      "flag": "rever",
+      "note": "«Construção de taludes»: os 4 títulos são muros de suporte e taludes viários (5.ª), não defesa costeira (3.ª).",
+      "n": 4,
+      "lotes": 4,
+      "codes": [
+        {
+          "code": "45243510",
+          "label": "Construção de taludes",
+          "n": 4
+        }
+      ],
+      "titles": [
+        "Construção de Muro de Suporte de Terras junto a linha de água na Rua Quinta da",
+        "EMPREITADA DE RECONSTRUÇÃO DE TALUDES VIÁRIOS NA SEQUÊNCIA DAS",
+        "Empreitada de sustentação da Rua do Vale Monteiro, em Casal Monteiro, e de",
+        "EMPREITADA - L. DOURO - PK 119,620 AO 119,660 - ESTABILIZAÇÃO DE TALUDE DE"
+      ],
+      "s12": {
+        "5": 4
+      }
+    },
+    {
+      "prefix": "4524650",
+      "label": "Construção de passeio marítimo",
+      "cat": "PC",
+      "flag": "rever",
+      "note": "Passeio marítimo e passadiço: obra pedonal, não hidráulica.",
+      "n": 0,
+      "lotes": 0,
+      "codes": [],
+      "titles": [],
+      "s12": {}
+    },
+    {
+      "prefix": "45247270",
+      "label": "Construção de reservatórios",
+      "cat": "PC",
+      "flag": "rever",
+      "note": "Construção de reservatórios: os títulos são reservatórios de abastecimento de água (2.ª 6.ª?), não albufeiras (3.ª).",
+      "n": 2,
+      "lotes": 2,
+      "codes": [
+        {
+          "code": "45247270",
+          "label": "Construção de reservatórios",
+          "n": 2
+        }
+      ],
+      "titles": [
+        "Empreitada de construção de reservatórios de água sitos nas freguesias de Salga,",
+        "Construção de 2ª célula no reservatório do Seixal e remodelação dos circuitos"
+      ],
+      "s12": {
+        "1": 1
+      }
+    },
+    {
+      "prefix": "4525",
+      "label": "Construção relacionada com centrais eléctricas e as indústrias extractiva e transformadora e construção relacionada com a indústria do petróleo e do gás",
+      "cat": "PC",
+      "flag": "rever",
+      "note": "Centrais e indústria: genérico.",
+      "n": 0,
+      "lotes": 0,
+      "codes": [],
+      "titles": [],
+      "s12": {}
+    },
+    {
+      "prefix": "45251",
+      "label": "Construção de centrais eléctricas e instalações de aquecimento",
+      "cat": "4",
+      "flag": "",
+      "note": "Centrais elétricas e de aquecimento (4.ª 6.ª, 7.ª).",
+      "n": 0,
+      "lotes": 0,
+      "codes": [],
+      "titles": [],
+      "s12": {}
+    },
+    {
+      "prefix": "45252",
+      "label": "Construção de estações de tratamento de esgotos, estações depuradoras e estações de incineração de resíduos",
+      "cat": "4",
+      "flag": "",
+      "note": "Estações de tratamento de águas, esgotos e resíduos (4.ª 13.ª).",
+      "n": 2,
+      "lotes": 2,
+      "codes": [
+        {
+          "code": "45252127",
+          "label": "Construção de estação de tratamento de águas residuais",
+          "n": 2
+        }
+      ],
+      "titles": [
+        "PRC_0185/2026_GAE-EB1368 - Empreitada de Construção da ETAR de Tropeço - Lote",
+        "Empreitada de Construção do Sistema de Tratamento do Bravio - São Mateus"
+      ],
+      "s12": {
+        "4": 1
+      }
+    },
+    {
+      "prefix": "45252124",
+      "label": "Obras de dragagem e bombagem",
+      "cat": "3",
+      "flag": "",
+      "note": "Dragagem e bombagem (3.ª 5.ª).",
+      "n": 1,
+      "lotes": 1,
+      "codes": [
+        {
+          "code": "45252124",
+          "label": "Obras de dragagem e bombagem",
+          "n": 1
+        }
+      ],
+      "titles": ["Procedimento de Concurso Público para a Empreitada de Dragagem de Manutenção de"],
+      "s12": {}
+    },
+    {
+      "prefix": "45252125",
+      "label": "Descarregamento de rochas",
+      "cat": "3",
+      "flag": "",
+      "note": "Descarregamento de rochas (3.ª).",
+      "n": 0,
+      "lotes": 0,
+      "codes": [],
+      "titles": [],
+      "s12": {}
+    },
+    {
+      "prefix": "45259",
+      "label": "Reparação e manutenção de instalações",
+      "cat": "PC",
+      "flag": "rever",
+      "note": "«Reparação e manutenção de instalações»: títulos misturam estações ferroviárias, reservatórios e piscinas.",
+      "n": 7,
+      "lotes": 7,
+      "codes": [
+        {
+          "code": "45259000",
+          "label": "Reparação e manutenção de instalações",
+          "n": 7
+        }
+      ],
+      "titles": [
+        "Refuncionalização da Bataria da Raposa - Edifícios 1, 4, 8 e Masterplan - Fonte da",
+        "Empreitada - L. NORTE - ESTAÇÃO DE AVEIRO - NOVAS INSTALAÇÕES DA IP",
+        "Empreitada - L. NORTE - ESTAÇÃO DE AVEIRO - NOVAS INSTALAÇÕES DA IP",
+        "REABILITAÇÃO E MANUTENÇÃO DE RESERVATÓRIOS - REABILITAÇÃO DO"
+      ],
+      "s12": {
+        "1": 3
+      }
+    },
+    {
+      "prefix": "4526",
+      "label": "Edificação de coberturas e outras construções especializadas",
+      "cat": "PC",
+      "flag": "rever",
+      "note": "«Edificação de coberturas e outras construções especializadas»: genérico.",
+      "n": 3,
+      "lotes": 3,
+      "codes": [
+        {
+          "code": "45260000",
+          "label": "Edificação de coberturas e outras construções especializadas",
+          "n": 3
+        }
+      ],
+      "titles": [
+        "«Empreitada de Requalificação dos Espaços para Implantação do “Gaming Hub Évora”,",
+        "CONCLUSÃO/REABILITAÇÃO E REQUALIFICAÇÃO DO POLIDESPORTIVO DE MADAÍL",
+        "Empreitada de “REQUALIFICAÇÃO DA ESCOLA DA MURTEIRA – ARADA”"
+      ],
+      "s12": {
+        "1": 2
+      }
+    },
+    {
+      "prefix": "45261",
+      "label": "Edificação de vigamentos e coberturas e obras conexas",
+      "cat": "1",
+      "flag": "",
+      "note": "Vigamentos e coberturas (1.ª).",
+      "n": 11,
+      "lotes": 12,
+      "codes": [
+        {
+          "code": "45261213",
+          "label": "Colocação de coberturas metálicas",
+          "n": 7
+        },
+        {
+          "code": "45261900",
+          "label": "Obras de reparação e manutenção de coberturas",
+          "n": 3
+        },
+        {
+          "code": "45261910",
+          "label": "Reparação de coberturas",
+          "n": 1
+        }
+      ],
+      "titles": [
+        "EMPREITADA DE REABILITAÇÃO DAS INSTALAÇÕES ELÉTRICAS E DA COBERTURA DO",
+        "Requalificação do Polidesportivo Anexo ao Estádio Municipal Eng. Branco Teixeira",
+        "Substituição das Coberturas do Armazém Geral e dos Serviços Gerais Sitos na Rua da",
+        "Empreitada de Substituição das Coberturas do Topo Sul do R07"
+      ],
+      "s12": {
+        "4": 1,
+        "1": 3,
+        "5": 2
+      }
+    },
+    {
+      "prefix": "45261215",
+      "label": "Revestimento de coberturas com painéis solares",
+      "cat": "4",
+      "flag": "",
+      "note": "Coberturas com painéis solares (4.ª 6.ª). Títulos: fotovoltaico, eficiência energética.",
+      "n": 3,
+      "lotes": 3,
+      "codes": [
+        {
+          "code": "45261215",
+          "label": "Revestimento de coberturas com painéis solares",
+          "n": 3
+        }
+      ],
+      "titles": [
+        "EFICIÊNCIA ENERGÉTICA _ Piscina Municipal de Ponte de Lima",
+        "EMPREITADA - CAMPUS DO PRAGAL - INSTALAÇÃO DE PAINÉIS FOTOVOLTAICOS",
+        "146CP26 EMPREITADA DE CONCEÇÃO-CONSTRUÇÃO DE UNIDADES DE PRODUÇÃO"
+      ],
+      "s12": {
+        "4": 2,
+        "6": 1
+      }
+    },
+    {
+      "prefix": "4526141",
+      "label": "Obras de isolamento de tectos",
+      "cat": "5",
+      "flag": "",
+      "note": "Isolamento (5.ª 11.ª).",
+      "n": 0,
+      "lotes": 0,
+      "codes": [],
+      "titles": [],
+      "s12": {}
+    },
+    {
+      "prefix": "4526142",
+      "label": "Obras de impermeabilização",
+      "cat": "5",
+      "flag": "",
+      "note": "Impermeabilização (5.ª 11.ª).",
+      "n": 4,
+      "lotes": 4,
+      "codes": [
+        {
+          "code": "45261420",
+          "label": "Obras de impermeabilização",
+          "n": 4
+        }
+      ],
+      "titles": [
+        "Impermeabilização da zona poente do Ed. Arantes e Oliveira",
+        "Empreitada de requalificação das coberturas dos edifícios C5, IBEB e TECLABS",
+        "Empreitada de Selagem Final da Célula 1 do Aterro Sanitário da RSTJ, no âmbito da",
+        "BA11 - IMPERMEABILIZAÇÃO DOS TELHADOS E PINTURA DOS ALOJAMENTOS 106,"
+      ],
+      "s12": {
+        "5": 1,
+        "1": 1
+      }
+    },
+    {
+      "prefix": "45262",
+      "label": "Construções especializadas excepto obras de cobertura",
+      "cat": "PC",
+      "flag": "rever",
+      "note": "«Construções especializadas exceto coberturas»: genérico.",
+      "n": 2,
+      "lotes": 4,
+      "codes": [
+        {
+          "code": "45262600",
+          "label": "Diversas construções especializadas",
+          "n": 2
+        }
+      ],
+      "titles": [
+        "REPARAÇÃO DE INFRAESTRUTURAS AFETADAS PELAS INTEMPÉRIES",
+        "EXECUÇÃO DE MURO DE SUPORTE EM AVEZUDES E REQUALIFICAÇÃO DA RUA CIMO"
+      ],
+      "s12": {}
+    },
+    {
+      "prefix": "452621",
+      "label": "Montagem e desmontagem de andaimes",
+      "cat": "5",
+      "flag": "",
+      "note": "Andaimes (5.ª 12.ª).",
+      "n": 0,
+      "lotes": 0,
+      "codes": [],
+      "titles": [],
+      "s12": {}
+    },
+    {
+      "prefix": "452622",
+      "label": "Construção de fundações e perfuração de poços de água",
+      "cat": "5",
+      "flag": "",
+      "note": "Fundações e poços (5.ª 4.ª).",
+      "n": 0,
+      "lotes": 0,
+      "codes": [],
+      "titles": [],
+      "s12": {}
+    },
+    {
+      "prefix": "452623",
+      "label": "Obras em betão",
+      "cat": "PC",
+      "flag": "rever",
+      "note": "«Obras em betão»: títulos misturam arranjos urbanísticos, muros e elevadores.",
+      "n": 4,
+      "lotes": 4,
+      "codes": [
+        {
+          "code": "45262300",
+          "label": "Obras em betão",
+          "n": 2
+        },
+        {
+          "code": "45262310",
+          "label": "Obras em betão armado",
+          "n": 2
+        }
+      ],
+      "titles": [
+        "ARRANJOS URBANÍSTICOS NA CIDADE E FREGUESIAS - REQUALIFICAÇÃO DO PARQUE",
+        "Empreitada - L. NORTE - ESTAÇÃO DE SOUSELAS - CONSTRUÇÃO DE ELEVADORES DE",
+        "Empreitada - L. NORTE - ESTAÇÃO DE SOUSELAS - CONSTRUÇÃO DE ELEVADORES DE",
+        "E.CP/3/2026 - EMPREITADA DE CONST/BENEF. PEQUENOS MUROS DE SUPORTE E"
+      ],
+      "s12": {
+        "4": 2,
+        "5": 1
+      }
+    },
+    {
+      "prefix": "45262330",
+      "label": "Reparação de betão",
+      "cat": "5",
+      "flag": "",
+      "note": "Reparação de betão (5.ª 5.ª).",
+      "n": 1,
+      "lotes": 1,
+      "codes": [
+        {
+          "code": "45262330",
+          "label": "Reparação de betão",
+          "n": 1
+        }
+      ],
+      "titles": [
+        "OArte - Fase 3 - PI Via Panorâmica / PI Entrecampos (MAS 01/02) - Empreitada III"
+      ],
+      "s12": {
+        "2": 1
+      }
+    },
+    {
+      "prefix": "4526241",
+      "label": "Edificação de componentes estruturais em aço para edifícios",
+      "cat": "1",
+      "flag": "",
+      "note": "Estruturas de aço para edifícios (1.ª 2.ª).",
+      "n": 0,
+      "lotes": 0,
+      "codes": [],
+      "titles": [],
+      "s12": {}
+    },
+    {
+      "prefix": "452625",
+      "label": "Obras de alvenaria e assentamento de tijolos",
+      "cat": "1",
+      "flag": "",
+      "note": "Alvenaria e cantaria (1.ª 4.ª).",
+      "n": 1,
+      "lotes": 1,
+      "codes": [
+        {
+          "code": "45262512",
+          "label": "Obras em pedra de cantaria",
+          "n": 1
+        }
+      ],
+      "titles": ["Construção de muros de suporte e de vedação, de alvenaria de pedra, em diversos"],
+      "s12": {
+        "1": 1
+      }
+    },
+    {
+      "prefix": "45262620",
+      "label": "Paredes de sustentação",
+      "cat": "5",
+      "flag": "",
+      "note": "Paredes de sustentação (5.ª 6.ª).",
+      "n": 1,
+      "lotes": 1,
+      "codes": [
+        {
+          "code": "45262620",
+          "label": "Paredes de sustentação",
+          "n": 1
+        }
+      ],
+      "titles": ["Concepção-Construção para a Estabilização do Talude do Heliporto Municipal do"],
+      "s12": {}
+    },
+    {
+      "prefix": "45262690",
+      "label": "Restauração de edifícios degradados",
+      "cat": "1",
+      "flag": "",
+      "note": "Restauração de edifícios degradados (1.ª).",
+      "n": 1,
+      "lotes": 1,
+      "codes": [
+        {
+          "code": "45262690",
+          "label": "Restauração de edifícios degradados",
+          "n": 1
+        }
+      ],
+      "titles": ["Reabilitação do Edifício dos Paços do Concelho de Silves"],
+      "s12": {
+        "1": 1
+      }
+    },
+    {
+      "prefix": "452627",
+      "label": "Obras de transformação de edifícios",
+      "cat": "1",
+      "flag": "",
+      "note": "Transformação de edifícios (1.ª).",
+      "n": 3,
+      "lotes": 3,
+      "codes": [
+        {
+          "code": "45262700",
+          "label": "Obras de transformação de edifícios",
+          "n": 3
+        }
+      ],
+      "titles": [
+        "Reconstrução da escola primária de Pedras Salgadas.",
+        "Adaptação da Escola de Pias para Incubadora e Espaço de Cowork",
+        "Empreitada para Casa Destinada a Mães – Espaço da Delegação Poente"
+      ],
+      "s12": {
+        "1": 1
+      }
+    },
+    {
+      "prefix": "452628",
+      "label": "Obras de ampliação de edifícios",
+      "cat": "1",
+      "flag": "",
+      "note": "Ampliação de edifícios (1.ª).",
+      "n": 5,
+      "lotes": 9,
+      "codes": [
+        {
+          "code": "45262800",
+          "label": "Obras de ampliação de edifícios",
+          "n": 5
+        }
+      ],
+      "titles": [
+        "ALTERAÇÃO, AMPLIAÇÃO E REABILITAÇÃO DE EDIFÍCIOS MUNICIPAIS",
+        "Empreitada nº 12/2026- \"Ampliação do Lar de Vila Fernando\"",
+        "Reabilitação e ampliação do centro cultural e atividades ocupacionais da Sobreira",
+        "Empreitada nº 19/226 de : Ampliação do Lar de Vila Fernando"
+      ],
+      "s12": {
+        "1": 1
+      }
+    },
+    {
+      "prefix": "452629",
+      "label": "Obras de balcões e terraços",
+      "cat": "1",
+      "flag": "",
+      "note": "Balcões e terraços (1.ª).",
+      "n": 0,
+      "lotes": 0,
+      "codes": [],
+      "titles": [],
+      "s12": {}
+    },
+    {
+      "prefix": "453",
+      "label": "Instalações em edifícios",
+      "cat": "PC",
+      "flag": "rever",
+      "note": "«Instalações em edifícios»: genérico (elétricas, isolamento, canalizações, vedações).",
+      "n": 2,
+      "lotes": 2,
+      "codes": [
+        {
+          "code": "45300000",
+          "label": "Instalações em edifícios",
+          "n": 2
+        }
+      ],
+      "titles": [
+        "Remodelação das Instalações de AVAC do Centro de Saúde de Rio Tinto",
+        "Empreitada de Conceção- Construção para nova Criação de infraestrutura Datacenter-"
+      ],
+      "s12": {
+        "4": 1
+      }
+    },
+    {
+      "prefix": "4531",
+      "label": "Obras de instalação eléctrica",
+      "cat": "4",
+      "flag": "",
+      "note": "Instalações elétricas (4.ª).",
+      "n": 17,
+      "lotes": 21,
+      "codes": [
+        {
+          "code": "45310000",
+          "label": "Obras de instalação eléctrica",
+          "n": 6
+        },
+        {
+          "code": "45317000",
+          "label": "Outras obras de instalação eléctrica",
+          "n": 3
+        },
+        {
+          "code": "45315500",
+          "label": "Instalações de média tensão",
+          "n": 2
+        },
+        {
+          "code": "45315300",
+          "label": "Instalações de abastecimento de electricidade",
+          "n": 2
+        },
+        {
+          "code": "45316110",
+          "label": "Instalação de dispositivos para iluminação de estradas",
+          "n": 1
+        },
+        {
+          "code": "45315000",
+          "label": "Instalação de equipamento para aquecimento e de outro equipamento eléctrico em edifícios",
+          "n": 1
+        },
+        {
+          "code": "45315100",
+          "label": "Instalação de material eléctrico e electrónico",
+          "n": 1
+        },
+        {
+          "code": "45315600",
+          "label": "Instalações de baixa tensão",
+          "n": 1
+        }
+      ],
+      "titles": [
+        "TER.PR.26.005 - POSTO DE TRANSFORMAÇÃO 9 - Substituição do Quadro de Média",
+        "Infraestruturas Elétricas e Aumento de Potência",
+        "030/2026 Empreitada para a Reparação de Equipamentos de Eletricidade em",
+        "Empreitada de Iluminação Pública"
+      ],
+      "s12": {
+        "4": 5,
+        "5": 2,
+        "1": 1
+      }
+    },
+    {
+      "prefix": "4532",
+      "label": "Obras de isolamento",
+      "cat": "5",
+      "flag": "",
+      "note": "Isolamento térmico e acústico (5.ª 11.ª).",
+      "n": 0,
+      "lotes": 0,
+      "codes": [],
+      "titles": [],
+      "s12": {}
+    },
+    {
+      "prefix": "45324",
+      "label": "Colocação de painéis de gesso cartonado",
+      "cat": "1",
+      "flag": "",
+      "note": "Gesso cartonado (1.ª 5.ª).",
+      "n": 0,
+      "lotes": 0,
+      "codes": [],
+      "titles": [],
+      "s12": {}
+    },
+    {
+      "prefix": "4533",
+      "label": "Instalação de canalizações",
+      "cat": "1",
+      "flag": "",
+      "note": "Canalizações em edifícios (1.ª 8.ª).",
+      "n": 1,
+      "lotes": 1,
+      "codes": [
+        {
+          "code": "45332200",
+          "label": "Instalação de canalizações de água",
+          "n": 1
+        }
+      ],
+      "titles": ["CAPTAÇÃO, TRATAMENTO E DISTRIBUIÇÃO DE ÁGUA Ampliação e Remodelação da"],
+      "s12": {
+        "2": 1
+      }
+    },
+    {
+      "prefix": "45331",
+      "label": "Instalação de aquecimento, ventilação e ar condicionado",
+      "cat": "4",
+      "flag": "",
+      "note": "AVAC (4.ª 12.ª).",
+      "n": 10,
+      "lotes": 12,
+      "codes": [
+        {
+          "code": "45331000",
+          "label": "Instalação de aquecimento, ventilação e ar condicionado",
+          "n": 6
+        },
+        {
+          "code": "45331220",
+          "label": "Instalação de ar condicionado",
+          "n": 2
+        },
+        {
+          "code": "45331110",
+          "label": "Instalação de caldeiras",
+          "n": 1
+        },
+        {
+          "code": "45331230",
+          "label": "Instalação de equipamento de arrefecimento",
+          "n": 1
+        }
+      ],
+      "titles": [
+        "Central de Produção de Energia a Biomassa a instalar no Edifício da Cerâmica",
+        "Fornecimento e Montagem de Aparelhos de Ar Condicionado no Centro de Saúde Sete",
+        "Empreitada, por lotes, para o reforço do sistema de refrigeração e rede elétrica para o",
+        "Remodelação do sistema de AVAC da Biblioteca Municipal de Portalegre (1ªFase) sala"
+      ],
+      "s12": {
+        "4": 6
+      }
+    },
+    {
+      "prefix": "45333",
+      "label": "Instalação de equipamento a gás",
+      "cat": "4",
+      "flag": "",
+      "note": "Equipamento a gás (4.ª 14.ª).",
+      "n": 0,
+      "lotes": 0,
+      "codes": [],
+      "titles": [],
+      "s12": {}
+    },
+    {
+      "prefix": "4534",
+      "label": "Instalação de vedações, barreiras de protecção e equipamento de segurança",
+      "cat": "2",
+      "flag": "",
+      "note": "Vedações e barreiras de proteção (2.ª 11.ª).",
+      "n": 3,
+      "lotes": 4,
+      "codes": [
+        {
+          "code": "45340000",
+          "label": "Instalação de vedações, barreiras de protecção e equipamento de segurança",
+          "n": 2
+        },
+        {
+          "code": "45342000",
+          "label": "Edificação de vedações",
+          "n": 1
+        }
+      ],
+      "titles": [
+        "HORTAS URBANAS DA ALGODEIA CONSTRUÇÃO DE VEDAÇÃO E ABRIGOS",
+        "Empreitada - L. ALGARVE - VEDAÇÃO DO CANAL FERROVIÁRIO - FASE 1",
+        "3026007617_1274_DI - Empreitada Empreitada de Incremento de Segurança, Lote 1 -"
+      ],
+      "s12": {
+        "5": 1,
+        "2": 1,
+        "1": 1
+      }
+    },
+    {
+      "prefix": "45343",
+      "label": "Instalação de equipamento para prevenção de incêndios",
+      "cat": "4",
+      "flag": "",
+      "note": "Prevenção e combate a incêndios (4.ª 10.ª).",
+      "n": 0,
+      "lotes": 0,
+      "codes": [],
+      "titles": [],
+      "s12": {}
+    },
+    {
+      "prefix": "4535",
+      "label": "Instalações mecânicas",
+      "cat": "4",
+      "flag": "",
+      "note": "Instalações mecânicas (4.ª 19.ª).",
+      "n": 0,
+      "lotes": 0,
+      "codes": [],
+      "titles": [],
+      "s12": {}
+    },
+    {
+      "prefix": "454",
+      "label": "Obras de acabamento de edifícios",
+      "cat": "1",
+      "flag": "",
+      "note": "Acabamentos de edifícios (1.ª).",
+      "n": 22,
+      "lotes": 34,
+      "codes": [
+        {
+          "code": "45450000",
+          "label": "Outras obras de acabamento de edifícios",
+          "n": 4
+        },
+        {
+          "code": "45432110",
+          "label": "Obras de pavimentação",
+          "n": 4
+        },
+        {
+          "code": "45421100",
+          "label": "Instalação de portas e janelas e de componentes afins",
+          "n": 3
+        },
+        {
+          "code": "45400000",
+          "label": "Obras de acabamento de edifícios",
+          "n": 2
+        },
+        {
+          "code": "45422100",
+          "label": "Obras em madeira",
+          "n": 2
+        },
+        {
+          "code": "45421152",
+          "label": "Instalação de paredes divisórias",
+          "n": 1
+        },
+        {
+          "code": "45421140",
+          "label": "Instalação de artigos de carpintaria metálica excepto portas e janelas",
+          "n": 1
+        },
+        {
+          "code": "45421110",
+          "label": "Instalação de caixilharia de portas e janelas",
+          "n": 1
+        },
+        {
+          "code": "45442100",
+          "label": "Obras de pintura",
+          "n": 1
+        },
+        {
+          "code": "45421112",
+          "label": "Instalação de caixilharia de janelas",
+          "n": 1
+        },
+        {
+          "code": "45451200",
+          "label": "Colocação de painéis",
+          "n": 1
+        },
+        {
+          "code": "45431200",
+          "label": "Colocação de azulejos em paredes",
+          "n": 1
+        }
+      ],
+      "titles": [
+        "Substituição de Vãos Exteriores",
+        "Obra de ampliação dos serviços administrativos da Casa da Cultura de Ílhavo",
+        "Empreitada para a \"colocação de proteção na caixa de escadas comuns dos blocos do",
+        "2026/CP/012 - Empreitada de Substituição de Vãos Envidraçados na ESE"
+      ],
+      "s12": {
+        "1": 8
+      }
+    },
+    {
+      "prefix": "45453",
+      "label": "Obras de revisão e recuperação",
+      "cat": "PC",
+      "flag": "decidido",
+      "note": "«Obras de revisão e recuperação» (45453000) e «Obras de recuperação» (45453100): ambíguos.",
+      "n": 60,
+      "lotes": 81,
+      "codes": [
+        {
+          "code": "45453100",
+          "label": "Obras de recuperação",
+          "n": 43
+        },
+        {
+          "code": "45453000",
+          "label": "Obras de revisão e recuperação",
+          "n": 17
+        }
+      ],
+      "titles": [
+        "Empreitada 21/GEBALIS/2026 - Zona Ocidental - Trabalhos de emparedamento de",
+        "\"EMPREITADA DE SUBSTITUIÇÃO DO TELHADO DO EDIFÍCIO DA ESQUADRILHA DE",
+        "Empreitada de reconversão de uma edificação já Existente",
+        "Empreitada 9/GEBALIS/2026 - Manutenção e Reparação de fogos e zonas comuns em"
+      ],
+      "s12": {
+        "1": 22,
+        "4": 1,
+        "5": 2
+      }
+    },
+    {
+      "prefix": "45454",
+      "label": "Obras de reestruturação",
+      "cat": "PC",
+      "flag": "rever",
+      "note": "«Obras de reestruturação» e «Obras de restauro»: títulos misturam edifícios, ruas, um aqueduto e um estuário.",
+      "n": 14,
+      "lotes": 18,
+      "codes": [
+        {
+          "code": "45454000",
+          "label": "Obras de reestruturação",
+          "n": 9
+        },
+        {
+          "code": "45454100",
+          "label": "Obras de restauro",
+          "n": 5
+        }
+      ],
+      "titles": [
+        "REMODELAÇÃO DAS UNIDADES DE CONVALESCENÇA, MÉDIA DURAÇÃO E",
+        "Empreitada de Obra Pública para a Beneficiação das Bombas de Combustível do",
+        "Empreitada de Requalificação Funcional e Acessibilidades das Unidades de Montemor-",
+        "Empreitada de “Execução de reabilitação do complexo Municipal – piscinas e campo"
+      ],
+      "s12": {
+        "1": 9
+      }
+    },
+    {
+      "prefix": "455",
+      "label": "Aluguer de máquinas e equipamento para construção e engenharia civil, com operador",
+      "cat": "PC",
+      "flag": "rever",
+      "note": "Aluguer de máquinas com operador: não é um tipo de obra.",
+      "n": 0,
+      "lotes": 0,
+      "codes": [],
+      "titles": [],
+      "s12": {}
+    }
+  ]
+}

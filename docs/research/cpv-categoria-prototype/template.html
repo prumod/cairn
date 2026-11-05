@@ -1,0 +1,618 @@
+<title>CPV para categoria</title>
+<meta name="claude:viewport-fit-sides" content="cover" />
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+/>
+<style>
+  /* Layout: one working column. The summary bar sits on top and the rule table is the main surface. */
+  :root {
+    --bg: #f6f7f9;
+    --surface: #ffffff;
+    --fg: #1b2230;
+    --muted: #5b6474;
+    --line: #dde1e8;
+    --accent: #2f5bd3;
+    --c1: #c2571a;
+    --c2: #2f6f4f;
+    --c3: #1f6fa8;
+    --c4: #8a4bb8;
+    --c5: #9a7b12;
+    --cpc: #8b93a1;
+    --warn-bg: #fff4d6;
+    --warn-fg: #7a5600;
+    --chg-bg: #e8eefc;
+    --f-body: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #12161d;
+      --surface: #1a2029;
+      --fg: #e4e8ef;
+      --muted: #9aa3b2;
+      --line: #2c3441;
+      --accent: #7f9ef0;
+      --c1: #e8834d;
+      --c2: #5fb98a;
+      --c3: #5aa9e0;
+      --c4: #b88ae0;
+      --c5: #d4b340;
+      --cpc: #7d8594;
+      --warn-bg: #3a2f12;
+      --warn-fg: #f0cf73;
+      --chg-bg: #22304f;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #12161d;
+    --surface: #1a2029;
+    --fg: #e4e8ef;
+    --muted: #9aa3b2;
+    --line: #2c3441;
+    --accent: #7f9ef0;
+    --c1: #e8834d;
+    --c2: #5fb98a;
+    --c3: #5aa9e0;
+    --c4: #b88ae0;
+    --c5: #d4b340;
+    --cpc: #7d8594;
+    --warn-bg: #3a2f12;
+    --warn-fg: #f0cf73;
+    --chg-bg: #22304f;
+    color-scheme: dark;
+  }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--f-body);
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  .wrap {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    padding-block: 28px 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+  h1 {
+    font-size: 1.6rem;
+    line-height: 1.2;
+    margin: 0;
+    text-wrap: balance;
+  }
+  a {
+    color: var(--accent);
+  }
+  .lede {
+    color: var(--muted);
+    max-width: 72ch;
+    margin: 6px 0 0;
+  }
+  td code,
+  .mono {
+    font-family: var(--f-mono);
+    font-size: 0.88em;
+  }
+  .panel {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 16px 18px;
+  }
+  .eyebrow {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    font-weight: 600;
+    margin: 0 0 8px;
+  }
+  .bar {
+    display: flex;
+    height: 30px;
+    border-radius: 6px;
+    overflow: hidden;
+    gap: 2px;
+  }
+  .bar span {
+    display: block;
+    transition: flex-grow 0.25s;
+  }
+  .legend {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px 18px;
+    margin-top: 12px;
+    font-variant-numeric: tabular-nums;
+  }
+  .legend div {
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+  }
+  .sw {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    flex: none;
+    display: inline-block;
+  }
+  .legend b {
+    font-weight: 600;
+  }
+  .legend .d {
+    color: var(--muted);
+    font-size: 0.85em;
+    display: block;
+  }
+  .base {
+    color: var(--muted);
+    font-size: 0.88rem;
+    margin: 12px 0 0;
+  }
+  .tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+  }
+  .seg {
+    display: inline-flex;
+    flex-wrap: wrap;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--surface);
+  }
+  .seg button {
+    border: 0;
+    background: none;
+    padding: 7px 12px;
+    font: inherit;
+    font-size: 0.88rem;
+    color: var(--fg);
+    cursor: pointer;
+  }
+  .seg button[aria-pressed="true"] {
+    background: var(--accent);
+    color: var(--surface);
+  }
+  .btn {
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--fg);
+    border-radius: 8px;
+    padding: 7px 12px;
+    font: inherit;
+    font-size: 0.88rem;
+    cursor: pointer;
+  }
+  .btn.primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--surface);
+    font-weight: 600;
+  }
+  button:focus-visible,
+  select:focus-visible,
+  summary:focus-visible,
+  textarea:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+  .spacer {
+    flex: 1;
+  }
+  .status {
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  .tablebox {
+    overflow-x: auto;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 860px;
+    font-variant-numeric: tabular-nums;
+  }
+  th,
+  td {
+    text-align: left;
+    padding: 9px 12px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+  th {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--muted);
+    font-weight: 600;
+    background: var(--surface);
+  }
+  th.num,
+  td.num {
+    text-align: right;
+    white-space: nowrap;
+  }
+  tr.zero td {
+    color: var(--muted);
+  }
+  tr.changed {
+    background: var(--chg-bg);
+  }
+  tr.changed td:first-child {
+    box-shadow: inset 3px 0 0 var(--accent);
+  }
+  .pfx {
+    font-family: var(--f-mono);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .pfx i {
+    font-style: normal;
+    color: var(--muted);
+    opacity: 0.6;
+  }
+  .lbl {
+    max-width: 42ch;
+  }
+  .note {
+    color: var(--muted);
+    font-size: 0.86rem;
+    margin-top: 3px;
+  }
+  .share {
+    color: var(--muted);
+    font-size: 0.84rem;
+    display: block;
+  }
+  select {
+    font: inherit;
+    font-size: 0.88rem;
+    padding: 5px 6px;
+    border-radius: 6px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--fg);
+    max-width: 100%;
+  }
+  .catcell {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 200px;
+  }
+  .tags {
+    margin-top: 6px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .pill {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 1px 7px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .pill.rever {
+    background: var(--warn-bg);
+    color: var(--warn-fg);
+  }
+  .pill.decidido {
+    background: var(--line);
+    color: var(--muted);
+  }
+  details {
+    margin-top: 5px;
+    font-size: 0.84rem;
+  }
+  summary {
+    cursor: pointer;
+    color: var(--accent);
+  }
+  details ul {
+    margin: 6px 0 0;
+    padding-left: 18px;
+    color: var(--muted);
+  }
+  details li {
+    margin: 2px 0;
+  }
+  .copybox {
+    width: 100%;
+    box-sizing: border-box;
+    min-height: 160px;
+    font-family: var(--f-mono);
+    font-size: 0.8rem;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--bg);
+    color: var(--fg);
+    padding: 10px;
+  }
+  footer {
+    color: var(--muted);
+    font-size: 0.84rem;
+    max-width: 80ch;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .bar span {
+      transition: none;
+    }
+  }
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Que prefixos CPV dão que categoria?</h1>
+    <p class="lede">
+      Proposta para
+      <a href="https://github.com/prumod/cairn/issues/170"
+        >Which CPV prefixes map to which categoria?</a
+      >
+      Cada lote recebe a categoria do anexo I da Lei 41/2015 a partir do seu CPV principal
+      («Vocabulário Principal»). Ganha o prefixo mais longo que corresponde. Mude a categoria de
+      qualquer linha e os totais atualizam. As linhas <span class="pill rever">A rever</span> são
+      propostas novas que precisam da sua decisão.
+    </p>
+  </header>
+
+  <section class="panel" aria-labelledby="sum-h">
+    <p class="eyebrow" id="sum-h">
+      Anúncios por categoria · censo de <span id="tot"></span> anúncios e
+      <span id="totl"></span> lotes
+    </p>
+    <div class="bar" id="bar" role="img" aria-label="Distribuição dos anúncios por categoria"></div>
+    <div class="legend" id="legend"></div>
+    <p class="base" id="base"></p>
+  </section>
+
+  <div class="tools">
+    <div class="seg" role="group" aria-label="Filtrar linhas">
+      <button type="button" id="f-all" data-f="all" aria-pressed="false">Todas as linhas</button>
+      <button type="button" id="f-seen" data-f="seen" aria-pressed="true">Com anúncios</button>
+      <button type="button" id="f-rever" data-f="rever" aria-pressed="false">A rever</button>
+    </div>
+    <span class="spacer"></span>
+    <span class="status" id="status" aria-live="polite"></span>
+    <button type="button" class="btn" id="reset">Repor proposta</button>
+    <button type="button" class="btn primary" id="copy">Copiar decisões</button>
+  </div>
+
+  <section class="panel" id="outp" hidden>
+    <p class="eyebrow">Texto para colar no ticket</p>
+    <textarea class="copybox" id="out" readonly aria-label="Decisões em Markdown"></textarea>
+  </section>
+
+  <div class="tablebox">
+    <table>
+      <thead>
+        <tr>
+          <th>Prefixo</th>
+          <th>Rótulo CPV 2008 e fundamento</th>
+          <th>Categoria</th>
+          <th>Secção 12 diz</th>
+          <th class="num">Anúncios</th>
+          <th class="num">Lotes</th>
+        </tr>
+      </thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </div>
+
+  <footer>
+    Dados: censo de 473 anúncios de empreitada (DR Parte L, 16 números de 8 de maio a 25 de agosto
+    de 2026). A coluna Anúncios usa o CPV principal do anúncio; a coluna Lotes usa o CPV de cada
+    lote (567 lotes). Rótulos: CPV 2008 oficial em português (<span class="mono"
+      >cpv_2008_ver_2013.xlsx</span
+    >, TED). Partilha = anúncios da linha ÷ 473. Os títulos de exemplo mostram como o código é usado
+    na prática; a regra segue o rótulo do código, não o título. «Secção 12 diz» = a primeira
+    categoria que a secção 12 do anúncio nomeia, quando nomeia (só evidência: a regra não lê a
+    secção 12, ver Later L28). O alvará de produção não tem a 4.ª categoria, por isso lotes da 4.ª
+    nunca passam o filtro do alvará. As suas escolhas ficam só neste navegador.
+  </footer>
+</div>
+
+<script>
+  const DATA = __DATA__;
+  const CATS = {
+    1: { s: "1.ª Edifícios", v: "--c1" },
+    2: { s: "2.ª Vias e infraestruturas", v: "--c2" },
+    3: { s: "3.ª Obras hidráulicas", v: "--c3" },
+    4: { s: "4.ª Instalações", v: "--c4" },
+    5: { s: "5.ª Outros trabalhos", v: "--c5" },
+    PC: { s: "Por classificar", v: "--cpc" },
+  };
+  const ORDER = ["1", "2", "3", "4", "5", "PC"];
+  const KEY = "cairn-cpv-cat-v1";
+  let choice = {};
+  try {
+    choice = JSON.parse(localStorage.getItem(KEY) || "{}") || {};
+  } catch (e) {
+    choice = {};
+  }
+  let filter = "seen";
+  const T = DATA.total,
+    TL = DATA.total_lotes;
+  const pct = (k, n) =>
+    ((100 * k) / n).toLocaleString("pt-PT", {
+      minimumFractionDigits: 1,
+      maximumFractionDigits: 1,
+    }) + "%";
+  const cur = (r) => choice[r.prefix] ?? r.cat;
+  const esc = (s) =>
+    String(s).replace(
+      /[&<>"]/g,
+      (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c],
+    );
+  function save() {
+    try {
+      localStorage.setItem(KEY, JSON.stringify(choice));
+    } catch (e) {}
+  }
+  function pfxHtml(p) {
+    return esc(p) + "<i>" + "·".repeat(8 - p.length) + "</i>";
+  }
+  function setChoice(p, v, orig) {
+    const next = {};
+    Object.keys(choice).forEach((k) => {
+      if (k !== p) next[k] = choice[k];
+    });
+    if (v !== orig) next[p] = v;
+    choice = next;
+  }
+
+  function summary() {
+    const a = {},
+      l = {};
+    ORDER.forEach((k) => {
+      a[k] = 0;
+      l[k] = 0;
+    });
+    DATA.rules.forEach((r) => {
+      a[cur(r)] += r.n;
+      l[cur(r)] += r.lotes;
+    });
+    document.getElementById("bar").innerHTML = ORDER.map(
+      (k) =>
+        `<span title="${esc(CATS[k].s)}: ${a[k]} anúncios" style="flex-grow:${a[k]};background:var(${CATS[k].v})"></span>`,
+    ).join("");
+    document.getElementById("legend").innerHTML = ORDER.map(
+      (k) =>
+        `<div><span class="sw" style="background:var(${CATS[k].v})"></span><span><b>${esc(CATS[k].s)}</b> ${pct(a[k], T)}<span class="d">${a[k]} anúncios · ${l[k]} lotes</span></span></div>`,
+    ).join("");
+    const dec = DATA.rules.filter((r) => r.flag === "decidido").reduce((s, r) => s + r.n, 0);
+    const rev = DATA.rules
+      .filter((r) => r.flag === "rever" && cur(r) === "PC")
+      .reduce((s, r) => s + r.n, 0);
+    document.getElementById("base").textContent =
+      `«Por classificar» já decidido em #147 (45000000, 45200000, 45453…): ${dec} anúncios, ${pct(dec, T)}. Linhas «A rever» que estão agora em «Por classificar»: ${rev} anúncios, ${pct(rev, T)}.`;
+    const ch = Object.keys(choice).length;
+    document.getElementById("status").textContent = ch
+      ? `${ch} ${ch === 1 ? "linha alterada" : "linhas alteradas"} face à proposta`
+      : "Proposta original";
+  }
+  function rows() {
+    const list = DATA.rules.filter(
+      (r) => filter === "all" || (filter === "seen" ? r.n || r.lotes : r.flag === "rever"),
+    );
+    document.getElementById("rows").innerHTML = list
+      .map((r) => {
+        const c = cur(r),
+          changed = r.prefix in choice;
+        const opts = ORDER.map(
+          (k) => `<option value="${k}"${k === c ? " selected" : ""}>${esc(CATS[k].s)}</option>`,
+        ).join("");
+        const tags =
+          (r.flag === "rever"
+            ? `<span class="pill rever">A rever</span>`
+            : r.flag === "decidido"
+              ? `<span class="pill decidido">Decidido em #147</span>`
+              : "") +
+          (changed ? `<span class="pill decidido">Proposta: ${esc(CATS[r.cat].s)}</span>` : "");
+        const det = r.n
+          ? `<details><summary>${r.codes.length} ${r.codes.length === 1 ? "código visto" : "códigos vistos"} e exemplos</summary><ul>${r.codes.map((x) => `<li><code>${x.code}</code> ${esc(x.label)}: ${x.n}</li>`).join("")}</ul><ul>${r.titles.map((t) => `<li>${esc(t)}</li>`).join("")}</ul></details>`
+          : "";
+        return `<tr class="${r.n || r.lotes ? "" : "zero"}${changed ? " changed" : ""}"><td class="pfx">${pfxHtml(r.prefix)}</td><td class="lbl">${esc(r.label)}<div class="note">${esc(r.note)}</div>${det}</td><td><div class="catcell"><span class="sw" style="background:var(${CATS[c].v})"></span><select id="sel-${r.prefix}" data-p="${r.prefix}" aria-label="Categoria para ${r.prefix}">${opts}</select></div>${tags ? `<div class="tags">${tags}</div>` : ""}</td><td>${s12cell(r)}</td><td class="num">${r.n}<span class="share">${pct(r.n, T)}</span></td><td class="num">${r.lotes}</td></tr>`;
+      })
+      .join("");
+  }
+  function s12cell(r) {
+    const e = Object.entries(r.s12 || {}).sort((a, b) => b[1] - a[1]);
+    if (!e.length) return `<span class="note">—</span>`;
+    const c = cur(r);
+    return e
+      .map(
+        ([k, n]) =>
+          `<span class="pill" style="background:var(--line);color:${k === c ? "var(--fg)" : "var(--warn-fg)"}">${k}.ª × ${n}</span>`,
+      )
+      .join(" ");
+  }
+  function render() {
+    summary();
+    rows();
+  }
+  document.getElementById("rows").addEventListener("change", (e) => {
+    const p = e.target.dataset.p;
+    if (!p) return;
+    const r = DATA.rules.find((x) => x.prefix === p);
+    setChoice(p, e.target.value, r.cat);
+    save();
+    render();
+    const el = document.getElementById("sel-" + p);
+    if (el) el.focus();
+  });
+  document.querySelectorAll(".seg button").forEach((b) =>
+    b.addEventListener("click", () => {
+      filter = b.dataset.f;
+      document
+        .querySelectorAll(".seg button")
+        .forEach((x) => x.setAttribute("aria-pressed", x === b ? "true" : "false"));
+      rows();
+    }),
+  );
+  document.getElementById("reset").addEventListener("click", () => {
+    choice = {};
+    save();
+    render();
+    document.getElementById("status").textContent = "Proposta reposta";
+  });
+  function markdown() {
+    const a = {};
+    ORDER.forEach((k) => (a[k] = 0));
+    DATA.rules.forEach((r) => (a[cur(r)] += r.n));
+    let s = "| Prefixo | Rótulo CPV | Categoria | Anúncios |\n|---|---|---|---|\n";
+    DATA.rules.forEach((r) => {
+      s += `| \`${r.prefix}\` | ${r.label} | ${CATS[cur(r)].s}${r.prefix in choice ? " (alterado)" : ""} | ${r.n} (${pct(r.n, T)}) |\n`;
+    });
+    s += "\nTotais: " + ORDER.map((k) => `${CATS[k].s} ${pct(a[k], T)}`).join(" · ") + "\n";
+    const ch = Object.keys(choice);
+    s += ch.length
+      ? "\nAlterações face à proposta: " +
+        ch
+          .map((p) => {
+            const r = DATA.rules.find((x) => x.prefix === p);
+            return `\`${p}\` ${CATS[r.cat].s} → ${CATS[choice[p]].s}`;
+          })
+          .join("; ") +
+        "\n"
+      : "\nSem alterações face à proposta.\n";
+    return s;
+  }
+  document.getElementById("copy").addEventListener("click", () => {
+    const md = markdown(),
+      box = document.getElementById("out");
+    box.value = md;
+    document.getElementById("outp").hidden = false;
+    const st = document.getElementById("status");
+    const fail = () => {
+      box.focus();
+      box.select();
+      st.textContent = "Selecione o texto acima e copie";
+    };
+    try {
+      navigator.clipboard.writeText(md).then(() => {
+        st.textContent = "Copiado";
+      }, fail);
+    } catch (e) {
+      fail();
+    }
+  });
+  document.getElementById("tot").textContent = T;
+  document.getElementById("totl").textContent = TL;
+  render();
+</script>
