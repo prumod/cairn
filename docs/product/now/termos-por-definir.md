@@ -49,6 +49,5 @@ Estas questões permanecem abertas, mas não devem ser transformadas em definiç
 
 - Efeitos legais das classes do alvará. Os limites monetários das 9 classes estão na Portaria n.º 212/2022 ([resumo da Cuatrecasas, p. 2](https://www.cuatrecasas.com/resources/legal-flash-portaria-212-2022-atualizacao-valores-classes-alvaras-construcao-630e35547c5cc454220208.pdf#page=2)).
 - Âmbito, validade e suficiência das habilitações, licenças e alvarás aplicáveis a cada procedimento.
-- O que o tamanho dos marcadores do mapa representa: valor, número de concursos ou urgência (T3 [01:16:56]–[01:17:19]). Em [How does the place tree look and behave in the list and on the map?](https://github.com/prumod/cairn/issues/179).
 - Se o prazo de submissão aparece no anúncio do Diário da República.
 - Critério para assinalar «próximo do prazo».
