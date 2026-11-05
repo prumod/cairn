@@ -16,7 +16,6 @@ O significado central está explícito nas fontes. Falta confirmar a redação e
 
 - [ ] **Diário da República** — Confirmar a definição como fonte de anúncios neste percurso, distinta da plataforma do procedimento.
 - [ ] **Data de publicação** — Confirmar que designa a publicação do anúncio e não a receção de um convite.
-- [ ] **Prazo de submissão da proposta** — Confirmar o nome para a data e hora limite de entrega, distinto da duração da obra. A T3 diz que este prazo se consulta na plataforma e não no Diário da República (T3 [00:32:04]).
 - [ ] **Prazo de execução da obra** — Confirmar o nome para o período previsto de execução, sem assumir a data em que começa a contar. Na T3 também se diz «tempo de obra» ou «duração da obra» e é conhecido quando o anúncio sai (T3 [00:29:21], [01:09:05]).
 - [ ] **Custo** — O que a empresa gasta para executar a obra; distinto do valor da obra: «É o valor da obra, não é custo» (T3 [00:29:57]). Confirmar o nome.
 
@@ -39,7 +38,6 @@ As fontes sustentam o conceito ou uma distinção importante, mas o nome, o alca
 Há interpretações concorrentes ou informação insuficiente para escolher uma definição segura.
 
 - [ ] **Oportunidade** — É qualquer procedimento descoberto ou recebido, ou apenas um que a empresa já considera interessante? Continua a ser uma oportunidade depois da decisão de não concorrer?
-- [ ] **Concurso aberto** — A T3 quer ver «só os concursos abertos» (T3 [00:24:59]). Significa prazo de submissão não ultrapassado, procedimento não encerrado ou outra coisa?
 - [ ] **Licença** — Que título ou autorização concreta é designado por esta palavra nas entrevistas? É distinto de alvará e de habilitação?
 - [ ] **Origem** — Na T3 aparece entre os filtros (T3 [01:06:57]). Designa a fonte do anúncio (Diário da República, convite), a entidade adjudicante ou outra coisa?
 
@@ -50,5 +48,4 @@ Estas questões permanecem abertas, mas não devem ser transformadas em definiç
 - Efeitos legais das classes do alvará. Os limites monetários das 9 classes estão na Portaria n.º 212/2022 ([resumo da Cuatrecasas, p. 2](https://www.cuatrecasas.com/resources/legal-flash-portaria-212-2022-atualizacao-valores-classes-alvaras-construcao-630e35547c5cc454220208.pdf#page=2)).
 - Âmbito, validade e suficiência das habilitações, licenças e alvarás aplicáveis a cada procedimento.
 - O que o tamanho dos marcadores do mapa representa: valor, número de concursos ou urgência (T3 [01:16:56]–[01:17:19]). Em [How does the place tree look and behave in the list and on the map?](https://github.com/prumod/cairn/issues/179).
-- Se o prazo de submissão aparece no anúncio do Diário da República.
 - Critério para assinalar «próximo do prazo».

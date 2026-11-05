@@ -32,6 +32,20 @@ Uma publicação no Diário da República sobre um concurso. A alteração de um
 _Evitar_: concurso (no sentido de publicação), declaração de retificação, aviso de prorrogação
 _Fonte_: [CCP, art. 130.º, p. 77](https://nca.tecnico.ulisboa.pt/files/sites/35/ccp_vdl_78_2022.pdf#page=77); [Portaria n.º 318-A/2023, art. 7.º, n.os 1 e 2, pp. 3–4](https://www.base.gov.pt/Base4/media/zc2fe1uw/portaria-318-a_2023_anuncios.pdf#page=3)
 
+**Alteração do anúncio**:
+Um anúncio novo e completo do mesmo concurso que substitui o anterior e diz que secções mudaram e porquê. A retificação de um erro é uma alteração.
+_Evitar_: retificação (no sentido de qualquer alteração), declaração de retificação, aviso de prorrogação
+_Fonte_: [Portaria n.º 318-A/2023, art. 7.º, n.os 1 e 2, pp. 3–4](https://files.diariodarepublica.pt/1s/2023/10/20701/0000200016.pdf#page=3); [Anexo I, secção 31 (Alteração/anulação), p. 11](https://files.diariodarepublica.pt/1s/2023/10/20701/0000200016.pdf#page=11)
+
+**Prazo de entrega**:
+A data e a hora limite para apresentar propostas, tal como as indica o anúncio mais recente do concurso. Uma proposta apresentada depois desse instante é excluída. Não é o prazo de execução.
+_Evitar_: prazo de submissão, data de entrega (sem a hora)
+_Fonte_: [CCP, art. 146.º, n.º 2, alínea a), p. 82](https://nca.tecnico.ulisboa.pt/files/sites/35/ccp_vdl_78_2022.pdf#page=82); [CCP, art. 470.º, n.º 3, p. 189](https://nca.tecnico.ulisboa.pt/files/sites/35/ccp_vdl_78_2022.pdf#page=189)
+
+**Estado do concurso**:
+Se o prazo de entrega de um concurso já passou: «Aberto» enquanto não passou, «Prazo terminado» depois, e «Prazo não indicado» quando o anúncio não o indica. Depois do prazo, o procedimento continua; só terminou o prazo de entrega.
+_Evitar_: concurso fechado, concurso encerrado, concurso ativo, concurso aberto (no sentido de concurso em consulta)
+
 **Concelho**:
 A divisão administrativa onde se executa uma obra, abaixo do distrito e acima da freguesia. «Município de Lisboa» designa a entidade adjudicante, não o território.
 _Evitar_: município (no sentido de território)
