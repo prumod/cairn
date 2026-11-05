@@ -16,7 +16,6 @@ O significado central está explícito nas fontes. Falta confirmar a redação e
 
 - [ ] **Diário da República** — Confirmar a definição como fonte de anúncios neste percurso, distinta da plataforma do procedimento.
 - [ ] **Data de publicação** — Confirmar que designa a publicação do anúncio e não a receção de um convite.
-- [ ] **Localização da obra** — Confirmar a distinção relativamente à localização da empresa e da entidade adjudicante.
 - [ ] **Prazo de submissão da proposta** — Confirmar o nome para a data e hora limite de entrega, distinto da duração da obra. A T3 diz que este prazo se consulta na plataforma e não no Diário da República (T3 [00:32:04]).
 - [ ] **Prazo de execução da obra** — Confirmar o nome para o período previsto de execução, sem assumir a data em que começa a contar. Na T3 também se diz «tempo de obra» ou «duração da obra» e é conhecido quando o anúncio sai (T3 [00:29:21], [01:09:05]).
 - [ ] **Custo** — O que a empresa gasta para executar a obra; distinto do valor da obra: «É o valor da obra, não é custo» (T3 [00:29:57]). Confirmar o nome.
@@ -34,9 +33,6 @@ As fontes sustentam o conceito ou uma distinção importante, mas o nome, o alca
 - [ ] **Assistente / chatbot** — Confirmar o nome para o chat que pesquisa, responde e aplica filtros (T3 [01:28:08]). Na T3 diz-se «chatbot» e «inteligência artificial».
 - [ ] **Contexto da conversa** — O concurso ou conjunto de concursos selecionados que o assistente usa nas respostas (T3 [00:09:42]–[00:10:03]). Confirmar o nome e quando é limpo.
 - [ ] **Distrito** — A divisão administrativa acima do concelho, mostrada numa coluna da descoberta. Confirmar a definição e como se nomeiam as regiões autónomas, que o anúncio escreve «Região Autónoma dos Açores» ([Portaria n.º 318-A/2023, Anexo I, 9.5, p. 7](https://files.diariodarepublica.pt/1s/2023/10/20701/0000200016.pdf#page=7)).
-- [ ] **Freguesia** — A divisão administrativa abaixo do concelho, usada para medir a distância quando o anúncio a indica. Confirmar a definição e o sentido de «Freguesia: Todas» ([Portaria n.º 318-A/2023, Anexo I, 9.7, p. 7](https://files.diariodarepublica.pt/1s/2023/10/20701/0000200016.pdf#page=7); [#146](https://github.com/prumod/cairn/issues/146)).
-- [ ] **Local da execução** — Onde se executa a obra de um lote, tal como o anúncio o indica; um lote pode ter mais de um. Distinto da morada da entidade adjudicante. Confirmar o nome e a definição ([Portaria n.º 318-A/2023, Anexo I, secção 9, p. 7](https://files.diariodarepublica.pt/1s/2023/10/20701/0000200016.pdf#page=7); [#146](https://github.com/prumod/cairn/issues/146)).
-- [ ] **Localidade** — A unidade selecionada no mapa para listar as obras: cidade, freguesia ou município? (T3 [01:20:51]–[01:21:00]). A lista de descoberta já não agrupa por localidade ([#146](https://github.com/prumod/cairn/issues/146)); falta definir o termo para o mapa.
 
 ## Menor certeza — ambiguidades por resolver
 
@@ -53,6 +49,6 @@ Estas questões permanecem abertas, mas não devem ser transformadas em definiç
 
 - Efeitos legais das classes do alvará. Os limites monetários das 9 classes estão na Portaria n.º 212/2022 ([resumo da Cuatrecasas, p. 2](https://www.cuatrecasas.com/resources/legal-flash-portaria-212-2022-atualizacao-valores-classes-alvaras-construcao-630e35547c5cc454220208.pdf#page=2)).
 - Âmbito, validade e suficiência das habilitações, licenças e alvarás aplicáveis a cada procedimento.
-- O que o tamanho dos marcadores do mapa representa: valor, número de concursos ou urgência (T3 [01:16:56]–[01:17:19]).
+- O que o tamanho dos marcadores do mapa representa: valor, número de concursos ou urgência (T3 [01:16:56]–[01:17:19]). Em [How does the place tree look and behave in the list and on the map?](https://github.com/prumod/cairn/issues/179).
 - Se o prazo de submissão aparece no anúncio do Diário da República.
 - Critério para assinalar «próximo do prazo».

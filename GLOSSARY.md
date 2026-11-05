@@ -37,6 +37,15 @@ A divisão administrativa onde se executa uma obra, abaixo do distrito e acima d
 _Evitar_: município (no sentido de território)
 _Fonte_: [Portaria n.º 318-A/2023, Anexo I, 9.6 Concelho, p. 7](https://files.diariodarepublica.pt/1s/2023/10/20701/0000200016.pdf#page=7)
 
+**Freguesia**:
+A divisão administrativa abaixo do concelho. No anúncio, «Freguesia: Todas» indica que a obra não está numa só freguesia do concelho.
+_Fonte_: [Portaria n.º 318-A/2023, Anexo I, 9.7 Freguesia, p. 7](https://files.diariodarepublica.pt/1s/2023/10/20701/0000200016.pdf#page=7)
+
+**Local da execução**:
+Onde se executa a obra de um lote, tal como o anúncio o indica: distrito, concelho e freguesia. Um lote pode ter mais de um. O campo de texto livre «Localidade» do anúncio não faz parte dele, e cidade ou vila também não: não são divisões administrativas.
+_Evitar_: localidade, localização da obra
+_Fonte_: [Portaria n.º 318-A/2023, Anexo I, secção 9, p. 7](https://files.diariodarepublica.pt/1s/2023/10/20701/0000200016.pdf#page=7)
+
 **Entidade adjudicante**:
 A entidade pública que abre o concurso e adjudica as empreitadas, por exemplo um município, um instituto público ou um ramo das Forças Armadas. A sua morada no anúncio não é o local onde a obra se executa.
 _Evitar_: cliente, entidade
