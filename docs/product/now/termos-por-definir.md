@@ -28,10 +28,7 @@ As fontes sustentam o conceito ou uma distinção importante, mas o nome, o alca
 - [ ] **Valor anunciado / valor da obra** — São o mesmo valor? A T3 usa «valor da obra» (T3 [00:29:57]). Pode ser chamado «preço base» ou essa equivalência não está confirmada?
 - [ ] **Habilitações da empresa** — Que qualificações engloba este termo e como se relaciona com classe, licenças e alvará?
 - [ ] **Requisito de participação** — Confirmar o que engloba, incluindo o alvará exigido (categoria, subcategoria e classe), e como se distingue dos requisitos sobre o conteúdo da proposta.
-- [ ] **Tipo de obra e subcategoria do alvará** — O tipo de obra usado nos filtros corresponde a uma categoria ou subcategoria do alvará? A T3 dá eletricidade, escavação e jardinagem como exemplos (T3 [00:30:16]).
-- [ ] **Tipo de obra** — Classificação atribuída a cada anúncio para filtrar, por exemplo escavação, muro, infraestrutura, betuminoso ou requalificação (T3 [01:07:50]). O Diário da República não a fornece; é atribuída por um classificador (T3 [00:10:17]). É igual à categoria do alvará?
-- [ ] **Categoria prioritária** — Tipo de obra que a empresa executa com mais frequência e que deve aparecer primeiro (T3 [01:07:50]–[01:08:32]). Confirmar que ordena ou destaca e nunca exclui.
-- [ ] **Filtro** — Confirmar o conjunto: local, data, valor, prazo, entidade adjudicante e tipo de obra (T3 [01:06:57]). Os filtros aplicam-se a todas as vistas (T3 [01:30:40]).
+- [ ] **Filtro** — Confirmar o conjunto: local, data, valor, prazo, entidade adjudicante e categoria (T3 [01:06:57]). Os filtros aplicam-se a todas as vistas (T3 [01:30:40]).
 - [ ] **Assistente / chatbot** — Confirmar o nome para o chat que pesquisa, responde e aplica filtros (T3 [01:28:08]). Na T3 diz-se «chatbot» e «inteligência artificial».
 - [ ] **Contexto da conversa** — O concurso ou conjunto de concursos selecionados que o assistente usa nas respostas (T3 [00:09:42]–[00:10:03]). Confirmar o nome e quando é limpo.
 - [ ] **Vista do concurso** — A janela aberta ao selecionar um concurso, com valor, prazos e alvará exigido. No quadro, «Concurso View» (T3 [00:31:32], [01:28:30]). Confirmar o nome em português.
@@ -63,6 +60,7 @@ Estas questões permanecem abertas, mas não devem ser transformadas em definiç
 
 A T3 moveu a decisão de participar, o dossier, a checklist, os preços e a passagem à plataforma para [Later](../later/funcionalidades.md) (L10–L16). Os termos seguintes deixam de pertencer ao percurso Now, mas permanecem por definir:
 
+- [ ] **Categoria prioritária** — Categoria que a empresa executa com mais frequência e que deve aparecer primeiro (T3 [01:07:50]–[01:08:32]). Movido para Later L27. Confirmar que ordena ou destaca e nunca exclui.
 - [ ] **Convite** — Confirmar a distinção entre o convite formal, o aviso por e-mail e a decisão da empresa.
 - [ ] **Peças do concurso** — Confirmar quais os documentos fornecidos pela entidade que este termo engloba, sem os confundir com a proposta da empresa.
 - [ ] **Dossier** — Na T3, designa os documentos e a checklist de um concurso (T3 [01:26:42]–[01:26:59]). Engloba as peças do concurso, os documentos da proposta ou ambos?
