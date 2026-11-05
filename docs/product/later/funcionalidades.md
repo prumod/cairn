@@ -54,9 +54,9 @@ O [PRD de Now](https://github.com/prumod/cairn-web/issues/104) fica com as inter
 - **L23 — Citar a partir de linhas, da tabela de comparação e do texto do anúncio:** além da consulta do concurso e das respostas do assistente, que ficam em Now.
 - **L24 — Confirmação por esforço:** confirmar o descarte conforme o trabalho perdido, por exemplo uma seleção a partir de 10 unidades ou um comentário sem texto a partir de 3 (valores de protótipo, a calibrar). Em Now só se confirma apagar um comentário com texto.
 
-## Fontes de anúncios
+## Fontes de dados
 
-- **L25 — Portal BASE como fonte:** recolher anúncios também da API do Portal BASE, quando houver token do IMPIC, juntando-os aos do Diário da República pelo IdIncm. Em Now, a única fonte é o Diário da República. Base: [Which source feeds works announcements?](https://github.com/prumod/cairn/issues/142).
+- **L25 — Portal BASE para contratos e adjudicações:** recolher da API do Portal BASE, quando houver token do IMPIC, os contratos celebrados, as adjudicações e as modificações contratuais, para servir L02 e [Maybe M03](../maybe/funcionalidades.md). O Código dos Contratos Públicos (art. 465.º) obriga a publicitar no Portal BASE os contratos celebrados ao seu abrigo; o Diário da República não os publica. Os anúncios vêm só do Diário da República: segundo o suporte do Portal BASE (resposta de 2026-11-05), o portal não disponibiliza todos os campos do anúncio, recebe-os com pelo menos 24 horas de atraso e recomenda consultar o Diário da República para cumprir os prazos legais. Os dados abertos em DadosGov dispensam o token, mas chegam com cerca de 6,6 dias de atraso. Base: [Which source feeds works announcements?](https://github.com/prumod/cairn/issues/142).
 
 ## Descoberta
 
