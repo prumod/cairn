@@ -28,9 +28,9 @@ _Evitar_: procedimento, obra (no sentido de concurso), oportunidade
 _Fonte_: [CCP, art. 16.º, n.º 1 (tipos de procedimento), p. 24](https://nca.tecnico.ulisboa.pt/files/sites/35/ccp_vdl_78_2022.pdf#page=24); [CCP, art. 130.º (publicação por anúncio), p. 77](https://nca.tecnico.ulisboa.pt/files/sites/35/ccp_vdl_78_2022.pdf#page=77)
 
 **Anúncio**:
-Uma publicação no Diário da República sobre um concurso. A retificação de um anúncio é outro anúncio do mesmo concurso.
-_Evitar_: concurso (no sentido de publicação)
-_Fonte_: [CCP, art. 130.º, p. 77](https://nca.tecnico.ulisboa.pt/files/sites/35/ccp_vdl_78_2022.pdf#page=77)
+Uma publicação no Diário da República sobre um concurso. A alteração de um anúncio, incluindo a retificação de um erro, publica outro anúncio completo do mesmo concurso, que identifica o anúncio que altera.
+_Evitar_: concurso (no sentido de publicação), declaração de retificação, aviso de prorrogação
+_Fonte_: [CCP, art. 130.º, p. 77](https://nca.tecnico.ulisboa.pt/files/sites/35/ccp_vdl_78_2022.pdf#page=77); [Portaria n.º 318-A/2023, art. 7.º, n.os 1 e 2, pp. 3–4](https://www.base.gov.pt/Base4/media/zc2fe1uw/portaria-318-a_2023_anuncios.pdf#page=3)
 
 **Concelho**:
 A divisão administrativa onde se executa uma obra, abaixo do distrito e acima da freguesia. «Município de Lisboa» designa a entidade adjudicante, não o território.
