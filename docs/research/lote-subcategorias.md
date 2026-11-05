@@ -86,6 +86,40 @@ Each reading below is from the text file named. The web pages were not fetched s
 - **CPV map.** No official map was found in one search. This was not re-checked in this study.
 - **Two REN notices.** Two Sistema de Qualificação notices (419962046, 419966109) have no section 12. They are counted as "no section 12 text".
 
+## Follow-up: main CPV of lots
+
+Unit: lot blocks in the 43 lot notices (137 lots). Code: the first "Vocabulário Principal" in each lot block. Prefix buckets are 4-digit groups of division 45.
+
+**(1) Lots by 4-digit prefix (Wilson 95% CI).**
+
+| Prefix                                   | Lots   | Share (95% CI)           |
+| ---------------------------------------- | ------ | ------------------------ |
+| 4523 (roads, railways, pipelines, sport) | 50     | 36.5% (28.9% to 44.8%)   |
+| 4545 (other finishing works)             | 36     | 26.3% (19.6% to 34.2%)   |
+| 4526 (roofing and other specialised)     | 10     | 7.3% (4.0% to 12.9%)     |
+| 4543 (floor and wall covering)           | 9      | 6.6% (3.5% to 12.0%)     |
+| 4531 (electrical installation)           | 5      | 3.6% (1.6% to 8.3%)      |
+| 4511, 4522, 4533                         | 4 each | 2.9% each (1.1% to 7.3%) |
+| 4540                                     | 3      | 2.2% (0.7% to 6.2%)      |
+| 4500, 4521, 4534, 4542                   | 2 each | 1.5% each (0.4% to 5.2%) |
+| 4525                                     | 1      | 0.7% (0.1% to 4.0%)      |
+| 4510, 4524, 4532, 4535, 4541, 4544       | 0      | 0.0% (upper bound 2.7%)  |
+| other (only 45200000)                    | 3      | 2.2% (0.7% to 6.2%)      |
+
+The 45 division is the only division in the lots. Exact codes that matter: 45453100 "Obras de recuperação" (26 lots, 19.0%, 13.3% to 26.4%); 45233200 "Obras diversas de pavimentação" (15, 10.9%, 6.7% to 17.3%).
+
+**(2) Codes that name no kind of works.**
+
+- 45000000 "Construção": 2 lots, 1.5% (0.4% to 5.2%), in 1 notice.
+- 45200000 "Obras de construção total ou parcial e de engenharia civil": 3 lots, 2.2% (0.7% to 6.2%), in 1 notice.
+- Together: 5 lots, 3.6% (1.6% to 8.3%).
+- Codes outside division 45: none.
+- Judgment call (not counted above): 45453100 "Obras de recuperação" names an intervention type but not a trade. Counting it too gives 31 lots, 22.6% (16.4% to 30.3%).
+
+**(3) Section 12 for the generic-code lots.** Both notices with 45000000 or 45200000 name no subcategoria: one defers to the peças ("Conforme Peças do Procedimento"), one says "Não" (no alvará requirement). So section 12 cannot supply the categoria for these lots. For the 26 lots coded 45453100, 3 of 26 are in notices that name a subcategoria. For 45233200, 6 of 15 are.
+
+**Scope note.** These are census counts from 43 notices. The Wilson intervals are wide for small counts.
+
 ## Sources checked
 
 - DR, Lei 41/2015: https://diariodarepublica.pt/dr/detalhe/lei/41-2015-67377968
