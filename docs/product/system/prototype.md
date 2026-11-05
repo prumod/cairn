@@ -86,9 +86,9 @@ Estes limites aplicam-se ao wireframe interativo e aos estados de protótipo, in
 
 ### Descoberta e proposta
 
-Now: perfil da empresa → anúncios de obras do dia → tabela de todas as obras dentro do raio → filtro de localidade (diálogo com o mapa e a lista de caixas lado a lado) → vista do concurso, com o assistente ao lado da tabela. Incluir um dia sem anúncios, filtros sem resultados e um pedido ao assistente sobre um ou vários concursos selecionados.
+Now: perfil da empresa → anúncios de obras do dia → tabela de todas as obras dentro do raio → filtro de local (diálogo com o mapa e a árvore de locais lado a lado; regra 15 do [PRD de Now](https://github.com/prumod/cairn-web/issues/104)) → vista do concurso, com o assistente ao lado da tabela. Incluir um dia sem anúncios, filtros sem resultados e um pedido ao assistente sobre um ou vários concursos selecionados.
 
-A seleção de obras limita-se às obras presentes na lista atual. Alterar filtros, aplicar outra localidade ou limpar filtros remove da seleção as obras que deixem de ser mostradas. As localidades escolhidas no diálogo só passam a filtro com «Confirmar», e «Cancelar», Escape ou um clique fora descartam-nas. Os comentários já preparados no assistente mantêm-se. «Limpar filtros» (botão ou pedido ao assistente) limpa todos os filtros, incluindo as localidades e os resultados mostrados pelo assistente.
+A seleção de obras limita-se às obras presentes na lista atual. Alterar filtros, aplicar outro local ou limpar filtros remove da seleção as obras que deixem de ser mostradas. Os locais escolhidos no diálogo só passam a filtro com «Confirmar», e «Cancelar», Escape ou um clique fora descartam-nos. Os comentários já preparados no assistente mantêm-se. «Limpar filtros» (botão ou pedido ao assistente) limpa todos os filtros, incluindo os locais e os resultados mostrados pelo assistente.
 
 Later continua o percurso: convites, prazos, revisão de requisitos e decisão de participar → dossier e checklist → preços unitários e total → revisão → submissão simulada, mais a navegação pelo assistente e a vista por fases. Incluir informação de habilitação em falta/incompatível, recusa, preparação incompleta, regresso à preparação, proposta pronta e prazo ultrapassado. A submissão simulada pode alimentar os exemplos de acompanhamento posterior.
 
@@ -100,11 +100,11 @@ O cabeçalho tem um painel «⚙ Opções» (fecha com Escape ou clique fora) co
 
 ### Seleção, comentários e citações
 
-Obras e localidades são unidades selecionáveis, de seleções separadas. A interação segue os gestos e atalhos mais comuns do Explorador de Ficheiros do Windows 11 para selecionar e abrir unidades, sem as mover: clique, Ctrl/Meta+clique, Shift+clique (só nas obras, porque as localidades não têm ordem), duplo clique e os atalhos de teclado abaixo. Não há seleção por retângulo, menus de contexto nem atalhos avançados (Later L19–L21).
+Obras e locais são unidades selecionáveis, de seleções separadas. A interação segue os gestos e atalhos mais comuns do Explorador de Ficheiros do Windows 11 para selecionar e abrir unidades, sem as mover: clique, Ctrl/Meta+clique, Shift+clique (só nas obras, porque os locais não têm ordem), duplo clique e os atalhos de teclado abaixo. Não há seleção por retângulo, menus de contexto nem atalhos avançados (Later L19–L21).
 
 Na lista de obras, o clique no vazio e Escape limpam a seleção de obras. Uma barra visível oferece abrir, comparar, comentar e limpar a seleção, ativas quando há obras selecionadas. Sem obras na lista, a mensagem é texto simples e não limpa a seleção ao clique.
 
-Ao guardar um comentário sobre localidades ou obras, o que foi comentado deixa de estar selecionado. Se a pessoa remove um comentário ainda sem texto, as obras a que se referia voltam a ficar selecionadas, apenas as que continuam listadas; as localidades não voltam a ser selecionadas. Na lista de comentários preparados no assistente, «Remover» apaga o comentário. Comentários sem texto não são enviados como contexto. Citar um excerto (dos dados de uma obra, na consulta do concurso, ou de uma resposta do assistente) acrescenta-o à mesma lista, com uma nota.
+Ao guardar um comentário sobre locais ou obras, o que foi comentado deixa de estar selecionado. Se a pessoa remove um comentário ainda sem texto, as obras a que se referia voltam a ficar selecionadas, apenas as que continuam listadas; os locais não voltam a ser selecionados. Na lista de comentários preparados no assistente, «Remover» apaga o comentário. Comentários sem texto não são enviados como contexto. Citar um excerto (dos dados de uma obra, na consulta do concurso, ou de uma resposta do assistente) acrescenta-o à mesma lista, com uma nota.
 
 Só se pede confirmação ao apagar um comentário com texto, num diálogo modal («Tem a certeza?»), com «Cancelar» em foco e a ação destrutiva a vermelho. «Limpar tudo» nos itens para enviar também a pede quando algum comentário tem texto. Limpar uma seleção nunca pede confirmação.
 
@@ -112,7 +112,7 @@ Só se pede confirmação ao apagar um comentário com texto, num diálogo modal
 
 Os atalhos atuam na região com foco e não interferem com a escrita em campos de texto. Estão disponíveis:
 
-- **Mapa:** Tab percorre os marcadores; Espaço alterna a seleção do marcador com foco; Enter abre as localidades selecionadas ou, sem seleção, a localidade do marcador com foco. Escape fecha o diálogo de Localidade e descarta as localidades escolhidas, bem como um botão de comentário aberto. Ctrl+A seleciona todas as localidades.
+- **Mapa:** Tab percorre os marcadores; Espaço alterna a seleção do marcador com foco; Enter abre os locais selecionados ou, sem seleção, o local do marcador com foco. Escape fecha o diálogo de Local e descarta os locais escolhidos, bem como um botão de comentário aberto. Ctrl+A seleciona todos os locais.
 - **Lista de obras:** Cima/Baixo move o foco e substitui a seleção; Espaço alterna a seleção da obra com foco; Shift+Cima/Baixo seleciona um intervalo; Ctrl+A seleciona todas as obras visíveis; Enter abre a obra selecionada ou compara as obras selecionadas; Escape limpa apenas a seleção de obras.
 
 ### Preparação adicional da proposta — Later

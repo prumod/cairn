@@ -47,10 +47,10 @@ Na T3, o âmbito Now ficou reduzido a mapa, assistente, vista do concurso e filt
 
 O [PRD de Now](https://github.com/prumod/cairn-web/issues/104) fica com as interações de seleção, comentário e citação mais familiares e mais usadas. As seguintes passaram para Later; existiam no protótipo de UX e ficam no histórico do Git.
 
-- **L19 — Seleção por retângulo:** arrastar um retângulo a partir de um espaço vazio da lista de obras ou do mapa seleciona as unidades abrangidas, com pré-visualização; Shift acrescenta, Ctrl/⌘ alterna, Escape cancela e mantém a seleção anterior, e arrastar sobre texto citável continua a selecionar texto. Ao largar, oferece comentar as unidades recém-selecionadas. Na lista, Shift+clique e Ctrl+A cumprem a mesma função; no mapa, a lista de localidades.
+- **L19 — Seleção por retângulo:** arrastar um retângulo a partir de um espaço vazio da lista de obras ou do mapa seleciona as unidades abrangidas, com pré-visualização; Shift acrescenta, Ctrl/⌘ alterna, Escape cancela e mantém a seleção anterior, e arrastar sobre texto citável continua a selecionar texto. Ao largar, oferece comentar as unidades recém-selecionadas. Na lista, Shift+clique e Ctrl+A cumprem a mesma função; no mapa, a árvore de locais.
 - **L20 — Atalhos avançados de seleção:** Home/End (com Shift, estendem a seleção), Ctrl/⌘+↑/↓/Home/End movem só o foco, e Ctrl/⌘+A atua na última zona usada (mapa ou lista) quando o foco está na página.
-- **L21 — Menus de contexto sobre a seleção:** botão direito e Shift+F10, sobre obras e localidades, com abrir, comparar, comentar, filtrar por localidades e limpar a seleção. A barra de ações visível cobre as ações das obras em Now.
-- **L22 — Descomentar:** retirar um comentário e voltar a selecionar as obras e localidades a que se referia, reabrindo as localidades dessas obras; o texto do comentário perde-se. Apagar um comentário continua em Now.
+- **L21 — Menus de contexto sobre a seleção:** botão direito e Shift+F10, sobre obras e locais, com abrir, comparar, comentar, filtrar por locais e limpar a seleção. A barra de ações visível cobre as ações das obras em Now.
+- **L22 — Descomentar:** retirar um comentário e voltar a selecionar as obras e locais a que se referia, reabrindo os locais dessas obras; o texto do comentário perde-se. Apagar um comentário continua em Now.
 - **L23 — Citar a partir de linhas, da tabela de comparação e do texto do anúncio:** além da consulta do concurso e das respostas do assistente, que ficam em Now.
 - **L24 — Confirmação por esforço:** confirmar o descarte conforme o trabalho perdido, por exemplo uma seleção a partir de 10 unidades ou um comentário sem texto a partir de 3 (valores de protótipo, a calibrar). Em Now só se confirma apagar um comentário com texto.
 
