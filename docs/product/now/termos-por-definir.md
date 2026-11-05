@@ -8,6 +8,8 @@ Quando o significado e o nome de um termo são confirmados, o termo passa para o
 
 Os grupos estabelecem a ordem por certeza. Dentro de cada grupo, não se atribui uma diferença de certeza entre termos. As referências T3 indicam instantes da [transcrição 3](../transcriptions/transcricao_3_gestao_obras.txt).
 
+Os termos de funcionalidades de [Later](../later/funcionalidades.md) estão nos [termos por definir de Later](../later/termos-por-definir.md).
+
 ## Maior certeza — significado explícito nas fontes
 
 O significado central está explícito nas fontes. Falta confirmar a redação e o nome canónico; isso não impede que existam relações ou pormenores ainda por definir.
@@ -27,11 +29,10 @@ As fontes sustentam o conceito ou uma distinção importante, mas o nome, o alca
 - [ ] **Plataforma do procedimento** — Confirmar este nome como termo comum para os serviços externos onde se consultam peças e se interage formalmente com o procedimento.
 - [ ] **Valor anunciado / valor da obra** — São o mesmo valor? A T3 usa «valor da obra» (T3 [00:29:57]). Pode ser chamado «preço base» ou essa equivalência não está confirmada?
 - [ ] **Habilitações da empresa** — Que qualificações engloba este termo e como se relaciona com classe, licenças e alvará?
-- [ ] **Requisito de participação** — Confirmar o que engloba, incluindo o alvará exigido (categoria, subcategoria e classe), e como se distingue dos requisitos sobre o conteúdo da proposta.
+- [ ] **Requisito de participação** — Confirmar o que engloba e como se distingue dos requisitos sobre o conteúdo da proposta.
 - [ ] **Filtro** — Confirmar o conjunto: local, data, valor, prazo, entidade adjudicante e categoria (T3 [01:06:57]). Os filtros aplicam-se a todas as vistas (T3 [01:30:40]).
 - [ ] **Assistente / chatbot** — Confirmar o nome para o chat que pesquisa, responde e aplica filtros (T3 [01:28:08]). Na T3 diz-se «chatbot» e «inteligência artificial».
 - [ ] **Contexto da conversa** — O concurso ou conjunto de concursos selecionados que o assistente usa nas respostas (T3 [00:09:42]–[00:10:03]). Confirmar o nome e quando é limpo.
-- [ ] **Vista do concurso** — A janela aberta ao selecionar um concurso, com valor, prazos e alvará exigido. No quadro, «Concurso View» (T3 [00:31:32], [01:28:30]). Confirmar o nome em português.
 - [ ] **Distrito** — A divisão administrativa acima do concelho, mostrada numa coluna da descoberta. Confirmar a definição e como se nomeiam as regiões autónomas, que o anúncio escreve «Região Autónoma dos Açores» ([Portaria n.º 318-A/2023, Anexo I, 9.5, p. 7](https://files.diariodarepublica.pt/1s/2023/10/20701/0000200016.pdf#page=7)).
 - [ ] **Freguesia** — A divisão administrativa abaixo do concelho, usada para medir a distância quando o anúncio a indica. Confirmar a definição e o sentido de «Freguesia: Todas» ([Portaria n.º 318-A/2023, Anexo I, 9.7, p. 7](https://files.diariodarepublica.pt/1s/2023/10/20701/0000200016.pdf#page=7); [#146](https://github.com/prumod/cairn/issues/146)).
 - [ ] **Local da execução** — Onde se executa a obra de um lote, tal como o anúncio o indica; um lote pode ter mais de um. Distinto da morada da entidade adjudicante. Confirmar o nome e a definição ([Portaria n.º 318-A/2023, Anexo I, secção 9, p. 7](https://files.diariodarepublica.pt/1s/2023/10/20701/0000200016.pdf#page=7); [#146](https://github.com/prumod/cairn/issues/146)).
@@ -55,35 +56,3 @@ Estas questões permanecem abertas, mas não devem ser transformadas em definiç
 - O que o tamanho dos marcadores do mapa representa: valor, número de concursos ou urgência (T3 [01:16:56]–[01:17:19]).
 - Se o prazo de submissão aparece no anúncio do Diário da República.
 - Critério para assinalar «próximo do prazo».
-
-## Termos de funcionalidades movidas para Later
-
-A T3 moveu a decisão de participar, o dossier, a checklist, os preços e a passagem à plataforma para [Later](../later/funcionalidades.md) (L10–L16). Os termos seguintes deixam de pertencer ao percurso Now, mas permanecem por definir:
-
-- [ ] **Categoria prioritária** — Categoria que a empresa executa com mais frequência e que deve aparecer primeiro (T3 [01:07:50]–[01:08:32]). Movido para Later L27. Confirmar que ordena ou destaca e nunca exclui.
-- [ ] **Convite** — Confirmar a distinção entre o convite formal, o aviso por e-mail e a decisão da empresa.
-- [ ] **Peças do concurso** — Confirmar quais os documentos fornecidos pela entidade que este termo engloba, sem os confundir com a proposta da empresa.
-- [ ] **Dossier** — Na T3, designa os documentos e a checklist de um concurso (T3 [01:26:42]–[01:26:59]). Engloba as peças do concurso, os documentos da proposta ou ambos?
-- [ ] **Proposta** — Confirmar que inclui o conjunto de documentos e valores ainda em preparação, não apenas o conjunto já entregue.
-- [ ] **Documento da proposta** — Confirmar o nome para cada documento que integra a proposta, distinto das peças do concurso.
-- [ ] **Checklist da proposta** — Confirmar o termo para a lista de documentos a preparar num procedimento específico, sem pressupor uma lista universal.
-- [ ] **Lista de preços unitários** — Confirmar a relação entre esta lista e o mapa de medições, e se são documentos distintos ou versões do mesmo documento.
-- [ ] **Preço unitário** — Confirmar o significado de preço por unidade de um item, distinto de custo interno ou preço de fornecedor.
-- [ ] **Item da lista de preços** — Confirmar o nome para cada trabalho ou componente quantificado a que se atribui um preço.
-- [ ] **Subtotal** — Confirmar o nome para o valor de um item, distinto do total da proposta.
-- [ ] **Valor total da proposta / valor proposto** — São o mesmo conceito? O valor corresponde ao total da lista de preços ou inclui outras componentes?
-- [ ] **Submissão da proposta** — Confirmar a definição como entrega formal na plataforma indicada, distinta de preparação, revisão e simulação.
-- [ ] **Decisão de participação** — Confirmar a distinção entre intenção registada, interesse demonstrado e aceitação ou recusa formal de um convite.
-- [ ] **Revisão de requisitos** — Confirmar o nome para a comparação humana antes da decisão de participar, sem aprovação jurídica automática.
-- [ ] **Documentos de habilitação pós-adjudicação** — Confirmar o nome que os distingue das habilitações da empresa e dos documentos da proposta.
-- [ ] **Adjudicação** — Confirmar a definição usada apenas para esclarecer a fronteira com o processo posterior à submissão.
-- [ ] **Participação** — Começa na análise da oportunidade, na decisão de participar ou na submissão formal da proposta?
-- [ ] **Fase / estado da participação** — A T3 propõe as fases «vista», «interessante» e «inscrita» (T3 [01:30:25]). Como se relacionam com «Em análise», «Em preparação», «Pronta», «Submetida» e «Não concorrer», sem as confundir com fases do concurso?
-- [ ] **Proposta pronta** — O que significa estar «Pronta»? Que distinção existe entre preparação completa, revisão concluída e possibilidade de submissão dentro do prazo?
-- [ ] **Mapa de medições** — Designa quantidades previstas para preparar a proposta, medições de trabalho executado ou documentos diferentes com o mesmo nome?
-- [ ] **Memorial descritivo / memória descritiva** — São nomes alternativos do mesmo documento? Como distinguimos o documento fornecido pela entidade de um documento preparado pela empresa?
-- [ ] **Margem** — O que significa na conversa: acréscimo ao custo, margem sobre o preço de venda ou outra coisa? O exemplo de 25 % não define uma regra confirmada.
-
-Regras associadas a estas funcionalidades, também em aberto: tratamento de impostos, margem e arredondamento; documentos obrigatórios e condições de prontidão de cada proposta.
-
-O âmbito Now está no [PRD de Now](https://github.com/prumod/cairn-web/issues/104). Esta lista não amplia o âmbito Now nem aprova funcionalidades ou regras novas.

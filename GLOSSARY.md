@@ -82,4 +82,4 @@ _Fonte_: [Lei n.º 41/2015](https://diariodarepublica.pt/dr/detalhe/lei/41-2015-
 
 O estatuto de cada fonte (oficial ou não, versão e limites) está em [Fontes](docs/product/fontes.md).
 
-Os termos em aberto estão em [termos por definir](docs/product/now/termos-por-definir.md).
+Os termos em aberto estão nos termos por definir de [Now](docs/product/now/termos-por-definir.md) e de [Later](docs/product/later/termos-por-definir.md).
