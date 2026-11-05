@@ -3,7 +3,7 @@
 ## Organização
 
 - [Now](https://github.com/prumod/cairn-web/issues/104): PRD das funcionalidades prioritárias, numa GitHub Issue.
-- [Termos por definir (Now)](now/termos-por-definir.md): vocabulário a confirmar.
+- [Termos por definir (Now)](now/termos-por-definir.md) e [(Later)](later/termos-por-definir.md): vocabulário a confirmar, um ficheiro por percurso.
 - [Fontes](fontes.md): cada fonte citada, se é oficial e para que a usamos.
 - [Later](later/funcionalidades.md): funcionalidades pretendidas para depois.
 - [Maybe](maybe/funcionalidades.md): ideias a validar antes de compromisso.

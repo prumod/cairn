@@ -1,6 +1,6 @@
 # Cairn — fontes
 
-Lista das fontes citadas no [glossário](../../GLOSSARY.md) e nos [termos por definir](now/termos-por-definir.md). Para cada fonte indica-se o que é, se é oficial, para que a usamos e o que não foi verificado.
+Lista das fontes citadas no [glossário](../../GLOSSARY.md) e nos termos por definir ([Now](now/termos-por-definir.md) e [Later](later/termos-por-definir.md)). Para cada fonte indica-se o que é, se é oficial, para que a usamos e o que não foi verificado.
 
 Uma fonte **oficial** é publicada pela entidade que a emite, como o Diário da República. Uma fonte **secundária** reproduz ou resume uma fonte oficial e pode ter erros. Quando uma fonte secundária é usada, é porque a oficial não estava acessível; isso fica indicado.
 
