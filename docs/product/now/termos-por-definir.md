@@ -28,8 +28,6 @@ As fontes sustentam o conceito ou uma distinção importante, mas o nome, o alca
 - [ ] **Habilitações da empresa** — Que qualificações engloba este termo e como se relaciona com classe, licenças e alvará?
 - [ ] **Requisito de participação** — Confirmar o que engloba e como se distingue dos requisitos sobre o conteúdo da proposta.
 - [ ] **Filtro** — Confirmar o conjunto: local, data, valor, prazo, entidade adjudicante e categoria (T3 [01:06:57]). Os filtros aplicam-se a todas as vistas (T3 [01:30:40]).
-- [ ] **Assistente / chatbot** — Confirmar o nome para o chat que pesquisa, responde e aplica filtros (T3 [01:28:08]). Na T3 diz-se «chatbot» e «inteligência artificial».
-- [ ] **Contexto da conversa** — O concurso ou conjunto de concursos selecionados que o assistente usa nas respostas (T3 [00:09:42]–[00:10:03]). Confirmar o nome e quando é limpo.
 - [ ] **Distrito** — A divisão administrativa acima do concelho, mostrada numa coluna da descoberta. Confirmar a definição e como se nomeiam as regiões autónomas, que o anúncio escreve «Região Autónoma dos Açores» ([Portaria n.º 318-A/2023, Anexo I, 9.5, p. 7](https://files.diariodarepublica.pt/1s/2023/10/20701/0000200016.pdf#page=7)).
 
 ## Menor certeza — ambiguidades por resolver
