@@ -107,6 +107,19 @@ O escalão do valor máximo das obras que a empresa pode executar numa subcatego
 _Evitar_: classe da empresa (o alvará atribui uma classe a cada subcategoria, não à empresa)
 _Fonte_: [Lei n.º 41/2015](https://diariodarepublica.pt/dr/detalhe/lei/41-2015-67377968), art. 3.º, alínea e), art. 6.º, n.º 2, e art. 8.º ([legislação consolidada do Diário da República, versão de 14-6-2018, pp. 3, 5 e 6](https://www.madeira.gov.pt//Portals/19/Documentos/Legislacao/Lei_41.2015_Consolidada_2018_Atividade_Constru%C3%A7%C3%A3o.pdf#page=3)); valores das 9 classes: Portaria n.º 212/2022 ([resumo da Cuatrecasas, p. 2](https://www.cuatrecasas.com/resources/legal-flash-portaria-212-2022-atualizacao-valores-classes-alvaras-construcao-630e35547c5cc454220208.pdf#page=2))
 
+**Assistente**:
+O agente da descoberta a quem a pessoa pede, em linguagem natural, o que pode fazer na página; responde em texto e mostra os passos que deu.
+_Evitar_: agente, chatbot, inteligência artificial
+_Fonte_: [T3 [01:28:08]](docs/product/transcriptions/transcricao_3_gestao_obras.txt#L495); [What does the assistant do, and how does it understand requests?](https://github.com/prumod/cairn/issues/172)
+
+**Contexto da conversa**:
+Os comentários e as citações, da pessoa ou do assistente, que seguem com os pedidos de uma conversa. Os lotes só selecionados não fazem parte dele.
+_Evitar_: contexto (sem mais), seleção (no sentido de contexto)
+
+**Reverter**:
+Apagar uma mensagem da pessoa e as seguintes, desfazendo ou não as alterações de dados que o assistente fez desde ela.
+_Evitar_: desfazer (no sentido de reverter), rollback
+
 O estatuto de cada fonte (oficial ou não, versão e limites) está em [Fontes](docs/product/fontes.md).
 
 Os termos em aberto estão nos termos por definir de [Now](docs/product/now/termos-por-definir.md) e de [Later](docs/product/later/termos-por-definir.md).
