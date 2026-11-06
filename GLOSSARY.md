@@ -37,6 +37,10 @@ Um anúncio novo e completo do mesmo concurso que substitui o anterior e diz que
 _Evitar_: retificação (no sentido de qualquer alteração), declaração de retificação, aviso de prorrogação
 _Fonte_: [Portaria n.º 318-A/2023, art. 7.º, n.os 1 e 2, pp. 3–4](https://files.diariodarepublica.pt/1s/2023/10/20701/0000200016.pdf#page=3); [Anexo I, secção 31 (Alteração/anulação), p. 11](https://files.diariodarepublica.pt/1s/2023/10/20701/0000200016.pdf#page=11)
 
+**Recolha**:
+A leitura automática, pelo Cairn, dos anúncios que o Diário da República publica numa data. Cada data de publicação tem uma recolha, com um de quatro estados: correu com concursos, correu sem concursos, falhou ou ainda não correu. Uma recolha que falhou não é uma data sem concursos.
+_Evitar_: scraping, importação, sincronização
+
 **Prazo de entrega**:
 A data e a hora limite para apresentar propostas, tal como as indica o anúncio mais recente do concurso. Uma proposta apresentada depois desse instante é excluída. Não é o prazo de execução.
 _Evitar_: prazo de submissão, data de entrega (sem a hora)
