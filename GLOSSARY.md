@@ -112,8 +112,13 @@ _Evitar_: classe da empresa (o alvará atribui uma classe a cada subcategoria, n
 _Fonte_: [Lei n.º 41/2015](https://diariodarepublica.pt/dr/detalhe/lei/41-2015-67377968), art. 3.º, alínea e), art. 6.º, n.º 2, e art. 8.º ([legislação consolidada do Diário da República, versão de 14-6-2018, pp. 3, 5 e 6](https://www.madeira.gov.pt//Portals/19/Documentos/Legislacao/Lei_41.2015_Consolidada_2018_Atividade_Constru%C3%A7%C3%A3o.pdf#page=3)); valores das 9 classes: Portaria n.º 212/2022 ([resumo da Cuatrecasas, p. 2](https://www.cuatrecasas.com/resources/legal-flash-portaria-212-2022-atualizacao-valores-classes-alvaras-construcao-630e35547c5cc454220208.pdf#page=2))
 
 **Filtro**:
-Um critério que restringe os lotes listados: distância, data de publicação, estado do concurso, valor anunciado, entidade adjudicante, categoria ou local. Os filtros aplicam-se a todas as vistas e nunca escondem um lote marcado com ⚠.
-_Fonte_: [T3 [01:06:57]](docs/product/transcriptions/transcricao_3_gestao_obras.txt#L345), [T3 [01:30:40]](docs/product/transcriptions/transcricao_3_gestao_obras.txt#L503); [PRD #104](https://github.com/prumod/cairn/issues/104), histórias 10–19 e regra 14
+Um critério que restringe os lotes listados: distância, data de publicação, prazo de entrega, estado do concurso, valor anunciado, entidade adjudicante, categoria ou local. Os filtros aplicam-se a todas as vistas e nunca escondem um lote marcado com ⚠. O filtro de local faz-se a partir da seleção de locais.
+_Fonte_: [T3 [01:06:57]](docs/product/transcriptions/transcricao_3_gestao_obras.txt#L345), [T3 [01:30:40]](docs/product/transcriptions/transcricao_3_gestao_obras.txt#L503); [PRD #104](https://github.com/prumod/cairn/issues/104), histórias 10–19 e regra 14; [Which PRD #104 audit findings change Now?](https://github.com/prumod/cairn/issues/191)
+
+**Seleção**:
+Os lotes ou os locais que a pessoa marca para agir sobre eles: comentar, abrir, comparar ou filtrar por esses locais. Selecionar não muda os lotes listados. A seleção de lotes e a de locais são separadas, e qualquer ação sobre uma seleção esvazia-a.
+_Evitar_: escolha (no sentido de seleção), marcação, filtro (no sentido de seleção)
+_Fonte_: [PRD #104](https://github.com/prumod/cairn/issues/104), histórias 24–27 e regras 2 e 3; [Which PRD #104 audit findings change Now?](https://github.com/prumod/cairn/issues/191)
 
 **Assistente**:
 O agente da descoberta a quem a pessoa pede, em linguagem natural, o que pode fazer na página; responde em texto e mostra os passos que deu.
@@ -125,7 +130,7 @@ Os comentários e as citações, da pessoa ou do assistente, que seguem com os p
 _Evitar_: contexto (sem mais), seleção (no sentido de contexto)
 
 **Reverter**:
-Apagar uma mensagem da pessoa e as seguintes, desfazendo ou não as alterações de dados que o assistente fez desde ela.
+Apagar uma mensagem da pessoa e as seguintes, com os comentários e as citações que o assistente nelas escreveu. Não desfaz as alterações de dados.
 _Evitar_: desfazer (no sentido de reverter), rollback
 
 O estatuto de cada fonte (oficial ou não, versão e limites) está em [Fontes](docs/product/fontes.md).
