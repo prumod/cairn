@@ -21,32 +21,33 @@ O wireframe interativo mostra só as funcionalidades de Later e Maybe. As de Now
 - **Maybe:** ideias que precisam de validação antes de compromisso de produção.
 - **Never:** exclusões deliberadas do produto, não apenas de uma fase.
 
-Now tem 6 funcionalidades (N01–N04, N13 e N14); Later tem 28 (L01–L28); Maybe tem 31 (M01 e M03–M32); Never tem 3 (X01–X03).
+Now tem 6 funcionalidades (N01–N04, N13 e N14); Later tem 33 (L01–L16 e L18–L34); Maybe tem 31 (M01 e M03–M32); Never tem 3 (X01–X03).
 
 ## Correspondência de identificadores
 
 Uma funcionalidade que muda de nível recebe um identificador novo nesse nível; o antigo não é reutilizado. Os documentos em `research/` usam os identificadores anteriores.
 
-| Anterior | Atual | Motivo                                    |
-| -------- | ----- | ----------------------------------------- |
-| N05      | L10   | Fora da lista Now da T3.                  |
-| N06      | L11   | Fora da lista Now da T3.                  |
-| N07      | L12   | Decisão de participar adiada.             |
-| N08      | L13   | Dossier adiado na T3.                     |
-| N09      | L14   | Checklist adiada na T3.                   |
-| N10      | L15   | Preparação da proposta adiada.            |
-| N11      | L09   | Adiado antes da T3.                       |
-| N12      | L16   | Plataforma (AcinGov) deixada para o fim.  |
-| M02      | N13   | Assistente central escolhido na T3.       |
-| —        | N14   | Filtros, nova na T3.                      |
-| —        | L17   | Navegação pelo assistente, nova na T3.    |
-| —        | L18   | Vista agrupada por fases, nova na T3.     |
-| —        | M13   | Mapa 3D, nova na T3.                      |
-| —        | M14   | Caixa de entrada de anúncios, nova na T3. |
-| —        | M15   | Conversas por fase, nova na T3.           |
-| —        | X01   | Trajetos rejeitados na T3.                |
-| —        | X02   | Distritos rejeitados na T3.               |
-| —        | X03   | Exclusão automática rejeitada na T3.      |
+| Anterior | Atual | Motivo                                                                                                      |
+| -------- | ----- | ----------------------------------------------------------------------------------------------------------- |
+| N05      | L10   | Fora da lista Now da T3.                                                                                    |
+| N06      | L11   | Fora da lista Now da T3.                                                                                    |
+| N07      | L12   | Decisão de participar adiada.                                                                               |
+| N08      | L13   | Dossier adiado na T3.                                                                                       |
+| N09      | L14   | Checklist adiada na T3.                                                                                     |
+| N10      | L15   | Preparação da proposta adiada.                                                                              |
+| N11      | L09   | Adiado antes da T3.                                                                                         |
+| N12      | L16   | Plataforma (AcinGov) deixada para o fim.                                                                    |
+| M02      | N13   | Assistente central escolhido na T3.                                                                         |
+| —        | N14   | Filtros, nova na T3.                                                                                        |
+| —        | L17   | Navegação pelo assistente, nova na T3.                                                                      |
+| L17      | N13   | O assistente de Now abre os ecrãs e aplica os filtros ([#172](https://github.com/prumod/cairn/issues/172)). |
+| —        | L18   | Vista agrupada por fases, nova na T3.                                                                       |
+| —        | M13   | Mapa 3D, nova na T3.                                                                                        |
+| —        | M14   | Caixa de entrada de anúncios, nova na T3.                                                                   |
+| —        | M15   | Conversas por fase, nova na T3.                                                                             |
+| —        | X01   | Trajetos rejeitados na T3.                                                                                  |
+| —        | X02   | Distritos rejeitados na T3.                                                                                 |
+| —        | X03   | Exclusão automática rejeitada na T3.                                                                        |
 
 A classificação é uma decisão de produto, não uma divisão da interface. O protótipo interativo cobre toda a experiência de Now, Later e Maybe. Demonstrar uma capacidade não altera a prioridade, não confirma a viabilidade de integração e não constitui compromisso de produção. Gantt/Microsoft Project permanece Maybe.
 

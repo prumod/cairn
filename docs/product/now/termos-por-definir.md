@@ -15,7 +15,7 @@ Os termos de funcionalidades de [Later](../later/funcionalidades.md) estão nos 
 O significado central está explícito nas fontes. Falta confirmar a redação e o nome canónico; isso não impede que existam relações ou pormenores ainda por definir.
 
 - [ ] **Diário da República** — Confirmar a definição como fonte de anúncios neste percurso, distinta da plataforma do procedimento.
-- [ ] **Data de publicação** — Confirmar que designa a publicação do anúncio e não a receção de um convite.
+- [ ] **Data de publicação** — Confirmar que designa a publicação do anúncio e não a receção de um convite. A data de publicação de um concurso é a do seu primeiro anúncio ([Which PRD #104 audit findings change Now?](https://github.com/prumod/cairn/issues/191)).
 - [ ] **Prazo de execução da obra** — Confirmar o nome para o período previsto de execução, sem assumir a data em que começa a contar. Na T3 também se diz «tempo de obra» ou «duração da obra» e é conhecido quando o anúncio sai (T3 [00:29:21], [01:09:05]).
 - [ ] **Custo** — O que a empresa gasta para executar a obra; distinto do valor da obra: «É o valor da obra, não é custo» (T3 [00:29:57]). Confirmar o nome.
 
