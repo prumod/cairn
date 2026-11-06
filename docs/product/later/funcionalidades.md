@@ -40,7 +40,6 @@ Na T3, o âmbito Now ficou reduzido a mapa, assistente, vista do concurso e filt
 
 ## Novas funcionalidades da T3
 
-- **L17 — Navegação pelo assistente:** o assistente abre o ecrã, a vista e os filtros pedidos (por exemplo, «quero ver a Torreira em lista»). Escrito «Navegação (Later)» no quadro final. Base: T3 [00:45:19]–[00:45:49], [01:27:07]–[01:27:58].
 - **L18 — Vista agrupada por fases:** segunda vista, além do mapa, com as oportunidades agrupadas por estado — vista, interessante, inscrita — numa única tabela com filtro de fase, em vez de vários quadros. Inclui consultar em tabela os concursos em que a empresa demonstrou interesse, sem os acumular no mapa. Base: T3 [00:09:13]–[00:09:42], [01:18:08]–[01:19:44], [01:30:00]–[01:31:46].
 
 ## Retiradas do PRD de Now

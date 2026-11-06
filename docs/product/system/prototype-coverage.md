@@ -43,7 +43,6 @@ L09–L16 belong to proposal preparation, not work execution. L10–L16 were mov
 | L14        | Proposal checklist marks required documents as prepared or missing.                                                                                                      |
 | L15        | Proposal price table edits unit prices and calculates subtotals and total. Missing prices block review.                                                                  |
 | L16        | Proposal review lists omissions, checks the fixed deadline, returns to preparation and simulates submission without sending documents.                                   |
-| L17        | Not implemented. The assistant does not navigate the application.                                                                                                        |
 | L18        | Not implemented. No phase-grouped view exists.                                                                                                                           |
 
 ## Maybe capabilities — interactive wireframe
