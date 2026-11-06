@@ -42,6 +42,10 @@ A data e a hora limite para apresentar propostas, tal como as indica o anúncio 
 _Evitar_: prazo de submissão, data de entrega (sem a hora)
 _Fonte_: [CCP, art. 146.º, n.º 2, alínea a), p. 82](https://nca.tecnico.ulisboa.pt/files/sites/35/ccp_vdl_78_2022.pdf#page=82); [CCP, art. 470.º, n.º 3, p. 189](https://nca.tecnico.ulisboa.pt/files/sites/35/ccp_vdl_78_2022.pdf#page=189)
 
+**Valor anunciado**:
+O preço base sem IVA de um lote, tal como o anúncio o indica: o máximo que a entidade adjudicante aceita pagar por esse lote. Não é o valor do contrato adjudicado nem o custo da empresa.
+_Evitar_: valor da obra, preço base, custo
+
 **Estado do concurso**:
 Se o prazo de entrega de um concurso já passou: «Aberto» enquanto não passou, «Prazo terminado» depois, e «Prazo não indicado» quando o anúncio não o indica. Depois do prazo, o procedimento continua; só terminou o prazo de entrega.
 _Evitar_: concurso fechado, concurso encerrado, concurso ativo, concurso aberto (no sentido de concurso em consulta)

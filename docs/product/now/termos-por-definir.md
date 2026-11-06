@@ -25,7 +25,6 @@ As fontes sustentam o conceito ou uma distinção importante, mas o nome, o alca
 
 - [ ] **Entidade adjudicante** — Confirmar o nome e a definição da entidade que promove a contratação.
 - [ ] **Plataforma do procedimento** — Confirmar este nome como termo comum para os serviços externos onde se consultam peças e se interage formalmente com o procedimento.
-- [ ] **Valor anunciado / valor da obra** — São o mesmo valor? A T3 usa «valor da obra» (T3 [00:29:57]). Pode ser chamado «preço base» ou essa equivalência não está confirmada?
 - [ ] **Habilitações da empresa** — Que qualificações engloba este termo e como se relaciona com classe, licenças e alvará?
 - [ ] **Requisito de participação** — Confirmar o que engloba e como se distingue dos requisitos sobre o conteúdo da proposta.
 - [ ] **Filtro** — Confirmar o conjunto: local, data, valor, prazo, entidade adjudicante e categoria (T3 [01:06:57]). Os filtros aplicam-se a todas as vistas (T3 [01:30:40]).
