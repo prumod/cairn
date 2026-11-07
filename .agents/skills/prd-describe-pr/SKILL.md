@@ -1,6 +1,6 @@
 ---
 name: prd-describe-pr
-description: Create or update the current branch's pull request with a reviewed description, including after a prd-implement slice is verified.
+description: Create or update the current branch's pull request with a reviewed description, including after an implement-spec change is verified.
 ---
 
 # Create or Update One Pull Request
@@ -28,7 +28,7 @@ Create or update exactly one pull request for the current branch. Keep the descr
    - Get repository metadata with `gh repo view --json owner,name`.
    - Derive a ticket link only when it is evident from the branch name, PR title, commits, or linked issue; otherwise omit it.
    - Identify user-facing behavior, implementation choices, breaking changes, verification evidence, and whether the PR changes the project's UI.
-   - When the work comes from a slice issue, read the slice, its design issue, and the PRD stories it names. Compare actual changes against the PRD stories, the approved design, and `apps/web/references/final-visual/`; a PR description does not approve consequential deviations.
+   - When the work comes from a spec issue (a slice, a design, or PRD stories), read it, its design issue, and the PRD stories it names. Compare actual changes against the PRD stories, the approved design, and `apps/web/references/final-visual/`; a PR description does not approve consequential deviations.
 
    **Done:** every changed file is accounted for in the PR description, and the PR is classified as UI-changing or non-UI-changing.
 
@@ -37,10 +37,10 @@ Create or update exactly one pull request for the current branch. Keep the descr
    Fill the template in memory:
 
    - Author line: `Autor: @<login>`, the GitHub login the commits were attributed to.
-   - Header links: include the slice, design, and PRD issues when available; omit unavailable links. Add `Closes #<slice>` when the PR completes a slice.
+   - Header links: include the spec, design, and PRD issues when available; omit unavailable links. Add `Closes #<n>` for the spec and for every ticket the PR completes.
    - User-facing changes and implementation: use GitHub PR file and line permalinks where useful.
    - Problem context: link the PRD stories instead of reproducing them; keep a concise explanation of the change's purpose for reviewers.
-   - Deviations: compare against the PRD stories, the approved design, and the slice; otherwise state which context was not supplied. Flag unresolved consequential deviations for the owning human decision before presenting the work as complete.
+   - Deviations: compare against the PRD stories, the approved design, and the spec; otherwise state which context was not supplied. Flag unresolved consequential deviations for the owning human decision before presenting the work as complete.
    - Verification: use actual commands and results.
    - Changelog: one concise line.
 
