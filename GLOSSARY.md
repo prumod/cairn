@@ -79,8 +79,8 @@ _Evitar_: cliente, entidade
 _Fonte_: [CCP, art. 2.º (entidades adjudicantes), p. 15](https://nca.tecnico.ulisboa.pt/files/sites/35/ccp_vdl_78_2022.pdf#page=15); [Portaria n.º 318-A/2023, Anexo I, secção 1, p. 5](https://files.diariodarepublica.pt/1s/2023/10/20701/0000200016.pdf#page=5) e [secção 9, p. 7](https://files.diariodarepublica.pt/1s/2023/10/20701/0000200016.pdf#page=7)
 
 **Lote**:
-Uma parte de um concurso que dá origem à sua própria empreitada. Um concurso sem lotes tem um único lote.
-_Fonte_: [CCP, art. 46.º-A, n.º 1, p. 40](https://nca.tecnico.ulisboa.pt/files/sites/35/ccp_vdl_78_2022.pdf#page=40); [n.º 5, p. 41](https://nca.tecnico.ulisboa.pt/files/sites/35/ccp_vdl_78_2022.pdf#page=41); [art. 73.º, n.º 2, p. 55](https://nca.tecnico.ulisboa.pt/files/sites/35/ccp_vdl_78_2022.pdf#page=55). Que cada lote dá a sua própria empreitada é uma inferência destes artigos.
+Uma parte de um concurso que dá origem à sua própria empreitada. Um concurso sem lotes tem um único lote. O lote é o mesmo em todas as alterações do anúncio: identifica-se no seu concurso pelo número que o anúncio dá, o «Identificador do Lote» (por exemplo LOT-0002 é o lote 2), e não pela posição na lista.
+_Fonte_: [CCP, art. 46.º-A, n.º 1, p. 40](https://nca.tecnico.ulisboa.pt/files/sites/35/ccp_vdl_78_2022.pdf#page=40); [n.º 5, p. 41](https://nca.tecnico.ulisboa.pt/files/sites/35/ccp_vdl_78_2022.pdf#page=41); [art. 73.º, n.º 2, p. 55](https://nca.tecnico.ulisboa.pt/files/sites/35/ccp_vdl_78_2022.pdf#page=55). Que cada lote dá a sua própria empreitada é uma inferência destes artigos. Identificador: [eForms, «Procedure, Group of Lots, Lot & Part related information»](https://docs.ted.europa.eu/eforms/latest/schema/procedure-lot-part-information.html#_introduction) («the same Lot will have the same technical identifier from the start to the end of the procurement procedure»); [What does the Concurso aggregate protect during collection?](https://github.com/prumod/cairn/issues/205#issuecomment-6723174112).
 
 **Empreitada**:
 O contrato para executar uma obra.
