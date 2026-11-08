@@ -13,9 +13,9 @@ Os dados da empresa que a descoberta usa como referência: nome, morada, localiz
 _Evitar_: perfil de referência da empresa, referência da empresa
 
 **Localização da empresa**:
-O ponto a partir do qual se medem as distâncias e se traça o raio de pesquisa.
+O ponto a partir do qual se medem as distâncias e se traça o raio de pesquisa. Tem o nome de um lugar, por exemplo «Leiria», que a descoberta mostra, e fica fixado na instalação.
 _Evitar_: localização de referência
-_Fonte_: [T3 [01:15:58]](docs/product/transcriptions/transcricao_3_gestao_obras.txt#L393)
+_Fonte_: [T3 [01:15:58]](docs/product/transcriptions/transcricao_3_gestao_obras.txt#L393); [How is the one company created and linked?](https://github.com/prumod/cairn/issues/197)
 
 **Raio de pesquisa**:
 A distância em linha reta a partir da localização da empresa que limita a descoberta. Não é trajeto, tempo de deslocação nem distrito.
