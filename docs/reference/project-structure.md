@@ -2,12 +2,22 @@
 
 This reference defines the required feature-driven structure and separately records the current workspace and enforced dependency boundaries. Do not create empty directories just to match an example.
 
+## Apps, packages and infra
+
+Base: [Where do the collector and the code it shares with the web app live?](https://github.com/prumod/cairn/issues/194).
+
+- An **app** is a unit of deployment. Code deployed to a different environment (the Cloudflare Worker or a GitHub Actions job) goes in its own app. One app may hold several runtimes when its framework compiles them together, as TanStack Start does for the browser and the Worker.
+- A **package** is a unit of packaging. Its runtime, dependencies and compile settings must be compatible with every destination that uses it: each app and each runtime inside that app. Code whose destinations differ goes in its own package. A shared package holds only code that more than one app uses; everything else stays in the app that uses it.
+- **Infra** is code that talks to something outside our apps, on either side: a database, the browser, the Diário da República feed or a model provider. The frontend can have infra too.
+
+Planned layout, not yet built: an `apps/collector` app for the collector; `packages/shared` for isomorphic code that both apps use (the CAOP place catalogue and the annex I categorias), replacing the reserved root `shared/src`; and the tables that both apps use (auth, concurso/anúncio/lote and recolha) in `packages/db`. App-only tables stay in their app. The boundary rules and `drizzle.config.ts` change with that implementation.
+
 ## Required feature-driven structure
 
 Organize application code by the feature that owns its behavior. A page feature owns its components, use cases, and colocated tests. A feature that needs server-backed behavior splits that code into three folders by role:
 
 - `domain/` holds domain rules that several use cases share, such as actors, errors, and authorization rules. It imports no framework, database, or adapter code. Add a file here only when more than one use case needs the same rule.
-- `infra/` holds database repositories: the server-only implementations of persistence interfaces that the application defines. Repository files use the `.server.ts` suffix.
+- `infra/` holds the feature's infra: code that talks to something outside our apps, such as the implementations of persistence interfaces that the application defines. Server-only infra, such as a database repository, uses the `.server.ts` suffix.
 - `useCases/` holds one folder per use case, containing its application logic and client-callable adapter. A use case's tests live in its folder. Helpers that several use cases share, such as `context.server.ts`, and their tests stay at the `useCases/` root.
 
 For example:
