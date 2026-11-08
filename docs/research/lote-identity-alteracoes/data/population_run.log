@@ -1,0 +1,20 @@
+docs in docs.tsv: 566
+  pre-window     alteração  sem lotes  4
+  pre-window     anúncio    lotes      1
+  pre-window     anúncio    sem lotes  21
+  window-census  alteração  lotes      10
+  window-census  alteração  sem lotes  81
+  window-census  anúncio    lotes      33
+  window-census  anúncio    sem lotes  349
+  window-outside alteração  lotes      2
+  window-outside alteração  sem lotes  16
+  window-outside anúncio    lotes      9
+  window-outside anúncio    sem lotes  40
+alterações with no pair as alt_id: 4
+    ('419961691', 'window-outside', False, '2026-05-20', '097')
+    ('419962898', 'window-outside', False, '2026-06-01', '105')
+    ('419963111', 'window-outside', False, '2026-06-03', '107')
+    ('419967113', 'window-outside', False, '2026-07-15', '135')
+pairs: 109 alt frames: Counter({'window': 91, 'chain': 18})
+lote-bearing pairs: 12
+chain alterações (alteracoes_chain.tsv): 18

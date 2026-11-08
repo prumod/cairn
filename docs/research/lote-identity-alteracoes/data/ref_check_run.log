@@ -1,0 +1,20 @@
+documents with own anúncio number: 566 of 566
+documents with Número de referência interna: 566 of 566
+distinct reference numbers: 449 | reference numbers shared by >1 document: 92
+distinct own anúncio numbers: 566 | shared by >1 document: 0
+lote-bearing docs: 55 with own number: 55 with reference: 55
+== lote-bearing alteração pairs: reference equal? own-number link (alt's 'de' number == orig's own)?
+419961681 419958563 ref DOP/ED-2026-14 DOP/ED-2026-14 same | own 13244/2026 10411/2026 | alt_of_number 10411/2026 == orig own | alt_of_id==orig yes
+419965535 419963577 ref 10020422 10020422 same | own 16666/2026 14899/2026 | alt_of_number 14899/2026 == orig own | alt_of_id==orig yes
+419964834 419962544 ref 2026/300.10.001/5 2026/300.10.001/5 same | own 16006/2026 14358/2026 | alt_of_number 14358/2026 == orig own | alt_of_id==orig yes
+419965812 419964668 ref CP/34/2026(484) CP/34/2026(484) same | own 16760/2026 15816/2026 | alt_of_number 15816/2026 == orig own | alt_of_id==orig yes
+419965809 419964787 ref Empreitada 46/Gebalis/2026 Empreitada 46/Gebalis/2026 same | own 16736/2026 15931/2026 | alt_of_number 15931/2026 == orig own | alt_of_id==orig yes
+419966402 419964514 ref PE 24/2026 PE 24/2026 same | own 17369/2026 15608/2026 | alt_of_number 15608/2026 == orig own | alt_of_id==orig yes
+419966949 419966438 ref 10022400 10022400 same | own 17986/2026 17575/2026 | alt_of_number 17575/2026 == orig own | alt_of_id==orig yes
+419967898 419966405 ref CP/7/2026/PA, SA CP/7/2026/PA, SA same | own 18596/2026 17254/2026 | alt_of_number 17254/2026 == orig own | alt_of_id==orig yes
+419970580 419969179 ref 2226001780 2226001780 same | own 21044/2026 19819/2026 | alt_of_number 19819/2026 == orig own | alt_of_id==orig yes
+419970342 419967303 ref MAN26001 MAN26001 same | own 20989/2026 18357/2026 | alt_of_number 18357/2026 == orig own | alt_of_id==orig yes
+419963577 419960426 ref 10020422 10020422 same | own 14899/2026 12050/2026 | alt_of_number 12050/2026 == orig own | alt_of_id==orig yes
+419966438 419963843 ref 10022400 10022400 same | own 17575/2026 15055/2026 | alt_of_number 15055/2026 == orig own | alt_of_id==orig yes
+reference values used by more than one lineage (pairs only): 5 ['40/2026', 'CP/1/2026', 'CP/3/2026', 'CP 15/2026', '2026/300.10.001/14']
+all 109 pairs: reference same: 109 different: 0 | alt_of_number equals orig own number: 109

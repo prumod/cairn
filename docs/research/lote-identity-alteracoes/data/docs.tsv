@@ -1,0 +1,567 @@
+id	source	is_alteracao	lotes_flag	n_lote_entries	nids	n_entries_without_nid	n_entries_without_desc	block_ids	alt_of_id
+419905698	original-outside-census	0	Não	0		0	0		
+419955272	original-outside-census	0	Não	0		0	0		
+419956426	original-outside-census	0	Não	0		0	0		
+419956883	original-outside-census	0	Não	0		0	0		
+419956928	original-outside-census	1	Não	0		0	0		419905698
+419957203	original-outside-census	0	Não	0		0	0		
+419957214	original-outside-census	0	Não	0		0	0		
+419957469	original-outside-census	0	Não	0		0	0		
+419958207	original-outside-census	0	Não	0		0	0		
+419958261	original-outside-census	0	Não	0		0	0		
+419958274	original-outside-census	0	Não	0		0	0		
+419958563	original-outside-census	0	Sim	5	LOT-0001|LOT-0002|LOT-0003|LOT-0004|LOT-0005	0	0	LOT-0001|LOT-0002|LOT-0003|LOT-0004|LOT-0005	
+419958659	original-outside-census	0	Não	0		0	0		
+419958811	original-outside-census	1	Não	0		0	0		419956883
+419958990	original-outside-census	0	Não	0		0	0		
+419958991	original-outside-census	0	Não	0		0	0		
+419959126	original-outside-census	0	Não	0		0	0		
+419959196	original-outside-census	0	Não	0		0	0		
+419959224	original-outside-census	0	Não	0		0	0		
+419959458	original-outside-census	0	Não	0		0	0		
+419959536	original-outside-census	1	Não	0		0	0		419958274
+419959663	original-outside-census	0	Não	0		0	0		
+419959839	original-outside-census	1	Não	0		0	0		419957469
+419959860	original-outside-census	0	Não	0		0	0		
+419960022	census	0	Não	0		0	0		
+419960029	census	0	Não	0		0	0		
+419960034	original-outside-census	0	Não	0		0	0		
+419960091	census	0	Não	0		0	0		
+419960152	original-outside-census	0	Não	0		0	0		
+419960156	census	0	Não	0		0	0		
+419960246	census	0	Não	0		0	0		
+419960277	census	1	Não	0		0	0		419959196
+419960323	census	0	Não	0		0	0		
+419960349	census	0	Não	0		0	0		
+419960353	census	0	Não	0		0	0		
+419960374	census	0	Não	0		0	0		
+419960378	census	1	Não	0		0	0		419959126
+419960379	census	0	Não	0		0	0		
+419960386	census	0	Não	0		0	0		
+419960394	census	0	Não	0		0	0		
+419960397	census	0	Sim	4	LOT-0001|LOT-0002|LOT-0003|LOT-0004	0	0	LOT-0001|LOT-0002|LOT-0003|LOT-0004	
+419960407	census	1	Não	0		0	0		419958811
+419960408	census	0	Não	0		0	0		
+419960410	census	0	Não	0		0	0		
+419960417	census	1	Não	0		0	0		419955272
+419960425	census	0	Não	0		0	0		
+419960426	original-outside-census	0	Sim	6	LOT-0001|LOT-0002|LOT-0003|LOT-0004|LOT-0005|LOT-0006	0	0	LOT-0001|LOT-0002|LOT-0003|LOT-0004|LOT-0005|LOT-0006	
+419960432	census	0	Não	0		0	0		
+419960443	census	0	Não	0		0	0		
+419960445	census	0	Não	0		0	0		
+419960453	census	0	Não	0		0	0		
+419960464	census	0	Não	0		0	0		
+419960473	census	1	Não	0		0	0		419959224
+419960476	census	1	Não	0		0	0		419958207
+419960479	census	0	Não	0		0	0		
+419960486	census	0	Não	0		0	0		
+419960494	census	0	Não	0		0	0		
+419960501	census	1	Não	0		0	0		419958990
+419960510	census	0	Não	0		0	0		
+419960511	census	0	Não	0		0	0		
+419960513	census	1	Não	0		0	0		419956426
+419960519	census	0	Não	0		0	0		
+419960521	census	0	Não	0		0	0		
+419960525	census	0	Não	0		0	0		
+419960526	census	0	Não	0		0	0		
+419960530	census	1	Não	0		0	0		419958991
+419960532	census	0	Não	0		0	0		
+419960578	census	0	Não	0		0	0		
+419960583	census	0	Não	0		0	0		
+419960677	census	0	Não	0		0	0		
+419960903	census	0	Não	0		0	0		
+419960906	census	0	Não	0		0	0		
+419960966	census	0	Não	0		0	0		
+419961016	original-outside-census	1	Não	0		0	0		419958261
+419961049	census	0	Não	0		0	0		
+419961060	census	0	Não	0		0	0		
+419961112	original-outside-census	0	Não	0		0	0		
+419961114	census	0	Não	0		0	0		
+419961118	census	0	Não	0		0	0		
+419961123	census	1	Não	0		0	0		419959839
+419961137	census	0	Não	0		0	0		
+419961139	census	0	Não	0		0	0		
+419961158	census	0	Sim	5	LOT-0001|LOT-0002|LOT-0003|LOT-0004|LOT-0005	0	0	LOT-0001|LOT-0002|LOT-0003|LOT-0004|LOT-0005	
+419961187	census	0	Não	0		0	0		
+419961191	census	0	Não	0		0	0		
+419961192	census	0	Não	0		0	0		
+419961200	census	0	Não	0		0	0		
+419961208	census	0	Não	0		0	0		
+419961213	census	1	Não	0		0	0		419959860
+419961218	census	0	Não	0		0	0		
+419961227	census	1	Não	0		0	0		419957214
+419961238	census	0	Não	0		0	0		
+419961254	census	1	Não	0		0	0		419957203
+419961257	census	0	Não	0		0	0		
+419961266	original-outside-census	0	Não	0		0	0		
+419961425	original-outside-census	0	Não	0		0	0		
+419961480	census	0	Não	0		0	0		
+419961482	census	0	Não	0		0	0		
+419961540	census	1	Não	0		0	0		419961266
+419961613	census	0	Não	0		0	0		
+419961633	census	0	Não	0		0	0		
+419961635	census	0	Não	0		0	0		
+419961641	census	0	Não	0		0	0		
+419961681	census	1	Sim	5	LOT-0005|LOT-0004|LOT-0003|LOT-0002|LOT-0001	0	0	LOT-0001|LOT-0002|LOT-0003|LOT-0004|LOT-0005	419958563
+419961691	original-outside-census	1	Não	0		0	0		419957144
+419961761	census	0	Não	0		0	0		
+419961791	census	1	Não	0		0	0		419961112
+419961797	original-outside-census	0	Não	0		0	0		
+419961839	census	0	Não	0		0	0		
+419961864	census	0	Não	0		0	0		
+419961871	census	0	Não	0		0	0		
+419961873	census	0	Não	0		0	0		
+419961881	census	0	Não	0		0	0		
+419961886	census	0	Não	0		0	0		
+419961893	census	0	Não	0		0	0		
+419961928	census	0	Não	0		0	0		
+419961933	census	0	Não	0		0	0		
+419961938	census	1	Não	0		0	0		419959458
+419961961	census	0	Não	0		0	0		
+419961964	census	0	Não	0		0	0		
+419961966	census	0	Não	0		0	0		
+419961969	census	0	Não	0		0	0		
+419961989	census	0	Não	0		0	0		
+419961992	census	0	Sim	6	LOT-0001|LOT-0002|LOT-0003|LOT-0004|LOT-0005|LOT-0006	0	0	LOT-0001|LOT-0002|LOT-0003|LOT-0004|LOT-0005|LOT-0006	
+419961993	census	0	Não	0		0	0		
+419961996	census	0	Não	0		0	0		
+419962000	census	0	Sim	3	LOT-0001|LOT-0002|LOT-0003	0	0	LOT-0001|LOT-0002|LOT-0003	
+419962007	census	0	Não	0		0	0		
+419962025	census	0	Não	0		0	0		
+419962031	census	0	Não	0		0	0		
+419962034	census	0	Sim	4	LOT-0001|LOT-0002|LOT-0003|LOT-0004	0	0	LOT-0001|LOT-0002|LOT-0003|LOT-0004	
+419962046	census	1	Não	0		0	0		419956928
+419962052	census	0	Não	0		0	0		
+419962064	census	0	Não	0		0	0		
+419962071	census	0	Não	0		0	0		
+419962072	census	0	Não	0		0	0		
+419962152	original-outside-census	0	Não	0		0	0		
+419962316	census	0	Não	0		0	0		
+419962319	census	0	Sim	2	LOT-0001|LOT-0002	0	0	LOT-0001|LOT-0002	
+419962333	census	0	Não	0		0	0		
+419962376	census	0	Não	0		0	0		
+419962414	original-outside-census	0	Não	0		0	0		
+419962470	original-outside-census	0	Não	0		0	0		
+419962480	census	0	Não	0		0	0		
+419962501	census	0	Não	0		0	0		
+419962504	census	0	Não	0		0	0		
+419962544	original-outside-census	0	Sim	2	LOT-0001|LOT-0002	0	0	LOT-0001|LOT-0002	
+419962623	census	0	Não	0		0	0		
+419962658	census	0	Não	0		0	0		
+419962680	census	0	Não	0		0	0		
+419962696	census	0	Não	0		0	0		
+419962762	census	0	Não	0		0	0		
+419962764	census	1	Não	0		0	0		419961016
+419962773	census	1	Não	0		0	0		419959536
+419962798	census	1	Não	0		0	0		419960034
+419962815	census	0	Não	0		0	0		
+419962824	census	1	Não	0		0	0		419959663
+419962828	census	0	Não	0		0	0		
+419962831	census	0	Não	0		0	0		
+419962843	census	0	Sim	4	LOT-0001|LOT-0002|LOT-0003|LOT-0004	0	0	LOT-0001|LOT-0002|LOT-0003|LOT-0004	
+419962845	census	0	Não	0		0	0		
+419962861	census	0	Não	0		0	0		
+419962869	census	0	Não	0		0	0		
+419962880	census	0	Não	0		0	0		
+419962882	census	1	Não	0		0	0		419958659
+419962883	census	0	Não	0		0	0		
+419962891	census	0	Não	0		0	0		
+419962898	original-outside-census	1	Não	0		0	0		419960099
+419962903	census	0	Não	0		0	0		
+419962906	census	0	Sim	4	LOT-0001|LOT-0002|LOT-0003|LOT-0004	0	0	LOT-0001|LOT-0002|LOT-0003|LOT-0004	
+419962909	census	0	Não	0		0	0		
+419962912	census	1	Não	0		0	0		419961797
+419962915	census	0	Não	0		0	0		
+419962917	census	0	Não	0		0	0		
+419962927	census	0	Não	0		0	0		
+419962932	census	0	Não	0		0	0		
+419962933	census	0	Não	0		0	0		
+419962934	census	0	Não	0		0	0		
+419963111	original-outside-census	1	Não	0		0	0		419960737
+419963116	original-outside-census	0	Não	0		0	0		
+419963142	original-outside-census	0	Não	0		0	0		
+419963339	original-outside-census	0	Não	0		0	0		
+419963344	original-outside-census	0	Não	0		0	0		
+419963376	original-outside-census	0	Não	0		0	0		
+419963480	census	0	Não	0		0	0		
+419963496	census	0	Não	0		0	0		
+419963573	census	0	Não	0		0	0		
+419963577	original-outside-census	1	Sim	6	LOT-0006|LOT-0005|LOT-0004|LOT-0003|LOT-0002|LOT-0001	0	0	LOT-0001|LOT-0002|LOT-0003|LOT-0004|LOT-0005|LOT-0006	419960426
+419963585	census	0	Sim	3	LOT-0001|LOT-0002|LOT-0003	0	0	LOT-0001|LOT-0002|LOT-0003	
+419963587	census	0	Não	0		0	0		
+419963623	census	0	Não	0		0	0		
+419963624	census	0	Não	0		0	0		
+419963630	census	0	Não	0		0	0		
+419963631	census	0	Não	0		0	0		
+419963701	census	0	Não	0		0	0		
+419963706	census	0	Não	0		0	0		
+419963710	census	0	Não	0		0	0		
+419963711	census	1	Não	0		0	0		419962470
+419963721	census	0	Não	0		0	0		
+419963726	census	0	Sim	6	LOT-0001|LOT-0002|LOT-0003|LOT-0004|LOT-0005|LOT-0006	0	0	LOT-0001|LOT-0002|LOT-0003|LOT-0004|LOT-0005|LOT-0006	
+419963730	census	1	Não	0		0	0		419961425
+419963734	census	0	Não	0		0	0		
+419963737	census	0	Não	0		0	0		
+419963744	census	0	Não	0		0	0		
+419963745	census	0	Não	0		0	0		
+419963746	census	0	Não	0		0	0		
+419963747	census	0	Não	0		0	0		
+419963755	original-outside-census	0	Não	0		0	0		
+419963843	original-outside-census	0	Sim	5	LOT-0001|LOT-0002|LOT-0003|LOT-0004|LOT-0005	0	0	LOT-0001|LOT-0002|LOT-0003|LOT-0004|LOT-0005	
+419963975	original-outside-census	1	Não	0		0	0		419962773
+419964127	census	0	Não	0		0	0		
+419964206	census	0	Não	0		0	0		
+419964236	census	1	Não	0		0	0		419963975
+419964239	census	0	Não	0		0	0		
+419964267	census	0	Não	0		0	0		
+419964299	census	0	Não	0		0	0		
+419964305	census	0	Não	0		0	0		
+419964343	census	0	Sim	2	LOT-0001|LOT-0002	0	0	LOT-0001|LOT-0002	
+419964346	census	1	Não	0		0	0		419962152
+419964358	census	0	Sim	4	LOT-0001|LOT-0002|LOT-0003|LOT-0004	0	0	LOT-0001|LOT-0002|LOT-0003|LOT-0004	
+419964366	census	0	Não	0		0	0		
+419964387	original-outside-census	0	Não	0		0	0		
+419964398	census	0	Não	0		0	0		
+419964402	census	0	Não	0		0	0		
+419964408	census	0	Não	0		0	0		
+419964409	census	0	Não	0		0	0		
+419964413	census	0	Não	0		0	0		
+419964416	census	0	Não	0		0	0		
+419964420	census	0	Não	0		0	0		
+419964426	census	1	Não	0		0	0		419963721
+419964432	census	0	Não	0		0	0		
+419964439	census	0	Não	0		0	0		
+419964443	census	1	Não	0		0	0		419963339
+419964445	census	1	Não	0		0	0		419962414
+419964451	census	0	Não	0		0	0		
+419964468	census	0	Não	0		0	0		
+419964470	census	0	Não	0		0	0		
+419964514	original-outside-census	0	Sim	2	LOT-0001|LOT-0002	0	0	LOT-0001|LOT-0002	
+419964572	original-outside-census	0	Não	0		0	0		
+419964668	original-outside-census	0	Sim	2	LOT-0001|LOT-0002	0	0	LOT-0001|LOT-0002	
+419964777	original-outside-census	1	Não	0		0	0		419960152
+419964787	original-outside-census	0	Sim	2	LOT-0001|LOT-0002	0	0	LOT-0001|LOT-0002	
+419964834	census	1	Sim	2	LOT-0001|LOT-0002	0	0	LOT-0001|LOT-0002	419962544
+419964844	census	0	Não	0		0	0		
+419964988	census	0	Sim	2	LOT-0001|LOT-0002	0	0	LOT-0001|LOT-0002	
+419965017	census	0	Não	0		0	0		
+419965064	census	0	Não	0		0	0		
+419965065	census	0	Não	0		0	0		
+419965072	census	0	Não	0		0	0		
+419965073	census	1	Não	0		0	0		419963344
+419965082	census	0	Não	0		0	0		
+419965084	census	0	Não	0		0	0		
+419965085	census	0	Não	0		0	0		
+419965087	census	0	Não	0		0	0		
+419965088	census	0	Não	0		0	0		
+419965089	census	0	Não	0		0	0		
+419965094	census	0	Não	0		0	0		
+419965120	census	0	Não	0		0	0		
+419965121	census	0	Não	0		0	0		
+419965129	census	0	Não	0		0	0		
+419965134	census	0	Não	0		0	0		
+419965151	census	0	Não	0		0	0		
+419965152	census	0	Não	0		0	0		
+419965153	census	0	Sim	6	LOT-0001|LOT-0002|LOT-0003|LOT-0004|LOT-0005|LOT-0006	0	0	LOT-0001|LOT-0002|LOT-0003|LOT-0004|LOT-0005|LOT-0006	
+419965157	census	0	Não	0		0	0		
+419965168	census	0	Não	0		0	0		
+419965172	census	0	Não	0		0	0		
+419965268	original-outside-census	0	Não	0		0	0		
+419965357	original-outside-census	0	Não	0		0	0		
+419965496	census	0	Não	0		0	0		
+419965505	original-outside-census	0	Não	0		0	0		
+419965535	census	1	Sim	6	LOT-0001|LOT-0002|LOT-0003|LOT-0004|LOT-0005|LOT-0006	0	0	LOT-0001|LOT-0002|LOT-0003|LOT-0004|LOT-0005|LOT-0006	419963577
+419965570	census	0	Não	0		0	0		
+419965584	census	0	Não	0		0	0		
+419965605	original-outside-census	0	Não	0		0	0		
+419965617	census	0	Não	0		0	0		
+419965619	census	1	Não	0		0	0		419963376
+419965625	census	0	Sim	3	LOT-0001|LOT-0002|LOT-0003	0	0	LOT-0001|LOT-0002|LOT-0003	
+419965645	census	0	Não	0		0	0		
+419965646	original-outside-census	0	Não	0		0	0		
+419965655	census	0	Não	0		0	0		
+419965658	census	0	Não	0		0	0		
+419965696	census	1	Não	0		0	0		419962798
+419965714	census	0	Não	0		0	0		
+419965722	census	0	Não	0		0	0		
+419965741	census	0	Não	0		0	0		
+419965744	census	0	Não	0		0	0		
+419965746	census	0	Sim	2	LOT-0001|LOT-0003	0	0	LOT-0001|LOT-0003	
+419965748	census	0	Não	0		0	0		
+419965750	census	0	Não	0		0	0		
+419965762	census	0	Não	0		0	0		
+419965767	census	1	Não	0		0	0		419964777
+419965770	census	0	Não	0		0	0		
+419965772	census	1	Não	0		0	0		419964416
+419965773	census	0	Não	0		0	0		
+419965775	census	1	Não	0		0	0		419964572
+419965781	census	1	Não	0		0	0		419964439
+419965782	census	0	Não	0		0	0		
+419965797	census	0	Não	0		0	0		
+419965804	census	1	Não	0		0	0		419964408
+419965809	census	1	Sim	2	LOT-0001|LOT-0002	0	0	LOT-0001|LOT-0002	419964787
+419965810	census	0	Sim	2	LOT-0001|LOT-0002	0	0	LOT-0001|LOT-0002	
+419965812	census	1	Sim	2	LOT-0001|LOT-0002	0	0	LOT-0001|LOT-0002	419964668
+419965828	census	0	Não	0		0	0		
+419965830	census	0	Não	0		0	0		
+419965846	census	0	Não	0		0	0		
+419965848	original-outside-census	1	Não	0		0	0		419961691
+419965855	census	0	Não	0		0	0		
+419965858	census	1	Não	0		0	0		419965357
+419965956	original-outside-census	1	Não	0		0	0		419962898
+419966060	census	0	Não	0		0	0		
+419966082	census	0	Não	0		0	0		
+419966109	census	1	Não	0		0	0		419962046
+419966110	census	1	Não	0		0	0		419963116
+419966126	original-outside-census	0	Não	0		0	0		
+419966176	original-outside-census	0	Não	0		0	0		
+419966177	census	0	Sim	4	LOT-0001|LOT-0002|LOT-0003|LOT-0004	0	0	LOT-0001|LOT-0002|LOT-0003|LOT-0004	
+419966218	census	0	Não	0		0	0		
+419966253	original-outside-census	0	Não	0		0	0		
+419966268	census	0	Não	0		0	0		
+419966274	census	1	Não	0		0	0		419963755
+419966329	census	0	Não	0		0	0		
+419966338	census	0	Não	0		0	0		
+419966355	census	0	Não	0		0	0		
+419966361	census	0	Não	0		0	0		
+419966391	original-outside-census	0	Não	0		0	0		
+419966392	census	0	Não	0		0	0		
+419966398	original-outside-census	0	Não	0		0	0		
+419966402	census	1	Sim	2	LOT-0001|LOT-0002	0	0	LOT-0001|LOT-0002	419964514
+419966405	original-outside-census	0	Sim	2	LOT-0001|LOT-0002	0	0	LOT-0001|LOT-0002	
+419966413	census	0	Não	0		0	0		
+419966434	census	0	Não	0		0	0		
+419966438	original-outside-census	1	Sim	5	LOT-0001|LOT-0002|LOT-0003|LOT-0004|LOT-0005	0	0	LOT-0001|LOT-0002|LOT-0003|LOT-0004|LOT-0005	419963843
+419966451	census	0	Não	0		0	0		
+419966457	census	0	Não	0		0	0		
+419966458	original-outside-census	1	Não	0		0	0		419965505
+419966471	census	0	Não	0		0	0		
+419966478	census	0	Não	0		0	0		
+419966481	census	0	Não	0		0	0		
+419966495	census	0	Não	0		0	0		
+419966501	census	0	Não	0		0	0		
+419966502	census	0	Sim	5	LOT-0001|LOT-0002|LOT-0003|LOT-0004|LOT-0005	0	0	LOT-0001|LOT-0002|LOT-0003|LOT-0004|LOT-0005	
+419966504	census	0	Não	0		0	0		
+419966511	census	0	Não	0		0	0		
+419966523	census	0	Sim	2	LOT-0001|LOT-0002	0	0	LOT-0001|LOT-0002	
+419966527	census	1	Não	0		0	0		419966126
+419966530	census	0	Não	0		0	0		
+419966535	census	0	Não	0		0	0		
+419966536	census	0	Não	0		0	0		
+419966537	census	0	Não	0		0	0		
+419966540	census	0	Sim	3	LOT-0001|LOT-0002|LOT-0003	0	0	LOT-0001|LOT-0002|LOT-0003	
+419966548	census	0	Não	0		0	0		
+419966549	census	0	Não	0		0	0		
+419966553	census	0	Não	0		0	0		
+419966560	census	0	Não	0		0	0		
+419966563	census	0	Não	0		0	0		
+419966566	census	0	Não	0		0	0		
+419966571	census	0	Não	0		0	0		
+419966572	census	0	Não	0		0	0		
+419966573	census	0	Não	0		0	0		
+419966578	census	0	Não	0		0	0		
+419966629	original-outside-census	0	Não	0		0	0		
+419966760	original-outside-census	0	Não	0		0	0		
+419966783	original-outside-census	0	Não	0		0	0		
+419966848	census	0	Não	0		0	0		
+419966879	original-outside-census	1	Não	0		0	0		419963111
+419966937	original-outside-census	0	Não	0		0	0		
+419966949	census	1	Sim	5	LOT-0005|LOT-0004|LOT-0003|LOT-0002|LOT-0001	0	0	LOT-0001|LOT-0002|LOT-0003|LOT-0004|LOT-0005	419966438
+419966976	census	0	Não	0		0	0		
+419966989	census	0	Não	0		0	0		
+419966997	census	1	Não	0		0	0		419964387
+419967038	census	1	Não	0		0	0		419966760
+419967057	census	0	Não	0		0	0		
+419967078	census	0	Não	0		0	0		
+419967094	census	0	Não	0		0	0		
+419967109	census	0	Não	0		0	0		
+419967113	original-outside-census	1	Não	0		0	0		419964060
+419967126	census	0	Não	0		0	0		
+419967146	census	0	Não	0		0	0		
+419967155	census	0	Não	0		0	0		
+419967156	census	1	Não	0		0	0		419965121
+419967165	census	0	Não	0		0	0		
+419967186	census	1	Não	0		0	0		419965646
+419967196	census	0	Não	0		0	0		
+419967198	census	0	Não	0		0	0		
+419967202	census	0	Não	0		0	0		
+419967216	census	0	Não	0		0	0		
+419967218	census	0	Não	0		0	0		
+419967224	census	0	Não	0		0	0		
+419967230	census	0	Não	0		0	0		
+419967231	census	0	Não	0		0	0		
+419967236	original-outside-census	1	Não	0		0	0		419966783
+419967237	census	0	Não	0		0	0		
+419967238	census	0	Não	0		0	0		
+419967241	census	0	Sim	2	LOT-0001|LOT-0002	0	0	LOT-0001|LOT-0002	
+419967245	census	0	Não	0		0	0		
+419967246	census	1	Não	0		0	0		419963142
+419967253	census	0	Não	0		0	0		
+419967254	census	0	Não	0		0	0		
+419967276	original-outside-census	0	Não	0		0	0		
+419967280	census	0	Não	0		0	0		
+419967283	census	0	Não	0		0	0		
+419967296	census	1	Não	0		0	0		419965830
+419967303	original-outside-census	0	Sim	3	LOT-0003|LOT-0002|LOT-0001	0	0	LOT-0001|LOT-0002|LOT-0003	
+419967470	original-outside-census	1	Não	0		0	0		419967230
+419967597	census	0	Não	0		0	0		
+419967621	census	0	Não	0		0	0		
+419967640	census	0	Não	0		0	0		
+419967663	census	0	Não	0		0	0		
+419967680	original-outside-census	0	Não	0		0	0		
+419967691	census	0	Não	0		0	0		
+419967723	census	1	Não	0		0	0		419966176
+419967784	census	0	Não	0		0	0		
+419967793	census	1	Não	0		0	0		419966879
+419967832	census	0	Não	0		0	0		
+419967874	census	1	Não	0		0	0		419967470
+419967881	census	0	Não	0		0	0		
+419967884	census	0	Não	0		0	0		
+419967898	census	1	Sim	2	LOT-0001|LOT-0002	0	0	LOT-0001|LOT-0002	419966405
+419967913	census	1	Não	0		0	0		419966530
+419967919	census	1	Não	0		0	0		419965605
+419967939	census	1	Não	0		0	0		419965268
+419967944	census	1	Não	0		0	0		419966253
+419967949	census	1	Não	0		0	0		419967680
+419967971	census	0	Não	0		0	0		
+419967979	census	0	Não	0		0	0		
+419967984	census	0	Sim	3	LOT-0001|LOT-0002|LOT-0003	0	0	LOT-0001|LOT-0002|LOT-0003	
+419967997	census	0	Não	0		0	0		
+419968001	census	1	Não	0		0	0		419966391
+419968004	census	1	Não	0		0	0		419966398
+419968136	original-outside-census	0	Não	0		0	0		
+419968316	census	0	Não	0		0	0		
+419968328	census	1	Não	0		0	0		419966458
+419968422	original-outside-census	0	Não	0		0	0		
+419968438	census	0	Não	0		0	0		
+419968497	census	0	Sim	2	LOT-0001|LOT-0002	0	0	LOT-0001|LOT-0002	
+419968509	census	0	Não	0		0	0		
+419968514	census	0	Não	0		0	0		
+419968529	census	0	Sim	2	LOT-0001|LOT-0002	0	0	LOT-0001|LOT-0002	
+419968536	census	0	Não	0		0	0		
+419968559	census	0	Não	0		0	0		
+419968576	census	0	Não	0		0	0		
+419968585	census	0	Sim	3	LOT-0001|LOT-0002|LOT-0003	0	0	LOT-0001|LOT-0002|LOT-0003	
+419968590	census	0	Sim	3	LOT-0001|LOT-0002|LOT-0003	0	0	LOT-0001|LOT-0002|LOT-0003	
+419968593	census	1	Não	0		0	0		419967874
+419968611	census	0	Não	0		0	0		
+419968614	census	0	Sim	2	LOT-0001|LOT-0002	0	0	LOT-0001|LOT-0002	
+419968615	census	0	Não	0		0	0		
+419968616	census	0	Não	0		0	0		
+419968639	census	0	Não	0		0	0		
+419968640	census	0	Não	0		0	0		
+419968651	census	1	Não	0		0	0		419967216
+419968671	census	1	Não	0		0	0		419966501
+419968674	census	0	Sim	2	LOT-0001|LOT-0002	0	0	LOT-0001|LOT-0002	
+419968680	census	0	Não	0		0	0		
+419968716	census	0	Não	0		0	0		
+419968721	census	0	Não	0		0	0		
+419968898	original-outside-census	0	Não	0		0	0		
+419969030	original-outside-census	0	Não	0		0	0		
+419969031	census	0	Não	0		0	0		
+419969033	census	0	Não	0		0	0		
+419969048	census	0	Não	0		0	0		
+419969083	census	1	Não	0		0	0		419965956
+419969089	census	0	Não	0		0	0		
+419969121	census	1	Não	0		0	0		419967276
+419969124	census	1	Não	0		0	0		419966629
+419969133	census	1	Não	0		0	0		419965848
+419969149	census	0	Não	0		0	0		
+419969171	census	0	Não	0		0	0		
+419969179	original-outside-census	0	Sim	2	LOT-0001|LOT-0002	0	0	LOT-0001|LOT-0002	
+419969239	census	0	Não	0		0	0		
+419969266	census	0	Não	0		0	0		
+419969270	census	1	Não	0		0	0		419966937
+419969273	census	0	Não	0		0	0		
+419969279	census	0	Não	0		0	0		
+419969280	census	0	Não	0		0	0		
+419969294	original-outside-census	0	Não	0		0	0		
+419969295	census	0	Não	0		0	0		
+419969305	census	0	Não	0		0	0		
+419969317	census	0	Não	0		0	0		
+419969318	census	0	Não	0		0	0		
+419969320	census	0	Não	0		0	0		
+419969329	census	0	Não	0		0	0		
+419969331	census	0	Não	0		0	0		
+419969334	census	0	Não	0		0	0		
+419969347	census	0	Não	0		0	0		
+419969352	census	0	Sim	2	LOT-0001|LOT-0002	0	0	LOT-0001|LOT-0002	
+419969354	census	0	Não	0		0	0		
+419969359	census	0	Não	0		0	0		
+419969368	census	0	Não	0		0	0		
+419969376	census	0	Não	0		0	0		
+419969396	census	0	Não	0		0	0		
+419969403	census	0	Não	0		0	0		
+419969546	original-outside-census	1	Não	0		0	0		419967113
+419969569	original-outside-census	0	Não	0		0	0		
+419969726	census	1	Não	0		0	0		419967236
+419969761	original-outside-census	0	Não	0		0	0		
+419969788	census	1	Não	0		0	0		419969546
+419969871	original-outside-census	0	Não	0		0	0		
+419969877	census	0	Não	0		0	0		
+419969881	census	0	Não	0		0	0		
+419969884	census	0	Não	0		0	0		
+419969897	census	0	Não	0		0	0		
+419969921	census	0	Não	0		0	0		
+419969923	census	0	Não	0		0	0		
+419969924	census	1	Não	0		0	0		419968422
+419969928	census	0	Não	0		0	0		
+419969934	census	0	Não	0		0	0		
+419969948	census	0	Não	0		0	0		
+419969979	census	0	Não	0		0	0		
+419969981	census	0	Não	0		0	0		
+419969993	census	0	Não	0		0	0		
+419970008	census	0	Não	0		0	0		
+419970019	census	0	Não	0		0	0		
+419970027	census	0	Sim	3	LOT-0001|LOT-0002|LOT-0003	0	0	LOT-0001|LOT-0002|LOT-0003	
+419970117	original-outside-census	1	Não	0		0	0		419968721
+419970198	original-outside-census	0	Não	0		0	0		
+419970201	census	0	Não	0		0	0		
+419970284	census	0	Sim	3	LOT-0001|LOT-0002|LOT-0003	0	0	LOT-0001|LOT-0002|LOT-0003	
+419970342	census	1	Sim	3	LOT-0001|LOT-0002|LOT-0003	0	0	LOT-0001|LOT-0002|LOT-0003	419967303
+419970357	census	0	Não	0		0	0		
+419970488	census	0	Não	0		0	0		
+419970493	census	0	Não	0		0	0		
+419970504	census	0	Não	0		0	0		
+419970529	census	0	Não	0		0	0		
+419970534	census	0	Não	0		0	0		
+419970536	census	1	Não	0		0	0		419969294
+419970542	census	0	Não	0		0	0		
+419970546	census	0	Não	0		0	0		
+419970559	census	1	Não	0		0	0		419969030
+419970565	census	0	Não	0		0	0		
+419970580	census	1	Sim	2	LOT-0001|LOT-0002	0	0	LOT-0001|LOT-0002	419969179
+419970594	census	0	Não	0		0	0		
+419970605	census	0	Não	0		0	0		
+419970606	census	0	Não	0		0	0		
+419970608	census	1	Não	0		0	0		419968136
+419970624	census	0	Não	0		0	0		
+419970625	census	0	Não	0		0	0		
+419970629	census	0	Não	0		0	0		
+419970645	census	0	Não	0		0	0		
+419970649	census	0	Não	0		0	0		
+419970652	census	1	Não	0		0	0		419969569
+419970704	census	0	Não	0		0	0		
+419970840	census	0	Não	0		0	0		
+419970914	census	0	Não	0		0	0		
+419970960	census	0	Não	0		0	0		
+419970964	census	0	Não	0		0	0		
+419971042	census	0	Não	0		0	0		
+419971078	census	0	Sim	3	LOT-0001|LOT-0002|LOT-0003	0	0	LOT-0001|LOT-0002|LOT-0003	
+419971124	census	0	Não	0		0	0		
+419971160	original-outside-census	1	Não	0		0	0		419969761
+419971169	census	1	Não	0		0	0		419968898
+419971173	census	0	Não	0		0	0		
+419971183	census	0	Não	0		0	0		
+419971191	census	0	Não	0		0	0		
+419971212	census	0	Não	0		0	0		
+419971226	census	0	Não	0		0	0		
+419971230	census	1	Não	0		0	0		419971160
+419971234	census	0	Não	0		0	0		
+419971245	census	0	Não	0		0	0		
+419971248	census	1	Não	0		0	0		419969871
+419971249	census	1	Não	0		0	0		419970117
+419971250	census	1	Não	0		0	0		419969329
+419971274	census	1	Não	0		0	0		419970198
+419971291	census	0	Não	0		0	0		
+419971298	census	0	Não	0		0	0		

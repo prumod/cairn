@@ -1,0 +1,40 @@
+section headings: 22
+lote-list validation mismatches (entries vs 'Nº: LOT' lines vs block ids): 0
+documents parsed: 566 census: 473 originals: 93
+alterações: 113 header-vs-tsv mismatches: []
+pairs: 109
+flag O/A (Sim): 12 12
+pairs with lotes on either side: 12
+count_changed: 0  nid_set_changed: 0
+num_common total: 42  num_desc_differs: 0  pairs with any: 0
+num_valor_differs: 0  num_cpv_differs: 0  num_place_differs: 7  num_prazo_differs: 0
+desc_matched: 41  desc_renumbered: 0  pairs renumbered: 0
+desc_dropped: 0  desc_added: 0
+desc valor/cpv/place/prazo differs: 0 0 7 0
+pairs with any lote change: 2
+nonid entries O/A: 0 0  nodesc O/A: 0 0
+dup desc O/A: 1 1
+secoes counts:
+    76 Condições de Apresentação
+    9 Alteração
+    5 Acesso às peças do concurso, pedidos de participação e apresentação das propostas
+    3 Objeto do contrato
+    2 Processo; Objeto do contrato; Condições de Apresentação
+    2 Condições de Apresentação; Alteração
+    2 Aviso
+    1 Técnicas; Condições de Apresentação
+    1 Condições de Apresentação; Condições do Contrato
+    1 Condições de Apresentação; Outros Requisitos
+    1 Local da execução do contrato
+    1 Processo
+    1 Documentos de habilitação
+    1 O procedimento a que este anúncio diz respeito também é publicitado no Jornal Oficial da União Europeia?; Condições de …
+    1 Condições de Apresentação; Identificação do(s) autor(es) do anúncio
+    1 Processo; Objeto do contrato
+    1 Objeto do contrato; Condições de Apresentação; Processo
+motivo counts:
+    47 Informações atualizadas
+    45 Correção pelo adquirente
+    11 Correção pelo editor
+    3 Correção pelo eSender
+    3 Informações agora disponíveis

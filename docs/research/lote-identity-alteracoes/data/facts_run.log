@@ -1,0 +1,27 @@
+== scope
+documents: 566 alterações: 113 lote-flag Sim: 55 (census 43 originals 12 )
+alterações with lotes: 12 ['419961681', '419963577', '419964834', '419965535', '419965809', '419965812', '419966402', '419966438', '419966949', '419967898', '419970342', '419970580']
+lote counts across multi docs: [(2, 24), (3, 12), (4, 6), (5, 7), (6, 6)]
+== bullet 4: ordering and numbering in all lote-bearing documents
+docs: 55 list ascending: 51 ids exactly LOT-0001..n in list order: 50 list fully descending: 4 non-contiguous ids: 1
+non-contiguous examples: ['419965746']
+LOT-0001 appears in 55 anúncio/alteração versions; LOT-0001 in multi-lote versions only
+pairs with lotes whose list order differs (same ids): 5
+   alt 419961681 orig 419958563 O: LOT-0001|LOT-0002|LOT-0003|LOT-0004|LOT-0005 A: LOT-0005|LOT-0004|LOT-0003|LOT-0002|LOT-0001
+   alt 419965535 orig 419963577 O: LOT-0006|LOT-0005|LOT-0004|LOT-0003|LOT-0002|LOT-0001 A: LOT-0001|LOT-0002|LOT-0003|LOT-0004|LOT-0005|LOT-0006
+   alt 419966949 orig 419966438 O: LOT-0001|LOT-0002|LOT-0003|LOT-0004|LOT-0005 A: LOT-0005|LOT-0004|LOT-0003|LOT-0002|LOT-0001
+   alt 419970342 orig 419967303 O: LOT-0003|LOT-0002|LOT-0001 A: LOT-0001|LOT-0002|LOT-0003
+   alt 419963577 orig 419960426 O: LOT-0001|LOT-0002|LOT-0003|LOT-0004|LOT-0005|LOT-0006 A: LOT-0006|LOT-0005|LOT-0004|LOT-0003|LOT-0002|LOT-0001
+== bullet 2 and 1: restatement and changes in the 10 lote-bearing alterações
+lotes restated in those alterações: 42 fields present: {'desc': 42, 'valor': 42, 'cpv': 42, 'place': 42, 'prazo': 42}
+alterações (all pairs) whose 'Descrição das Alterações' mentions 'lote': 0
+alterações (all pairs) whose 'Descrição das Alterações' is present: 100
+== bullet 3: identifiers beyond the number
+'Identificador do Lote' occurrences: 697
+lote-bearing versions where two lotes share the same Descrição text: 4 ['419966405', '419967898', '419968614', '419968674']
+    419967898 [('LOT-0001', '1.050.000,00 EUR', 'PT200 / Ponta Delgada / Ponta Delgada / Portugal / Região Au'), ('LOT-0002', '1.300.000,00 EUR', 'PT200 / Portugal / Praia da Vitória / Praia da Vitória / Reg')]
+    419968614 [('LOT-0001', '50.000,00 EUR', 'Câmara de Lobos / Câmara de Lobos / PT300 / PT300 / Portugal'), ('LOT-0002', '50.000,00 EUR', 'Câmara de Lobos / Câmara de Lobos / Machico / Machico / PT30')]
+    419968674 [('LOT-0001', '400.000,00 EUR', 'Fonte da Telha / Freguesia de Sesimbra (Castelo) / PT1A0 / P'), ('LOT-0002', '250.000,00 EUR', 'Barreiro / PT1A0 / Portugal / Setúbal / União das Freguesias')]
+    419966405 [('LOT-0001', '1.050.000,00 EUR', 'PT200 / Ponta Delgada / Ponta Delgada / Portugal / Região Au'), ('LOT-0002', '1.300.000,00 EUR', 'PT200 / Portugal / Praia da Vitória / Praia da Vitória / Reg')]
+== other procedure-level references (not per lote)
+multi-lote versions with 'Número de referência interna': 55 of 55
