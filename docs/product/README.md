@@ -21,7 +21,7 @@ O wireframe interativo mostra só as funcionalidades de Later e Maybe. As de Now
 - **Maybe:** ideias que precisam de validação antes de compromisso de produção.
 - **Never:** exclusões deliberadas do produto, não apenas de uma fase.
 
-Now tem 6 funcionalidades (N01–N04, N13 e N14); Later tem 35 (L01–L16 e L18–L36); Maybe tem 36 (M01 e M03–M37); Never tem 3 (X01–X03).
+Now tem 6 funcionalidades (N01–N04, N13 e N14); Later tem 36 (L01–L16 e L18–L37); Maybe tem 36 (M01 e M03–M37); Never tem 3 (X01–X03).
 
 ## Correspondência de identificadores
 
