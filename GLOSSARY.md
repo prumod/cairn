@@ -130,9 +130,15 @@ _Fonte_: [T3 [01:28:08]](docs/product/transcriptions/transcricao_3_gestao_obras.
 Os comentários e as citações, da pessoa ou do assistente, que seguem com os pedidos de uma conversa. Os lotes só selecionados não fazem parte dele.
 _Evitar_: contexto (sem mais), seleção (no sentido de contexto)
 
+**Contexto por enviar**:
+Os comentários e as citações preparados que ainda não seguiram com um pedido. São da pessoa, só ela os vê, e mantêm-se ao recarregar a página e numa «Nova conversa». Só eles se editam ou apagam.
+_Evitar_: rascunho, itens para enviar
+_Fonte_: [PRD #104](https://github.com/prumod/cairn/issues/104), história 32 e regra 19; [Where do unsent comments and citations live?](https://github.com/prumod/cairn/issues/200)
+
 **Reverter**:
-Apagar uma mensagem da pessoa e as seguintes, com os comentários e as citações que o assistente nelas escreveu. Não desfaz as alterações de dados.
+Editar uma mensagem da pessoa e voltar a enviá-la: o texto da mensagem volta ao campo do pedido e os seus comentários e citações voltam ao contexto por enviar; as mensagens seguintes apagam-se, com tudo o que seguiu com elas e com os comentários e as citações que o assistente escreveu nas respostas apagadas. Não desfaz as alterações de dados.
 _Evitar_: desfazer (no sentido de reverter), rollback
+_Fonte_: [PRD #104](https://github.com/prumod/cairn/issues/104), história 46 e regra 18; [Where do unsent comments and citations live?](https://github.com/prumod/cairn/issues/200)
 
 O estatuto de cada fonte (oficial ou não, versão e limites) está em [Fontes](docs/product/fontes.md).
 
