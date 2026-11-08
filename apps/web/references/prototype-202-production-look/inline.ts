@@ -3,8 +3,8 @@
 import { readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
-const dist = join(import.meta.dir, "dist");
-const { render } = await import(join(import.meta.dir, "dist-ssr", "main.js"));
+const dist = join(import.meta.dirname, "dist");
+const { render } = await import(join(import.meta.dirname, "dist-ssr", "main.js"));
 let html = readFileSync(join(dist, "index.html"), "utf8");
 
 html = html.replace(
