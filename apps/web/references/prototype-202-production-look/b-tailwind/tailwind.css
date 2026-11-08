@@ -1,0 +1,20 @@
+/* In production: @import "tailwindcss"; (preflight left out here so it
+   does not restyle the other two variants on the same page) */
+@import "tailwindcss/theme" layer(theme);
+@import "tailwindcss/utilities" layer(utilities);
+@source "./";
+
+/* Expose final-visual's tokens as Tailwind colours: bg-panel2, text-muted… */
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-panel: var(--panel);
+  --color-panel2: var(--panel2);
+  --color-line: var(--line);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-onaccent: var(--onaccent);
+  --color-amber: var(--amber);
+  --color-accent-soft: var(--accentSoft);
+  --font-mono: var(--font-mono);
+}

@@ -1,0 +1,62 @@
+/* final-visual's tokens, unchanged. `[data-theme]` on <html> picks the theme;
+   without it the system preference decides. */
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+  --canvas: #edf0f4;
+  --panel: #ffffff;
+  --panel2: #f1f4f8;
+  --line: #d3dae3;
+  --fg: #17202b;
+  --muted: #566474;
+  --accent: #1d5fd6;
+  --onaccent: #ffffff;
+  --amber: #b45309;
+  --accentSoft: #e4edfc;
+  --amberSoft: #fbebd7;
+  --danger: #b42318;
+  --onDanger: #ffffff;
+  --shadow: rgba(23, 32, 43, 0.18);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --canvas: #06080b;
+    --panel: #121923;
+    --panel2: #1a222e;
+    --line: #2a3646;
+    --fg: #e1e8f0;
+    --muted: #8e9cae;
+    --accent: #5ba8f5;
+    --onaccent: #04121f;
+    --amber: #f5b041;
+    --accentSoft: #142538;
+    --amberSoft: #33270f;
+    --danger: #f2706a;
+    --onDanger: #1a0605;
+    --shadow: rgba(0, 0, 0, 0.6);
+  }
+}
+[data-theme="dark"] {
+  color-scheme: dark;
+  --canvas: #06080b;
+  --panel: #121923;
+  --panel2: #1a222e;
+  --line: #2a3646;
+  --fg: #e1e8f0;
+  --muted: #8e9cae;
+  --accent: #5ba8f5;
+  --onaccent: #04121f;
+  --amber: #f5b041;
+  --accentSoft: #142538;
+  --amberSoft: #33270f;
+  --danger: #f2706a;
+  --onDanger: #1a0605;
+  --shadow: rgba(0, 0, 0, 0.6);
+}
+/* Fonts are the same in both themes. */
+:root,
+[data-theme] {
+  --font-sans: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}

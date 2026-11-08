@@ -1,0 +1,77 @@
+.lote-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 4px 14px;
+  padding: 8px 10px 8px 34px;
+  border-bottom: 1px solid var(--line);
+  cursor: pointer;
+}
+.lote-row:hover {
+  background: var(--panel2);
+}
+.lote-row--selected {
+  background: var(--accentSoft);
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+.lote-row__check {
+  position: absolute;
+  left: 11px;
+  top: 10px;
+  width: 15px;
+  height: 15px;
+  display: grid;
+  place-items: center;
+  border-radius: 4px;
+  background: var(--accent);
+  color: var(--onaccent);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  visibility: hidden;
+}
+.lote-row--selected .lote-row__check {
+  visibility: visible;
+}
+.lote-row__title {
+  font-weight: 600;
+}
+.lote-row__sub {
+  color: var(--muted);
+  font-size: 11.5px;
+}
+.lote-row__side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.lote-row__valor {
+  font-weight: 600;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+.lote-row__prazo {
+  color: var(--muted);
+  font-size: 11.5px;
+}
+.lote-row__prazo-date {
+  font-family: var(--font-mono);
+}
+.due {
+  display: inline-block;
+  min-width: 54px;
+  margin-left: 8px;
+  text-align: right;
+  font-size: 11px;
+  color: var(--muted);
+}
+.due--soon {
+  color: var(--amber);
+  font-weight: 600;
+}
+.due--past {
+  font-style: italic;
+}

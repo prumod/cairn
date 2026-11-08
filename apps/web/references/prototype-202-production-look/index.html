@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="pt-PT">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PROTOTYPE · production look</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        font-size: 13px;
+        line-height: 1.4;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      .pv {
+        margin: 0;
+        padding: 0;
+      }
+      .pv h1 {
+        font-size: 18px;
+        margin: 0 0 4px;
+      }
+      .pv h2 {
+        font-size: 15px;
+        margin: 0 0 8px;
+      }
+      .pv-note {
+        margin: 0 0 16px;
+        color: var(--muted-foreground);
+      }
+      .pv-variant {
+        margin: 0 0 28px;
+        padding: 16px;
+        background: var(--card);
+        color: var(--card-foreground);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+      }
+      .pv-pair {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      .pv-panel {
+        background: var(--panel);
+        color: var(--fg);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        overflow: hidden;
+        font: 13px/1.4 var(--font-sans);
+        font-feature-settings:
+          "tnum" 1,
+          "cv11" 1;
+      }
+      .pv-label {
+        font: 600 11px/1 system-ui;
+        padding: 6px 10px;
+        color: var(--muted);
+        background: var(--canvas);
+      }
+      .pv-grp {
+        display: flex;
+        justify-content: space-between;
+        padding: 6px 10px 6px 12px;
+        background: var(--panel2);
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        font-size: 12px;
+        font-weight: 600;
+      }
+      .pv-src {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-top: 12px;
+      }
+      .pv-src figure {
+        margin: 0;
+        min-width: 0;
+      }
+      .pv-src figcaption {
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+      .pv-src pre {
+        margin: 0;
+        max-height: 420px;
+        overflow: auto;
+        padding: 8px;
+        background: var(--code-background);
+        color: var(--foreground);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        font:
+          11px/1.45 "IBM Plex Mono",
+          ui-monospace,
+          monospace;
+        white-space: pre;
+      }
+      @media (max-width: 800px) {
+        .pv-pair,
+        .pv-src {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="./client.tsx"></script>
+  </body>
+</html>
