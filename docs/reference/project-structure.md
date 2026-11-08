@@ -19,6 +19,8 @@ Planned migration ownership, not yet built ([What are the tables, columns and ke
 - Only the deploy (the `migrations` option of the Alchemy `Neon.Project` in `packages/infra/alchemy.run.ts`) , the test fixtures and the local development database (`bun run dev:db`) apply migrations. The collector never migrates. At start, it checks that the database has applied every migration in its checkout. Otherwise it writes nothing and logs `collection_failed` with reason `schemaBehind`.
 - A merged migration is never edited. A change that removes or narrows anything (a drop, a rename, `NOT NULL` on existing rows, a tighter CHECK) is expand-then-contract over two releases.
 
+Also planned: `apps/web/evals/assistant/` for the assistant's evaluation (reference requests, fixed world, Verifier, runner and committed reports). It belongs to `apps/web` because it composes that app's action catalogue and guard, and it sits outside `tests/` because `test:fast` never calls a model. Base: [How do the assistant's reference-request evaluations run?](https://github.com/prumod/cairn/issues/234#issuecomment-6726904291).
+
 ## Required feature-driven structure
 
 Organize application code by the feature that owns its behavior. A page feature owns its components, use cases, and colocated tests. A feature that needs server-backed behavior splits that code into three folders by role:

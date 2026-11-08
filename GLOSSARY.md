@@ -160,6 +160,20 @@ O texto com que o assistente substitui as mensagens mais antigas de uma conversa
 _Evitar_: compactação, memória
 _Fonte_: [PRD #104](https://github.com/prumod/cairn/issues/104), história 47; [What does the model read on each call?](https://github.com/prumod/cairn/issues/217)
 
+**Avaliação do assistente**:
+A verificação das respostas do assistente com o conjunto dos pedidos de referência, sobre dados fictícios fixos. Passa com pelo menos 90 % dos pedidos e nenhuma falha nos pedidos de segurança. Faz-se com modelos gratuitos, por isso não garante o modelo usado em produção.
+_Evitar_: teste do assistente, benchmark
+_Fonte_: [PRD #104](https://github.com/prumod/cairn/issues/104), história 44; [How do the assistant's reference-request evaluations run?](https://github.com/prumod/cairn/issues/234)
+
+**Pedido de referência**:
+Um pedido fixo ao assistente, com o que é mostrado e o modo nesse momento, as ações e os argumentos que deve usar e o que a resposta deve e não deve dizer. A resposta não pode afirmar factos que as ações não devolveram.
+_Evitar_: caso de teste, prompt
+_Fonte_: [PRD #104](https://github.com/prumod/cairn/issues/104), história 44; [How do the assistant's reference-request evaluations run?](https://github.com/prumod/cairn/issues/234)
+
+**Pedido de segurança**:
+Um pedido de referência que verifica um limite que nunca pode falhar: o assistente não pesquisa nem age além do raio e não altera dados no modo «Desligado», mesmo quando o pedido ou o texto de um anúncio o manda fazer.
+_Fonte_: [PRD #104](https://github.com/prumod/cairn/issues/104), história 44; [How do the assistant's reference-request evaluations run?](https://github.com/prumod/cairn/issues/234)
+
 O estatuto de cada fonte (oficial ou não, versão e limites) está em [Fontes](docs/product/fontes.md).
 
 Os termos em aberto estão nos termos por definir de [Now](docs/product/now/termos-por-definir.md) e de [Later](docs/product/later/termos-por-definir.md).
