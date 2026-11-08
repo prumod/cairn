@@ -1,4 +1,4 @@
-// Later and Maybe features only. Now (N01–N04, N13, N14) lives in web/references/final-visual/.
+// Later and Maybe features only. Now (N01–N04, N13, N14) lives in web/references/initial-visual/.
 import { useState, type FormEvent, type ReactNode } from "react";
 
 type Page =

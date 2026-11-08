@@ -86,7 +86,7 @@ apps/web/
   src/routes/                         # TanStack Start UI and server-handler routes
   src/pages/<feature>/                # page, useCases/, domain/, and infra/ code
   src/shared/<module>/                # reusable client modules
-  src/style.css                       # the one stylesheet: Tailwind, final-visual's tokens, theme, base rules
+  src/style.css                       # the one stylesheet: Tailwind, initial-visual's tokens, theme, base rules
   src/server/modules/<domain>/        # server capabilities shared across feature/route consumers
   src/server/shared/<module>/         # server-only support
   tests/acceptance/integration/       # Vitest bindings of root .feature contracts (*.feature.test.ts)
@@ -95,7 +95,7 @@ apps/web/
   tests/acceptance/e2e/               # Playwright-BDD step bindings
   references/                         # reference designs and prototypes, outside the app
     interactive-wireframe.tsx         #   wireframe of the Later and Maybe features
-    final-visual/index.html           #   approved look of Now, light and dark (never edited)
+    initial-visual/index.html           #   starting look of Now, light and dark (never edited)
   dist/                               # generated Worker entry and client assets
 packages/
   auth/src/                           # Better Auth and provider configuration

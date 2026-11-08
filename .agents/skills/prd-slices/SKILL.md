@@ -14,7 +14,7 @@ Read the design issue and its parent PRD issue, with comments. Read `.rpi/<slug>
 
 ## 2. Draft tracer-bullet slices
 
-Each slice is a narrow, complete path through every layer a behavior needs: domain, persistence, server, the UI that replicates its part of `final-visual/`, and its acceptance scenarios. A finished slice is demoable or verifiable on its own and fits in one fresh context window. Order a prefactoring slice first when the design calls for one. A wide mechanical change that cannot land green in parts is one slice.
+Each slice is a narrow, complete path through every layer a behavior needs: domain, persistence, server, the UI that starts from its part of `initial-visual/`, and its acceptance scenarios. A finished slice is demoable or verifiable on its own and fits in one fresh context window. Order a prefactoring slice first when the design calls for one. A wide mechanical change that cannot land green in parts is one slice.
 
 For each slice, determine:
 
@@ -46,7 +46,7 @@ Design: #<design>. PRD: #<prd>, stories <numbers>.
 ## Acceptance criteria
 
 - [ ] Scenario `<feature file>: <scenario>` passes
-- [ ] The UI matches `final-visual/` for <screens or states>
+- [ ] Screenshots of <screens or states>, light and dark, starting from `initial-visual/`, approved in the pull request
 
 ## Blocked by
 
