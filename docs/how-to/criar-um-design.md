@@ -16,8 +16,8 @@ Este guia mostra como criar ou renovar o design de um ecrã, desde a direção v
 
 1. Siga os passos 1 a 4 de [Como desenvolver uma funcionalidade](desenvolver-uma-funcionalidade.md).
 2. Construa os ecrãs principais e o percurso do utilizador numa pasta com o nome do estado em `apps/web/references/`, sem detalhe visual. As funcionalidades de Later e Maybe ficam no wireframe `apps/web/references/interactive-wireframe.tsx`.
-3. Valide o protótipo com o sénior ou o programador intermédio, na Issue. Depois evolua-o para `ui-prototype/` e `final-visual/`, apagando cada versão anterior (consulte o [método de evolução](../product/system/prototype.md#método-de-evolução)).
-4. Replique o `final-visual/` exatamente nas páginas em `apps/web/src/pages/`, com utilitários Tailwind sobre os tokens de `apps/web/src/style.css`. Siga a secção «Styling» de [`CODING_STANDARDS.md`](../../CODING_STANDARDS.md#styling).
+3. Valide o protótipo com o sénior ou o programador intermédio, na Issue. Depois evolua-o para `ui-prototype/` e `initial-visual/`, apagando cada versão anterior (consulte o [método de evolução](../product/system/prototype.md#método-de-evolução)).
+4. Parta do `initial-visual/` nas páginas em `apps/web/src/pages/` e altere o aspeto onde o PRD ou o design técnico o exigem, com utilitários Tailwind sobre os tokens de `apps/web/src/style.css`. Siga a secção «Styling» de [`CODING_STANDARDS.md`](../../CODING_STANDARDS.md#styling).
 5. Siga os passos 6 a 10 do mesmo guia. Inclua capturas de ecrã na Pull Request.
 
 O resultado é uma Pull Request com o novo design implementado e capturas de ecrã para revisão.

@@ -8,11 +8,11 @@ disable-model-invocation: true
 
 Second step of the PRD workflow: `prd-research` → `prd-design` → `prd-slices` → `implement-spec`; work that fits one pull request skips `prd-slices`.
 
-The design says how the system delivers the PRD's stories and replicates `apps/web/references/final-visual/`. It never changes product behavior. When the design reveals a product gap or contradiction, list it under **PRD changes** in your report, with the story number, so the user applies it to the PRD and `final-visual/`. Continue with the parts it does not block.
+The design says how the system delivers the PRD's stories, starting from the look of `apps/web/references/initial-visual/`. It never changes product behavior. When the design reveals a product gap or contradiction, list it under **PRD changes** in your report, with the story number, so the user applies it to the PRD and `initial-visual/`. Continue with the parts it does not block.
 
 ## 1. Load context
 
-Read in full: `.rpi/<slug>/research.md` (when it is missing, run `prd-research` first), the PRD issue with comments, the scoped part of `final-visual/`, [`CODING_STANDARDS.md`](../../../CODING_STANDARDS.md), [project structure](../../../docs/reference/project-structure.md), and the ADRs that touch the area. Investigate factual gaps in the code yourself and update `research.md`.
+Read in full: `.rpi/<slug>/research.md` (when it is missing, run `prd-research` first), the PRD issue with comments, the scoped part of `initial-visual/`, [`CODING_STANDARDS.md`](../../../CODING_STANDARDS.md), [project structure](../../../docs/reference/project-structure.md), and the ADRs that touch the area. Investigate factual gaps in the code yourself and update `research.md`.
 
 Write the skeleton of `.rpi/<slug>/design.md`, in English: links to the PRD and the stories in scope, then empty **System design**, **Program design**, **Safeguards**, and **Decisions** sections.
 

@@ -20,7 +20,7 @@ Incorpora a transcrição N (`docs/product/transcriptions/<file>`) nos documento
 
 ## Mudanças em Now
 
-Decisões sobre as capacidades Now (N01–N04, N13, N14) ou propostas de passagem a Now. Não foram aplicadas: o PRD é a issue #104 e o protótipo está em `apps/web/references/final-visual/`.
+Decisões sobre as capacidades Now (N01–N04, N13, N14) ou propostas de passagem a Now. Não foram aplicadas: o PRD é a issue #104 e o protótipo está em `apps/web/references/initial-visual/`.
 
 - <decisão> (TN [hh:mm:ss])
 

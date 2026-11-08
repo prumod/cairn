@@ -28,7 +28,7 @@ Create or update exactly one pull request for the current branch. Keep the descr
    - Get repository metadata with `gh repo view --json owner,name`.
    - Derive a ticket link only when it is evident from the branch name, PR title, commits, or linked issue; otherwise omit it.
    - Identify user-facing behavior, implementation choices, breaking changes, verification evidence, and whether the PR changes the project's UI.
-   - When the work comes from a spec issue (a slice, a design, or PRD stories), read it, its design issue, and the PRD stories it names. Compare actual changes against the PRD stories, the approved design, and `apps/web/references/final-visual/`; a PR description does not approve consequential deviations.
+   - When the work comes from a spec issue (a slice, a design, or PRD stories), read it, its design issue, and the PRD stories it names. Compare actual changes against the PRD stories, the approved design, and `apps/web/references/initial-visual/`; a PR description does not approve consequential deviations.
 
    **Done:** every changed file is accounted for in the PR description, and the PR is classified as UI-changing or non-UI-changing.
 

@@ -16,7 +16,7 @@ Start every worker with a fresh context. Keep communication with workers sparse:
 
 ## Steps
 
-1. **Read the task graph.** Read the spec and every ticket with comments, the design issue and PRD stories they reference, and, for tickets that deliver UI, the part of `apps/web/references/final-visual/` they replicate.
+1. **Read the task graph.** Read the spec and every ticket with comments, the design issue and PRD stories they reference, and, for tickets that deliver UI, the part of `apps/web/references/initial-visual/` they start from.
 
 2. **Create the integration branch** from current `origin/main`. When resuming, use the existing integration branch instead: tickets merged into it are done unless something shows otherwise, and each unmerged ticket's worker is resumed or restarted from the branch tip. Continue from the step the branch has reached.
 
@@ -28,7 +28,7 @@ Start every worker with a fresh context. Keep communication with workers sparse:
    - confirms its worktree is based on the integration branch tip, and resets onto it if not;
    - runs `scripts/use-github-identity.sh <login>` with the login the integration branch commits use;
    - calls the Skill tool with "hvtdd" to drive its ticket's approved scenarios to green;
-   - replicates `final-visual/` exactly for its UI, with production services instead of fictitious data and simulated actions ([evolution method](../../../docs/product/system/prototype.md#produção--réplica-exata-do-final-visual));
+   - starts its UI from `initial-visual/`, changing the look where the PRD or the design needs it, with production services instead of fictitious data and simulated actions ([evolution method](../../../docs/product/system/prototype.md#produção--parte-do-initial-visual));
    - writes the ADRs its ticket notes and updates the documentation [`docs/agents/documentation.md`](../../../docs/agents/documentation.md) requires;
    - stops before an irreversible action until a fresh-context, read-only review of its safeguards is recorded;
    - merges the integration branch tip into its branch and passes `bun run check` before reporting done.
@@ -39,9 +39,9 @@ Start every worker with a fresh context. Keep communication with workers sparse:
 
 8. **Review.** Call the Skill tool with "code-review" on the integration branch against `origin/main`. Fix every finding in a single fresh implementer worker, merge it, and pass `bun run check`.
 
-9. **Manual checks.** Collect the acceptance criteria that need human judgment, such as matching `final-visual/`, from every ticket. Ask the user for those specific checks on the integration branch and wait. Fix reported issues in a fresh implementer worker and ask again.
+9. **Manual checks.** Collect the acceptance criteria that need human judgment, such as approving the screenshots of each changed screen in light and dark, from every ticket. Ask the user for those specific checks on the integration branch and wait. Fix reported issues in a fresh implementer worker and ask again.
 
-10. **Finish.** When the integration branch completes the replication of `final-visual/`, delete `apps/web/references/final-visual/` in the same branch. Call the Skill tool with "prd-describe-pr" to describe the pull request; it closes the spec and every ticket. Mark the pull request ready for review.
+10. **Finish.** When the integration branch covers every Now capability `initial-visual/` shows, delete `apps/web/references/initial-visual/` in the same branch. Call the Skill tool with "prd-describe-pr" to describe the pull request; it closes the spec and every ticket. Mark the pull request ready for review.
 
 11. **Clean up** every worker worktree.
 

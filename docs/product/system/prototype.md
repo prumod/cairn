@@ -2,7 +2,7 @@
 
 ## Objetivo e estatuto
 
-Representar a experiência completa do utilizador antes de implementar o backend e, depois, replicá-la exatamente num frontend de produção. O protótipo interativo permite rever o que cada pessoa vê, introduz, altera e faz, e usar essa experiência para compreender abstrações, responsabilidades e estruturas de dados futuras. Ecrãs e tipos de frontend não se convertem automaticamente em tabelas de base de dados.
+Representar a experiência completa do utilizador antes de implementar o backend e, depois, partir dela num frontend de produção. O protótipo interativo permite rever o que cada pessoa vê, introduz, altera e faz, e usar essa experiência para compreender abstrações, responsabilidades e estruturas de dados futuras. Ecrãs e tipos de frontend não se convertem automaticamente em tabelas de base de dados.
 
 Este documento regista o âmbito acordado, o método de evolução e as regras de cada estado. React no Vite existente é a abordagem recomendada, não uma arquitetura de backend aprovada.
 
@@ -10,13 +10,13 @@ Este documento regista o âmbito acordado, o método de evolução e as regras d
 
 O wireframe interativo mostra só as funcionalidades de [Later](../later/funcionalidades.md) e [Maybe](../maybe/funcionalidades.md). As funcionalidades de [Now](https://github.com/prumod/cairn-web/issues/104) evoluem por estados, do protótipo de UX à produção. O nome da pasta ou do ficheiro diz em que estado está a funcionalidade.
 
-| Estado                        | Onde                                                                                                      | Funcionalidades | Passa ao estado seguinte quando                                                         |
-| ----------------------------- | --------------------------------------------------------------------------------------------------------- | --------------- | --------------------------------------------------------------------------------------- |
-| Wireframe interativo          | [`apps/web/references/interactive-wireframe.tsx`](../../../apps/web/references/interactive-wireframe.tsx) | Later e Maybe   | A funcionalidade passa a Now: a sua parte sai do wireframe e começa em `ux-prototype/`. |
-| `ux-prototype` (apagado)      | Apagado. A última versão está no histórico do Git, em `apps/web/references/prototype-discovery/`.         | Now             | Passou diretamente a `final-visual`.                                                    |
-| `ui-prototype` (saltado)      | Nunca criada.                                                                                             | —               | —                                                                                       |
-| `final-visual` (estado atual) | [`apps/web/references/final-visual/`](../../../apps/web/references/final-visual/)                         | Now             | A aparência final está aprovada.                                                        |
-| Produção (próximo passo)      | `apps/web/src/`                                                                                           | Now             | —                                                                                       |
+| Estado                          | Onde                                                                                                      | Funcionalidades | Passa ao estado seguinte quando                                                         |
+| ------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------- | --------------------------------------------------------------------------------------- |
+| Wireframe interativo            | [`apps/web/references/interactive-wireframe.tsx`](../../../apps/web/references/interactive-wireframe.tsx) | Later e Maybe   | A funcionalidade passa a Now: a sua parte sai do wireframe e começa em `ux-prototype/`. |
+| `ux-prototype` (apagado)        | Apagado. A última versão está no histórico do Git, em `apps/web/references/prototype-discovery/`.         | Now             | Passou diretamente a `initial-visual`.                                                  |
+| `ui-prototype` (saltado)        | Nunca criada.                                                                                             | —               | —                                                                                       |
+| `initial-visual` (estado atual) | [`apps/web/references/initial-visual/`](../../../apps/web/references/initial-visual/)                     | Now             | A aparência inicial está aprovada.                                                      |
+| Produção (próximo passo)        | `apps/web/src/`                                                                                           | Now             | —                                                                                       |
 
 Regras:
 
@@ -40,19 +40,19 @@ Em Now este estado foi concluído e a pasta foi apagada; a última versão está
 
 ### `ui-prototype` — interface
 
-Em Now, este estado foi saltado: a funcionalidade passou de `ux-prototype` diretamente a `final-visual`. Refinar o estado anterior até uma interface completa: layout, hierarquia, controlos, componentes, estados visuais e comportamento responsivo. CSS e estilos de apresentação são permitidos; a escolha de ferramentas não está decidida por este documento. A passagem parte da revisão dos percursos, informação, interações e estados. Rever também a UX quando a interface revelar problemas, sem perder a cobertura acordada.
+Em Now, este estado foi saltado: a funcionalidade passou de `ux-prototype` diretamente a `initial-visual`. Refinar o estado anterior até uma interface completa: layout, hierarquia, controlos, componentes, estados visuais e comportamento responsivo. CSS e estilos de apresentação são permitidos; a escolha de ferramentas não está decidida por este documento. A passagem parte da revisão dos percursos, informação, interações e estados. Rever também a UX quando a interface revelar problemas, sem perder a cobertura acordada.
 
-### `final-visual` — aparência final
+### `initial-visual` — aparência inicial
 
-Fixar a aparência final: tipografia, cores, espaçamento, componentes, estados visuais e comportamento responsivo, de modo que a produção a possa replicar sem decisões visuais novas. Mockups e outras ferramentas podem apoiar a exploração, mas o resultado fica na pasta `final-visual/`, não em ficheiros paralelos. Mantém dados fictícios e ações simuladas.
+Fixar a aparência inicial: tipografia, cores, espaçamento, componentes, estados visuais e comportamento responsivo, de modo que a produção parta dela. Mockups e outras ferramentas podem apoiar a exploração, mas o resultado fica na pasta `initial-visual/`, não em ficheiros paralelos. Mantém dados fictícios e ações simuladas.
 
-Em todos os estados com interface, manter semântica, operação por teclado, foco visível, contraste adequado e estados compreensíveis; não depender apenas de cor para transmitir informação. Aparência final não comprova prontidão para produção nem autoriza dados reais, backend ou integrações.
+Em todos os estados com interface, manter semântica, operação por teclado, foco visível, contraste adequado e estados compreensíveis; não depender apenas de cor para transmitir informação. A aparência inicial não comprova prontidão para produção nem autoriza dados reais, backend ou integrações.
 
-### Produção — réplica exata do `final-visual`
+### Produção — parte do `initial-visual`
 
-O `final-visual/` é a especificação visual da produção. O frontend de produção, em `apps/web/src/`, replica-o exatamente (layout, hierarquia, tipografia, cores, espaçamento, componentes, estados e comportamento responsivo) e usa os serviços de backend de produção em vez de dados fictícios e ações simuladas. Segue a arquitetura e as convenções do repositório. Quando a produção replica o `final-visual/`, esta pasta é apagada e a produção passa a ser a fonte de verdade.
+O `initial-visual/` é o ponto de partida visual da produção, não uma especificação exata. O frontend de produção, em `apps/web/src/`, parte dele e usa os seus tokens; o agente que implementa altera o aspeto onde o PRD ou o design técnico o exigem e desenha, com os mesmos tokens, as partes que o `initial-visual/` não mostra. Não há comparação ecrã a ecrã com o `initial-visual/`: a Pull Request mostra capturas de ecrã do resultado, nos temas claro e escuro, e o revisor aprova-as. A produção usa os serviços de backend de produção em vez de dados fictícios e ações simuladas e segue a arquitetura e as convenções do repositório. Os agentes não editam o `initial-visual/`. Quando a produção cobre todas as funcionalidades de Now, esta pasta é apagada e a produção passa a ser a fonte de verdade. Base: [How is production's look checked against final-visual?](https://github.com/prumod/cairn/issues/226).
 
-Enquanto não houver implementação de produção, a pasta do estado atual de Now é a fonte de verdade do seu comportamento, e os documentos que divergem dela são atualizados. O `final-visual/` é um único ficheiro HTML, sem sessão nem backend.
+Enquanto não houver implementação de produção, a pasta do estado atual de Now é a fonte de verdade do seu comportamento, e os documentos que divergem dela são atualizados. O `initial-visual/` é um único ficheiro HTML, sem sessão nem backend.
 
 ## Cobertura e prioridades
 
@@ -66,19 +66,19 @@ Enquanto não houver implementação de produção, a pasta do estado atual de N
 ## Terminologia
 
 - **Wireframe interativo:** representação sem estilos da estrutura, conteúdo, navegação, campos e estados das funcionalidades Later e Maybe.
-- **Protótipo interativo:** demonstração navegável com comportamento simulado. Nome comum dos estados `ux-prototype`, `ui-prototype` e `final-visual`; em Now, só `final-visual` existe.
+- **Protótipo interativo:** demonstração navegável com comportamento simulado. Nome comum dos estados `ux-prototype`, `ui-prototype` e `initial-visual`; em Now, só `initial-visual` existe.
 - **Mockup:** representação da aparência proposta — layout, tipografia, cores, espaçamento e componentes — normalmente estática. Pode apoiar decisões visuais, mas não substitui a demonstração interativa dos percursos.
 - **UX (User Experience / experiência do utilizador):** compreensão e realização das tarefas, incluindo navegação, feedback, acessibilidade e recuperação de erros.
 - **UI (User Interface / interface do utilizador):** controlos, layout e apresentação visual com que a pessoa interage. As decisões de UI também afetam a UX: o `ux-prototype` foca-se na UX e o `ui-prototype` na UI, mas nenhum fecha o outro. UI não é sinónimo de mockup nem de wireframe.
 
 ## Sem dados reais nem efeitos externos
 
-Estes limites aplicam-se ao wireframe interativo e aos estados de protótipo, incluindo `final-visual`, mesmo quando a interface se aproximar da produção. A produção usa os serviços de produção.
+Estes limites aplicam-se ao wireframe interativo e aos estados de protótipo, incluindo `initial-visual`, mesmo quando a interface se aproximar da produção. A produção usa os serviços de produção.
 
 - Usar exemplos fictícios coerentes, pré-visualizações incluídas na demonstração e estado local descartável. Sem backend, base de dados, autenticação externa ou persistência de produção.
 - Simular localmente os resultados de pesquisa, sugestões de IA, importações, documentos, e-mails, integrações e restantes ações externas. Não consultar DR, BASE, IMPIC, fornecedores, mapas, ERP ou plataformas reais.
 - Não recolher dados pessoais, ler caixas de correio, carregar documentos reais, enviar mensagens, comprar selos, assinar documentos, efetuar pagamentos ou submeter propostas.
-- No wireframe e em qualquer estado anterior a `final-visual` que exista, distinguir claramente a demonstração de uma operação real, sem expor a classificação de prioridades, e disponibilizar reinício da demonstração. Uma confirmação de submissão deve indicar que nada foi enviado. O `final-visual` não tem aviso nem reinício de demonstração, porque a produção o replica exatamente.
+- No wireframe e em qualquer estado anterior a `initial-visual` que exista, distinguir claramente a demonstração de uma operação real, sem expor a classificação de prioridades, e disponibilizar reinício da demonstração. Uma confirmação de submissão deve indicar que nada foi enviado. O `initial-visual` não tem aviso nem reinício de demonstração, porque é o ponto de partida da produção.
 - Exemplos de datas e estados devem ser determinísticos, sem depender de prazos ou avisos de produção.
 - Cálculos e validações demonstrativos não são regras jurídicas ou contabilísticas aprovadas. Incertezas devem ficar documentadas, não escondidas em automatismos.
 
@@ -133,9 +133,9 @@ Durante a revisão, identificar informação necessária, relações entre conce
 
 A verificação futura deve:
 
-- Em todos os estados, percorrer todas as funcionalidades, confirmar a coerência dos exemplos e estados, a ausência de etiquetas de prioridade, o reinício (exceto no `final-visual`) e a inexistência de chamadas ou efeitos externos.
+- Em todos os estados, percorrer todas as funcionalidades, confirmar a coerência dos exemplos e estados, a ausência de etiquetas de prioridade, o reinício (exceto no `initial-visual`) e a inexistência de chamadas ou efeitos externos.
 - No wireframe interativo, confirmar a apresentação nativa sem estilos. No `ux-prototype`, quando uma funcionalidade começar nesse estado, rever estrutura, tarefas, navegação, validações e recuperação.
-- No `ui-prototype`, quando existir, e no `final-visual`, rever a aparência pretendida para produção, consistência da UI, adaptação a tamanhos de ecrã, acessibilidade e eventuais alterações de UX. Repetir a revisão funcional após essas alterações.
-- Na produção, confirmar que o frontend replica exatamente o `final-visual` e usa os serviços de produção.
+- No `ui-prototype`, quando existir, e no `initial-visual`, rever a aparência pretendida para produção, consistência da UI, adaptação a tamanhos de ecrã, acessibilidade e eventuais alterações de UX. Repetir a revisão funcional após essas alterações.
+- Na produção, rever as capturas de ecrã de cada ecrã alterado, nos dois temas, e confirmar que o frontend usa os serviços de produção.
 
 Uma build bem-sucedida, por si só, não prova uma experiência completa nem valida a UX/UI.
