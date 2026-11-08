@@ -32,6 +32,16 @@ Base: [What properties should the code have, and not have?](https://github.com/p
 - **Who changes what.** An entity changes only through its own methods, and its repository saves it. A value object never changes. View state and the selection return a new value on each change.
 - **What tests reach.** High-value tests reach only a module's interface (its entry point and the adapters at its seams), with real collaborators and no mocks. A typical test may import a private file of its own module, colocated with it, only to check a technical detail faster or more precisely. See [Testing](TESTING.md).
 
+## Styling
+
+Production replicates `apps/web/references/final-visual/` with Tailwind v4 utilities over final-visual's tokens. Base: [How does production replicate the final visual's look?](https://github.com/prumod/cairn/issues/202#issuecomment-6725983558).
+
+- **One stylesheet.** `apps/web/src/style.css` holds `@import "tailwindcss"`, final-visual's colour tokens (CSS custom properties, unchanged), the `@theme` block and the base rules. Do not add other `.css` files.
+- **Colours and font sizes come only from the theme:** `bg-panel`, `text-muted`, `border-line`, `text-amber`. Tailwind's default palette is removed. When final-visual uses a font size the theme lacks, add it to `@theme` instead of writing `text-[11.5px]`. Other one-off geometry may use a bracket value, such as `pl-[34px]`.
+- **No `dark:` classes.** The tokens switch with `data-theme` on `<html>`; class names stay the same in both themes.
+- **No `@apply` and no class-merging library.** Write a conditional class as a template string, and a set of variants as a plain object: `const dueTone = { soon: "text-amber font-semibold", past: "italic" }`. When the same class list repeats in three places, extract a React component.
+- **Fonts** are Inter and IBM Plex Mono, self-hosted and declared only as the theme's `--font-sans` and `--font-mono`. The page makes no request to a font service.
+
 ## Comments
 
 A comment records what the code cannot express; delete any comment a reader could write from the code next to it. Follow [Code comments](docs/reference/code-comments.md) for interface, data-structure, implementation, and cross-module comments, and for writing interface comments before the implementation.
