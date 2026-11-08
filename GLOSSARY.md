@@ -102,6 +102,16 @@ Um grupo de subcategorias do alvará que reúne obras ou trabalhos especializado
 _Evitar_: tipo de obra
 _Fonte_: [Lei n.º 41/2015](https://diariodarepublica.pt/dr/detalhe/lei/41-2015-67377968), art. 3.º, alínea c) ([legislação consolidada do Diário da República, versão de 14-6-2018, p. 3](https://www.madeira.gov.pt//Portals/19/Documentos/Legislacao/Lei_41.2015_Consolidada_2018_Atividade_Constru%C3%A7%C3%A3o.pdf#page=3)); a lista das categorias está no anexo I do [texto original](https://diariodarepublica.pt/dr/detalhe/lei/41-2015-67377968)
 
+**Categoria do CPV**:
+A categoria que o Cairn obtém do CPV principal de um lote pela tabela fixa de prefixos, ou «Por classificar» quando o CPV não diz o tipo de obra. É a categoria de um lote para todas as empresas, enquanto uma empresa não definir outra.
+_Evitar_: categoria automática, categoria original
+_Fonte_: [PRD #104](https://github.com/prumod/cairn/issues/104), regra 13; [Which CPV prefixes map to which categoria?](https://github.com/prumod/cairn/issues/170)
+
+**Categoria manual**:
+A categoria que uma empresa escolhe para um lote em vez da categoria do CPV. Só essa empresa a vê; repor a categoria do CPV retira-a.
+_Evitar_: correção, categoria corrigida
+_Fonte_: [PRD #104](https://github.com/prumod/cairn/issues/104), regra 13; [Is a manual categoria one company's choice or a correction for everyone?](https://github.com/prumod/cairn/issues/207); [Can a person remove a manual categoria?](https://github.com/prumod/cairn/issues/216)
+
 **Subcategoria**:
 Uma divisão de uma categoria. É a unidade que o alvará lista e a que atribui uma classe.
 _Fonte_: [Lei n.º 41/2015](https://diariodarepublica.pt/dr/detalhe/lei/41-2015-67377968), art. 3.º, alínea q), e art. 6.º, n.º 2 ([legislação consolidada do Diário da República, versão de 14-6-2018, pp. 4 e 5](https://www.madeira.gov.pt//Portals/19/Documentos/Legislacao/Lei_41.2015_Consolidada_2018_Atividade_Constru%C3%A7%C3%A3o.pdf#page=4))
