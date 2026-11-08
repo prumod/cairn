@@ -56,9 +56,9 @@ _Evitar_: concurso fechado, concurso encerrado, concurso ativo, concurso aberto 
 _Fonte_: [PRD #104](https://github.com/prumod/cairn/issues/104), regras 16 e 17; [Where do the lote filters, estado and sort run?](https://github.com/prumod/cairn/issues/195)
 
 **Concelho**:
-A divisão administrativa onde se executa uma obra, abaixo do distrito e acima da freguesia. «Município de Lisboa» designa a entidade adjudicante, não o território.
+A divisão administrativa onde se executa uma obra, abaixo do distrito e acima da freguesia. «Município de Lisboa» designa a entidade adjudicante, não o território. No anúncio, «Concelho: Todos» indica que a obra não está num só concelho do distrito.
 _Evitar_: município (no sentido de território)
-_Fonte_: [Portaria n.º 318-A/2023, Anexo I, 9.6 Concelho, p. 7](https://files.diariodarepublica.pt/1s/2023/10/20701/0000200016.pdf#page=7)
+_Fonte_: [Portaria n.º 318-A/2023, Anexo I, 9.6 Concelho, p. 7](https://files.diariodarepublica.pt/1s/2023/10/20701/0000200016.pdf#page=7); [Is a ⚠ lote listed when it may lie outside the radius?](https://github.com/prumod/cairn/issues/196)
 
 **Freguesia**:
 A divisão administrativa abaixo do concelho. No anúncio, «Freguesia: Todas» indica que a obra não está numa só freguesia do concelho.
