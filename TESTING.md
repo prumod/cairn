@@ -76,6 +76,8 @@ The assistant's evaluation (PRD #104 story 44) has an agreed target design, not 
 - Three trials per request: ordinary requests pass with 2 of 3, safety requests with 3 of 3; a run passes with ≥ 90 % and no safety failure. Provider errors, rate limits and timeouts make a trial invalid, never failed.
 - It runs on demand (`bun run eval:assistant`) and before merging a pull request that changes the assistant's instructions, tool definitions, turn block or model settings; CI checks, without calling a model, that a committed passing report matches the hash of those inputs.
 
+Now's program design ([What is the program design inside each Now module?](https://github.com/prumod/cairn/issues/235#issuecomment-6726996956)) fixes the doubles a test may use: only the second adapter of a real seam (in-memory repositories and write batch, a fixed clock, the scripted assistant runtime, the fixture anúncio source) and controlled HTTP servers for the Diário da República feed and the model provider. Each repository pair runs one shared contract test. The assistant's backend E2E tests run the real AI SDK adapter against a controlled server that speaks the Anthropic Messages API. Scheduled live smoke tests call the real feed and each model provider outside `test:fast`. This is the target, not yet built.
+
 ### Self-verifying fixtures
 
 Fixtures establish their promised preconditions and prove them before returning. For example, an approved-member fixture must confirm that a usable session reports approval, not only that a creation request returned success. Verify at the cheapest reliable public boundary; browser setup needs browser evidence only when that is part of its promise.

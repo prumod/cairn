@@ -14,6 +14,13 @@ Planned layout, not yet built: an `apps/collector` app for the collector; `packa
 
 Also planned: `apps/web/evals/assistant/` for the assistant's evaluation (reference requests, fixed world, Verifier, runner and committed reports). It belongs to `apps/web` because it composes that app's action catalogue and guard, and it sits outside `tests/` because `test:fast` never calls a model. Base: [How do the assistant's reference-request evaluations run?](https://github.com/prumod/cairn/issues/234#issuecomment-6726904291).
 
+Also planned for Now, with the first slice that needs each (base: [What is the program design inside each Now module?](https://github.com/prumod/cairn/issues/235#issuecomment-6726996956)):
+
+- **Modules.** `apps/collector/src/modules/recolha/` (the `Concurso` entity, the parser, `CollectAnunciosUseCase`); `apps/web/src/server/modules/company/` (the `Company` domain in its root `company.ts`, the repository and seed in `company.server.ts`); `apps/web/src/pages/discovery/` (the view, `ListLotesUseCase`, `RadiusFilter`, the view use cases and the manual categoria); `apps/web/src/pages/assistant/` (comments, citations, the assistant loop and its model input); `apps/web/src/shared/actions/`, an isomorphic module for the action catalogue, `Step` and `DataChange`; `apps/web/src/shared/theme/`.
+- **Composition.** One composition file per app: `apps/web/src/server/composition.server.ts`, built per request (it replaces `getRuntime`), and `apps/collector/src/composition.ts`, built once at start.
+- **Imports between modules.** A use case or domain file may import another feature's or server module's public, framework-free root file (for example `pages/discovery/discovery.ts` or `server/modules/company/company.ts`) and `src/shared/actions`. It still never imports another module's `infra/`, `.server.ts` or `.functions.ts` files. This needs a change to `.dependency-cruiser.cjs` and `scripts/prove-boundaries.mjs`, which the current rules do not allow yet.
+- **Marks.** Discovery does not import the assistant feature. The Now layout reads the comment marks through the assistant's root `marks.functions.ts` and passes them to the discovery components as props.
+
 ## Required feature-driven structure
 
 Organize application code by the feature that owns its behavior. A page feature owns its components, use cases, and colocated tests. A feature that needs server-backed behavior splits that code into three folders by role:
