@@ -15,7 +15,7 @@ Each installation has exactly one company, and the app has no action to create o
 - The company profile is a stored record that the deployment seeds once. It is not global configuration.
 - Each user belongs to exactly one company.
 - Concursos, lotes and their collection are public data that all companies share. Nothing that depends on a company is stored on them.
-- Everything that depends on a company is scoped by company: the profile, distances, the priority ordering, comments, citations and assistant conversations.
+- Everything that depends on a company is scoped by company: the profile, distances, the priority ordering, comments, citations and assistant conversations. Comments, citations and conversations are also private to their person: the one who wrote them, or who sent the request in which the assistant wrote them ([Where do unsent comments and citations live?](https://github.com/prumod/cairn/issues/200)).
 - Distance is computed from the viewing company's location when it is read, never stored.
 - The administrator who approves access stays installation-wide. The split into a platform administrator and a company administrator waits for multi-company support.
 
