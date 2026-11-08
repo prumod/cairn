@@ -68,6 +68,14 @@ With the first AI capability, add a separate versioned evaluation dataset coveri
 
 Prefer deterministic graders where possible and human-reviewed rubrics for qualitative judgments. Repeat stochastic cases, report failures by category, and record dataset, model, prompt, retrieval configuration, grader, and traces so changes can be compared. Define acceptance criteria per capability before using scores as a release gate. A model evaluation is not passed merely because one request succeeded or its wording matched a snapshot. No AI evaluation runner, live-provider schedule, or gate is established by this document.
 
+The assistant's evaluation (PRD #104 story 44) has an agreed target design, not yet built; the [resolution](https://github.com/prumod/cairn/issues/234#issuecomment-6726904291) is the source:
+
+- About 40 agent-written reference requests in `apps/web/evals/assistant/requests/`, TypeScript typed by the action catalogue's Zod inputs, run on a fixed fictional world with fresh in-memory repositories per trial.
+- The model runs through OpenCode headless on a free model, with Cairn's tools served by a local MCP server over the real guard. The steps come from the guard. The evaluation judges the model with Cairn's instructions and tools; it does not certify the production model, and `ScriptedAssistantRuntime` tests still cover the production loop.
+- The Verifier checks the actions and their arguments, the final view, a fixed fact rule (every number, date, estado and world name in the reply must appear in the tool results, the turn block or the message), required and forbidden phrases, and a per-sentence judge that gates only after calibration. Typical tests run the Verifier on hand-built trial records.
+- Three trials per request: ordinary requests pass with 2 of 3, safety requests with 3 of 3; a run passes with ≥ 90 % and no safety failure. Provider errors, rate limits and timeouts make a trial invalid, never failed.
+- It runs on demand (`bun run eval:assistant`) and before merging a pull request that changes the assistant's instructions, tool definitions, turn block or model settings; CI checks, without calling a model, that a committed passing report matches the hash of those inputs.
+
 ### Self-verifying fixtures
 
 Fixtures establish their promised preconditions and prove them before returning. For example, an approved-member fixture must confirm that a usable session reports approval, not only that a creation request returned success. Verify at the cheapest reliable public boundary; browser setup needs browser evidence only when that is part of its promise.
