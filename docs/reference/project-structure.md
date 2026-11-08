@@ -12,6 +12,8 @@ Base: [Where do the collector and the code it shares with the web app live?](htt
 
 Planned layout, not yet built: an `apps/collector` app for the collector; `packages/shared` for isomorphic code that both apps use (the CAOP place catalogue and the annex I categorias), replacing the reserved root `shared/src`; and the tables that both apps use (auth, concurso/anúncio/lote and recolha) in `packages/db`. App-only tables stay in their app. The boundary rules and `drizzle.config.ts` change with that implementation.
 
+Also planned: `apps/web/evals/assistant/` for the assistant's evaluation (reference requests, fixed world, Verifier, runner and committed reports). It belongs to `apps/web` because it composes that app's action catalogue and guard, and it sits outside `tests/` because `test:fast` never calls a model. Base: [How do the assistant's reference-request evaluations run?](https://github.com/prumod/cairn/issues/234#issuecomment-6726904291).
+
 ## Required feature-driven structure
 
 Organize application code by the feature that owns its behavior. A page feature owns its components, use cases, and colocated tests. A feature that needs server-backed behavior splits that code into three folders by role:
