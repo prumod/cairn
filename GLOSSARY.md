@@ -145,6 +145,11 @@ Editar uma mensagem da pessoa e voltar a enviá-la: o texto da mensagem volta ao
 _Evitar_: desfazer (no sentido de reverter), rollback
 _Fonte_: [PRD #104](https://github.com/prumod/cairn/issues/104), história 46 e regra 18; [Where do unsent comments and citations live?](https://github.com/prumod/cairn/issues/200)
 
+**Resumo da conversa**:
+O texto com que o assistente substitui as mensagens mais antigas de uma conversa longa, para continuar a lembrar-se delas. Os comentários e as citações enviados não entram no resumo: ficam inteiros. A conversa mostra onde foi resumida.
+_Evitar_: compactação, memória
+_Fonte_: [PRD #104](https://github.com/prumod/cairn/issues/104), história 47; [What does the model read on each call?](https://github.com/prumod/cairn/issues/217)
+
 O estatuto de cada fonte (oficial ou não, versão e limites) está em [Fontes](docs/product/fontes.md).
 
 Os termos em aberto estão nos termos por definir de [Now](docs/product/now/termos-por-definir.md) e de [Later](docs/product/later/termos-por-definir.md).
