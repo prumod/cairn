@@ -69,6 +69,11 @@ Onde se executa a obra de um lote, tal como o anúncio o indica: distrito, conce
 _Evitar_: localidade, localização da obra
 _Fonte_: [Portaria n.º 318-A/2023, Anexo I, secção 9, p. 7](https://files.diariodarepublica.pt/1s/2023/10/20701/0000200016.pdf#page=7)
 
+**Folha de local**:
+O local mais baixo que o anúncio identifica para um lote, na árvore de locais: uma freguesia, «Todo o concelho», «Freguesia por identificar», «Todo o distrito» ou «Todo o país». Cada lote fica numa só folha, e o filtro de local escolhe folhas. Uma folha está dentro do raio de pesquisa quando o centro do local que representa está: a freguesia para uma freguesia, o concelho para «Todo o concelho» e «Freguesia por identificar», qualquer centro do distrito para «Todo o distrito»; «Todo o país» está sempre. Um concelho ou um distrito está na árvore quando alguma das suas folhas está dentro do raio.
+_Evitar_: nó (para uma folha), localidade
+_Fonte_: [PRD #104](https://github.com/prumod/cairn/issues/104), regra 15; [Which places do the tree and the map count as inside the radius?](https://github.com/prumod/cairn/issues/210)
+
 **Entidade adjudicante**:
 A entidade pública que abre o concurso e adjudica as empreitadas, por exemplo um município, um instituto público ou um ramo das Forças Armadas. A sua morada no anúncio não é o local onde a obra se executa.
 _Evitar_: cliente, entidade
