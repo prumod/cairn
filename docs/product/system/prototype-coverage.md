@@ -23,7 +23,7 @@ This is the traceability map for the states described in [the evolution method](
 
 ### Gaps from the technical design
 
-The technical design for PRD #104 changed the PRD after `final-visual/` was approved. The user updates `final-visual/` with these changes before implementation ([Is final-visual updated with the PRD changes before implementation?](https://github.com/prumod/cairn/issues/229)); the work and its checklist are in [Update final-visual with the PRD #104 design changes](https://github.com/prumod/cairn/issues/230). Until then, production does not invent these parts.
+The technical design for PRD #104 changed the PRD after `initial-visual/` was approved. `initial-visual/` is not updated with these changes: production starts from it and the implementing agent designs these parts with its tokens ([How is production's look checked against final-visual?](https://github.com/prumod/cairn/issues/226), which supersedes [Is final-visual updated with the PRD changes before implementation?](https://github.com/prumod/cairn/issues/229)).
 
 - Gap (N14): no mark for the estado «Intenção de cancelamento», which wins over the deadline and is offered, unticked, in the estado filter ([#195](https://github.com/prumod/cairn/issues/195)).
 - Gap (N02): the empty table reads «Os filtros excluem todas as obras»; the PRD reads «Não há concursos para mostrar» ([#195](https://github.com/prumod/cairn/issues/195)).
