@@ -22,6 +22,16 @@ The code uses plain object-oriented forms and only the pattern names a junior de
 - **The pattern appears in the declaration and in the file name:** `class Concurso extends Entity` in `concurso.entity.ts`; `class Radius extends ValueObject` in `radius.valueObject.ts`; `interface ConcursoRepository` in `concurso.repository.ts`, implemented by `DrizzleConcursoRepository` in `concurso.repository.server.ts` and `InMemoryConcursoRepository` in `concurso.repository.fake.ts`; `class SetLoteCategoriaUseCase` in `setLoteCategoria.useCase.ts`; `class DistanceFilter implements LoteFilter` in `distance.filter.ts`.
 - **`extends` only for `Entity` and `ValueObject`**, whose base classes share real behaviour (identity equality; content equality and immutability). Repositories, filters and adapters `implement` an interface. Use cases and services have no base class.
 
+## Module shape and dependencies
+
+Base: [What properties should the code have, and not have?](https://github.com/prumod/cairn/issues/206).
+
+- **Deep modules.** A module has one small entry point with the behaviour behind it. For example, `listLotes(viewState, company, now)` applies the filters, distance, estado, sort and grouping; its internal classes are not exported.
+- **A seam only where two adapters exist.** Declare an `interface` with swappable adapters only where two adapters really exist, such as a Drizzle and an in-memory repository, a real and a fake clock, or a real and a fake model. Elsewhere, use the class directly, and extract the interface when the second adapter arrives.
+- **Constructor injection, wired by hand.** A class receives its dependencies through its constructor. One composition file per app builds the objects with plain `new`; there is no DI container. Only the composition file branches on environment or configuration: it takes a Zod-parsed, typed `env`, handles a choice with several values as a union in an exhaustive `switch`, and picks the adapters. Classes never read `process.env` or bindings. The web app composes inside the request handler with that request's `env`; an app with a single process composes once at start.
+- **Who changes what.** An entity changes only through its own methods, and its repository saves it. A value object never changes. View state and the selection return a new value on each change.
+- **What tests reach.** High-value tests reach only a module's interface (its entry point and the adapters at its seams), with real collaborators and no mocks. A typical test may import a private file of its own module, colocated with it, only to check a technical detail faster or more precisely. See [Testing](TESTING.md).
+
 ## Comments
 
 A comment records what the code cannot express; delete any comment a reader could write from the code next to it. Follow [Code comments](docs/reference/code-comments.md) for interface, data-structure, implementation, and cross-module comments, and for writing interface comments before the implementation.
