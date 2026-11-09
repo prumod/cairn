@@ -22,7 +22,7 @@ Start every worker with a fresh context. Keep communication with workers sparse:
 
 3. **Approve the scenarios.** Call the Skill tool with "atdd" for the acceptance behavior of every ticket, and stop after the approved feature files are written; implementers drive them to green. Commit the approved `.feature` files to the integration branch. This keeps scenario approval with the user and lets workers run without asking.
 
-4. **(Optional) Explore.** When tickets need shared exploration of the code or external documentation, run one exploration worker that saves markdown notes outside the repository, in a directory every later worker can read. Reuse `.rpi/<slug>/research.md` when `prd-research` already covers it.
+4. **(Optional) Explore.** When tickets need shared exploration of the code or external documentation, run one exploration worker that saves markdown notes outside the repository, in a directory every later worker can read. Reuse the PRD's `Research: <scope>` sub-issue when `prd-research` already covers it.
 
 5. **Dispatch implementers.** For each frontier ticket, start one implementer worker in the background, in its own worktree on its own branch: `delegate_task` with `isolation: "worktree"`. Each implementer:
    - confirms its worktree is based on the integration branch tip, and resets onto it if not;
