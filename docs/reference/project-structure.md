@@ -32,7 +32,7 @@ Also planned for Now, with the first slice that needs each (base: [What is the p
   - **Still rejected:** a use case or helper importing another feature's use case or helper directly (only the root file is public).
   - **Proofs:** flip the `feature-usecase-is-independent` proof (a use case importing another use case) to «value import rejected, type-only import allowed»; add allowed proofs for use case → helper; add rejection proofs for use case → another feature's use case, helper → `infra/`, and helper → `requestContext.server.ts`.
   - **Scan:** add `apps/web/evals` to the paths in `scripts/check-boundaries.mjs`, so the evaluation reaches the assistant only through its root file.
-- **Request context.** Every server function, backoffice's included, builds its context through one helper, `approvedContext({ write })` in `apps/web/src/server/shared/requestContext/requestContext.server.ts`. For a write, it checks the origin first, then the session (401), then approval (403); then it reads the company and sets `no-store`. It replaces backoffice's `useCases/context.server.ts` (base: «Server functions, sign-in and access» in [the Now technical design](technical-design-now-discovery.md)).
+- **Request context.** Every server function builds its context through one helper, `approvedContext({ write })` in `apps/web/src/server/shared/requestContext/requestContext.server.ts`. For a write, it checks the origin first, then the session (401), then approval (403); then it reads the company and sets `no-store`. `signedInContext()`, beside it, checks only the session, for `getMyAccess`. They replace backoffice's `useCases/context.server.ts`, which slice 0a deletes with the rest of the walking skeleton's access code (base: «Server functions, sign-in and access» in [the Now technical design](technical-design-now-discovery.md)).
 - **Marks.** Discovery does not import the assistant feature. The Now layout reads the comment marks through the assistant's root `marks.functions.ts` and passes them to the discovery components as props.
 
 ## Required feature-driven structure
@@ -89,7 +89,7 @@ Start compiles server-function handlers and server-only middleware into server c
 
 Keep use cases, domain rules, and infrastructure private to their owning feature. Other features consume an intentional public entry point rather than importing nested implementations. Move code into `shared` when multiple features actually use the same capability; keep shared modules organized by capability, such as notifications or layout. TanStack file routes remain thin framework entry points that compose the owning page.
 
-Backoffice now follows this structure. Shared access bootstrap and its table remain in `src/server/modules/access` because both backoffice and `/api/me` use them. Place new feature-owned behavior inside its feature rather than introducing a top-level technical layer to satisfy a checker.
+Backoffice now follows this structure. Shared access bootstrap and its table remain in `src/server/modules/access` because both backoffice and `/api/me` use them. Both are the walking skeleton's provisional access code: slice 0a deletes them and rebuilds access as `pages/access/` and `server/modules/access/` from PRD #104's stories 43–43d («Access» in [the Now technical design](technical-design-now-discovery.md)), and replaces this example with it. Place new feature-owned behavior inside its feature rather than introducing a top-level technical layer to satisfy a checker.
 
 ## Maintaining structure checks
 
