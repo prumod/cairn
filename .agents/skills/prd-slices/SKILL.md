@@ -6,11 +6,11 @@ disable-model-invocation: true
 
 # Slice a technical design
 
-Third step of the PRD workflow: `prd-research` → `prd-design` → `prd-slices` → `implement-spec`; work that fits one pull request skips `prd-slices`.
+Third step of the PRD workflow: `prd-research` → `prd-design` → `prd-slices` → `implement-spec`; work that fits one pull request skips `prd-slices`. This step produces slice issues; code changes belong to `implement-spec`.
 
 ## 1. Load context
 
-Read the design issue and its parent PRD issue, with comments. Read `.rpi/<slug>/research.md` when it exists, and the feature files in `features/` for the area.
+Read the design issue and its parent PRD issue, with comments. Read the PRD's `Research: <scope>` sub-issue when it exists, and the feature files in `features/` for the area.
 
 ## 2. Draft tracer-bullet slices
 
@@ -26,13 +26,17 @@ For each slice, determine:
 
 Every story in the design's scope belongs to exactly one slice.
 
+Order the slices by user value: the interaction users asked for most comes first, as early as its blockers allow. The interviews in `docs/product/transcriptions/` are the evidence for that order.
+
+When slicing reveals a gap in the design, bring it to the user as a decision, and after approval edit the design issue in place.
+
 ## 3. Review
 
 Present the slices as a numbered list: title, stories, blocked by, what it delivers. Ask whether the granularity, the blocking edges, and any merges or splits are right. Iterate until the user approves.
 
 ## 4. Publish
 
-Create the issues in dependency order, blockers first, as sub-issues of the design issue, with native blocking edges and the `ready-for-agent` label ([issue tracker](../../../docs/agents/issue-tracker.md)). Leave the design and PRD issues unchanged. Body:
+Create the issues in dependency order, blockers first, as sub-issues of the design issue, with native blocking edges and the `ready-for-agent` label ([issue tracker](../../../docs/agents/issue-tracker.md)). Leave the PRD issue unchanged. Body:
 
 ```markdown
 ## Context
