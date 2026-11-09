@@ -2,7 +2,7 @@
 
 Este guia mostra como alterar o comportamento de uma funcionalidade que já existe. Parte de uma Issue clara e termina numa Pull Request. Se ainda não sabe que comportamento quer, comece pelo processo **RPI** em [Processos e skills](../reference/processos-e-skills.md).
 
-O comportamento atual está descrito nos cenários Gherkin em `features/`, por exemplo `features/company/maintain-company-profile.feature`. Uma modificação altera primeiro o cenário e depois o código.
+O comportamento atual está descrito nos cenários Gherkin em `features/`, um ficheiro `features/<capacidade>/<caso-de-uso>.feature` por caso de uso. Uma modificação altera primeiro o cenário e depois o código.
 
 ## Com agentes no T3
 

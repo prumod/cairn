@@ -1,10 +1,10 @@
 # Run the company profile locally
 
-This guide runs the full-stack app through the local Alchemy development stack and Cloudflare Workers runtime. It does not deploy the app to Cloudflare. Local development needs a Neon-compatible HTTP database URL and private authentication values. Do not reuse testing/production credentials or data.
+This guide runs the full-stack app through the local Alchemy development stack and Cloudflare Workers runtime. It does not deploy the app to Cloudflare. Local development needs a Neon-compatible HTTP database URL and a private `BETTER_AUTH_SECRET`. Do not reuse testing/production credentials or data.
 
 ## Configure local values
 
-On a new machine, the `setup-project` wizard (see the README) already does this: it starts the local development database from `compose.dev.yaml`, applies the migrations, and writes `packages/infra/.env.local` with `DATABASE_URL` (the local Neon HTTP proxy), a generated `BETTER_AUTH_SECRET`, and `BOOTSTRAP_ADMIN_EMAIL` taken from `git config user.email`. Only `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` remain, because Google offers no way to create the OAuth client by script. Follow the steps below to configure a machine by hand or to use a different database.
+On a new machine, the `setup-project` wizard (see the README) already does this: it starts the local development database from `compose.dev.yaml`, applies the migrations, and writes `packages/infra/.env.local` with `DATABASE_URL` (the local Neon HTTP proxy) and a generated `BETTER_AUTH_SECRET`. Follow the steps below to configure a machine by hand or to use a different database.
 
 Install the locked workspace dependencies and tools from the repository root:
 
@@ -17,16 +17,13 @@ Provide these variables through your local environment or an ignored local envir
 
 ```dotenv
 DATABASE_URL=postgres://... # Neon serverless HTTP connection URL
-BETTER_AUTH_SECRET=...     # at least 32 random characters
-GOOGLE_CLIENT_ID=...
-GOOGLE_CLIENT_SECRET=...
-BOOTSTRAP_ADMIN_EMAIL=your-verified-google-email@example.com
+BETTER_AUTH_SECRET=...     # at least 32 random characters; the dev stack requires it
 NODE_ENV=development
 ```
 
-The local Alchemy stack supplies the app origin and Better Auth URL from its Worker URL. Do not commit `.env` files or generated `env.ts` files. The committed `.env.schema` files are safe templates, not credential stores.
+The local Alchemy stack supplies the app origin from its Worker URL. Do not commit `.env` files or generated `env.ts` files. The committed `.env.schema` files are safe templates, not credential stores.
 
-If you want to try Google sign-in locally, configure a local-only Google OAuth web client for `http://localhost:3001` and the callback `http://localhost:3001/api/auth/callback/google`. Keep the client secret private. Live Google sign-in and sign-out have been verified on both cloud stages; this local-only client remains a separate configuration.
+The app has no sign-in. The walking skeleton's access code was deleted ([#252](https://github.com/prumod/cairn/issues/252)), and slice 0a of the [Now technical design](../reference/technical-design-now-discovery.md#access) rebuilds it. Until then, nothing reads `BETTER_AUTH_SECRET`, and no Google OAuth client is needed.
 
 ## Apply migrations and start the app
 
@@ -39,13 +36,11 @@ bun run dev
 
 With the wizard's database, run `bun run dev:db` instead of `bun run db:migrate`. It starts the Compose services if they are stopped and applies pending migrations, so run it again after you pull new migrations. `db:migrate` talks the PostgreSQL protocol, so it cannot use the Neon HTTP proxy URL that `.env.local` holds; `dev:db` passes the direct PostgreSQL URL (`127.0.0.1:54320`).
 
-Open `http://localhost:3001`. The root `bun run dev` command starts `packages/infra`'s Alchemy development stage and the TanStack Start app in the local Workers runtime. Standalone Vite dev/preview is not supported; use the Worker stack. The app's database client uses Neon HTTP; a plain PostgreSQL URL is not a substitute for the HTTP endpoint expected by the app.
-
-The first protected request from a verified Google identity matching `BOOTSTRAP_ADMIN_EMAIL` initializes administrator access. Other users need administrator approval. Pending users cannot access company data, and protected requests check current access against the database. There is no seed command.
+Open `http://localhost:3001`. The root `bun run dev` command starts `packages/infra`'s Alchemy development stage and the TanStack Start app in the local Workers runtime. Standalone Vite dev/preview is not supported; use the Worker stack. The app's database client uses Neon HTTP; a plain PostgreSQL URL is not a substitute for the HTTP endpoint expected by the app. There is no seed command.
 
 ## Run local tests
 
-Tests use a separate disposable environment. Docker Compose starts a temporary PostgreSQL 18.6 container and the pinned local Neon HTTP proxy; the test fixture builds the app, runs it in `workerd`, creates isolated test databases, and cleans up its containers. Browser tests use Chromium and controlled identities through an external test-only proxy. They do not use your local OAuth credentials or exercise Google's OAuth flow; live Google OAuth was verified separately on both cloud stages as recorded below.
+Tests use a separate disposable environment. Docker Compose starts a temporary PostgreSQL 18.6 container and the pinned local Neon HTTP proxy; the test fixture builds the app, runs it in `workerd`, creates isolated test databases, and cleans up its containers. Browser tests use Chromium; no browser scenario exists until slice 0a adds the access contract.
 
 ```sh
 bun run test:fast
@@ -68,9 +63,9 @@ Alchemy reads the Worker `domain` and `workersDev` props before resolving Effect
 
 1. Bootstrap the Cloudflare state store once from `packages/infra` with `alchemy provider cloudflare bootstrap`. The store is named `alchemy-state-store`. Its state is encrypted. Its token and encryption key are held in the account's Secrets Store. Preserve the existing testing state when switching stores; an empty store can propose duplicate resources.
 2. Create the GitHub environment `testing`. Allow deployments only from `main`.
-3. Add the environment secrets `CLOUDFLARE_API_TOKEN`, `NEON_API_KEY`, `GOOGLE_CLIENT_ID`, and `GOOGLE_CLIENT_SECRET`. Add the environment variables `CLOUDFLARE_ACCOUNT_ID` and `BOOTSTRAP_ADMIN_EMAIL`.
+3. Add the environment secrets `CLOUDFLARE_API_TOKEN` and `NEON_API_KEY`. Add the environment variable `CLOUDFLARE_ACCOUNT_ID`. The existing secrets `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` and the variable `BOOTSTRAP_ADMIN_EMAIL` stay, unread, until slice 0a rebuilds sign-in.
 4. Give the CI Cloudflare API token Workers scripts edit, Secrets Store edit, and Zone DNS edit permissions. Scope it to the account and the `prumod.eu` zone. Keep all values private.
-5. Use the testing Google OAuth Web client with redirect URI `https://cairn-testing.prumod.eu/api/auth/callback/google`. Configure that client in Google Cloud Console. Registrar nameserver and DNSSEC DS changes remain manual at Spaceship.
+5. The testing Google OAuth Web client, with redirect URI `https://cairn-testing.prumod.eu/api/auth/callback/google`, stays in Google Cloud Console for slice 0a; nothing uses it until then. Registrar nameserver and DNSSEC DS changes remain manual at Spaceship.
 
 Do not supply `DATABASE_URL` or `BETTER_AUTH_SECRET` to CI. Alchemy owns the testing database and generated auth secret. Use the testing project's scoped `NEON_API_KEY` for routine updates. Creating a Neon project requires an appropriate organization key. Do not print credentials or state contents in logs or reports.
 
@@ -121,4 +116,4 @@ The current `/privacy` page also describes production analytics and masked repla
 
 The package scripts are `deploy:testing`, `deploy:production`, `destroy:testing`, and `destroy:production`; each fixes its stage, and there are no implicit `deploy` or `destroy` aliases. These script names are documented for identification, not as ready-to-run commands. They can change remote resources when run with valid Cloudflare or Neon authentication, including persistent Alchemy OAuth/token credentials; unsetting `CLOUDFLARE_API_KEY` and `CLOUDFLARE_ACCOUNT_ID` alone does not prevent that. Any deploy or destroy requires separate explicit approval for that operation and stage, plus verified isolated credentials and other inputs. For reference, the scripts are run with working directory `packages/infra`.
 
-The local development stack and controlled-identity tests do not exercise these external services or Google's OAuth flow; the live checks above provide that evidence for the recorded revision. Still unverified: a Neon update through Alchemy using a project-scoped key, p99 CPU time, legal review, and shared (non-local) Alchemy state. The current Alchemy state remains local and is not shared between machines.
+The local development stack and tests do not exercise these external services; the live checks above provide that evidence for the recorded revision. The sign-in they verified was deleted afterwards. Still unverified: a Neon update through Alchemy using a project-scoped key, p99 CPU time, legal review, and shared (non-local) Alchemy state. The current Alchemy state remains local and is not shared between machines.

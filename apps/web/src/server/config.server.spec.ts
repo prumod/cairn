@@ -15,11 +15,7 @@ test("the local Worker accepts HTTP even when the build mode is production", () 
   const config = readConfig({
     APP_ENV: "development",
     APP_ORIGIN: "http://localhost:3001",
-    BETTER_AUTH_SECRET: "synthetic-local-secret-at-least-32-characters",
     DATABASE_URL: "postgres://example:example@localhost/test",
-    GOOGLE_CLIENT_ID: "synthetic-client",
-    GOOGLE_CLIENT_SECRET: "synthetic-secret",
-    BOOTSTRAP_ADMIN_EMAIL: "admin@example.test",
     ...{ NODE_ENV: "production" },
   });
 
@@ -36,21 +32,13 @@ test("invalid origins stop startup with a configuration error", () => {
 const validEnvironment = {
   APP_ENV: "production",
   APP_ORIGIN: "https://example.test/path?query=1",
-  BETTER_AUTH_SECRET: "a".repeat(32),
   DATABASE_URL: "postgres://example:example@localhost/test",
-  GOOGLE_CLIENT_ID: "synthetic-client",
-  GOOGLE_CLIENT_SECRET: "synthetic-secret",
-  BOOTSTRAP_ADMIN_EMAIL: "admin@example.test",
 };
 
 test("startup returns normalized settings and defaults for omitted optional settings", () => {
   expect(readConfig(validEnvironment)).toEqual({
     origin: "https://example.test",
-    secret: "a".repeat(32),
     databaseURL: "postgres://example:example@localhost/test",
-    googleClientId: "synthetic-client",
-    googleClientSecret: "synthetic-secret",
-    bootstrapEmail: "admin@example.test",
     port: 3000,
     revision: "local",
   });
@@ -62,34 +50,19 @@ test("startup trims deployment values and preserves an explicit port and revisio
       ...validEnvironment,
       APP_ENV: " test ",
       APP_ORIGIN: " http://localhost:3001/path ",
-      BETTER_AUTH_SECRET: " " + "b".repeat(32) + " ",
       DATABASE_URL: " postgres://localhost/test ",
-      GOOGLE_CLIENT_ID: " client ",
-      GOOGLE_CLIENT_SECRET: " secret ",
-      BOOTSTRAP_ADMIN_EMAIL: " admin@example.test ",
       PORT: "8080",
       GIT_SHA: "synthetic-revision",
     }),
   ).toEqual({
     origin: "http://localhost:3001",
-    secret: "b".repeat(32),
     databaseURL: "postgres://localhost/test",
-    googleClientId: "client",
-    googleClientSecret: "secret",
-    bootstrapEmail: "admin@example.test",
     port: 8080,
     revision: "synthetic-revision",
   });
 });
 
-test.each([
-  "APP_ENV",
-  "BETTER_AUTH_SECRET",
-  "DATABASE_URL",
-  "GOOGLE_CLIENT_ID",
-  "GOOGLE_CLIENT_SECRET",
-  "BOOTSTRAP_ADMIN_EMAIL",
-] as const)("startup requires a nonblank %s", (name) => {
+test.each(["APP_ENV", "DATABASE_URL"] as const)("startup requires a nonblank %s", (name) => {
   for (const value of [undefined, "", "   "]) {
     expect(() => readConfig({ ...validEnvironment, [name]: value })).toThrow(
       `${name} is required.`,
@@ -115,12 +88,6 @@ test.each(["ftp://example.test", "file:///tmp/example"])(
 test.each(["preview", "Production"])("startup rejects unknown environment %s", (environment) => {
   expect(() => readConfig({ ...validEnvironment, APP_ENV: environment })).toThrow(
     "APP_ENV must be development, test, or production.",
-  );
-});
-
-test("startup rejects an auth secret below the minimum length", () => {
-  expect(() => readConfig({ ...validEnvironment, BETTER_AUTH_SECRET: "a".repeat(31) })).toThrow(
-    "BETTER_AUTH_SECRET must contain at least 32 characters.",
   );
 });
 

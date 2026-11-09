@@ -7,7 +7,6 @@ process.chdir(fileURLToPath(new URL("../", import.meta.url)));
 const paths = [
   "apps/web/src",
   "apps/web/tests",
-  "packages/auth/src",
   "packages/db/src",
   "packages/ui/src",
   "packages/infra/alchemy.run.ts",

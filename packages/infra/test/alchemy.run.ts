@@ -34,12 +34,7 @@ export default Alchemy.Stack(
       dev: { port: Number(required("PORT")) },
       env: {
         DATABASE_URL: required("DATABASE_URL"),
-        BETTER_AUTH_URL: required("APP_ORIGIN"),
         APP_ORIGIN: required("APP_ORIGIN"),
-        BETTER_AUTH_SECRET: required("BETTER_AUTH_SECRET"),
-        GOOGLE_CLIENT_ID: required("GOOGLE_CLIENT_ID"),
-        GOOGLE_CLIENT_SECRET: required("GOOGLE_CLIENT_SECRET"),
-        BOOTSTRAP_ADMIN_EMAIL: required("BOOTSTRAP_ADMIN_EMAIL"),
         APP_ENV: "test",
         GIT_SHA: required("GIT_SHA"),
         DEPLOYMENT_STAGE: "test",

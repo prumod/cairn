@@ -1,6 +1,6 @@
 import { createTestApplication } from "../apps/web/tests/support/testSupport.js";
 
-const application = await createTestApplication(4173, { testControlProxy: true });
+const application = await createTestApplication(4173);
 let closing: Promise<void> | undefined;
 
 async function close() {

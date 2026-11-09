@@ -1,6 +1,7 @@
 {
   "extends": "./tsconfig.checks.json",
   "contentMappers": [{ "package": "vitest-cucumber-context-mapper", "extensions": [".feature"] }],
-  "include": ["apps/web/tests/**/*.feature.test.ts"],
+  // The bindings import testSupport.ts; listing it keeps the check valid while no binding exists.
+  "include": ["apps/web/tests/**/*.feature.test.ts", "apps/web/tests/support/testSupport.ts"],
   "exclude": []
 }

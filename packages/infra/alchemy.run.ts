@@ -69,12 +69,10 @@ export const web = Effect.gen(function* () {
     },
     env: {
       DATABASE_URL: database,
+      // Nothing reads this until access is rebuilt (PRD #104, slice 0a). The binding keeps the
+      // generated secret: without it, the next deploy deletes the secret from Alchemy state.
       BETTER_AUTH_SECRET: authSecret,
-      BETTER_AUTH_URL: Cloudflare.Worker.URL,
       APP_ORIGIN: Cloudflare.Worker.URL,
-      GOOGLE_CLIENT_ID: Config.NonEmptyString("GOOGLE_CLIENT_ID"),
-      GOOGLE_CLIENT_SECRET: Config.Redacted("GOOGLE_CLIENT_SECRET"),
-      BOOTSTRAP_ADMIN_EMAIL: Config.NonEmptyString("BOOTSTRAP_ADMIN_EMAIL"),
       APP_ENV: appEnv,
       GIT_SHA: revision,
       DEPLOYMENT_STAGE: stage,

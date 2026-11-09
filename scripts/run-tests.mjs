@@ -32,11 +32,7 @@ if (suite === "fast") {
 } else if (suite === "browser") {
   run("bddgen", []);
 
-  if (
-    globSync("features/company/**/*.feature").length +
-      globSync("features/access/**/*.feature").length ===
-    0
-  ) {
+  if (globSync("features/**/*.feature").length === 0) {
     // Listing still loads Playwright's configuration, without requiring a browser.
     run("playwright", ["test", "--list", "--pass-with-no-tests"]);
     console.log("SKIPPED: no Playwright-BDD scenarios yet; no browser behavior verified.");

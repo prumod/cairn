@@ -99,11 +99,11 @@ For each feature, record which tests cover its architectural responsibilities an
 
 ## Current test boundaries
 
-Vitest discovers colocated tests under `{apps/web,shared}/src/**/*.{spec,test}.{ts,tsx}` and `packages/*/src/**/*.{spec,test}.{ts,tsx}`. It also discovers acceptance/typical integration tests under `apps/web/tests/{acceptance,typical}/integration/`. Playwright-BDD discovers capability contracts under `features/company/` and `features/access/`, with step bindings under `apps/web/tests/acceptance/e2e/`.
+Vitest discovers colocated tests under `{apps/web,shared}/src/**/*.{spec,test}.{ts,tsx}` and `packages/*/src/**/*.{spec,test}.{ts,tsx}`. It also discovers acceptance/typical integration tests under `apps/web/tests/{acceptance,typical}/integration/`. Playwright-BDD discovers capability contracts under `features/`, with step bindings under `apps/web/tests/acceptance/e2e/`. Both are empty: the access and company contracts were deleted with the walking skeleton's access code (PRD #104), so `bun run test:browser` lists no scenario and reports `SKIPPED`.
 
-In `apps/web/tests/acceptance/integration/`, `*.feature.test.ts` files are Vitest bindings that import a `.feature` contract through `vitest-cucumber-context-mapper` and run its scenarios against the compiled Worker and a disposable database; `account-approval.feature.test.ts` binds `features/access/account-approval.feature`. `apps/web/tests/typical/integration/` holds technical integration tests that have no scenario, such as the transport checks in `accessTransport.spec.ts` (analytics configuration, RPC rejection of anonymous and non-admin users, no-store caching). `apps/web/tests/support/testSupport.ts` is the shared application fixture for these tests and for `scripts/start-browser-test-server.ts`.
+In `apps/web/tests/acceptance/integration/`, `*.feature.test.ts` files are Vitest bindings that import a `.feature` contract through `vitest-cucumber-context-mapper` and run its scenarios against the compiled Worker and a disposable database; none exists now. `apps/web/tests/typical/integration/` holds technical integration tests that have no scenario; none exists now. `apps/web/tests/support/testSupport.ts` is the shared application fixture for these tests and for `scripts/start-browser-test-server.ts`.
 
-The access integration and browser tests target the built TanStack Start Worker, including the feature-owned server-function transport, database-backed access, origin checks, and authentication handling. Colocated backoffice tests cover infrastructure-independent application rules, the application-failure-to-HTTP mapping, and Query behavior with injected fakes. The Worker integration tests cover Zod input rejection, session and origin checks, and no-store responses. The company scenarios check that the removed profile editor and `/api/company-profile` endpoint stay unavailable; the access scenarios check that approval and revocation are reflected in the user's existing session. Browser identities are controlled fixtures; they do not run Google's OAuth redirect, consent, state, or PKCE flow.
+The one Worker integration test, `apps/web/tests/acceptance/integration/legalPages.spec.ts`, checks that anonymous visitors get the privacy and terms pages as server-rendered HTML. No test covers sign-in, access, server-function transport or `/api/analytics-config`: those tests were deleted with the walking skeleton's access code. Slice 0a of the [Now technical design](docs/reference/technical-design-now-discovery.md#access) adds access tests back from PRD #104 stories 43–43d.
 
 Lint rejects module mocking (`vi.mock`); tests inject fake dependencies through the public interface instead.
 
@@ -115,7 +115,7 @@ Both `bun run test:fast` and `bun run test:browser` build the app before executi
 - A pinned local Neon HTTP proxy connects the test app's Neon serverless HTTP driver to that PostgreSQL container.
 - The wrapper passes `TEST_DATABASE_URL` and `TEST_NEON_PORT` to the test process, then removes the Compose project and volumes.
 
-Test support creates a uniquely named database for each application fixture, applies `packages/db/migrations/` through the Neon HTTP migrator, and starts the compiled Worker with the test-only Alchemy stack in `packages/infra/test/alchemy.run.ts`. The Worker runs in `workerd`, serves the built client assets, and uses a unique local test stage. Browser acceptance adds an isolated control proxy outside the app for creating controlled Better Auth identities. It is not an application route and is not included in production builds.
+Test support creates a uniquely named database for each application fixture, applies `packages/db/migrations/` through the Neon HTTP migrator, and starts the compiled Worker with the test-only Alchemy stack in `packages/infra/test/alchemy.run.ts`. The Worker runs in `workerd`, serves the built client assets, and uses a unique local test stage.
 
 The CI workflow uses the same Docker Compose wrapper; it does not declare a separate PostgreSQL service. No manual `pg_ctl` server or persistent local test database is required.
 
@@ -126,7 +126,7 @@ Run commands from the repository root with Bun 1.3.14:
 - `bun run test:fast` builds the Worker and runs Vitest using the disposable PostgreSQL/Neon proxy pair.
 - `bun run test:browser` builds the Worker and runs the Chromium Playwright-BDD scenarios against the local test Worker. Install Chromium with the repository setup command or `bunx --no-install playwright install chromium`.
 - `bun run test` runs a fresh build, fast tests, and browser tests.
-- `bun run typecheck` first regenerates environment types, then checks workspace packages and root test/config types. Its last step checks the `*.feature.test.ts` bindings with `tsconfig.acceptance.json` and a pinned TypeScript 7.1 dev build (alias `typescript-mappers`) that maps `.feature` imports to types; a scenario title that differs from the contract fails to compile. Other packages stay on the catalog TypeScript.
+- `bun run typecheck` first regenerates environment types, then checks workspace packages and root test/config types. Its last step checks the `*.feature.test.ts` bindings with `tsconfig.acceptance.json` and a pinned TypeScript 7.1 dev build (alias `typescript-mappers`) that maps `.feature` imports to types; a scenario title that differs from the contract fails to compile. While no binding exists, that step checks only `apps/web/tests/support/testSupport.ts`, because `tsc` rejects a configuration with no input. Other packages stay on the catalog TypeScript.
 - `bun run check` runs formatting, lint, boundary checks/proofs, typecheck, build, dependency audit, and the fast and browser test suites. The required `Agent checks` CI workflow runs the same full check; the local commit and push gates do not run tests.
 
 ## Scoped mutation pilot
@@ -163,13 +163,13 @@ The four survivors were reviewed: `DependencyUnavailable`'s message is not retur
 
 ## Observability test boundary
 
-Colocated tests cover public analytics configuration gating, SDK privacy options and identity/reset behavior with a fake PostHog SDK injected through `createAnalytics`, and request-ID/error sanitization with a captured console logger. The access integration suite also checks the compiled Worker's public analytics configuration. These tests do not establish hosted ingestion, replay privacy in a real recording, Cloudflare trace lookup, or source-map remapping. See the dated evidence below and the [diagnostic guide](docs/how-to/investigate-application-failure.md) for the current live checks and their limits.
+Colocated tests cover public analytics configuration gating, SDK privacy options and identity/reset behavior with a fake PostHog SDK injected through `createAnalytics`, and request-ID/error sanitization with a captured console logger. These tests do not establish hosted ingestion, replay privacy in a real recording, Cloudflare trace lookup, or source-map remapping. See the dated evidence below and the [diagnostic guide](docs/how-to/investigate-application-failure.md) for the current live checks and their limits.
 
 ## Feature-structure verification limits
 
 `bun run check` passes locally: formatting, lint, boundary lint and proofs, type checks, the production build, the dependency audit, 111 fast tests, and 3 Chromium scenarios.
 
-The acceptance Worker stack (`packages/infra/test/alchemy.run.ts`) starts a generated `dist/server/worker.js` that re-exports only the default handler. TanStack Start's `server.js` also exports shared chunk symbols, and the current workerd rejects non-handler exports from an entrypoint. The stack sets no compatibility flags, because `nodejs_compat` is the default for compatibility dates from 2026-08-04 and workerd rejects a redundant flag. The integration helper encodes server-function input with Seroval, matching Start's transport. The deployed web Worker entry is `apps/web/src/server/worker.ts` with no compatibility flags, using the same handler-only pattern as the acceptance stack.
+The acceptance Worker stack (`packages/infra/test/alchemy.run.ts`) starts a generated `dist/server/worker.js` that re-exports only the default handler. TanStack Start's `server.js` also exports shared chunk symbols, and the current workerd rejects non-handler exports from an entrypoint. The stack sets no compatibility flags, because `nodejs_compat` is the default for compatibility dates from 2026-08-04 and workerd rejects a redundant flag. The deployed web Worker entry is `apps/web/src/server/worker.ts` with no compatibility flags, using the same handler-only pattern as the acceptance stack.
 
 ## Historical migration verification
 

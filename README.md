@@ -2,9 +2,9 @@
 
 > Descoberta de concursos públicos de obras para empresas de construção.
 
-Monorepo Bun com React e TanStack Start, executado como Cloudflare Worker através de Alchemy. Usa Better Auth com Google para o acesso e Drizzle com Neon HTTP para a base de dados. Não existe backend Express.
+Monorepo Bun com React e TanStack Start, executado como Cloudflare Worker através de Alchemy. Usa Drizzle com Neon HTTP para a base de dados. Não existe backend Express.
 
-A aplicação implementa o início de sessão com Google, a aprovação de contas por um administrador e o perfil da empresa. A descoberta de obras no Diário da República existe como protótipo; consulte o [contexto do produto](docs/product/README.md).
+A aplicação serve, por agora, só a página inicial, a política de privacidade e os termos de utilização. O início de sessão e a aprovação de contas do walking skeleton foram eliminados; o slice 0a do [desenho técnico do Now](docs/reference/technical-design-now-discovery.md#access) volta a construí-los. A descoberta de obras no Diário da República existe como protótipo; consulte o [contexto do produto](docs/product/README.md).
 
 ## Começar
 
@@ -27,9 +27,7 @@ A aplicação implementa o início de sessão com Google, a aprovação de conta
 
    O assistente instala o que faltar (incluindo o Docker), prepara a base de dados local e o `packages/infra/.env.local`, e executa as verificações. Os detalhes estão em [Como configurar o projeto](docs/how-to/configurar-o-projeto.md).
 
-3. Preencha `GOOGLE_CLIENT_ID` e `GOOGLE_CLIENT_SECRET` em `packages/infra/.env.local`. O Google não permite criar o cliente OAuth por script; os passos estão em [Executar o perfil da empresa](docs/how-to/run-company-profile.md).
-
-4. Num terminal novo, execute `bun run dev` e abra `http://localhost:3001`.
+3. Num terminal novo, execute `bun run dev` e abra `http://localhost:3001`.
 
 ## Comandos
 
@@ -66,6 +64,6 @@ Os inputs, os comandos, o estado local do Alchemy, a recuperação de falhas e o
 
 ## Estrutura e documentação
 
-`apps/web` contém a aplicação TanStack Start. `packages/infra`, `packages/db` e `packages/auth` contêm o Alchemy, o Drizzle com as migrações e o Better Auth. `features` contém os cenários de aceitação. Consulte [Arquitetura](ARCHITECTURE.md) e [Estrutura do projeto](docs/reference/project-structure.md).
+`apps/web` contém a aplicação TanStack Start. `packages/infra` e `packages/db` contêm o Alchemy e o Drizzle com as migrações. `features` contém os cenários de aceitação. Consulte [Arquitetura](ARCHITECTURE.md) e [Estrutura do projeto](docs/reference/project-structure.md).
 
 O [índice da documentação](docs/README.md) lista os guias, a referência e as orientações para agentes, incluindo as [integrações opcionais com Pi](docs/how-to/configurar-integracoes-pi.md).
