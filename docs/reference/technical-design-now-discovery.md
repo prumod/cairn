@@ -662,12 +662,12 @@ Made while assembling this design (2026-11-09):
 
 ## PRD changes
 
-A log of the PRD amendments each ticket caused. All of them are in PRD #104 (checked in the audit, 2026-11-09); the PRD comments list each one, except the audit's amendments marked «not yet in the PRD», which follow the user's answers to Q1–Q10 under «Audit 2026-11-09».
+A log of the PRD amendments each ticket caused. All of them are in PRD #104 (checked in the audit, 2026-11-09); the PRD comments list each one. The audit's amendments follow the user's answers to Q1–Q10 under «Audit 2026-11-09», [applied 2026-11-09](https://github.com/prumod/cairn/issues/104#issuecomment-6745598752).
 
-- **Stories 30–30e, 32, rule 19 and «Dados», Conversa** (user, 2026-11-09; not yet in the PRD): no threads («fios»): each comment stands alone with its lotes or places and its time. 30a: a checkbox «Enviar ao assistente», with no «@assistente» mention, sends that one comment as a request, with only its lotes or places as context. 30b: the assistant answers in the conversation. 30c goes. 30d: the conversation shows the comment as a message, and clicking it opens the comment. 30e and 32: only unsent comments are edited or deleted; a comment sent with the option is a sent item, and «Reverter» returns it; «Apagar fio», «Resolver» and «Fechar» go.
-- **Rule 8** (Q5, user, 2026-11-09; not yet in the PRD): «Reverter» (story 46) also asks for confirmation.
+- **Stories 30–30e, 32, rule 19 and «Dados», Conversa** (user, 2026-11-09; [applied 2026-11-09](https://github.com/prumod/cairn/issues/104#issuecomment-6745598752)): no threads («fios»): each comment stands alone with its lotes or places and its time. 30a: a checkbox «Enviar ao assistente», with no «@assistente» mention, sends that one comment as a request, with only its lotes or places as context. 30b: the assistant answers in the conversation. 30c goes. 30d: the conversation shows the comment as a message, and clicking it opens the comment. 30e and 32: only unsent comments are edited or deleted; a comment sent with the option is a sent item, and «Reverter» returns it; «Apagar fio», «Resolver» and «Fechar» go.
+- **Rule 8** (Q5, user, 2026-11-09; [applied 2026-11-09](https://github.com/prumod/cairn/issues/104#issuecomment-6745598752)): «Reverter» (story 46) also asks for confirmation.
 
-- **Assistant, daily limit** (Q9, user, 2026-11-09; not yet in the PRD): each person can make a limited number of requests to the assistant per day (20 to start, set in the installation's configuration); beyond it, the assistant answers «Atingiu o limite de pedidos ao assistente por hoje.» and the rest of the page keeps working.
+- **Assistant, daily limit** (Q9, user, 2026-11-09; [applied 2026-11-09](https://github.com/prumod/cairn/issues/104#issuecomment-6745598752)): each person can make a limited number of requests to the assistant per day (20 to start, set in the installation's configuration); beyond it, the assistant answers «Atingiu o limite de pedidos ao assistente por hoje.» and the rest of the page keeps working.
 
 - **«Dados», Empresa** ([#197](https://github.com/prumod/cairn/issues/197)): the localização da empresa is a point with a place name (for example «Leiria»), which story 2 shows.
 
