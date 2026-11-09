@@ -1,10 +1,7 @@
-import { createAuth, getDb } from "../services.js";
+import { getDb } from "../services.js";
 import { ENV } from "../env.server.js";
 import { readConfig } from "./config.server.js";
 
-export async function getRuntime() {
-  const config = readConfig(ENV);
-  const db = getDb();
-
-  return { config, db, auth: await createAuth(db) };
+export function getRuntime() {
+  return { config: readConfig(ENV), db: getDb() };
 }

@@ -81,7 +81,6 @@ try {
     write(`${root}/two/entry.ts`, "export const value = 1;\n");
   }
 
-  write("packages/auth/src/index.ts", "export const value = 1;\n");
   write("packages/db/src/index.ts", "export const value = 1;\n");
   write("packages/infra/alchemy.run.ts", "export const value = 1;\n");
   write("packages/ui/src/probe.ts", "export const value = 1;\n");
@@ -161,7 +160,7 @@ try {
   prove(useCase, rpc, "feature-usecase-cannot-import-adapters");
   write(otherUseCase, "export const value = 1;\n");
   prove(useCase, otherUseCase, "feature-usecase-is-independent");
-  const domainRule = "apps/web/src/pages/one/domain/access.ts";
+  const domainRule = "apps/web/src/pages/one/domain/rule.ts";
   write(domainRule, "export const value = 1;\n");
   write(useCase, importing(useCase, domainRule));
   cruise();
@@ -186,7 +185,7 @@ try {
   cruise();
   prove(
     "shared/src/one/pure.ts",
-    "packages/auth/src/index.ts",
+    "packages/infra/alchemy.run.ts",
     "cross-application-shared-is-independent",
   );
   prove(
@@ -213,11 +212,7 @@ try {
     "cross-application-shared-is-independent",
   );
 
-  for (const target of [
-    "packages/auth/src/index.ts",
-    "packages/db/src/index.ts",
-    "packages/infra/alchemy.run.ts",
-  ]) {
+  for (const target of ["packages/db/src/index.ts", "packages/infra/alchemy.run.ts"]) {
     prove("apps/web/src/pages/two/probe.ts", target, "client-cannot-import-server");
     prove("packages/ui/src/probe.ts", target, "client-cannot-import-server");
   }

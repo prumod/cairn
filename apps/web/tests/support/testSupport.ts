@@ -1,41 +1,18 @@
-import { toJSON } from "seroval";
-import { createHash, randomUUID } from "node:crypto";
+import { randomUUID } from "node:crypto";
 import { spawn, type ChildProcess } from "node:child_process";
-import {
-  createServer as createHttpServer,
-  request as httpRequest,
-  type IncomingMessage,
-  type Server,
-} from "node:http";
 import { createServer as createNetServer } from "node:net";
 import { setTimeout as delay } from "node:timers/promises";
 import { fileURLToPath } from "node:url";
 import pg from "pg";
 import { z } from "zod";
-import { betterAuth } from "better-auth";
-import { testUtils } from "better-auth/plugins";
-import { authOptions } from "@cairn/auth";
 import { createDb } from "@cairn/db";
 import { migrate } from "drizzle-orm/neon-http/migrator";
 
-const environmentKeys = [
-  "APP_ORIGIN",
-  "BETTER_AUTH_SECRET",
-  "BETTER_AUTH_URL",
-  "BOOTSTRAP_ADMIN_EMAIL",
-  "DATABASE_URL",
-  "GOOGLE_CLIENT_ID",
-  "GOOGLE_CLIENT_SECRET",
-  "GIT_SHA",
-  "NODE_ENV",
-  "TEST_IDENTITY_KEY",
-] as const;
+const environmentKeys = ["APP_ORIGIN", "DATABASE_URL", "GIT_SHA", "NODE_ENV"] as const;
 
 const ListeningAddress = z.object({ port: z.number() });
 
 const Health = z.object({ status: z.literal("ready") });
-
-const IdentityRequest = z.object({ identity: z.enum(["admin", "pending", "editor"]) });
 
 async function findAvailablePort(requested: number) {
   if (requested !== 0) return requested;
@@ -93,38 +70,7 @@ async function stop(child: ChildProcess | undefined) {
   }
 }
 
-async function closeServer(server: Server | undefined) {
-  if (!server?.listening) return;
-  await new Promise<void>((resolve, reject) =>
-    server.close((error) => (error ? reject(error) : resolve())),
-  );
-}
-
-async function readText(request: IncomingMessage) {
-  const chunks: Buffer[] = [];
-  let size = 0;
-
-  for await (const chunk of request) {
-    const buffer = Buffer.from(chunk);
-    size += buffer.length;
-
-    if (size > 4096) throw new Error("Test identity payload is too large.");
-    chunks.push(buffer);
-  }
-
-  return Buffer.concat(chunks).toString("utf8");
-}
-
-// Tests send well-formed and deliberately malformed variants of one request shape.
-interface ChangeAccessBody {
-  userId?: string | number;
-  approved?: boolean | string;
-}
-
-export async function createTestApplication(
-  requestedPort = 0,
-  { testControlProxy = false }: { testControlProxy?: boolean } = {},
-) {
+export async function createTestApplication(requestedPort = 0) {
   const connectionString = process.env.TEST_DATABASE_URL;
 
   if (!connectionString) throw new Error("Run tests via the PostgreSQL test wrapper.");
@@ -138,7 +84,6 @@ export async function createTestApplication(
   const rootPool = new pg.Pool({ connectionString });
   let pool: pg.Pool | undefined;
   let appServer: ChildProcess | undefined;
-  let proxyServer: Server | undefined;
   let databaseCreated = false;
 
   async function restoreEnvironment() {
@@ -161,7 +106,6 @@ export async function createTestApplication(
       }
     }
 
-    await attempt(() => closeServer(proxyServer));
     await attempt(() => stop(appServer));
 
     if (pool) await attempt(() => pool!.end());
@@ -198,70 +142,20 @@ export async function createTestApplication(
       ),
     });
 
-    const secret = randomUUID();
-    const googleClientId = "controlled-test-client";
-    const googleClientSecret = "controlled-test-secret";
-    const publicPort = await findAvailablePort(requestedPort);
-    const appPort = testControlProxy ? await findAvailablePort(0) : publicPort;
-    const origin = "http://127.0.0.1:" + publicPort;
-    const appOrigin = "http://127.0.0.1:" + appPort;
-    const key = "isolated-local-browser-test";
+    const port = await findAvailablePort(requestedPort);
+    const origin = "http://127.0.0.1:" + port;
 
     const environment = {
       APP_ORIGIN: origin,
-      BETTER_AUTH_URL: origin,
-      BETTER_AUTH_SECRET: secret,
-      BOOTSTRAP_ADMIN_EMAIL: "admin@example.test",
       DATABASE_URL: neonURL.toString(),
-      GOOGLE_CLIENT_ID: googleClientId,
-      GOOGLE_CLIENT_SECRET: googleClientSecret,
       GIT_SHA: "0123456789abcdef0123456789abcdef01234567",
       HOST: "127.0.0.1",
       NODE_ENV: "test",
-      PORT: String(appPort),
-      TEST_IDENTITY_KEY: key,
+      PORT: String(port),
     };
 
     Object.assign(process.env, environment);
 
-    const auth = betterAuth({
-      ...authOptions(environment, db),
-      plugins: [testUtils()],
-    });
-
-    const helpers = (await auth.$context).test;
-
-    async function createIdentity(email: string, verified = true, google = true) {
-      const testContext = await auth.$context;
-
-      const userRecord = await helpers.saveUser(
-        helpers.createUser({ email, emailVerified: verified }),
-      );
-
-      if (google) {
-        await testContext.internalAdapter.createAccount({
-          userId: userRecord.id,
-          providerId: "google",
-          accountId: randomUUID(),
-        });
-      }
-
-      const login = await helpers.login({ userId: userRecord.id });
-
-      const identity = {
-        user: userRecord,
-        cookie: login.headers.get("cookie") ?? "",
-        cookies: login.cookies,
-      };
-
-      identities.set(email, identity);
-
-      return identity;
-    }
-
-    type Identity = Awaited<ReturnType<typeof createIdentity>>;
-
-    const identities = new Map<string, Identity>();
     const infraRoot = fileURLToPath(new URL("../../../../packages/infra/", import.meta.url));
     appServer = spawn(
       "bun",
@@ -296,7 +190,7 @@ export async function createTestApplication(
 
     while (!ready && Date.now() < deadline) {
       const response = await Promise.race([
-        fetch(appOrigin + "/healthz", {
+        fetch(origin + "/healthz", {
           headers: { Origin: origin },
           signal: AbortSignal.timeout(1_500),
         }).catch(() => null),
@@ -329,105 +223,10 @@ export async function createTestApplication(
       throw new Error(`TanStack Start server was not ready (${lastObservation}): ${output()}`);
     }
 
-    if (testControlProxy) {
-      proxyServer = createHttpServer(async (request, response) => {
-        if (request.method === "POST" && request.url === "/__test/session") {
-          if (request.headers["x-test-identity-key"] !== key) {
-            response.writeHead(403);
-            response.end();
-
-            return;
-          }
-
-          let body: unknown;
-
-          try {
-            body = JSON.parse(await readText(request));
-          } catch {
-            response.writeHead(400, { "Content-Type": "application/json" });
-            response.end(JSON.stringify({ error: "Invalid test identity request." }));
-
-            return;
-          }
-
-          const identityRequest = IdentityRequest.safeParse(body);
-
-          if (!identityRequest.success) {
-            response.writeHead(400, { "Content-Type": "application/json" });
-            response.end(JSON.stringify({ error: "Unknown test identity." }));
-
-            return;
-          }
-
-          const role = identityRequest.data.identity;
-          let identity = identities.get(role);
-
-          if (!identity) {
-            identity = await createIdentity(role + "@example.test");
-            identities.set(role, identity);
-          }
-
-          const cookies = identity.cookies.map((cookie) => {
-            const parts = [cookie.name + "=" + cookie.value, "Path=" + cookie.path];
-
-            if (cookie.httpOnly) parts.push("HttpOnly");
-
-            if (cookie.secure) parts.push("Secure");
-
-            if (cookie.sameSite) parts.push("SameSite=" + cookie.sameSite);
-
-            return parts.join("; ");
-          });
-
-          response.writeHead(200, {
-            "Cache-Control": "no-store",
-            "Content-Type": "application/json",
-            "Set-Cookie": cookies,
-          });
-          response.end(JSON.stringify({ userId: identity.user.id, email: identity.user.email }));
-
-          return;
-        }
-
-        const upstream = httpRequest(
-          {
-            hostname: "127.0.0.1",
-            port: appPort,
-            path: request.url,
-            method: request.method,
-            headers: { ...request.headers, host: "127.0.0.1:" + appPort },
-          },
-          (upstreamResponse) => {
-            response.writeHead(upstreamResponse.statusCode ?? 502, upstreamResponse.headers);
-            upstreamResponse.pipe(response);
-          },
-        );
-
-        upstream.on("error", () => {
-          if (!response.headersSent) response.writeHead(502);
-          response.end();
-        });
-        request.pipe(upstream);
-      });
-      await new Promise<void>((resolve, reject) => {
-        proxyServer!.once("error", reject);
-        proxyServer!.listen(publicPort, "127.0.0.1", resolve);
-      });
-    }
-
     return {
       db,
-      auth,
       origin,
       baseURL: origin,
-      createIdentity,
-      async identity(email: string, verified = true, google = true) {
-        const existing = identities.get(email);
-
-        if (existing) return existing;
-
-        return createIdentity(email, verified, google);
-      },
       request<Body>(
         path: string,
         cookie = "",
@@ -447,33 +246,6 @@ export async function createTestApplication(
         if (body !== undefined) init.body = JSON.stringify(body);
 
         return fetch(origin + path, init);
-      },
-      rpc(
-        name: "listUsers" | "changeAccess",
-        cookie = "",
-        data?: ChangeAccessBody,
-        requestOrigin = origin,
-      ) {
-        // Match Start's installed production compiler ID; exercise the built Worker transport.
-        const id = createHash("sha256")
-          .update(
-            `src/pages/backoffice/useCases/${name}/${name}.functions.ts--${name}_createServerFn_handler`,
-          )
-          .digest("hex");
-
-        const init: RequestInit = {
-          method: name === "listUsers" ? "GET" : "POST",
-          headers: {
-            cookie,
-            origin: requestOrigin,
-            "content-type": "application/json",
-            "x-tsr-serverFn": "true",
-          },
-        };
-
-        if (name === "changeAccess") init.body = JSON.stringify(toJSON({ data }));
-
-        return fetch(origin + "/_serverFn/" + id, init);
       },
       async reset() {
         await pool!.query({

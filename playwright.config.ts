@@ -3,7 +3,7 @@ import { defineBddConfig } from "playwright-bdd";
 
 export default defineConfig({
   testDir: defineBddConfig({
-    features: "features/{company,access}/**/*.feature",
+    features: "features/**/*.feature",
     steps: "apps/web/tests/acceptance/e2e/**/*.steps.ts",
     outputDir: ".features-gen",
     missingSteps: "fail-on-gen",
@@ -21,7 +21,7 @@ export default defineConfig({
     command:
       "exec node scripts/with-test-postgres.mjs node --import tsx scripts/start-browser-test-server.ts",
     gracefulShutdown: { signal: "SIGTERM", timeout: 10000 },
-    env: { NODE_ENV: "test", TEST_IDENTITY_KEY: "isolated-local-browser-test" },
+    env: { NODE_ENV: "test" },
     url: "http://127.0.0.1:4173",
     reuseExistingServer: false,
   },

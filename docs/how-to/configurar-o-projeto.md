@@ -43,9 +43,6 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\setup-project.ps1
 
 ## Depois do assistente
 
-> [!IMPORTANT]
-> O Google não permite criar o cliente OAuth por script. Preencha `GOOGLE_CLIENT_ID` e `GOOGLE_CLIENT_SECRET` em `packages/infra/.env.local` com um cliente Web para `http://localhost:3001`, e confirme `BOOTSTRAP_ADMIN_EMAIL`, o email da conta Google administradora. Sem estes valores, `bun run dev` indica quais faltam. Os passos estão em [Executar o perfil da empresa](run-company-profile.md). Não coloque credenciais reais em ficheiros versionados.
-
 Num terminal novo, execute `bun run dev` e abra `http://localhost:3001`.
 
 Depois de atualizar o repositório, execute `bun run update` para instalar as dependências e `bun run dev:db` para iniciar a base de dados local e aplicar as migrações novas. Altere `bun.lock` apenas quando mudar intencionalmente as dependências.

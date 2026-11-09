@@ -180,7 +180,7 @@ try {
     $envLocal = Join-Path $ProjectRoot 'packages\infra\.env.local'
     $utf8 = New-Object System.Text.UTF8Encoding $false
     if (-not (Test-Path $envLocal)) {
-        $header = "# Valores locais para ``bun run dev``. Ignorado pelo Git: não o submeta.`n# Preencha o cliente OAuth Web do Google para http://localhost:3001; ver docs/how-to/run-company-profile.md.`n"
+        $header = "# Valores locais para ``bun run dev``. Ignorado pelo Git: não o submeta.`n"
         [IO.File]::WriteAllText($envLocal, $header, $utf8)
     }
     # Acrescenta apenas as chaves em falta, para nunca substituir valores que o utilizador já definiu.
@@ -193,13 +193,8 @@ try {
     $generator = [Security.Cryptography.RandomNumberGenerator]::Create()
     $generator.GetBytes($randomBytes)
     $generator.Dispose()
-    $gitEmail = & git config user.email
-    if (-not $gitEmail) { $gitEmail = '' }
     Ensure-Env 'DATABASE_URL' 'postgres://postgres:local-dev-only@db.localtest.me:54321/cairn'
     Ensure-Env 'BETTER_AUTH_SECRET' (-join ($randomBytes | ForEach-Object { $_.ToString('x2') }))
-    Ensure-Env 'BOOTSTRAP_ADMIN_EMAIL' $gitEmail
-    Ensure-Env 'GOOGLE_CLIENT_ID' ''
-    Ensure-Env 'GOOGLE_CLIENT_SECRET' ''
     Write-Host "  Ficheiro $envLocal pronto."
 
     Stage 'Verificar o projeto'
@@ -209,13 +204,6 @@ try {
     Write-Host 'O assistente acrescentou as ferramentas instaladas ao PATH do seu utilizador.'
     Write-Host 'O GITLEAKS_BIN do seu utilizador aponta para o scanner desta cópia do projeto.'
     Write-Host 'A base de dados local está a correr e migrada. Depois de atualizar o repositório, execute bun run dev:db.'
-    $pending = @(@('BOOTSTRAP_ADMIN_EMAIL', 'GOOGLE_CLIENT_ID', 'GOOGLE_CLIENT_SECRET') | Where-Object { -not (Select-String -Path $envLocal -Pattern "^$($_)=." -Quiet) })
-    if ($pending.Count -gt 0) {
-        Write-Host "Falta preencher em ${envLocal}: $($pending -join ', ')." -ForegroundColor Yellow
-        Write-Host 'O Google não permite criar o cliente OAuth por script. Crie um cliente Web para http://localhost:3001'
-        Write-Host 'com o URI de redirecionamento http://localhost:3001/api/auth/callback/google (docs/how-to/run-company-profile.md).'
-        Write-Host 'BOOTSTRAP_ADMIN_EMAIL é o email da conta Google que será administradora.'
-    }
     Write-Host 'Abra um novo terminal PowerShell nesta pasta, execute bun run dev e abra http://localhost:3001.'
     Write-Host 'Discord, WhatsApp e publicação são configurações separadas.'
 }

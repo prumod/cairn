@@ -32,7 +32,7 @@ Also planned for Now, with the first slice that needs each (base: [What is the p
   - **Still rejected:** a use case or helper importing another feature's use case or helper directly (only the root file is public).
   - **Proofs:** flip the `feature-usecase-is-independent` proof (a use case importing another use case) to «value import rejected, type-only import allowed»; add allowed proofs for use case → helper; add rejection proofs for use case → another feature's use case, helper → `infra/`, and helper → `requestContext.server.ts`.
   - **Scan:** add `apps/web/evals` to the paths in `scripts/check-boundaries.mjs`, so the evaluation reaches the assistant only through its root file.
-- **Request context.** Every server function builds its context through one helper, `approvedContext({ write })` in `apps/web/src/server/shared/requestContext/requestContext.server.ts`. For a write, it checks the origin first, then the session (401), then approval (403); then it reads the company and sets `no-store`. `signedInContext()`, beside it, checks only the session, for `getMyAccess`. They replace backoffice's `useCases/context.server.ts`, which slice 0a deletes with the rest of the walking skeleton's access code (base: «Server functions, sign-in and access» in [the Now technical design](technical-design-now-discovery.md)).
+- **Request context.** Every server function builds its context through one helper, `approvedContext({ write })` in `apps/web/src/server/shared/requestContext/requestContext.server.ts`. For a write, it checks the origin first, then the session (401), then approval (403); then it reads the company and sets `no-store`. `signedInContext()`, beside it, checks only the session, for `getMyAccess`. They take the place of the walking skeleton's `useCases/context.server.ts`, deleted with its access code (base: «Server functions, sign-in and access» in [the Now technical design](technical-design-now-discovery.md)).
 - **Marks.** Discovery does not import the assistant feature. The Now layout reads the comment marks through the assistant's root `marks.functions.ts` and passes them to the discovery components as props.
 
 ## Required feature-driven structure
@@ -48,27 +48,27 @@ For example:
 ```text
 src/
   pages/
-    backoffice/
-      backoffice.page.tsx
+    <feature>/
+      <feature>.page.tsx
       components/
-        accessManager.tsx
-        accessManager.test.tsx
+        <component>.tsx
+        <component>.test.tsx
       domain/
-        access.ts
+        <rule>.ts
       infra/
-        users.server.ts
+        <records>.server.ts
       useCases/
         context.server.ts
         failureResponse.server.ts
         failureResponse.server.test.ts
-        changeAccess/
-          changeAccess.ts
-          changeAccess.test.ts
-          changeAccess.functions.ts
-        listUsers/
-          listUsers.ts
-          listUsers.test.ts
-          listUsers.functions.ts
+        <changeRecord>/
+          <changeRecord>.ts
+          <changeRecord>.test.ts
+          <changeRecord>.functions.ts
+        <listRecords>/
+          <listRecords>.ts
+          <listRecords>.test.ts
+          <listRecords>.functions.ts
   shared/
     components/
       layout/
@@ -77,19 +77,19 @@ src/
       notificationService.tsx
 ```
 
-`domain/access.ts` holds `Actor`, `AccessError`, and `requireAdministrator`. Both backoffice use cases enforce the same administrator rule, so the rule lives in `domain/`.
+`domain/<rule>.ts` holds a rule that both use cases enforce, such as an actor type, an error type and a permission check, so the rule lives in `domain/`.
 
-`useCases/changeAccess/changeAccess.ts` is the application use case. It owns the operation's business rules and declares the interfaces it needs, such as `AccessWriter`. It receives implementations through dependency injection. It does not import TanStack Start, React, HTTP/request APIs, database clients, or `infra/` files. The server adapter obtains the authenticated identity and supplies the required facts or dependencies.
+`useCases/<changeRecord>/<changeRecord>.ts` is the application use case. It owns the operation's business rules and declares the interfaces it needs, such as a `RecordWriter`. It receives implementations through dependency injection. It does not import TanStack Start, React, HTTP/request APIs, database clients, or `infra/` files. The server adapter obtains the authenticated identity and supplies the required facts or dependencies.
 
-`useCases/changeAccess/changeAccess.functions.ts` and `useCases/listUsers/listUsers.functions.ts` are the client-callable adapters. They define `createServerFn` entry points, register Zod input schemas directly when accepting input, wire the `infra/` repositories into the use cases, and invoke them. The installed Start compiler rejects client imports of `**/*.server.*`, so RPC wrappers must use `.functions.ts`; reserve `.server.ts` for server-only implementation.
+`useCases/<changeRecord>/<changeRecord>.functions.ts` and `useCases/<listRecords>/<listRecords>.functions.ts` are the client-callable adapters. They define `createServerFn` entry points, register Zod input schemas directly when accepting input, wire the `infra/` repositories into the use cases, and invoke them. The installed Start compiler rejects client imports of `**/*.server.*`, so RPC wrappers must use `.functions.ts`; reserve `.server.ts` for server-only implementation.
 
-`useCases/context.server.ts` obtains the authenticated identity and current access facts, enforces request-origin rules, sets response headers, and maps application errors to HTTP failures using `failureResponse.server.ts`. `components/accessManager.tsx` receives the server functions as props, so its tests inject fakes; the page binds the real ones with `useServerFn`. `infra/users.server.ts` implements the application-owned persistence interfaces with Drizzle. The direction is page → `.functions.ts` adapter → use case; infrastructure implements interfaces that the application owns.
+`useCases/context.server.ts` obtains the authenticated identity and current access facts, enforces request-origin rules, sets response headers, and maps application errors to HTTP failures using `failureResponse.server.ts`. `components/<component>.tsx` receives the server functions as props, so its tests inject fakes; the page binds the real ones with `useServerFn`. `infra/<records>.server.ts` implements the application-owned persistence interfaces with Drizzle. The direction is page → `.functions.ts` adapter → use case; infrastructure implements interfaces that the application owns.
 
 Start compiles server-function handlers and server-only middleware into server code and replaces their client entry points with RPC stubs. Server-only imports in `.functions.ts` must be used only inside those compiled boundaries. Client code may import the feature's `.functions.ts` entry point, but may not import `.server.ts` implementations, persistence, credentials, or runtime configuration directly. Verify this separation with both the static checks and the production build.
 
 Keep use cases, domain rules, and infrastructure private to their owning feature. Other features consume an intentional public entry point rather than importing nested implementations. Move code into `shared` when multiple features actually use the same capability; keep shared modules organized by capability, such as notifications or layout. TanStack file routes remain thin framework entry points that compose the owning page.
 
-Backoffice now follows this structure. Shared access bootstrap and its table remain in `src/server/modules/access` because both backoffice and `/api/me` use them. Both are the walking skeleton's provisional access code: slice 0a deletes them and rebuilds access as `pages/access/` and `server/modules/access/` from PRD #104's stories 43–43d («Access» in [the Now technical design](technical-design-now-discovery.md)), and replaces this example with it. Place new feature-owned behavior inside its feature rather than introducing a top-level technical layer to satisfy a checker.
+No feature follows this structure yet: the walking skeleton's access code, which did, was deleted. `src/server/modules/access/` keeps only the `user_access` table file, so that `drizzle-kit generate` keeps the table. Slice 0a rebuilds access as `pages/access/` and `server/modules/access/` from PRD #104's stories 43–43d («Access» in [the Now technical design](technical-design-now-discovery.md)). Place new feature-owned behavior inside its feature rather than introducing a top-level technical layer to satisfy a checker.
 
 ## Maintaining structure checks
 
@@ -121,7 +121,6 @@ apps/web/
     initial-visual/index.html           #   starting look of Now, light and dark (never edited)
   dist/                               # generated Worker entry and client assets
 packages/
-  auth/src/                           # Better Auth and provider configuration
   db/src/                              # database client, schemas, and relations
   db/migrations/<timestamp_name>/     # Drizzle 1.0.0-rc.4 folder-based migrations
   infra/alchemy.run.ts                # Alchemy Cloudflare Website.Vite and Neon project stack
@@ -133,7 +132,7 @@ tools/oxlint/anti-slop/               # vendored anti-slop Oxlint plugin (develo
 features/<capability>/<use-case>.feature  # root Playwright-BDD contracts
 ```
 
-The repository is a Bun workspace over `apps/*` and `packages/*`. `apps/web` is a TanStack Start application built for Cloudflare Workers. `packages/infra` uses Alchemy to run the app locally and declares a Cloudflare target and, for cloud stages, a Neon project; the test fixture separately serves the compiled Worker in `workerd`. `packages/db` uses Drizzle with the Neon serverless HTTP driver. `packages/auth` configures Better Auth and Google. These package roles describe code structure, not a verified cloud deployment.
+The repository is a Bun workspace over `apps/*` and `packages/*`. `apps/web` is a TanStack Start application built for Cloudflare Workers. `packages/infra` uses Alchemy to run the app locally and declares a Cloudflare target and, for cloud stages, a Neon project; the test fixture separately serves the compiled Worker in `workerd`. `packages/db` uses Drizzle with the Neon serverless HTTP driver. These package roles describe code structure, not a verified cloud deployment.
 
 Nothing in `apps/web/src` imports `apps/web/references/`, and `lint:boundaries` does not scan it. `apps/web` `check-types` type-checks its `.tsx` files through `tsconfig.references.json`. See [the prototype contract](../product/system/prototype.md) for what each reference covers.
 
@@ -145,7 +144,7 @@ For modules under `apps/web/src/pages`, `apps/web/src/shared`, `apps/web/src/ser
 
 The dependency rules also enforce these workspace boundaries:
 
-- Client application code cannot import `.server` implementations, server routes, server environment/services, auth/database/infrastructure packages, Node APIs, or server runtime dependencies. Compiled feature `.functions.ts` entry points and server-only files are classified separately; tests and the generated route tree have explicit exceptions.
+- Client application code cannot import `.server` implementations, server routes, server environment/services, database/infrastructure packages, Node APIs, or server runtime dependencies. Compiled feature `.functions.ts` entry points and server-only files are classified separately; tests and the generated route tree have explicit exceptions.
 - A feature page may import its own `useCases/*/*.functions.ts` entry points. RPC adapters may import use cases, domain rules, infrastructure, and server helpers, but cannot import client pages or shared UI modules. Start transforms their server handlers into client-callable stubs.
 - Plain production `.ts` files under `pages/<feature>/useCases/<useCase>/` may import only other files in that same use-case folder, `pages/<feature>/domain/` files, or runtime-independent `shared/src` modules. They cannot import `.functions.ts`, `.server.ts`, or `pages/<feature>/infra/` files. These restrictions include type-only imports.
 - Production `.ts` files under `pages/<feature>/domain/` may import only other domain files of the same feature or runtime-independent `shared/src` modules.
@@ -156,10 +155,10 @@ The dependency rules also enforce these workspace boundaries:
 - Circular dependencies and unresolved imports fail. The runtime-resolved `cloudflare:workers` import is the explicit unresolved-import exception.
 - These rules also apply to `import type` dependencies. Only the circular-dependency rule ignores cycles made entirely of type-only imports, because TanStack Router's generated `apps/web/src/routeTree.gen.ts` imports the router type from `router.tsx`.
 
-`bun run lint:boundaries` scans the application source/tests, `packages/auth/src`, `packages/db/src`, Alchemy declarations/tests under `packages/infra` (including `packages/infra/src`), and `shared/src`. `.alchemy` generated cache/state is excluded. `bun run test:boundaries` proves allowed route-to-server and own-module test imports, and rejects representative private imports, workspace package imports from client code, cross-application shared dependencies, cycles, and unresolved imports. It also creates a temporary `packages/ui` client file to prove that the reserved UI boundary rejects server imports; the package is absent from the actual workspace. These checks enforce dependency shape, not runtime behavior or provider configuration.
+`bun run lint:boundaries` scans the application source/tests, `packages/db/src`, Alchemy declarations/tests under `packages/infra` (including `packages/infra/src`), and `shared/src`. `.alchemy` generated cache/state is excluded. `bun run test:boundaries` proves allowed route-to-server and own-module test imports, and rejects representative private imports, workspace package imports from client code, cross-application shared dependencies, cycles, and unresolved imports. It also creates a temporary `packages/ui` client file to prove that the reserved UI boundary rejects server imports; the package is absent from the actual workspace. These checks enforce dependency shape, not runtime behavior or provider configuration.
 
-Backoffice's `domain/access.ts` defines the administrator rule. `useCases/changeAccess/changeAccess.ts` and `useCases/listUsers/listUsers.ts` apply it, along with self-change prevention and missing-user behavior, through injected interfaces. Their `useCases/*/*.functions.ts` adapters use `useServerFn` at the page boundary, direct Zod validation for access-change input, and no-store response middleware. `useCases/context.server.ts` owns session and HTTP concerns, and `infra/users.server.ts` owns persistence. There is no separate `src/rpc` layer.
+There is no separate `src/rpc` layer.
 
 ## Test discovery
 
-Vitest discovers colocated tests under `{apps/web,shared}/src/**/*.{spec,test}.{ts,tsx}` and `packages/*/src/**/*.{spec,test}.{ts,tsx}`. It also discovers integration tests under `apps/web/tests/{acceptance,typical}/integration/`. Playwright-BDD discovers root contracts under `features/company/` and `features/access/`, with bindings under `apps/web/tests/acceptance/e2e/`. Browser fixtures use the compiled Worker and disposable database/proxy pair. Controlled Google-like identities do not prove Google's OAuth provider. See [Testing](../../TESTING.md) for commands and current evidence limits.
+Vitest discovers colocated tests under `{apps/web,shared}/src/**/*.{spec,test}.{ts,tsx}` and `packages/*/src/**/*.{spec,test}.{ts,tsx}`. It also discovers integration tests under `apps/web/tests/{acceptance,typical}/integration/`. Playwright-BDD discovers root contracts under `features/`, with bindings under `apps/web/tests/acceptance/e2e/`; both are empty until slice 0a adds the access contract. Browser fixtures use the compiled Worker and disposable database/proxy pair. See [Testing](../../TESTING.md) for commands and current evidence limits.

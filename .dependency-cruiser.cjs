@@ -20,7 +20,7 @@ const serverSource =
   "^(?:apps/web/src/(?:server/|env\\.server|services)|apps/web/src/pages/[^/]+/.*\\.server\\.[jt]sx?$)";
 
 const serverTarget =
-  "^(?:apps/web/src/(?:server/|env\\.server|services)|.*\\.server\\.[jt]sx?$|packages/(?:auth|db|infra)/|@cairn/(?:auth|db|infra)(?:/|$)|cloudflare:)";
+  "^(?:apps/web/src/(?:server/|env\\.server|services)|.*\\.server\\.[jt]sx?$|packages/(?:db|infra)/|@cairn/(?:db|infra)(?:/|$)|cloudflare:)";
 
 const pureUseCase = "^apps/web/src/pages/([^/]+)/useCases/([^/]+)/[^/]+\\.ts$";
 const pureDomain = "^apps/web/src/pages/([^/]+)/domain/[^/]+\\.ts$";
@@ -131,7 +131,7 @@ module.exports = {
       severity: "error",
       from: { path: "^shared/" },
       to: {
-        path: "^(?:apps/web/|packages/(?:auth|db|infra|ui)/|@cairn/|@tanstack/|react(?:/|$)|drizzle-orm|cloudflare:|node:|zod(?:/|$)|.*node_modules/(?:@tanstack/|react(?:/|$)|react-dom/|drizzle-orm/|@neondatabase/|zod/))",
+        path: "^(?:apps/web/|packages/(?:db|infra|ui)/|@cairn/|@tanstack/|react(?:/|$)|drizzle-orm|cloudflare:|node:|zod(?:/|$)|.*node_modules/(?:@tanstack/|react(?:/|$)|react-dom/|drizzle-orm/|@neondatabase/|zod/))",
       },
     },
     {

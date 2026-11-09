@@ -60,8 +60,8 @@ Use antes de abrir a PR quando a alteração toca o servidor. Reveja:
 | Ponto                   | Onde procurar                                                                                                  |
 | ----------------------- | -------------------------------------------------------------------------------------------------------------- |
 | Endpoints expostos      | `apps/web/src/routes/`, incluindo `api/`                                                                       |
-| Autenticação            | `packages/auth/` e `packages/db/src/schema/auth.ts`                                                            |
-| Autorização             | `apps/web/src/server/modules/access/`                                                                          |
+| Autenticação            | `packages/db/src/schema/auth.ts` (só as tabelas; o slice 0a volta a construir o início de sessão)              |
+| Autorização             | `apps/web/src/server/modules/access/` (só a tabela `user_access`)                                              |
 | Schema da base de dados | `packages/db/src/schema/`, tabelas em `apps/web/src/server/modules/*/persistence/` e `packages/db/migrations/` |
 | Modelo de dados         | `apps/web/src/server/modules/` e [GLOSSARY](../../GLOSSARY.md)                                                 |
 

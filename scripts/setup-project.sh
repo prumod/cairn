@@ -375,7 +375,6 @@ if [[ ! -f "$ENV_LOCAL" ]]; then
     umask 077
     {
       printf '# Valores locais para `bun run dev`. Ignorado pelo Git: não o submeta.\n'
-      printf '# Preencha o cliente OAuth Web do Google para http://localhost:3001; ver docs/how-to/run-company-profile.md.\n'
     } >"$ENV_LOCAL"
   )
 fi
@@ -385,9 +384,6 @@ ensure_env() {
 }
 ensure_env DATABASE_URL "postgres://postgres:local-dev-only@db.localtest.me:54321/cairn"
 ensure_env BETTER_AUTH_SECRET "$(head -c 32 /dev/urandom | od -An -tx1 | tr -d ' \n')"
-ensure_env BOOTSTRAP_ADMIN_EMAIL "$(git config user.email || true)"
-ensure_env GOOGLE_CLIENT_ID ""
-ensure_env GOOGLE_CLIENT_SECRET ""
 say "Ficheiro $ENV_LOCAL pronto."
 
 stage "Verificar o projeto"
@@ -398,16 +394,6 @@ say "A base de dados local está a correr e migrada. Depois de atualizar o repos
 say "Abra um novo terminal (ou execute source ~/.bashrc) para carregar o PATH."
 if ((DOCKER_GROUP_ADDED)); then
   say "Termine a sessão e volte a entrar para o grupo docker ficar ativo em todos os terminais."
-fi
-pending=()
-for key in BOOTSTRAP_ADMIN_EMAIL GOOGLE_CLIENT_ID GOOGLE_CLIENT_SECRET; do
-  grep -qE "^$key=." "$ENV_LOCAL" || pending+=("$key")
-done
-if ((${#pending[@]})); then
-  warn "Falta preencher em $ENV_LOCAL: ${pending[*]}."
-  say "O Google não permite criar o cliente OAuth por script. Crie um cliente Web para http://localhost:3001"
-  say "com o URI de redirecionamento http://localhost:3001/api/auth/callback/google (docs/how-to/run-company-profile.md)."
-  say "BOOTSTRAP_ADMIN_EMAIL é o email da conta Google que será administradora."
 fi
 say "Depois execute bun run dev e abra http://localhost:3001."
 say "Discord, WhatsApp e publicação são configurações separadas."

@@ -75,7 +75,7 @@ Use `fix/` para uma correção ou `chore/` para uma tarefa técnica. Substitua `
 
 ### 4. Encontre o código relacionado
 
-A aplicação TanStack Start fica em `apps/web/`. As rotas estão em `apps/web/src/routes/`, as páginas client em `apps/web/src/pages/` e os handlers e módulos de domínio em `apps/web/src/server/`. A autenticação, o acesso à base de dados e a infraestrutura Cloudflare estão em `packages/auth/`, `packages/db/` e `packages/infra/`. Use a pesquisa do editor para encontrar o texto, componente ou rota mencionado na Issue. Leia o código relacionado e os componentes que o chamam antes de decidir onde fazer a alteração.
+A aplicação TanStack Start fica em `apps/web/`. As rotas estão em `apps/web/src/routes/`, as páginas client em `apps/web/src/pages/` e os handlers e módulos de domínio em `apps/web/src/server/`. O acesso à base de dados e a infraestrutura Cloudflare estão em `packages/db/` e `packages/infra/`. Use a pesquisa do editor para encontrar o texto, componente ou rota mencionado na Issue. Leia o código relacionado e os componentes que o chamam antes de decidir onde fazer a alteração.
 
 Mantenha a alteração limitada ao pedido. Não reformate nem reorganize ficheiros sem relação com a funcionalidade. Se a estrutura existente não for clara, peça orientação antes de introduzir um padrão novo.
 
@@ -95,7 +95,7 @@ bun run dev
 
 Abra `http://localhost:3001`. O comando inicia a stack Alchemy local para Cloudflare Workers. Para configurar a base e as variáveis locais, siga [Executar o perfil da empresa](run-company-profile.md). Percorra o fluxo afetado e confirme os critérios da Issue. Verifique também os estados relevantes, como listas vazias, dados inválidos e carregamento, quando se aplicarem.
 
-Os testes automatizados usam identidades locais controladas; isso não comprova a autenticação real com Google. Não exponha a infraestrutura de teste nem use os seus endpoints em produção.
+Não exponha a infraestrutura de teste nem use os seus endpoints em produção.
 
 ### 7. Execute as verificações e reveja as alterações
 

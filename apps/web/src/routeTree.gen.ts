@@ -10,23 +10,15 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as AccessRouteImport } from './routes/access'
 import { Route as HealthzRouteImport } from './routes/healthz'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as ApiSplatRouteImport } from './routes/api/$'
 import { Route as ApiAnalyticsConfigRouteImport } from './routes/api/analytics-config'
-import { Route as ApiMeRouteImport } from './routes/api/me'
-import { Route as ApiAuthSplatRouteImport } from './routes/api/auth/$'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AccessRoute = AccessRouteImport.update({
-  id: '/access',
-  path: '/access',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HealthzRoute = HealthzRouteImport.update({
@@ -54,97 +46,66 @@ const ApiAnalyticsConfigRoute = ApiAnalyticsConfigRouteImport.update({
   path: '/api/analytics-config',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApiMeRoute = ApiMeRouteImport.update({
-  id: '/api/me',
-  path: '/api/me',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ApiAuthSplatRoute = ApiAuthSplatRouteImport.update({
-  id: '/api/auth/$',
-  path: '/api/auth/$',
-  getParentRoute: () => rootRouteImport,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/access': typeof AccessRoute
   '/healthz': typeof HealthzRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
   '/api/$': typeof ApiSplatRoute
   '/api/analytics-config': typeof ApiAnalyticsConfigRoute
-  '/api/me': typeof ApiMeRoute
-  '/api/auth/$': typeof ApiAuthSplatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/access': typeof AccessRoute
   '/healthz': typeof HealthzRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
   '/api/$': typeof ApiSplatRoute
   '/api/analytics-config': typeof ApiAnalyticsConfigRoute
-  '/api/me': typeof ApiMeRoute
-  '/api/auth/$': typeof ApiAuthSplatRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/access': typeof AccessRoute
   '/healthz': typeof HealthzRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
   '/api/$': typeof ApiSplatRoute
   '/api/analytics-config': typeof ApiAnalyticsConfigRoute
-  '/api/me': typeof ApiMeRoute
-  '/api/auth/$': typeof ApiAuthSplatRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/access'
     | '/healthz'
     | '/privacy'
     | '/terms'
     | '/api/$'
     | '/api/analytics-config'
-    | '/api/me'
-    | '/api/auth/$'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/access'
     | '/healthz'
     | '/privacy'
     | '/terms'
     | '/api/$'
     | '/api/analytics-config'
-    | '/api/me'
-    | '/api/auth/$'
   id:
     | '__root__'
     | '/'
-    | '/access'
     | '/healthz'
     | '/privacy'
     | '/terms'
     | '/api/$'
     | '/api/analytics-config'
-    | '/api/me'
-    | '/api/auth/$'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AccessRoute: typeof AccessRoute
   HealthzRoute: typeof HealthzRoute
   PrivacyRoute: typeof PrivacyRoute
   TermsRoute: typeof TermsRoute
   ApiSplatRoute: typeof ApiSplatRoute
   ApiAnalyticsConfigRoute: typeof ApiAnalyticsConfigRoute
-  ApiMeRoute: typeof ApiMeRoute
-  ApiAuthSplatRoute: typeof ApiAuthSplatRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -154,13 +115,6 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/access': {
-      id: '/access'
-      path: '/access'
-      fullPath: '/access'
-      preLoaderRoute: typeof AccessRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/healthz': {
@@ -198,33 +152,16 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiAnalyticsConfigRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/api/me': {
-      id: '/api/me'
-      path: '/api/me'
-      fullPath: '/api/me'
-      preLoaderRoute: typeof ApiMeRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/api/auth/$': {
-      id: '/api/auth/$'
-      path: '/api/auth/$'
-      fullPath: '/api/auth/$'
-      preLoaderRoute: typeof ApiAuthSplatRouteImport
-      parentRoute: typeof rootRouteImport
-    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AccessRoute: AccessRoute,
   HealthzRoute: HealthzRoute,
   PrivacyRoute: PrivacyRoute,
   TermsRoute: TermsRoute,
   ApiSplatRoute: ApiSplatRoute,
   ApiAnalyticsConfigRoute: ApiAnalyticsConfigRoute,
-  ApiMeRoute: ApiMeRoute,
-  ApiAuthSplatRoute: ApiAuthSplatRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
