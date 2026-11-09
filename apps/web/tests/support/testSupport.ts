@@ -477,7 +477,7 @@ export async function createTestApplication(
       },
       async reset() {
         await pool!.query({
-          text: 'TRUNCATE TABLE company_profile, session, account, verification, user_access, "user" RESTART IDENTITY CASCADE',
+          text: 'TRUNCATE TABLE company_alvara, company, session, account, verification, user_access, "user" RESTART IDENTITY CASCADE',
         });
       },
       close: cleanup,
