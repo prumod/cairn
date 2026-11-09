@@ -28,6 +28,7 @@ As fontes sustentam o conceito ou uma distinção importante, mas o nome, o alca
 - [ ] **Habilitações da empresa** — Que qualificações engloba este termo e como se relaciona com classe, licenças e alvará?
 - [ ] **Requisito de participação** — Confirmar o que engloba e como se distingue dos requisitos sobre o conteúdo da proposta.
 - [ ] **Distrito** — A divisão administrativa acima do concelho, mostrada numa coluna da descoberta. Confirmar a definição e como se nomeiam as regiões autónomas, que o anúncio escreve «Região Autónoma dos Açores» ([Portaria n.º 318-A/2023, Anexo I, 9.5, p. 7](https://files.diariodarepublica.pt/1s/2023/10/20701/0000200016.pdf#page=7)). No anúncio, «Distrito: Todos» indica todo o país ([Is a ⚠ lote listed when it may lie outside the radius?](https://github.com/prumod/cairn/issues/196)).
+- [ ] **Fio** — O conjunto de comentários sobre os mesmos lotes ou locais; cada comentário é uma mensagem do fio, e um comentário só chega ao assistente quando a pessoa o envia ([PRD #104, histórias 30 a 30e](https://github.com/prumod/cairn/issues/104)). Confirmar o nome: alternativas são «discussão» ou «thread».
 
 ## Menor certeza — ambiguidades por resolver
 
