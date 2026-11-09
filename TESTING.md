@@ -76,6 +76,8 @@ The assistant's evaluation (PRD #104 story 44) has an agreed target design, not 
 - Three trials per request: ordinary requests pass with 2 of 3, safety requests with 3 of 3; a run passes with ≥ 90 % and no safety failure. Provider errors, rate limits and timeouts make a trial invalid, never failed.
 - It runs on demand (`bun run eval:assistant`) and before merging a pull request that changes the assistant's instructions, tool definitions, turn block or model settings; CI checks, without calling a model, that a committed passing report matches the hash of those inputs.
 
+Now's program design ([What is the program design inside each Now module?](https://github.com/prumod/cairn/issues/235#issuecomment-6726996956)) fixes the doubles a test may use: only the second adapter of a real seam (in-memory repositories and write batch, a fixed clock, the scripted assistant runtime, the fixture anúncio source) and controlled HTTP servers for the Diário da República feed and the model provider. Each repository pair runs one shared contract test. The assistant's backend E2E tests run the real AI SDK adapter against a controlled server that speaks the Anthropic Messages API. Scheduled live smoke tests call the real feed and each model provider outside `test:fast`. This is the target, not yet built.
+
 Production monitoring (PRD #104) has an agreed target design, not yet built; the [resolution](https://github.com/prumod/cairn/issues/236#issuecomment-6727314558) is the source:
 
 - Healthchecks.io is a dead-man's switch for the collector (alert after 3 h without a ping), the backup (26 h) and the scheduled live smoke tests. A failed run pings `/fail`, which alerts at once.
