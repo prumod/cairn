@@ -78,6 +78,15 @@ The assistant's evaluation (PRD #104 story 44) has an agreed target design, not 
 
 Now's program design ([What is the program design inside each Now module?](https://github.com/prumod/cairn/issues/235#issuecomment-6726996956)) fixes the doubles a test may use: only the second adapter of a real seam (in-memory repositories and write batch, a fixed clock, the scripted assistant runtime, the fixture anúncio source) and controlled HTTP servers for the Diário da República feed and the model provider. Each repository pair runs one shared contract test. The assistant's backend E2E tests run the real AI SDK adapter against a controlled server that speaks the Anthropic Messages API. Scheduled live smoke tests call the real feed and each model provider outside `test:fast`. This is the target, not yet built.
 
+Production monitoring (PRD #104) has an agreed target design, not yet built; the [resolution](https://github.com/prumod/cairn/issues/236#issuecomment-6727314558) is the source:
+
+- Healthchecks.io is a dead-man's switch for the collector (alert after 3 h without a ping), the backup (26 h) and the scheduled live smoke tests. A failed run pings `/fail`, which alerts at once.
+- PostHog events carry no content. The Worker sends `server_failed`, `assistant_model_failed` and `assistant_spend_limit_reached`. The browser sends `server_call_failed` with the HTTP status, which also catches invocations that Cloudflare stopped at the CPU limit.
+- Four PostHog alerts email the product owner: `server_failed` plus `assistant_model_failed` above 0 in an hour; `assistant_spend_limit_reached` above 0 in an hour; `server_call_failed` above 0 in an hour; `assistant_unsupported_fact` above 2 in a day.
+- The evaluation's fixed fact rule is one shared function, used by the Verifier and by production. It runs on every production reply in `ctx.waitUntil`, without delaying or changing the reply, and sends `assistant_unsupported_fact` when the reply breaks it.
+- The daily backup run fails when the database uses more than 400 MB of Neon storage.
+- Typical tests check that each alert event builder, on the server and in the browser, sends only its allowed keys.
+
 ### Self-verifying fixtures
 
 Fixtures establish their promised preconditions and prove them before returning. For example, an approved-member fixture must confirm that a usable session reports approval, not only that a creation request returned success. Verify at the cheapest reliable public boundary; browser setup needs browser evidence only when that is part of its promise.

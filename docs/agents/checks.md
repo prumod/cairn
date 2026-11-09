@@ -47,3 +47,25 @@ For the current test and audit status, see [Testing](../../TESTING.md).
 ## Shared enforcement
 
 PR CI invokes the same full check implementations without committing or pushing, regardless of `AGENT_SESSION`. Its secret scan covers the introduced commits, including secrets deleted by a later commit. The stable `Agent checks` status must be required on `main` after the workflow has run successfully. Local hooks provide early feedback; branch protection is the shared enforcement boundary.
+
+## Irreversible changes (target)
+
+This is an agreed target design, not yet built; the [resolution](https://github.com/prumod/cairn/issues/236#issuecomment-6727314558) is the source.
+
+The required CI check `irreversible-changes` fails a pull request that adds destructive SQL to a new migration (`DROP`, `RENAME`, `ALTER … TYPE`, `SET NOT NULL`, `DELETE`, `TRUNCATE`), changes `packages/infra/alchemy.run.ts`, or changes the backup's prune or count-guard code. It keeps failing until the pull request has the label `irreversible-reviewed`.
+
+The review runs in this order:
+
+1. An agent in a new session, given only the pull request diff and the checklist below, reviews the change.
+2. The agent posts a pull request comment «Revisão irreversível» with an answer to each checklist item, then adds the label `irreversible-reviewed`.
+3. The product owner approves the production deploy as the required reviewer of the `production` GitHub environment.
+
+The checklist:
+
+1. The expand step is already deployed to production.
+2. No code in production still reads what is removed or narrowed.
+3. A backup newer than 24 h exists.
+4. The Alchemy plan shows no replace or delete of `Neon.Project`, which is retained with `RemovalPolicy.retain()` in testing and production.
+5. The change keeps the backup's guards: pruning only after a successful upload, monthly backups never pruned, and counts never drop.
+
+Only the product owner restores into production, by hand, from the backup runbook. An agent never restores production.
