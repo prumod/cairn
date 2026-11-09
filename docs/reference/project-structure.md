@@ -31,6 +31,7 @@ Also planned for Now, with the first slice that needs each (base: [What is the p
   - **Still rejected:** a use case or helper importing another feature's use case or helper (only the root file is public).
   - **Proofs:** flip the `feature-usecase-is-independent` proof (a use case importing another use case) to «value import rejected, type-only import allowed»; add allowed proofs for use case → helper; add rejection proofs for use case → another feature's use case, helper → `infra/`, and helper → `context.server.ts`.
   - **Scan:** add `apps/web/evals` to the paths in `scripts/check-boundaries.mjs`, so the evaluation reaches the assistant only through its root file.
+- **Request context.** Every server function, backoffice's included, builds its context through one helper, `approvedContext({ write })` in `apps/web/src/server/shared/requestContext/requestContext.server.ts`. For a write, it checks the origin first, then the session (401), then approval (403); then it reads the company and sets `no-store`. It replaces backoffice's `useCases/context.server.ts` (base: «Server functions, sign-in and access» in [the Now technical design](technical-design-now-discovery.md)).
 - **Marks.** Discovery does not import the assistant feature. The Now layout reads the comment marks through the assistant's root `marks.functions.ts` and passes them to the discovery components as props.
 
 ## Required feature-driven structure
