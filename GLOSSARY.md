@@ -150,11 +150,6 @@ Os comentários e as citações preparados que ainda não seguiram com um pedido
 _Evitar_: rascunho, itens para enviar
 _Fonte_: [PRD #104](https://github.com/prumod/cairn/issues/104), história 32 e regra 19; [Where do unsent comments and citations live?](https://github.com/prumod/cairn/issues/200)
 
-**Discussão**:
-O conjunto de comentários de uma pessoa sobre os mesmos lotes ou locais. O primeiro comentário sobre uma seleção abre-a, e cada lote ou local que refere mostra uma marca. Um comentário de uma discussão só chega ao assistente com um pedido. As citações não ficam em discussões.
-_Evitar_: fio, thread
-_Fonte_: [PRD #104](https://github.com/prumod/cairn/issues/104), histórias 30, 30c e 30e e regra 19; [desenho técnico de Now](docs/reference/technical-design-now-discovery.md), «Comment threads (discussões)»
-
 **Reverter**:
 Editar uma mensagem da pessoa e voltar a enviá-la: o texto da mensagem volta ao campo do pedido e os seus comentários e citações voltam ao contexto por enviar; as mensagens seguintes apagam-se, com tudo o que seguiu com elas e com os comentários e as citações que o assistente escreveu nas respostas apagadas. Não desfaz as alterações de dados.
 _Evitar_: desfazer (no sentido de reverter), rollback
