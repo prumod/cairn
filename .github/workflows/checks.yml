@@ -30,6 +30,18 @@ jobs:
           bun-version: "1.3.14"
       - name: Install locked dependencies
         run: bun install --frozen-lockfile --ignore-scripts
+      - name: Check that migrations match the table files
+        env:
+          # drizzle-kit generate reads no database; the config only requires a URL.
+          DATABASE_URL: postgres://generate-only@127.0.0.1:5432/unused
+        run: |
+          bun run db:generate < /dev/null
+          drift=$(git status --porcelain packages/db/migrations)
+          if [[ -n "$drift" ]]; then
+            printf '%s\n' "$drift"
+            echo "::error::drizzle-kit generate changed packages/db/migrations. Run bun run db:generate, commit the migration, and regenerate it after each rebase onto main."
+            exit 1
+          fi
       - name: Install checksum-verified Gitleaks
         run: scripts/install-gitleaks.sh
       - name: Scan introduced history

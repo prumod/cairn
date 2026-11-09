@@ -48,6 +48,12 @@ For the current test and audit status, see [Testing](../../TESTING.md).
 
 PR CI invokes the same full check implementations without committing or pushing, regardless of `AGENT_SESSION`. Its secret scan covers the introduced commits, including secrets deleted by a later commit. The stable `Agent checks` status must be required on `main` after the workflow has run successfully. Local hooks provide early feedback; branch protection is the shared enforcement boundary.
 
+## Migration drift
+
+CI also runs `bun run db:generate` and fails when it writes or changes anything in `packages/db/migrations`. It catches a table change without its migration, and two pull requests that generated migrations from the same snapshot. A change that `drizzle-kit` cannot resolve alone, such as a new table that could be a rename, also fails the step (exit code 2). Generation reads no database; the step sets a placeholder `DATABASE_URL` only because the configuration requires one. To run the same check locally, run `DATABASE_URL=postgres://generate-only@127.0.0.1:5432/unused bun run db:generate` on a clean tree and expect `No schema changes, nothing to migrate`.
+
+A pull request with a migration regenerates it after each rebase onto `main`: delete the branch's migration folder, run `bun run db:generate` (add `--hints` when it asks about renames), and commit the result. Never edit a migration that `main` already holds.
+
 ## Irreversible changes (target)
 
 This is an agreed target design, not yet built; the [resolution](https://github.com/prumod/cairn/issues/236#issuecomment-6727314558) is the source.
