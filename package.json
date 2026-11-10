@@ -7,6 +7,7 @@
       "packages/*"
     ],
     "catalog": {
+      "better-auth": "1.7.12",
       "zod": "^4.6.7",
       "typescript": "^7.0.2",
       "varlock": "1.23.0",
@@ -41,7 +42,7 @@
     "test:fast": "bun run build && bun run test:fast:run",
     "test:fast:run": "node scripts/with-test-postgres.mjs node scripts/run-tests.mjs fast",
     "test:browser": "bun run build && bun run test:browser:run",
-    "test:browser:run": "node scripts/run-tests.mjs browser",
+    "test:browser:run": "node scripts/with-test-postgres.mjs node scripts/run-tests.mjs browser",
     "check": "bash scripts/check.sh full",
     "checks:timings": "node scripts/check-timings.mjs"
   },

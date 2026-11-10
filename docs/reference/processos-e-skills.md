@@ -57,13 +57,13 @@ Use para criar ou renovar a linguagem visual de uma página. Siga a ordem e salt
 
 Use antes de abrir a PR quando a alteração toca o servidor. Reveja:
 
-| Ponto                   | Onde procurar                                                                                                  |
-| ----------------------- | -------------------------------------------------------------------------------------------------------------- |
-| Endpoints expostos      | `apps/web/src/routes/`, incluindo `api/`                                                                       |
-| Autenticação            | `packages/db/src/schema/auth.ts` (só as tabelas; o slice 0a volta a construir o início de sessão)              |
-| Autorização             | `apps/web/src/server/modules/access/` (só a tabela `user_access`)                                              |
-| Schema da base de dados | `packages/db/src/schema/`, tabelas em `apps/web/src/server/modules/*/persistence/` e `packages/db/migrations/` |
-| Modelo de dados         | `apps/web/src/server/modules/` e [GLOSSARY](../../GLOSSARY.md)                                                 |
+| Ponto                   | Onde procurar                                                                                                                 |
+| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| Endpoints expostos      | `apps/web/src/routes/`, incluindo `api/`                                                                                      |
+| Autenticação            | `packages/auth/src/index.ts` (Better Auth com Google) e `apps/web/src/routes/api/auth/$.ts` (allowlist)                       |
+| Autorização             | `apps/web/src/pages/access/` (domain e useCases) e `apps/web/src/server/modules/access/` (repositório e tabela `user_access`) |
+| Schema da base de dados | `packages/db/src/schema/`, tabelas em `apps/web/src/server/modules/*/persistence/` e `packages/db/migrations/`                |
+| Modelo de dados         | `apps/web/src/server/modules/` e [GLOSSARY](../../GLOSSARY.md)                                                                |
 
 Skills úteis: `code-review`, `codebase-design`.
 

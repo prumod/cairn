@@ -23,7 +23,9 @@ NODE_ENV=development
 
 The local Alchemy stack supplies the app origin from its Worker URL. Do not commit `.env` files or generated `env.ts` files. The committed `.env.schema` files are safe templates, not credential stores.
 
-The app has no sign-in. The walking skeleton's access code was deleted ([#252](https://github.com/prumod/cairn/issues/252)), and slice 0a of the [Now technical design](../reference/technical-design-now-discovery.md#access) rebuilds it. Until then, nothing reads `BETTER_AUTH_SECRET`, and no Google OAuth client is needed.
+People sign in with Google. Local sign-in needs a Google OAuth client: set `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` in `packages/infra/.env.local`. Set `BOOTSTRAP_ADMIN_EMAIL` to the Google address of the first administrator. That person becomes the administrator at their first sign-in, only while no administrator exists. Everyone else starts pending and waits for an administrator to approve them on the home page.
+
+Sign-in also needs one row in the `company` table. There is no seed command that creates it, so insert it by hand in the `dev` database before the first sign-in.
 
 ## Apply migrations and start the app
 
@@ -40,7 +42,7 @@ Open `http://localhost:3001`. The root `bun run dev` command starts `packages/in
 
 ## Run local tests
 
-Tests use a separate disposable environment. Docker Compose starts a temporary PostgreSQL 18.6 container and the pinned local Neon HTTP proxy; the test fixture builds the app, runs it in `workerd`, creates isolated test databases, and cleans up its containers. Browser tests use Chromium; no browser scenario exists until slice 0a adds the access contract.
+Tests use a separate disposable environment. Docker Compose starts a temporary PostgreSQL 18.6 container and the pinned local Neon HTTP proxy; the test fixture builds the app, runs it in `workerd`, creates isolated test databases, and cleans up its containers. Browser tests use Chromium and run the sign-in and approval scenarios from `features/access/`.
 
 ```sh
 bun run test:fast
@@ -63,9 +65,9 @@ Alchemy reads the Worker `domain` and `workersDev` props before resolving Effect
 
 1. Bootstrap the Cloudflare state store once from `packages/infra` with `alchemy provider cloudflare bootstrap`. The store is named `alchemy-state-store`. Its state is encrypted. Its token and encryption key are held in the account's Secrets Store. Preserve the existing testing state when switching stores; an empty store can propose duplicate resources.
 2. Create the GitHub environment `testing`. Allow deployments only from `main`.
-3. Add the environment secrets `CLOUDFLARE_API_TOKEN` and `NEON_API_KEY`. Add the environment variable `CLOUDFLARE_ACCOUNT_ID`. The existing secrets `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` and the variable `BOOTSTRAP_ADMIN_EMAIL` stay, unread, until slice 0a rebuilds sign-in.
+3. Add the environment secrets `CLOUDFLARE_API_TOKEN` and `NEON_API_KEY`. Add the environment variable `CLOUDFLARE_ACCOUNT_ID`. The existing secrets `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` and the variable `BOOTSTRAP_ADMIN_EMAIL` are read by the deployed sign-in. Do not set or change them from this guide: their values are the operator's to supply.
 4. Give the CI Cloudflare API token Workers scripts edit, Secrets Store edit, and Zone DNS edit permissions. Scope it to the account and the `prumod.eu` zone. Keep all values private.
-5. The testing Google OAuth Web client, with redirect URI `https://cairn-testing.prumod.eu/api/auth/callback/google`, stays in Google Cloud Console for slice 0a; nothing uses it until then. Registrar nameserver and DNSSEC DS changes remain manual at Spaceship.
+5. The testing Google OAuth Web client must list the redirect URI `https://cairn-testing.prumod.eu/api/auth/callback/google` in Google Cloud Console; sign-in fails without it. Registrar nameserver and DNSSEC DS changes remain manual at Spaceship.
 
 Do not supply `DATABASE_URL` or `BETTER_AUTH_SECRET` to CI. Alchemy owns the testing database and generated auth secret. Use the testing project's scoped `NEON_API_KEY` for routine updates. Creating a Neon project requires an appropriate organization key. Do not print credentials or state contents in logs or reports.
 
