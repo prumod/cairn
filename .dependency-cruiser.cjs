@@ -123,6 +123,8 @@ module.exports = {
           featureServer,
           featureFunctions,
           "^apps/web/src/pages/[^/]+/(?:useCases/[^/]+|domain)/[^/]+\\.ts$",
+          // A feature root file is its public entry: server modules import its domain through it.
+          "^apps/web/src/pages/[^/]+/[^/]+\\.ts$",
         ],
       },
     },

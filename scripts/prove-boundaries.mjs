@@ -219,9 +219,17 @@ try {
 
   prove(
     "apps/web/src/server/modules/two/probe.ts",
-    "apps/web/src/pages/one/entry.ts",
+    "apps/web/src/pages/one/implementation/value.ts",
     "server-cannot-import-client",
   );
+  // A feature root file is its public entry, so server modules may import it.
+  write(
+    "apps/web/src/server/modules/two/probe.ts",
+    importing("apps/web/src/server/modules/two/probe.ts", "apps/web/src/pages/one/entry.ts"),
+  );
+  cruise();
+  write("apps/web/src/server/modules/two/probe.ts", "export const value = 1;\n");
+  console.log("PASS: server-cannot-import-client allows a feature root file.");
   prove(
     "shared/src/two/probe.ts",
     "apps/web/src/pages/one/entry.ts",
