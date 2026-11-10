@@ -2,7 +2,7 @@
 
 ## Agreed testing strategy
 
-The default acceptance strategy is complementary frontend E2E and backend E2E suites, with shared domain `.feature` contracts. Add focused technical tests, external integration tests, AI evaluations, and a small full Browser E2E suite where they supply additional evidence. Minimize unnecessary repeated coverage rather than implementing every scenario at every boundary.
+The default acceptance strategy is complementary backend E2E and full Browser E2E suites, with shared domain `.feature` contracts. Add focused technical tests, external integration tests, and AI evaluations where they supply additional evidence. There is no frontend E2E suite with a fake backend ([decision](docs/decisions/2026-11-10-no-frontend-e2e-with-a-fake-backend.md)). Minimize unnecessary repeated coverage rather than implementing every scenario at every boundary.
 
 This is the agreed target. The [current test boundaries](#current-test-boundaries), commands, and evidence below describe the implemented suites. This documentation change does not migrate runners or establish that the target coverage exists.
 
@@ -10,30 +10,29 @@ This is the agreed target. The [current test boundaries](#current-test-boundarie
 
 Test parity exists when the union of the tests covers the entire E2E system, including the connections between its parts. It does not mean equal test counts or the same scenarios repeated at every level. Map each feature's actual test scopes against these six responsibilities:
 
-| Architectural responsibility                                              | Default coverage                                                          |
-| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| Browser presentation                                                      | Frontend E2E with a fake backend                                          |
-| Browser API communication                                                 | Frontend E2E with a fake backend, plus real/fake API compatibility checks |
-| Backend incoming infrastructure, including HTTP/server-function transport | Backend E2E                                                               |
-| Application                                                               | Backend E2E                                                               |
-| Domain                                                                    | Backend E2E                                                               |
-| Outgoing database infrastructure                                          | Backend E2E with real persistence                                         |
+| Architectural responsibility                                              | Default coverage                  |
+| ------------------------------------------------------------------------- | --------------------------------- |
+| Browser presentation                                                      | Full Browser E2E                  |
+| Browser API communication                                                 | Full Browser E2E                  |
+| Backend incoming infrastructure, including HTTP/server-function transport | Backend E2E                       |
+| Application                                                               | Backend E2E                       |
+| Domain                                                                    | Backend E2E                       |
+| Outgoing database infrastructure                                          | Backend E2E with real persistence |
 
-An untested responsibility or connection is a parity gap. Executing a layer is insufficient if the relevant behavior is never verified. Overlap is allowed, but retain it for a concrete risk or a faster, more precise check. Backend E2E already exercises persistence, so a separate database contract suite is not mandatory for every feature. A full Browser E2E suite plus backend E2E can achieve parity, but repeating the whole feature catalogue in both is not the default.
+An untested responsibility or connection is a parity gap. Executing a layer is insufficient if the relevant behavior is never verified. Overlap is allowed, but retain it for a concrete risk or a faster, more precise check. Backend E2E already exercises persistence, so a separate database contract suite is not mandatory for every feature. Full Browser E2E plus backend E2E achieve parity; repeating the whole feature catalogue in both is not the default.
 
 ### Acceptance suites and shared feature contracts
 
-- **Frontend E2E with a fake backend** exercises the real browser presentation and client API communication. Cover selection, keyboard interaction, filters, comparisons, comments, citations, and visible assistant effects through user actions. Assert observable UI outcomes. The fake supplies controlled responses, including failures, without executing production backend logic.
 - **High-value backend E2E** enters through the compiled Worker's real API/server-function transport and exercises incoming infrastructure, application rules, domain behavior, and the real disposable database. Verify API-observable results and persisted state through the backend's public interface. Controlled external-service responses keep ordinary acceptance runs deterministic.
-- **A small full Browser E2E suite** connects the real frontend to the real backend and database. Keep deliberate overlap for authentication/session handling, transport wiring, and a critical discovery/assistant journey as those capabilities arrive. Actions and outcome assertions use what a person can do and perceive; API/database access may prepare fixtures but must not replace user-visible outcome assertions.
+- **Full Browser E2E** connects the real frontend to the real backend and database, and covers browser presentation and the browser's communication with the backend. Bind the scenarios that need a browser: selection, keyboard interaction, filters, comparisons, comments, citations, visible assistant effects, authentication/session handling, and transport wiring, as those capabilities arrive. Actions and outcome assertions use what a person can do and perceive; API/database access may prepare fixtures but must not replace user-visible outcome assertions.
+
+There is no frontend E2E suite with a fake backend: the frontend and the backend are one TanStack Start application joined by server functions, with no API contract to build a fake from. Reconsider it when the architecture separates them ([decision](docs/decisions/2026-11-10-no-frontend-e2e-with-a-fake-backend.md)).
 
 Keep one domain `.feature` file per use case and import it into independent, complementary bindings. Share the behavioral specification, fixture capabilities, and data builders where useful; each binding performs actions and observations appropriate to its boundary. Do not force technical cases or identical scenario coverage into every suite. For example, a revocation contract needs browser evidence of the resulting member experience and backend evidence that revocation affects the existing session.
 
-Two runners consume these shared `.feature` files. [Playwright-BDD](https://github.com/vitalets/playwright-bdd) stays the runner for Frontend E2E (real browser, fake backend) and the small full Browser E2E suite. [vitest-cucumber-context-mapper](https://github.com/TiagoJacinto/vitest-cucumber-context-mapper) is the target runner for high-value Vitest tests: backend unit, integration, and backend E2E, and frontend unit and possibly frontend integration. It does not replace Playwright-BDD. Each runner binds only the scenarios that fit its boundary. The Vitest migration is in progress; verify fixture lifecycle, failure artifacts, and coverage as each binding moves, and remove obsolete paths when it completes.
+Two runners consume these shared `.feature` files. [Playwright-BDD](https://github.com/vitalets/playwright-bdd) stays the runner for the full Browser E2E suite. [vitest-cucumber-context-mapper](https://github.com/TiagoJacinto/vitest-cucumber-context-mapper) is the target runner for high-value Vitest tests: backend unit, integration, and backend E2E, and frontend unit and possibly frontend integration. It does not replace Playwright-BDD. Each runner binds only the scenarios that fit its boundary. The Vitest migration is in progress; verify fixture lifecycle, failure artifacts, and coverage as each binding moves, and remove obsolete paths when it completes.
 
-Playwright-BDD currently uses `missingSteps: "fail-on-gen"`, so a feature that contains scenarios unbound in the browser suites would fail generation. The planned approach is for the browser suites to select their scenarios by tag (for example `@frontend`). This selection is planned, not implemented.
-
-The fake backend must match the real API contract. The target suites must check request/response compatibility mechanically, including serialization, errors, and session behavior used by the frontend. A shared TypeScript type alone does not prove runtime compatibility. Exercise representative exchanges against both implementations; keep the full Browser E2E wiring checks to catch a connection that passes independently but fails when assembled. Until these checks exist, frontend and backend suites passing separately do not establish parity at their seam.
+Playwright-BDD currently uses `missingSteps: "fail-on-gen"`, so a feature that contains scenarios unbound in the browser suite would fail generation. The planned approach is for the browser suite to select its scenarios by tag (for example `@browser`). This selection is planned, not implemented.
 
 ### Test vocabulary and focused technical coverage
 
@@ -48,7 +47,7 @@ Keep these dimensions separate:
 | Browser E2E boundary | The entire application, exercised and observed from a real user's perspective through the UI                                 |
 | Classification       | High-value tests protect valuable domain outcomes; typical tests protect internal or technical responsibilities              |
 
-Two application modules executing together do not by themselves make an integration test. Local versus deployed is an environment choice, separate from the boundary. Frontend E2E with a fake backend covers the frontend subsystem, not the entire application's Browser E2E path.
+Two application modules executing together do not by themselves make an integration test. Local versus deployed is an environment choice, separate from the boundary.
 
 Add typical tests when they catch a meaningful technical failure faster or more precisely than the acceptance suites:
 

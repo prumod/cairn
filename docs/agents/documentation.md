@@ -4,6 +4,7 @@ Before changing a documented contract, read the current architecture and testing
 
 - Update `ARCHITECTURE.md` when system boundaries, dependencies, or invariants change. Record current behavior separately from plans.
 - Record an ADR in `docs/adr/` only for a real, consequential trade-off with meaningful alternatives. Create the directory with the first decision; preserve earlier decisions when a later one supersedes them.
+- Record any other decision a later reader could question (process, testing, tooling or scope) as one file in `docs/decisions/`, following its [README](../decisions/README.md), and add it to that index. The document that owns the subject states the current rule and links to the decision.
 - Update root or nested `AGENTS.md` only for conventions that apply at that scope. Add a nested file only when a module has its own convention.
 - Update `TESTING.md` when test boundaries or testing contracts change. Keep runnable command and file-discovery lists in package scripts and native test configuration.
 - Update `CODING_STANDARDS.md` when an agreed coding convention changes. Update [Code comments](../reference/code-comments.md) when the comment strategy changes.
