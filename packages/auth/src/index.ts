@@ -85,6 +85,8 @@ export function authOptions(env: AuthConfig, database: Database) {
     trustedOrigins: [env.APP_ORIGIN],
     secret: env.BETTER_AUTH_SECRET,
     baseURL: env.APP_ORIGIN,
+    // A failed or cancelled sign-in returns to the sign-in page (the app's root), not to Better Auth's JSON error route.
+    onAPIError: { errorURL: "/" },
     socialProviders: {
       google: {
         clientId: env.GOOGLE_CLIENT_ID,

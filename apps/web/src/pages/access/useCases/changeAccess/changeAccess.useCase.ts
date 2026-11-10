@@ -1,5 +1,5 @@
-import type { Access } from "../../domain/access.js";
-import type { AccessRepository } from "../../domain/accessRepository.js";
+import type { Access } from "../../domain/access.entity.js";
+import type { AccessRepository } from "../../domain/access.repository.js";
 
 export type AccessAction = "approve" | "revoke";
 

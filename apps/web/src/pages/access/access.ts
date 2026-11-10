@@ -6,6 +6,6 @@ export {
   accessStatuses,
   type AccessRefusalReason,
   type AccessStatus,
-} from "./domain/access.js";
+} from "./domain/access.entity.js";
 
-export type { AccessRepository, PersonAccess } from "./domain/accessRepository.js";
+export type { AccessRepository, PersonAccess } from "./domain/access.repository.js";

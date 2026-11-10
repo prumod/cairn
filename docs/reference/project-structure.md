@@ -89,7 +89,7 @@ Start compiles server-function handlers and server-only middleware into server c
 
 Keep use cases, domain rules, and infrastructure private to their owning feature. Other features consume an intentional public entry point rather than importing nested implementations. Move code into `shared` when multiple features actually use the same capability; keep shared modules organized by capability, such as notifications or layout. TanStack file routes remain thin framework entry points that compose the owning page.
 
-The access feature follows this structure. `pages/access/` holds the page, `domain/` (`Access`, `AccessRepository`), the root file `access.ts` (the public entry that server modules import), and `useCases/` (three use cases, their adapters and `context.server.ts`). `src/server/modules/access/` holds the Drizzle and in-memory repositories and the `user_access` table (`persistence/accessTable.ts`), so that `drizzle-kit generate` keeps the table. Place new feature-owned behavior inside its feature rather than introducing a top-level technical layer to satisfy a checker.
+The access feature follows this structure. `pages/access/` holds the page, `domain/` (`access.entity.ts` with `Access`, `access.repository.ts` with `AccessRepository`), the root file `access.ts` (the public entry that server modules import), and `useCases/` (three use cases, their adapters and `context.server.ts`). `src/server/modules/access/` holds the Drizzle and in-memory repositories and the `user_access` table (`persistence/accessTable.ts`), so that `drizzle-kit generate` keeps the table. Place new feature-owned behavior inside its feature rather than introducing a top-level technical layer to satisfy a checker.
 
 ## Maintaining structure checks
 

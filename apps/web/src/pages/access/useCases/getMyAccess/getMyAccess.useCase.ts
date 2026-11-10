@@ -1,6 +1,7 @@
-import { Access } from "../../domain/access.js";
-import type { AccessRepository } from "../../domain/accessRepository.js";
+import { Access } from "../../domain/access.entity.js";
+import type { AccessRepository } from "../../domain/access.repository.js";
 
+// The signed-in user as better-auth's session returns it. The server adapter reads it too.
 export type SignedInPerson = {
   id: string;
   name: string;

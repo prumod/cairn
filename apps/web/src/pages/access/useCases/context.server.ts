@@ -1,14 +1,8 @@
 import { getRequest, setResponseHeader } from "@tanstack/react-start/server";
 import { DrizzleAccessRepository } from "../../../server/modules/access/access.repository.server.js";
-import type { AccessRepository } from "../domain/accessRepository.js";
+import type { AccessRepository } from "../domain/access.repository.js";
+import type { SignedInPerson } from "./getMyAccess/getMyAccess.useCase.js";
 import { getRuntime } from "../../../server/runtime.server.js";
-
-export type SignedInUser = {
-  id: string;
-  name: string;
-  email: string;
-  emailVerified: boolean;
-};
 
 // A refusal is a Response. TanStack Start returns a thrown Response to the caller unchanged.
 function refusal(status: 401 | 403, message: string) {
@@ -31,9 +25,9 @@ export async function signedInContext(options: { write?: boolean } = {}) {
 
   if (!session) throw refusal(401, "Sem sessão iniciada.");
 
-  // SAFETY: the session comes from better-auth's user table, which has the fields of SignedInUser.
+  // SAFETY: the session comes from better-auth's user table, which has the fields of SignedInPerson.
   return {
-    user: session.user as SignedInUser,
+    user: session.user as SignedInPerson,
     bootstrapEmail: runtime.config.bootstrapAdministratorEmail,
     repository: new DrizzleAccessRepository(runtime.db),
   };
@@ -61,6 +55,6 @@ export async function approvedContext(options: { write?: boolean; administrator?
 
   if (options.administrator && !access.administrator) throw refusal(403, "Requer administrador.");
 
-  // SAFETY: the session comes from better-auth's user table, which has the fields of SignedInUser.
-  return { user: session.user as SignedInUser, access, repository };
+  // SAFETY: the session comes from better-auth's user table, which has the fields of SignedInPerson.
+  return { user: session.user as SignedInPerson, access, repository };
 }

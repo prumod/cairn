@@ -1,4 +1,4 @@
-import type { AccessRepository, PersonAccess } from "../../domain/accessRepository.js";
+import type { AccessRepository, PersonAccess } from "../../domain/access.repository.js";
 
 // Pending people first, then by name. The repository applies the order.
 export class ListPeopleUseCase {

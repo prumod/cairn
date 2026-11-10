@@ -6,11 +6,16 @@ import { changeAccess } from "./useCases/changeAccess/changeAccess.functions.js"
 
 type View =
   | { kind: "loading" }
-  | { kind: "signedOut" }
+  | { kind: "signedOut"; signInFailed: boolean }
   | { kind: "failed" }
   | { kind: "access"; me: MyAccessView };
 
 const statusLabels = { pending: "pendente", approved: "aprovado", revoked: "revogado" } as const;
+
+// Better Auth sends a failed or cancelled Google sign-in back to this page with an `error` query.
+function signInFailedFromUrl() {
+  return new URLSearchParams(window.location.search).has("error");
+}
 
 export function AccessPage() {
   const [view, setView] = useState<View>({ kind: "loading" });
@@ -23,7 +28,7 @@ export function AccessPage() {
         const session = await authClient.getSession();
 
         if (!session.data) {
-          if (active) setView({ kind: "signedOut" });
+          if (active) setView({ kind: "signedOut", signInFailed: signInFailedFromUrl() });
 
           return;
         }
@@ -31,8 +36,13 @@ export function AccessPage() {
         const me = await getMyAccess();
 
         if (active) setView({ kind: "access", me });
-      } catch {
-        if (active) setView({ kind: "failed" });
+      } catch (error) {
+        if (!active) return;
+
+        // The session ended after the page loaded: show the sign-in screen again.
+        if (error instanceof Response && error.status === 401)
+          setView({ kind: "signedOut", signInFailed: false });
+        else setView({ kind: "failed" });
       }
     })();
 
@@ -42,12 +52,16 @@ export function AccessPage() {
   }, []);
 
   async function signIn() {
-    await authClient.signIn.social({ provider: "google", callbackURL: "/" });
+    await authClient.signIn.social({
+      provider: "google",
+      callbackURL: "/",
+      errorCallbackURL: "/",
+    });
   }
 
   async function signOut() {
     await authClient.signOut();
-    setView({ kind: "signedOut" });
+    setView({ kind: "signedOut", signInFailed: false });
   }
 
   if (view.kind === "loading") return <p className="access-message">A carregar…</p>;
@@ -58,6 +72,7 @@ export function AccessPage() {
   if (view.kind === "signedOut")
     return (
       <section className="access-panel">
+        {view.signInFailed ? <p role="alert">Não foi possível entrar. Tente outra vez.</p> : null}
         <button type="button" className="access-button" onClick={signIn}>
           Entrar com Google
         </button>

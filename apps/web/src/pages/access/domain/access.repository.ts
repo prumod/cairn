@@ -1,4 +1,4 @@
-import type { Access } from "./access.js";
+import type { Access } from "./access.entity.js";
 
 export type PersonAccess = {
   userId: string;

@@ -1,10 +1,11 @@
 import { createServerFn } from "@tanstack/react-start";
+import type { AccessStatus } from "../../domain/access.entity.js";
 import { signedInContext } from "../context.server.js";
-import { GetMyAccessUseCase } from "./getMyAccess.js";
+import { GetMyAccessUseCase } from "./getMyAccess.useCase.js";
 
 export type MyAccessView = {
   userId: string;
-  status: "pending" | "approved" | "revoked";
+  status: AccessStatus;
   administrator: boolean;
   name: string;
   email: string;

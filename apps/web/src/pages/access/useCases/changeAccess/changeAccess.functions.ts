@@ -1,11 +1,11 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
-import { AccessRefusal } from "../../domain/access.js";
+import { AccessRefusal } from "../../domain/access.entity.js";
 import { approvedContext } from "../context.server.js";
-import { ChangeAccessUseCase, PersonNotFound } from "./changeAccess.js";
+import { ChangeAccessUseCase, PersonNotFound } from "./changeAccess.useCase.js";
 
 const ChangeAccessInput = z.object({
-  userId: z.string().min(1),
+  userId: z.string().min(1).max(255),
   action: z.enum(["approve", "revoke"]),
 });
 

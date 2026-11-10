@@ -67,7 +67,7 @@ Alchemy reads the Worker `domain` and `workersDev` props before resolving Effect
 2. Create the GitHub environment `testing`. Allow deployments only from `main`.
 3. Add the environment secrets `CLOUDFLARE_API_TOKEN` and `NEON_API_KEY`. Add the environment variable `CLOUDFLARE_ACCOUNT_ID`. The existing secrets `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` and the variable `BOOTSTRAP_ADMIN_EMAIL` are read by the deployed sign-in. Do not set or change them from this guide: their values are the operator's to supply.
 4. Give the CI Cloudflare API token Workers scripts edit, Secrets Store edit, and Zone DNS edit permissions. Scope it to the account and the `prumod.eu` zone. Keep all values private.
-5. The testing Google OAuth Web client, with redirect URI `https://cairn-testing.prumod.eu/api/auth/callback/google`, stays in Google Cloud Console for slice 0a; nothing uses it until then. Registrar nameserver and DNSSEC DS changes remain manual at Spaceship.
+5. The testing Google OAuth Web client must list the redirect URI `https://cairn-testing.prumod.eu/api/auth/callback/google` in Google Cloud Console; sign-in fails without it. Registrar nameserver and DNSSEC DS changes remain manual at Spaceship.
 
 Do not supply `DATABASE_URL` or `BETTER_AUTH_SECRET` to CI. Alchemy owns the testing database and generated auth secret. Use the testing project's scoped `NEON_API_KEY` for routine updates. Creating a Neon project requires an appropriate organization key. Do not print credentials or state contents in logs or reports.
 
