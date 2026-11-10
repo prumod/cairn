@@ -1,7 +1,7 @@
 # Cairn documentation
 
 - [Architecture](../ARCHITECTURE.md) describes the full-stack TanStack Start application, its server/client boundaries, and deployment constraints.
-- [Testing](../TESTING.md) defines the agreed strategy and architectural parity, and separately describes current test boundaries, the scoped mutation pilot, and verification limits.
+- [Testing](../TESTING.md) defines the agreed strategy and architectural parity, and separately describes current test boundaries and verification limits.
 - [Investigate an application failure](how-to/investigate-application-failure.md) follows a request ID from a profile failure to sanitized Worker logs, with stage and live-verification checks.
 - [Coding standards](../CODING_STANDARDS.md) covers code contracts; native tool configuration owns mechanical style. [Code comments](reference/code-comments.md) defines what to comment, where, and how to keep comments true.
 - [Decisions](decisions/README.md) records one file per everyday decision about process, testing, tooling or scope, with its reason and when to reconsider it. Consequential architectural trade-offs are ADRs in [`adr/`](adr/).

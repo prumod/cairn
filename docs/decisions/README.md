@@ -9,3 +9,4 @@ One file per decision that is not an [ADR](../adr/): a choice about process, tes
 ## Index
 
 - [2026-11-10: No frontend E2E suite with a fake backend](2026-11-10-no-frontend-e2e-with-a-fake-backend.md)
+- [2026-11-10: Keep only tests bound to a scenario](2026-11-10-keep-only-scenario-tests.md)

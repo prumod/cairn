@@ -30,7 +30,6 @@ esac
 run bun run format:check
 run bun run lint
 run bun run lint:boundaries
-run bun run check:transcriptions
 [[ "$scope" == commit ]] && exit 0
 
 run bun run typecheck
@@ -40,7 +39,6 @@ run bun run build
 # The hooks check links at commit and push; the snapshots they validate have no Git data.
 run bun run check:links
 # Proves the boundary rules themselves; they change rarely, so CI suffices.
-run node --test scripts/git-hooks.test.mjs scripts/check-scope.test.mjs scripts/check-doc-links.test.mjs
 run bun run test:boundaries
 # Advisory data requires the network.
 run bun run audit
