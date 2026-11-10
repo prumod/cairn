@@ -42,7 +42,7 @@ jobs:
           NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
           GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
           GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
-          BOOTSTRAP_ADMIN_EMAIL: ${{ secrets.BOOTSTRAP_ADMIN_EMAIL }}
+          BOOTSTRAP_ADMIN_EMAIL: ${{ vars.BOOTSTRAP_ADMIN_EMAIL }}
           GIT_SHA: ${{ github.event.workflow_run.head_sha }}
           CI: "true"
         run: bun run --cwd packages/infra deploy:testing --yes
