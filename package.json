@@ -34,7 +34,6 @@
     "format:check": "oxfmt --check .",
     "lint": "oxlint .",
     "lint:boundaries": "node scripts/check-boundaries.mjs",
-    "check:transcriptions": "bun test scripts/transcriptions-pending.test.mjs",
     "check:links": "node scripts/check-doc-links.mjs",
     "test:boundaries": "node scripts/prove-boundaries.mjs",
     "audit": "bun audit",
@@ -44,18 +43,13 @@
     "test:browser": "bun run build && bun run test:browser:run",
     "test:browser:run": "node scripts/run-tests.mjs browser",
     "check": "bash scripts/check.sh full",
-    "checks:timings": "node scripts/check-timings.mjs",
-    "test:mutation": "node node_modules/vitest/vitest.mjs run --config vitest.mutation.config.ts",
-    "mutation": "node node_modules/@stryker-mutator/core/bin/stryker.js run",
-    "mutation:incremental": "bun run mutation --incremental"
+    "checks:timings": "node scripts/check-timings.mjs"
   },
   "devDependencies": {
     "@cairn/config": "workspace:*",
     "@cloudflare/workers-types": "^5.20261022.1",
     "@oxlint/plugins": "1.89.0",
     "@playwright/test": "1.64.1",
-    "@stryker-mutator/core": "10.1.1",
-    "@stryker-mutator/vitest-runner": "10.1.1",
     "@swc/core": "1.16.20",
     "@types/node": "^26.6.5",
     "dependency-cruiser": "18.7.0",

@@ -49,7 +49,7 @@ Keep these dimensions separate:
 
 Two application modules executing together do not by themselves make an integration test. Local versus deployed is an environment choice, separate from the boundary.
 
-Add typical tests when they catch a meaningful technical failure faster or more precisely than the acceptance suites:
+Typical tests are helpers. Write them while building when they catch a technical failure faster or more precisely than the acceptance suites, record their passing run in the pull request when it is evidence, and delete them before the code review. Only the shared repository contract test stays ([decision](docs/decisions/2026-11-10-keep-only-scenario-tests.md)). Useful helpers:
 
 - Direct Level 1/2 unit tests for parsing, normalization, exact arithmetic, rounding, date boundaries, and complex state transitions. Use controlled clocks and property-based cases where useful invariants exist.
 - Incoming integration tests for framework transport, serialization, malformed inputs, origin checks, and HTTP failure mapping that need more detail than a domain feature provides.
@@ -102,7 +102,7 @@ Vitest discovers colocated tests under `{apps/web,shared}/src/**/*.{spec,test}.{
 
 In `apps/web/tests/acceptance/integration/`, `*.feature.test.ts` files are Vitest bindings that import a `.feature` contract through `vitest-cucumber-context-mapper` and run its scenarios against the compiled Worker and a disposable database; none exists now. `apps/web/tests/typical/integration/` holds technical integration tests that have no scenario; none exists now. `apps/web/tests/support/testSupport.ts` is the shared application fixture for these tests and for `scripts/start-browser-test-server.ts`.
 
-The one Worker integration test, `apps/web/tests/acceptance/integration/legalPages.spec.ts`, checks that anonymous visitors get the privacy and terms pages as server-rendered HTML. No test covers sign-in, access, server-function transport or `/api/analytics-config`: those tests were deleted with the walking skeleton's access code. Slice 0a of the [Now technical design](docs/reference/technical-design-now-discovery.md#access) adds access tests back from PRD #104 stories 43–43d.
+No test exists now. Only tests bound to a `.feature` scenario stay, plus the shared contract test of each repository pair; every other test is a helper that is deleted before review ([decision](docs/decisions/2026-11-10-keep-only-scenario-tests.md)). Slice 0a of the [Now technical design](docs/reference/technical-design-now-discovery.md#access) adds the first scenarios from PRD #104 stories 43–43d.
 
 Lint rejects module mocking (`vi.mock`); tests inject fake dependencies through the public interface instead.
 
@@ -128,41 +128,9 @@ Run commands from the repository root with Bun 1.3.14:
 - `bun run typecheck` first regenerates environment types, then checks workspace packages and root test/config types. Its last step checks the `*.feature.test.ts` bindings with `tsconfig.acceptance.json` and a pinned TypeScript 7.1 dev build (alias `typescript-mappers`) that maps `.feature` imports to types; a scenario title that differs from the contract fails to compile. While no binding exists, that step checks only `apps/web/tests/support/testSupport.ts`, because `tsc` rejects a configuration with no input. Other packages stay on the catalog TypeScript.
 - `bun run check` runs formatting, lint, boundary checks/proofs, typecheck, build, dependency audit, and the fast and browser test suites. The required `Agent checks` CI workflow runs the same full check; the local commit and push gates do not run tests.
 
-## Scoped mutation pilot
-
-Run these commands from the repository root after installing locked dependencies. The scripts use Node for Vitest/Stryker; CI pins Node 24.22.0 and Bun 1.3.14.
-
-```sh
-bun run test:mutation
-bun run mutation
-# Optional subsequent local run using cached results:
-bun run mutation:incremental
-```
-
-`test:mutation` runs the direct-source baseline in `vitest.mutation.config.ts`. `mutation` runs Stryker 10.1.1 with `stryker.config.mjs` and `@stryker-mutator/vitest-runner` 10.1.1. The selected source/test pairs are:
-
-- `packages/infra/src/deployment.ts` → `packages/infra/src/deployment.test.ts`
-- `apps/web/src/server/config.server.ts` → `apps/web/src/server/config.server.spec.ts`
-- `apps/web/src/server/shared/observability/observability.ts` → `apps/web/src/server/shared/observability/observability.spec.ts`
-- `packages/db/src/index.ts` → `packages/db/src/index.spec.ts`
-
-These Node-environment tests import source directly and need neither a built Worker nor the disposable database. Stryker uses per-test coverage and concurrency 2. Built Worker integration and browser tests run code in a separate process/build; they cannot observe these instrumented source modules and are excluded from this pilot. The pilot does not measure the whole application's test effectiveness. Runner 10.1.1 is intentional: 10.0.0 ran no tests for nested Vitest 5 test names.
-
-Open `reports/mutation/mutation.html` for the HTML report; machine-readable results are in `reports/mutation/mutation.json`. Incremental runs use `reports/mutation/incremental.json`. Reports and `.stryker-tmp/` are ignored. Incremental results reuse prior work: run a fresh `bun run mutation` when assessing a candidate revision, especially after changing configuration, dependencies, or the test environment.
-
-`.github/workflows/mutation.yml` runs on pull requests, pushes to `main`, and manual dispatch. Its `Mutation report (advisory)` job has `continue-on-error: true`, and always attempts to upload `reports/mutation/` as artifact `mutation-report`; if no reports exist it warns. The pilot has `thresholds.break: 0`, so there is no fixed minimum mutation score or merge gate. Inspect surviving/uncovered mutants rather than treating an advisory job as acceptance evidence.
-
-For PR #122's tested head, `bun run test:mutation` passed all 65 direct tests. A fresh Stryker run tested 217 mutants: 209 killed (96.31%), 8 survived, 0 uncovered, 0 timeouts, and 0 errors. The observability helper killed 89 of 95 mutants (93.68%); all its mutants were covered. Review survivors in the HTML report instead of treating the score as a merge gate.
-
-After reviewing those survivors, the current follow-up working tree adds direct assertions for the five-frame cap, allowed frame basenames, and a stack whose first line is already a frame. The parser now checks every line and filters out a standard `Error:` header through its existing frame pattern. Its fresh `bun run mutation` run passed 68 tests and killed 212/216 mutants (98.15%); 4 survived, with 0 uncovered mutants, timeouts, or errors. The observability helper killed 92/94 mutants (97.87%).
-
-The same follow-up tree passes `bun run check`: 93 fast tests, 3 browser scenarios, and no dependency vulnerabilities. Lint reports the same three existing warnings. The dependency overrides pin `@hono/node-server` to 2.1.3 and `seroval` to 1.6.11 to address newly reported transitive advisories. These follow-up changes have not yet run in CI or been deployed.
-
-The four survivors were reviewed: `DependencyUnavailable`'s message is not returned or logged; optional chaining guards a location capture that the regex requires; the pinned Neon driver currently exposes `fetchEndpoint` as a function, leaving the compatibility fallback branch inactive; and the explicit undefined-revision check is redundant because the 40-character regex already rejects `undefined`.
-
 ## Observability test boundary
 
-Colocated tests cover public analytics configuration gating, SDK privacy options and identity/reset behavior with a fake PostHog SDK injected through `createAnalytics`, and request-ID/error sanitization with a captured console logger. These tests do not establish hosted ingestion, replay privacy in a real recording, Cloudflare trace lookup, or source-map remapping. See the dated evidence below and the [diagnostic guide](docs/how-to/investigate-application-failure.md) for the current live checks and their limits.
+No test covers analytics configuration gating, SDK privacy options, identity/reset behavior, or request-ID/error sanitization; their tests were deleted as helpers. Hosted ingestion, replay privacy in a real recording, Cloudflare trace lookup, and source-map remapping are also unverified. See the dated evidence below and the [diagnostic guide](docs/how-to/investigate-application-failure.md) for the live checks and their limits.
 
 ## Feature-structure verification limits
 
@@ -178,7 +146,7 @@ The migration owner reports that `bun run check` completed successfully (exit 0)
 
 PR [#122](https://github.com/prumod/cairn-web/pull/122) merged as `ee24e21ea46428d32d18e15006f5b011050f2b23` from tested head `d0f129da787b9b9580b439c17ae9b7a1e5bc25f7`. `Agent checks` and the advisory `Mutation report` job succeeded on that head. The separate mutation job remains advisory and has no score gate.
 
-- The advisory mutation job succeeded on PR #122. The current follow-up working-tree score and survivor details are recorded in [Scoped mutation pilot](#scoped-mutation-pilot); those follow-up changes have not yet run in CI. The report covers the selected direct-source modules only.
+- The advisory mutation job succeeded on PR #122. The report covered the selected direct-source modules only. The mutation pilot was removed on 2026-11-10 with the tests it mutated.
 - `bun run check` passed, including the fast and browser suites (90 fast tests and 3 browser scenarios). Lint reported three pre-existing warnings; the dependency audit found no vulnerabilities.
 - Three additional fresh `bun run test:fast:run` runs each passed all 90 tests. Each run started a unique disposable PostgreSQL/Neon proxy pair and exercised the schema migrations. `scripts/with-test-postgres.mjs` now waits for an HTTP `SELECT 1` through the proxy before launching the tests, with a 60-second overall timeout and 2-second request timeout. No proxy-startup failure occurred in these three runs. This supports the readiness fix but does not guarantee every host or startup condition.
 - Testing is deployed at the merged revision. `/healthz` returned `ready` and that exact SHA. `/api/analytics-config` returned `null`, as intended for testing.
