@@ -10,6 +10,7 @@ apps/web/src/env.ts
 .vitest/
 test-results/
 playwright-report/
+.alintcache
 
 # Local environment and secrets
 .env
