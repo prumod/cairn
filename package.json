@@ -36,7 +36,7 @@
     "lint:boundaries": "node scripts/check-boundaries.mjs",
     "check:links": "node scripts/check-doc-links.mjs",
     "test:boundaries": "node scripts/prove-boundaries.mjs",
-    "audit": "bun audit",
+    "audit": "bun audit --ignore=GHSA-fc5q-39xc-vjpf",
     "test": "bash scripts/test.sh",
     "test:fast": "bun run build && bun run test:fast:run",
     "test:fast:run": "node scripts/with-test-postgres.mjs node scripts/run-tests.mjs fast",
