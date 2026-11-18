@@ -34,6 +34,7 @@
     "format:check": "oxfmt --check .",
     "lint": "oxlint .",
     "lint:boundaries": "node scripts/check-boundaries.mjs",
+    "lint:semantic": "alint",
     "check:links": "node scripts/check-doc-links.mjs",
     "test:boundaries": "node scripts/prove-boundaries.mjs",
     "audit": "bun audit --ignore=GHSA-fc5q-39xc-vjpf",
@@ -46,6 +47,9 @@
     "checks:timings": "node scripts/check-timings.mjs"
   },
   "devDependencies": {
+    "@alint-js/cli": "0.8.0",
+    "@alint-js/plugin": "0.8.0",
+    "@cairn/alint-plugin-semantic": "workspace:*",
     "@cairn/config": "workspace:*",
     "@cloudflare/workers-types": "^5.20261022.1",
     "@oxlint/plugins": "1.89.0",
