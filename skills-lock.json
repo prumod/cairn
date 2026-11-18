@@ -1,71 +1,78 @@
 {
-  "version": 1,
+  "version": 2,
   "skills": {
     "atdd": {
       "source": "TiagoJacinto/skills",
       "sourceType": "github",
       "skillPath": "atdd/SKILL.md",
-      "computedHash": "96f350e940cb86d392a35aab607e6496b6b3d5671b9e0ea4b1a34f3fafa2ac6c"
+      "computedHash": "7c0eefd20fda8d8ffef455d467d96d49f8f4e39ada07d19378d0452394e4edb6"
     },
     "before-and-after": {
       "source": "vercel-labs/before-and-after",
       "sourceType": "github",
       "skillPath": "skill/SKILL.md",
-      "computedHash": "d3e059a03864cd72392d24e2b218ea825b3533383418b5dc1f947a9b084e3742"
+      "computedHash": ""
     },
     "behavior-specification": {
       "source": "TiagoJacinto/skills",
       "sourceType": "github",
       "skillPath": "behavior-specification/SKILL.md",
-      "computedHash": "11ac1a09ad44b3872adc3cc3c00e1621112b96548706d1525801ceabacdf78c6"
+      "computedHash": "37c004bf6ee65b216c26d44f2141834956da22d002852149f974fd782f82e807"
     },
     "code-review": {
       "source": "TiagoJacinto/skills",
       "sourceType": "github",
       "skillPath": "code-review/SKILL.md",
-      "computedHash": "b82caba6cd977413f79c6b02053c7cd19bc5af2a2dbbd35dd55c97dde0ac6c1c"
+      "computedHash": "123bce576a55d0cf4c753eec7bfbfb295af88098d6c8187f868cf94c4bf73601"
     },
     "codebase-design": {
       "source": "TiagoJacinto/skills",
       "sourceType": "github",
       "skillPath": "codebase-design/SKILL.md",
-      "computedHash": "2b870fd042dd1e8ad447e4a10d78ad22575ed7153696b883b586dda08fae6493"
+      "computedHash": "46958dc91617f334b1a20b9b9cf332eed541c1c485d78e0c6c10dac54bd6ec94"
     },
     "gherkin": {
       "source": "TiagoJacinto/skills",
       "sourceType": "github",
       "skillPath": "gherkin/SKILL.md",
-      "computedHash": "a9c3983a5504611a3391b250e8346f519c1f3d55d356c42e366c88e78ab0dd79"
+      "computedHash": "3e870e6a88e58f3dae1e23168cc203ff2cf178ccabae7be31c68e936b6cce17a"
     },
     "high-value-testing": {
       "source": "TiagoJacinto/skills",
       "sourceType": "github",
       "skillPath": "high-value-testing/SKILL.md",
-      "computedHash": "35fbb62d42b31f7cba18c8154335865aa5700ec34ab5bfa30f488c10693a3efd"
+      "computedHash": "559d5d2b94d52cadc176ac835d0c9c1c3ebc777a63419a02f914eb1df82fd068"
     },
     "hvtdd": {
       "source": "TiagoJacinto/skills",
       "sourceType": "github",
       "skillPath": "hvtdd/SKILL.md",
-      "computedHash": "e5dec51e01070bfc9cbc3ad6a7ae66092f8f4cb406a7d8553184631efd261da2"
+      "computedHash": "ded8e90e89267aa48b7994a516901779893952cc8b04e002b4c799d034c1aa92"
     },
     "tdd": {
       "source": "TiagoJacinto/skills",
       "sourceType": "github",
       "skillPath": "tdd/SKILL.md",
-      "computedHash": "de2ef613ad280bfb885f28019abbd6829f4e720c1ebf3d917faea567e0f27a05"
+      "computedHash": "fe63b1eddcacc8a8a0e29da2a81a58ed5321f5a228acaa11b82505b1309f554c"
     },
     "test-implementation": {
       "source": "TiagoJacinto/skills",
       "sourceType": "github",
       "skillPath": "test-implementation/SKILL.md",
-      "computedHash": "e1e406019a4a6a5e4b7f36eefdadcaadf369cda65062d195a23905f5ba94135e"
+      "computedHash": "a5208aa127eca3a891ccd690db4e7dfe046de42b38f9236b2cc9dde2acd78fe1"
     },
     "testing": {
       "source": "TiagoJacinto/skills",
       "sourceType": "github",
       "skillPath": "testing/SKILL.md",
-      "computedHash": "a12482dd87d7aca72d29668dd94bf561a051e5733c47b2c89fbc6f83fb8384e2"
+      "computedHash": "6bea1bbcfc60193f181ddd22167389eb60be5edd720f52a40acfef8e0f113b4d"
+    },
+    "ui-sdk": {
+      "source": "vercel-labs/ui",
+      "commit": "af0321f284fee01e91d6e2397ca70ec8af33de7b",
+      "sourceType": "github",
+      "skillPath": "packages/core/skills/ui-sdk/SKILL.md",
+      "computedHash": "930036de569c0d07313af7a065194fd1fa5f167293a20c6a404cd0a740abf500"
     }
   }
 }
