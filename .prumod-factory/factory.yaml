@@ -1,0 +1,90 @@
+# The factory definition: Warp Factories v1alpha1, copied from
+# warpdotdev/warp-factory-examples example 12 (MIT License, Copyright (C) 2026
+# Denver Technologies, Inc.; see LICENSES/warp-factory-examples.txt) with the
+# substitutions its README lists: repository, alias, routing label, assignees,
+# runner image and agentDefaults.model. Our engine (with OpenSandbox)
+# runs it. Validated by scripts/validate.sh against apps/backend/schemas/factory.schema.json.
+schemaVersion: v1alpha1
+name: cairn
+description: >-
+  Assigning a labeled GitHub issue to the factory starts one scoped
+  implementation task. The factory delivers a pull request for human review.
+alias: Cairn
+repositories:
+  - owner: prumod
+    name: cairn
+agentDefaults:
+  model: claude-sonnet-5-5
+  runner: linux-small
+
+# ---- Our keys (not part of Warp's v1alpha1) ----
+
+max_fix_attempts: 2
+# Claude Code sessions one IMPLEMENT step runs while the run's verification command
+# fails: the first session plus `claude -p --continue` rounds with the command's output.
+max_goal_rounds: 3
+# Start at 1 on Pro or 2 on Max: Anthropic publishes no concurrency number.
+max_concurrent_runs: 1
+# Retries of a step whose output was invalid or whose sandbox failed.
+max_step_retries: 1
+
+base_branch: main
+# The factory refuses to push a change that touches these paths.
+protected_paths:
+  - ".github/workflows/**"
+  - ".github/CODEOWNERS"
+# The factory runs this in the verifier sandbox; a non-zero exit fails the verdict.
+test_command: bash scripts/check.sh push
+# Seconds between polls of the GitHub automation triggers.
+poll_interval_seconds: 20
+
+# Minutes a run may stay in a state before it moves to ESCALATED. Only time the
+# factory is running counts: a suspended or stopped host does not use up the limit.
+timeouts_minutes:
+  RECEIVED: 1440
+  TRIAGE: 15
+  PLAN: 20
+  AWAIT_PLAN_APPROVAL: 10080
+  IMPLEMENT: 40
+  VERIFY: 30
+  GRADE: 30
+  OPEN_PR: 30
+  NEEDS_INFO: 10080
+
+plan_approval:
+  # A plan whose risk is in this list waits in AWAIT_PLAN_APPROVAL for a
+  # "/factory approve" comment from a human. Empty by default: the base runs
+  # unattended and leaves risk review to issue #2; set e.g. [high] to opt in.
+  required_for_risk: []
+
+# Wait for the target repo's checks on the PR head before a run finishes.
+wait_for_ci_checks: true
+
+# Batched Open Code Review + agy pass inside VERIFY. Starts in shadow mode:
+# records findings on the step outcome without affecting the verdict or PR body.
+code_review:
+  enabled: true
+  mode: shadow
+  provider: agy-ocr
+  model: gemini-4-neon-medium
+  max_files_per_batch: 4
+  max_lines_per_batch: 400
+  batch_concurrency: 3
+  batch_timeout_seconds: 180
+
+# This definition supplies the dashboard chat's model and system prompt.
+chat: true
+
+# Name and email on every commit and evidence branch the factory pushes.
+git_author:
+  name: prumod-factory
+  email: factory@users.noreply.github.com
+
+# Every sandbox process runs as this non-root user.
+sandbox_user:
+  uid: 1000
+  gid: 1000
+
+notify:
+  adapter: slack
+  events: [ESCALATED, NEEDS_INFO]

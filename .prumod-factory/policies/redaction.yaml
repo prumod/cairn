@@ -1,0 +1,12 @@
+# Patterns redacted from every stored transcript, log and evidence text file.
+# Exact values of these environment variables are always redacted too.
+kind: redaction
+env_values:
+  - CLAUDE_CODE_OAUTH_TOKEN
+  - FACTORY_SLACK_WEBHOOK_URL
+patterns:
+  - "sk-ant-[A-Za-z0-9_-]{10,}"
+  - "gh[pousr]_[A-Za-z0-9]{20,}"
+  - "github_pat_[A-Za-z0-9_]{20,}"
+  - "https://hooks\\.slack\\.com/services/[A-Za-z0-9/]+"
+  - "(?i)authorization:\\s*(bearer|token|basic)\\s+[A-Za-z0-9._~+/=-]+"

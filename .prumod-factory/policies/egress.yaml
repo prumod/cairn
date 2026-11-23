@@ -1,0 +1,15 @@
+# Core egress allowlist: the hosts every factory's agent sandboxes need (OpenSandbox
+# networkPolicy, bridge mode). Each sandbox also gets its runner's `egress` list
+# (runners/<name>.yaml), e.g. the toolchain's package registries. Everything else is denied.
+kind: egress
+default_action: deny
+allow:
+  # Git host
+  - github.com
+  - api.github.com
+  - codeload.github.com
+  - objects.githubusercontent.com
+  # Model endpoints
+  - api.anthropic.com
+  - daily-cloudcode-pa.googleapis.com
+  - oauth2.googleapis.com

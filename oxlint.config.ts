@@ -5,6 +5,7 @@ export default defineConfig({
     ".agent/**",
     ".agent-stack/**",
     ".agents/**",
+    ".prumod-factory/**",
     ".claude/**",
     ".codex/**",
     ".continue/**",

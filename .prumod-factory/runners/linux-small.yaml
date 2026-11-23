@@ -1,0 +1,20 @@
+# Based on warpdotdev/warp-factory-examples, example 12 (MIT License, Copyright (C) 2026 Denver Technologies, Inc.). See LICENSES/warp-factory-examples.txt.
+description: >-
+  Runner for prumod/cairn, a Bun workspace (TypeScript). The oven/bun Debian
+  image matches the repo's packageManager (bun@1.3.14); the factory adds Node,
+  git and Claude Code from its tools bundle.
+instanceShape:
+  vcpus: 2
+  memoryGb: 4
+platform:
+  os: linux
+  arch: x86_64
+  linux:
+    dockerImage: oven/bun:1.3.14-debian
+# Our key: run in the repo before each agent step.
+setupCommands:
+  - bun install --frozen-lockfile
+# Our key (not part of Warp's v1alpha1): hosts this runner's sandboxes may reach on top
+# of the core allowlist in policies/egress.yaml. Package registries for the toolchain.
+egress:
+  - registry.npmjs.org

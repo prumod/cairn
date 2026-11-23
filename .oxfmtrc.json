@@ -13,6 +13,7 @@
     ".agents/skills/tdd/**",
     ".agents/skills/test-implementation/**",
     ".agents/skills/testing/**",
-    ".agents/skills/ui-sdk/**"
+    ".agents/skills/ui-sdk/**",
+    ".prumod-factory/**"
   ]
 }
