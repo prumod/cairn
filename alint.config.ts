@@ -4,7 +4,13 @@ import semanticPlugin from "@cairn/alint-plugin-semantic";
 export default defineConfig([
   {
     files: ["**/*.{ts,tsx,mts,cts,js,jsx,mjs,cjs}"],
-    ignores: ["**/node_modules/**", "**/dist/**", "**/.alchemy/**", "**/.tanstack/**"],
+    ignores: [
+      "**/node_modules/**",
+      "**/dist/**",
+      "**/.alchemy/**",
+      "**/.tanstack/**",
+      ".prumod-factory/**",
+    ],
     plugins: {
       semantic: semanticPlugin,
     },

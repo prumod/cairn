@@ -1,0 +1,16 @@
+# What a coding agent may change. The orchestrator enforces this when it pushes:
+# agents never receive the GitHub token, so the push broker is the only writer.
+kind: agent-permissions
+github_token_in_sandbox: false
+push:
+  # factory/issue-<n>-<slug> and its -evidence twin only (apps/backend/src/gitops.ts)
+  branch_prefix: factory/
+  allow_force_push: own-run-branch-only
+  deny_paths_from: protected_paths
+deny_operations:
+  - merge
+  - admin
+  - workflow-file-write
+secrets:
+  # Secrets enter a sandbox only as per-command environment variables.
+  allowed_in_sandbox: [CLAUDE_CODE_OAUTH_TOKEN]
