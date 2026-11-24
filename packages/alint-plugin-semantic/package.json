@@ -1,0 +1,23 @@
+{
+  "name": "@cairn/alint-plugin-semantic",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "check-types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@alint-js/plugin": "0.8.0",
+    "@effect/ai-cloudflare": "4.1.4",
+    "@effect/ai-openrouter": "4.1.4",
+    "@effect/ai-typesafe": "4.1.4",
+    "effect": "4.1.4",
+    "valibot": "1.5.0"
+  },
+  "devDependencies": {
+    "@cairn/config": "workspace:*",
+    "typescript": "catalog:"
+  }
+}

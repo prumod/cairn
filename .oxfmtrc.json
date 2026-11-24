@@ -12,6 +12,8 @@
     ".agents/skills/hvtdd/**",
     ".agents/skills/tdd/**",
     ".agents/skills/test-implementation/**",
-    ".agents/skills/testing/**"
+    ".agents/skills/testing/**",
+    ".agents/skills/ui-sdk/**",
+    ".prumod-factory/**"
   ]
 }
