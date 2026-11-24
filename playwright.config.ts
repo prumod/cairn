@@ -1,5 +1,9 @@
+import { randomUUID } from "node:crypto";
 import { defineConfig, devices } from "@playwright/test";
 import { defineBddConfig } from "playwright-bdd";
+
+// One disposable database for the whole run. Workers inherit it, so the steps can seed rows.
+process.env.CAIRN_E2E_DATABASE ??= "cairn_e2e_" + randomUUID().replaceAll("-", "");
 
 export default defineConfig({
   testDir: defineBddConfig({
@@ -18,8 +22,7 @@ export default defineConfig({
   },
   projects: [{ name: "chromium", use: { ...devices["Desktop Chrome"] } }],
   webServer: {
-    command:
-      "exec node scripts/with-test-postgres.mjs node --import tsx scripts/start-browser-test-server.ts",
+    command: "exec node --import tsx scripts/start-browser-test-server.ts",
     gracefulShutdown: { signal: "SIGTERM", timeout: 10000 },
     env: { NODE_ENV: "test" },
     url: "http://127.0.0.1:4173",

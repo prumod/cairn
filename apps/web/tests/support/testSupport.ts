@@ -7,8 +7,19 @@ import pg from "pg";
 import { z } from "zod";
 import { createDb } from "@cairn/db";
 import { migrate } from "drizzle-orm/neon-http/migrator";
+import { testAuthSettings } from "./testAuth.js";
 
-const environmentKeys = ["APP_ORIGIN", "DATABASE_URL", "GIT_SHA", "NODE_ENV"] as const;
+const environmentKeys = [
+  "APP_ORIGIN",
+  "BETTER_AUTH_SECRET",
+  "BOOTSTRAP_ADMIN_EMAIL",
+  "DATABASE_URL",
+  "GIT_SHA",
+  "GOOGLE_CLIENT_ID",
+  "GOOGLE_CLIENT_SECRET",
+  "GOOGLE_TEST_ID_TOKEN_SECRET",
+  "NODE_ENV",
+] as const;
 
 const ListeningAddress = z.object({ port: z.number() });
 
@@ -70,7 +81,7 @@ async function stop(child: ChildProcess | undefined) {
   }
 }
 
-export async function createTestApplication(requestedPort = 0) {
+export async function createTestApplication(requestedPort = 0, databaseName?: string) {
   const connectionString = process.env.TEST_DATABASE_URL;
 
   if (!connectionString) throw new Error("Run tests via the PostgreSQL test wrapper.");
@@ -79,7 +90,7 @@ export async function createTestApplication(requestedPort = 0) {
     environmentKeys.map((key) => [key, process.env[key]] as const),
   );
 
-  const name = "cairn_test_" + randomUUID().replaceAll("-", "");
+  const name = databaseName ?? "cairn_test_" + randomUUID().replaceAll("-", "");
   const identifier = pg.escapeIdentifier(name);
   const rootPool = new pg.Pool({ connectionString });
   let pool: pg.Pool | undefined;
@@ -124,6 +135,8 @@ export async function createTestApplication(requestedPort = 0) {
   }
 
   try {
+    // A named database can be left by a run that was killed; the name is only used by one run.
+    await rootPool.query({ text: "DROP DATABASE IF EXISTS " + identifier + " WITH (FORCE)" });
     await rootPool.query({ text: "CREATE DATABASE " + identifier });
     databaseCreated = true;
     const url = new URL(connectionString);
@@ -147,8 +160,13 @@ export async function createTestApplication(requestedPort = 0) {
 
     const environment = {
       APP_ORIGIN: origin,
+      BETTER_AUTH_SECRET: testAuthSettings.betterAuthSecret,
+      BOOTSTRAP_ADMIN_EMAIL: testAuthSettings.bootstrapAdministratorEmail,
       DATABASE_URL: neonURL.toString(),
       GIT_SHA: "0123456789abcdef0123456789abcdef01234567",
+      GOOGLE_CLIENT_ID: testAuthSettings.googleClientId,
+      GOOGLE_CLIENT_SECRET: testAuthSettings.googleClientSecret,
+      GOOGLE_TEST_ID_TOKEN_SECRET: testAuthSettings.googleTestIdTokenSecret,
       HOST: "127.0.0.1",
       NODE_ENV: "test",
       PORT: String(port),

@@ -219,7 +219,22 @@ try {
 
   prove(
     "apps/web/src/server/modules/two/probe.ts",
-    "apps/web/src/pages/one/entry.ts",
+    "apps/web/src/pages/one/implementation/value.ts",
+    "server-cannot-import-client",
+  );
+  // Only the feature root file (pages/<feature>/<feature>.ts) is its public entry.
+  write("apps/web/src/pages/one/one.ts", "export const value = 1;\n");
+  write(
+    "apps/web/src/server/modules/two/probe.ts",
+    importing("apps/web/src/server/modules/two/probe.ts", "apps/web/src/pages/one/one.ts"),
+  );
+  cruise();
+  write("apps/web/src/server/modules/two/probe.ts", "export const value = 1;\n");
+  console.log("PASS: server-cannot-import-client allows a feature root file.");
+  write("apps/web/src/pages/one/accessAuthClient.ts", "export const value = 1;\n");
+  prove(
+    "apps/web/src/server/modules/two/probe.ts",
+    "apps/web/src/pages/one/accessAuthClient.ts",
     "server-cannot-import-client",
   );
   prove(

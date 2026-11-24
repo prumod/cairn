@@ -4,7 +4,7 @@
 
 Monorepo Bun com React e TanStack Start, executado como Cloudflare Worker através de Alchemy. Usa Drizzle com Neon HTTP para a base de dados. Não existe backend Express.
 
-A aplicação serve, por agora, só a página inicial, a política de privacidade e os termos de utilização. O início de sessão e a aprovação de contas do walking skeleton foram eliminados; o slice 0a do [desenho técnico do Now](docs/reference/technical-design-now-discovery.md#access) volta a construí-los. A descoberta de obras no Diário da República existe como protótipo; consulte o [contexto do produto](docs/product/README.md).
+A aplicação serve a página inicial, onde se entra com Google e o administrador aprova as contas, a política de privacidade e os termos de utilização. O acesso está descrito no [desenho técnico do Now](docs/reference/technical-design-now-discovery.md#access). A descoberta de obras no Diário da República existe como protótipo; consulte o [contexto do produto](docs/product/README.md).
 
 ## Começar
 

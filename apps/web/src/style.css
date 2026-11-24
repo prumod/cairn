@@ -143,3 +143,97 @@ td {
     transition: background-color 120ms ease-out;
   }
 }
+
+/* Access page. Colours come from tokens; dark mode redefines them under data-theme or the system setting. */
+:root {
+  --canvas: #edf0f4;
+  --panel: #ffffff;
+  --line: #d3dae3;
+  --fg: #17202b;
+  --muted: #566474;
+  --accent: #1d5fd6;
+  --onaccent: #ffffff;
+  --danger: #b42318;
+}
+:root {
+  background: var(--canvas);
+  color: var(--fg);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --canvas: #06080b;
+    --panel: #121923;
+    --line: #2a3644;
+    --fg: #e6ebf2;
+    --muted: #9aa8b8;
+    --accent: #5ba8f5;
+    --onaccent: #06080b;
+    --danger: #ff8a80;
+  }
+}
+:root[data-theme="dark"] {
+  --canvas: #06080b;
+  --panel: #121923;
+  --line: #2a3644;
+  --fg: #e6ebf2;
+  --muted: #9aa8b8;
+  --accent: #5ba8f5;
+  --onaccent: #06080b;
+  --danger: #ff8a80;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) a {
+    color: var(--accent);
+  }
+}
+:root[data-theme="dark"] a {
+  color: var(--accent);
+}
+body {
+  background: var(--canvas);
+  color: var(--fg);
+}
+main {
+  padding: 2rem max(1.5rem, calc((100vw - 72rem) / 2));
+}
+.access-message,
+.access-panel,
+.access-manage {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
+  padding: 1.25rem;
+  margin: 0 0 1rem;
+  max-width: 48rem;
+}
+.access-panel {
+  display: grid;
+  gap: 1rem;
+  justify-items: start;
+}
+.access-button {
+  font: inherit;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: var(--onaccent);
+  cursor: pointer;
+}
+.access-button--secondary {
+  background: transparent;
+  color: var(--accent);
+}
+.access-manage table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.access-manage th,
+.access-manage td {
+  text-align: left;
+  padding: 0.5rem;
+  border-bottom: 1px solid var(--line);
+}
+.access-manage [role="alert"] {
+  color: var(--danger);
+}

@@ -1,6 +1,11 @@
 import { createTestApplication } from "../apps/web/tests/support/testSupport.js";
 
-const application = await createTestApplication(4173);
+// playwright.config.ts names the disposable database once, so the steps can open the same one.
+const databaseName = process.env.CAIRN_E2E_DATABASE;
+
+if (!databaseName) throw new Error("Run the browser tests via playwright.config.ts.");
+
+const application = await createTestApplication(4173, databaseName);
 let closing: Promise<void> | undefined;
 
 async function close() {

@@ -1,5 +1,17 @@
 type ConfigEnvironment = Partial<
-  Pick<NodeJS.ProcessEnv, "APP_ORIGIN" | "DATABASE_URL" | "APP_ENV" | "PORT" | "GIT_SHA">
+  Pick<
+    NodeJS.ProcessEnv,
+    | "APP_ORIGIN"
+    | "APP_ENV"
+    | "BETTER_AUTH_SECRET"
+    | "BOOTSTRAP_ADMIN_EMAIL"
+    | "DATABASE_URL"
+    | "GIT_SHA"
+    | "GOOGLE_CLIENT_ID"
+    | "GOOGLE_CLIENT_SECRET"
+    | "GOOGLE_TEST_ID_TOKEN_SECRET"
+    | "PORT"
+  >
 >;
 
 export function readConfig(env: ConfigEnvironment = process.env) {
@@ -21,6 +33,7 @@ export function readConfig(env: ConfigEnvironment = process.env) {
 
   if (!["http:", "https:"].includes(originURL.protocol))
     throw new Error("APP_ORIGIN must be HTTP or HTTPS.");
+
   const appEnvironment = required("APP_ENV");
 
   if (!["development", "test", "production"].includes(appEnvironment))
@@ -28,14 +41,33 @@ export function readConfig(env: ConfigEnvironment = process.env) {
 
   if (appEnvironment === "production" && originURL.protocol !== "https:")
     throw new Error("Production APP_ORIGIN must use HTTPS.");
+
+  const secret = required("BETTER_AUTH_SECRET");
+
+  if (secret.length < 32)
+    throw new Error("BETTER_AUTH_SECRET must contain at least 32 characters.");
+
   const port = Number(env.PORT ?? "3000");
 
   if (!Number.isInteger(port) || port < 1 || port > 65535)
     throw new Error("PORT must be between 1 and 65535.");
 
+  // SAFETY: appEnvironment was checked against the three names above, which are this union.
+  const checkedEnvironment = appEnvironment as "development" | "test" | "production";
+
   return {
+    appEnvironment: checkedEnvironment,
     databaseURL: required("DATABASE_URL"),
     origin: originURL.origin,
+    auth: {
+      APP_ORIGIN: originURL.origin,
+      APP_ENV: checkedEnvironment,
+      BETTER_AUTH_SECRET: secret,
+      GOOGLE_CLIENT_ID: required("GOOGLE_CLIENT_ID"),
+      GOOGLE_CLIENT_SECRET: required("GOOGLE_CLIENT_SECRET"),
+      GOOGLE_TEST_ID_TOKEN_SECRET: env.GOOGLE_TEST_ID_TOKEN_SECRET?.trim() || undefined,
+    },
+    bootstrapAdministratorEmail: required("BOOTSTRAP_ADMIN_EMAIL").toLowerCase(),
     revision: env.GIT_SHA ?? "local",
     port,
   };
