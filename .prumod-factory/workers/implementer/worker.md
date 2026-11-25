@@ -1,6 +1,6 @@
 ---
 description: Implements an assigned, in-scope issue and delivers a reviewable pull request.
-agentType: IMPLEMENT
+workerRole: IMPLEMENT
 ---
 <!-- Copied from warpdotdev/warp-factory-examples, example 12 (MIT License, Copyright (C) 2026 Denver Technologies, Inc.). See LICENSES/warp-factory-examples.txt. -->
 # Implementation

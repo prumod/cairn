@@ -1,6 +1,6 @@
 ---
 description: Reviews a candidate commit adversarially and reports a verdict for human decisions.
-agentType: REVIEW
+workerRole: REVIEW
 model: claude-opus-5-5
 ---
 <!-- Adapted from warpdotdev/warp-factory-examples, example 02 reviewer (MIT License, Copyright (C) 2026 Denver Technologies, Inc.). See LICENSES/warp-factory-examples.txt. -->

@@ -1,10 +1,6 @@
-# The factory definition: Warp Factories v1alpha1, copied from
-# warpdotdev/warp-factory-examples example 12 (MIT License, Copyright (C) 2026
-# Denver Technologies, Inc.; see LICENSES/warp-factory-examples.txt) with the
-# substitutions its README lists: repository, alias, routing label, assignees,
-# runner image and agentDefaults.model. Our engine (with OpenSandbox)
-# runs it. Validated by scripts/validate.sh against apps/backend/schemas/factory.schema.json.
-schemaVersion: v1alpha1
+# The factory definition (v1alpha2): a blueprint of Stages, run by Workers on Runners.
+# Validated by scripts/validate.sh against apps/backend/schemas/factory.schema.json.
+schemaVersion: v1alpha2
 name: cairn
 description: >-
   Assigning a labeled GitHub issue to the factory starts one scoped
@@ -13,11 +9,44 @@ alias: Cairn
 repositories:
   - owner: prumod
     name: cairn
-agentDefaults:
+workerDefaults:
   model: claude-sonnet-5-5
   runner: linux-small
 
-# ---- Our keys (not part of Warp's v1alpha1) ----
+blueprint:
+  entry: triage
+  stages:
+    - id: triage
+      worker: foreman
+      skills: [triage]
+      routes:
+        - to: plan
+          when: the issue is actionable
+    - id: plan
+      worker: planner
+      skills: [plan]
+      routes:
+        - to: implement
+          when: the plan is ready to implement
+    - id: implement
+      worker: implementer
+      skills: [implement]
+      goal_rounds: true
+      routes:
+        - to: verify
+          when: the change is committed
+    - id: verify
+      worker: reviewer
+      skills: [verify]
+      routes:
+        - to: done
+          when: every check passes
+        - to: implement
+          when: a check failed and a fix is needed
+        - to: escalated
+          when: the failure cannot be fixed
+
+# ---- Factory settings ----
 
 max_fix_attempts: 2
 # Claude Code sessions one IMPLEMENT step runs while the run's verification command
@@ -42,11 +71,11 @@ poll_interval_seconds: 20
 # factory is running counts: a suspended or stopped host does not use up the limit.
 timeouts_minutes:
   RECEIVED: 1440
-  TRIAGE: 15
-  PLAN: 20
+  triage: 15
+  plan: 20
   AWAIT_PLAN_APPROVAL: 10080
-  IMPLEMENT: 40
-  VERIFY: 30
+  implement: 40
+  verify: 30
   GRADE: 30
   OPEN_PR: 30
   NEEDS_INFO: 10080

@@ -1,6 +1,6 @@
 ---
 description: Grades a run's unaided stake attachments against the change and the IMPLEMENT transcript.
-agentType: GRADER
+workerRole: GRADER
 model: claude-opus-5-5
 ---
 # Grader
