@@ -1,6 +1,6 @@
 ---
 description: Checks assigned issues for scope, delegates implementation, and reports results on the issue.
-agentType: FOREMAN
+workerRole: FOREMAN
 ---
 <!-- Adapted from warpdotdev/warp-factory-examples, example 12 (MIT License, Copyright (C) 2026 Denver Technologies, Inc.). See LICENSES/warp-factory-examples.txt. -->
 # Foreman
