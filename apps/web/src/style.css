@@ -1,239 +1,134 @@
-:root {
-  font-family: system-ui, sans-serif;
-  color: #233329;
-  background: #f7f8f4;
-  font-synthesis: none;
-  line-height: 1.6;
-}
-* {
-  box-sizing: border-box;
-}
-body {
-  margin: 0;
-}
-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
-  padding: 1.2rem max(1.5rem, calc((100vw - 72rem) / 2));
-  border-bottom: 1px solid #c9d2c5;
-}
-.brand {
-  font-size: 1.5rem;
-  font-weight: 700;
-  text-decoration: none;
-}
-nav {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 1.25rem;
-}
-a {
-  color: #2b513d;
-  text-underline-offset: 0.2em;
-}
-main {
-  max-width: 52rem;
-  margin: 3rem auto;
-  padding: 0 1.5rem;
-}
-footer {
-  max-width: 52rem;
-  margin: 3rem auto 1.5rem;
-  padding: 0 1.5rem;
-}
-h1 {
-  font-size: 2rem;
-  line-height: 1.2;
-  margin: 0 0 1rem;
-}
-p {
-  max-width: 68ch;
-}
-form {
-  max-width: 38rem;
-  margin-top: 2rem;
-}
-label {
-  display: block;
-  font-weight: 600;
-  margin: 1.25rem 0 0.4rem;
-}
-input {
-  display: block;
-  width: 100%;
-  padding: 0.7rem;
-  border: 1px solid #74836f;
-  border-radius: 0.3rem;
-  background: white;
-  color: inherit;
-  font: inherit;
-}
-input[type="number"] {
-  max-width: 12rem;
-  font-variant-numeric: tabular-nums;
-}
-button {
-  font: inherit;
-  cursor: pointer;
-  padding: 0.6rem 1rem;
-  color: white;
-  background: #2b513d;
-  border: 0;
-  border-radius: 0.3rem;
-}
-form button {
-  margin-top: 1.5rem;
-}
-button:hover {
-  background: #193e2b;
-}
-button:disabled {
-  opacity: 0.6;
-  cursor: wait;
-}
-:focus-visible {
-  outline: 3px solid #86631b;
-  outline-offset: 3px;
-}
-::selection {
-  background: #dce9ce;
-}
-input {
-  caret-color: #2b513d;
-}
-[role="alert"] {
-  color: #9a2525;
-}
-[role="status"] {
-  color: #2b513d;
-  min-height: 1.5rem;
-}
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-th,
-td {
-  padding: 0.8rem 0.5rem;
-  border-bottom: 1px solid #c9d2c5;
-  text-align: left;
-  overflow-wrap: anywhere;
-}
-@media (max-width: 600px) {
-  header {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-  main {
-    margin-top: 2rem;
-  }
-  nav {
-    gap: 1rem;
-  }
-  th,
-  td {
-    padding: 0.6rem 0.3rem;
-  }
-}
-@media (prefers-reduced-motion: no-preference) {
-  button {
-    transition: background-color 120ms ease-out;
-  }
-}
+@import "tailwindcss";
+@import "@fontsource-variable/inter";
+@import "@fontsource/ibm-plex-mono/400.css";
+@import "@fontsource/ibm-plex-mono/500.css";
+@import "@fontsource/ibm-plex-mono/600.css";
 
-/* Access page. Colours come from tokens; dark mode redefines them under data-theme or the system setting. */
+/* Colour tokens, unchanged from apps/web/references/initial-visual. Dark applies under
+   data-theme="dark", or under the system preference when the theme is not set to light. */
 :root {
+  color-scheme: light;
   --canvas: #edf0f4;
   --panel: #ffffff;
+  --panel2: #f1f4f8;
   --line: #d3dae3;
   --fg: #17202b;
   --muted: #566474;
   --accent: #1d5fd6;
   --onaccent: #ffffff;
+  --amber: #b45309;
+  --accentSoft: #e4edfc;
+  --amberSoft: #fbebd7;
   --danger: #b42318;
-}
-:root {
-  background: var(--canvas);
-  color: var(--fg);
+  --onDanger: #ffffff;
+  --shadow: rgba(23, 32, 43, 0.18);
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
+    color-scheme: dark;
     --canvas: #06080b;
     --panel: #121923;
-    --line: #2a3644;
-    --fg: #e6ebf2;
-    --muted: #9aa8b8;
+    --panel2: #1a222e;
+    --line: #2a3646;
+    --fg: #e1e8f0;
+    --muted: #8e9cae;
     --accent: #5ba8f5;
-    --onaccent: #06080b;
-    --danger: #ff8a80;
+    --onaccent: #04121f;
+    --amber: #f5b041;
+    --accentSoft: #142538;
+    --amberSoft: #33270f;
+    --danger: #f2706a;
+    --onDanger: #1a0605;
+    --shadow: rgba(0, 0, 0, 0.6);
   }
 }
 :root[data-theme="dark"] {
+  color-scheme: dark;
   --canvas: #06080b;
   --panel: #121923;
-  --line: #2a3644;
-  --fg: #e6ebf2;
-  --muted: #9aa8b8;
+  --panel2: #1a222e;
+  --line: #2a3646;
+  --fg: #e1e8f0;
+  --muted: #8e9cae;
   --accent: #5ba8f5;
-  --onaccent: #06080b;
-  --danger: #ff8a80;
+  --onaccent: #04121f;
+  --amber: #f5b041;
+  --accentSoft: #142538;
+  --amberSoft: #33270f;
+  --danger: #f2706a;
+  --onDanger: #1a0605;
+  --shadow: rgba(0, 0, 0, 0.6);
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) a {
-    color: var(--accent);
+
+@theme inline {
+  --color-*: initial;
+  --color-canvas: var(--canvas);
+  --color-panel: var(--panel);
+  --color-panel2: var(--panel2);
+  --color-line: var(--line);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-onaccent: var(--onaccent);
+  --color-amber: var(--amber);
+  --color-accent-soft: var(--accentSoft);
+  --color-amber-soft: var(--amberSoft);
+  --color-danger: var(--danger);
+  --color-ondanger: var(--onDanger);
+  --color-transparent: transparent;
+  --color-current: currentColor;
+  --color-inherit: inherit;
+  --shadow-panel: 0 4px 16px var(--shadow);
+
+  --font-sans: "Inter Variable", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --text-*: initial;
+  --text-nano: 9px;
+  --text-micro: 10px;
+  --text-micro-plus: 10.5px;
+  --text-xs: 11px;
+  --text-xs-plus: 11.5px;
+  --text-sm: 12px;
+  --text-sm-plus: 12.5px;
+  --text-base: 13px;
+  --text-md: 14px;
+  --text-lg: 16px;
+  --text-xl: 20px;
+  --text-2xl: 22px;
+}
+
+@layer base {
+  body {
+    min-height: 100dvh;
+    background: var(--canvas);
+    color: var(--fg);
+    font:
+      13px/1.4 "Inter Variable",
+      system-ui,
+      -apple-system,
+      "Segoe UI",
+      sans-serif;
+    font-feature-settings:
+      "tnum" 1,
+      "cv11" 1;
   }
-}
-:root[data-theme="dark"] a {
-  color: var(--accent);
-}
-body {
-  background: var(--canvas);
-  color: var(--fg);
-}
-main {
-  padding: 2rem max(1.5rem, calc((100vw - 72rem) / 2));
-}
-.access-message,
-.access-panel,
-.access-manage {
-  background: var(--panel);
-  border: 1px solid var(--line);
-  border-radius: 0.5rem;
-  padding: 1.25rem;
-  margin: 0 0 1rem;
-  max-width: 48rem;
-}
-.access-panel {
-  display: grid;
-  gap: 1rem;
-  justify-items: start;
-}
-.access-button {
-  font: inherit;
-  padding: 0.5rem 1rem;
-  border-radius: 0.375rem;
-  border: 1px solid var(--accent);
-  background: var(--accent);
-  color: var(--onaccent);
-  cursor: pointer;
-}
-.access-button--secondary {
-  background: transparent;
-  color: var(--accent);
-}
-.access-manage table {
-  width: 100%;
-  border-collapse: collapse;
-}
-.access-manage th,
-.access-manage td {
-  text-align: left;
-  padding: 0.5rem;
-  border-bottom: 1px solid var(--line);
-}
-.access-manage [role="alert"] {
-  color: var(--danger);
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--line) transparent;
+  }
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+    color: inherit;
+  }
+  button {
+    cursor: pointer;
+  }
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+  }
 }

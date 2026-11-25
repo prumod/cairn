@@ -211,6 +211,12 @@ When(/^(?:a|o) (\p{L}+) abre a aplicação$/u, async ({ browser }, name) => {
   await actor.page.goto("/");
 });
 
+When(/^(?:a|o) (\p{L}+) segue a ligação «([^»]+)»$/u, async ({ browser }, name, link) => {
+  const actor = await actorFor(browser, name);
+
+  await actor.page.getByRole("link", { name: link, exact: true }).click();
+});
+
 When(/^(?:a|o) (\p{L}+) sai$/u, async ({ browser }, name) => {
   const actor = await actorFor(browser, name);
 
@@ -253,6 +259,12 @@ Then(/^o acesso d[ao] (\p{L}+) é «([^»]+)»$/u, async ({}, name, label) => {
   await expect(rowFor(page, name).getByRole("cell", { name: label, exact: true })).toBeVisible(
     SHOW,
   );
+});
+
+Then(/^(?:a|o) (\p{L}+) está em «([^»]+)»$/u, async ({ browser }, name, path) => {
+  const { page } = await actorFor(browser, name);
+
+  await expect(page).toHaveURL(ORIGIN + path, SHOW);
 });
 
 Then(/^(?:a|o) (\p{L}+) vê «([^»]+)»$/u, async ({ browser }, name, text) => {

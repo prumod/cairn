@@ -39,11 +39,11 @@ Base: [What properties should the code have, and not have?](https://github.com/p
 
 Production starts from `apps/web/references/initial-visual/` and changes its look where the PRD or the technical design needs it ([evolution method](docs/product/system/prototype.md#produção--parte-do-initial-visual)), with Tailwind v4 utilities over initial-visual's tokens. Base: [How does production replicate the final visual's look?](https://github.com/prumod/cairn/issues/202#issuecomment-6725983558).
 
-- **One stylesheet.** `apps/web/src/style.css` holds `@import "tailwindcss"`, initial-visual's colour tokens (CSS custom properties, unchanged), the `@theme` block and the base rules. Do not add other `.css` files.
-- **Colours and font sizes come only from the theme:** `bg-panel`, `text-muted`, `border-line`, `text-amber`. Tailwind's default palette is removed. When initial-visual uses a font size the theme lacks, add it to `@theme` instead of writing `text-[11.5px]`. Other one-off geometry may use a bracket value, such as `pl-[34px]`.
-- **No `dark:` classes.** The tokens switch with `data-theme` on `<html>`; class names stay the same in both themes.
+- **One stylesheet.** `apps/web/src/style.css` holds `@import "tailwindcss"`, the font imports, initial-visual's colour tokens (CSS custom properties, unchanged), the `@theme inline` block that maps them to utilities, and the base rules. Do not add other `.css` files.
+- **Colours and font sizes come only from the theme:** `bg-panel`, `text-muted`, `border-line`, `text-amber`, `text-sm`. Tailwind's default palette and type scale are removed (`--color-*: initial`, `--text-*: initial`); the theme names every size initial-visual uses (`text-nano` 9px to `text-2xl` 22px, including `text-sm-plus` 12.5px). When initial-visual uses a size the theme lacks, add it to `@theme` instead of writing `text-[11.5px]`. Other one-off geometry may use a bracket value, such as `pl-[34px]`.
+- **No `dark:` classes.** The tokens switch with `data-theme` on `<html>`: `dark` under `data-theme="dark"`, or under the system preference unless `data-theme="light"`. Class names stay the same in both themes. `src/shared/theme/theme.ts` reads and stores the choice (`localStorage` key `cairn-theme`), `ThemeToggle` sits in the top bar, and the root route inlines `noFlashScript` in `<head>` so the theme is set before first paint.
 - **No `@apply` and no class-merging library.** Write a conditional class as a template string, and a set of variants as a plain object: `const dueTone = { soon: "text-amber font-semibold", past: "italic" }`. When the same class list repeats in three places, extract a React component.
-- **Fonts** are Inter and IBM Plex Mono, self-hosted and declared only as the theme's `--font-sans` and `--font-mono`. The page makes no request to a font service.
+- **Fonts** are Inter (`@fontsource-variable/inter`) and IBM Plex Mono (`@fontsource/ibm-plex-mono`), self-hosted: `style.css` imports them and Vite bundles the `woff2` files. They are declared only as the theme's `--font-sans` and `--font-mono`. The page makes no request to a font service.
 
 ## Comments
 

@@ -64,16 +64,31 @@ export function AccessPage() {
     setView({ kind: "signedOut", signInFailed: false });
   }
 
-  if (view.kind === "loading") return <p className="access-message">A carregar…</p>;
+  if (view.kind === "loading")
+    return (
+      <p className="mb-4 max-w-[48rem] rounded-lg border border-line bg-panel p-5">A carregar…</p>
+    );
 
   if (view.kind === "failed")
-    return <p className="access-message">Não foi possível carregar o seu acesso.</p>;
+    return (
+      <p className="mb-4 max-w-[48rem] rounded-lg border border-line bg-panel p-5">
+        Não foi possível carregar o seu acesso.
+      </p>
+    );
 
   if (view.kind === "signedOut")
     return (
-      <section className="access-panel">
-        {view.signInFailed ? <p role="alert">Não foi possível entrar. Tente outra vez.</p> : null}
-        <button type="button" className="access-button" onClick={signIn}>
+      <section className="mb-4 grid max-w-[48rem] justify-items-start gap-4 rounded-lg border border-line bg-panel p-5">
+        {view.signInFailed ? (
+          <p role="alert" className="text-danger">
+            Não foi possível entrar. Tente outra vez.
+          </p>
+        ) : null}
+        <button
+          type="button"
+          className="cursor-pointer rounded-md border border-accent bg-accent px-4 py-2 text-onaccent"
+          onClick={signIn}
+        >
           Entrar com Google
         </button>
       </section>
@@ -83,7 +98,7 @@ export function AccessPage() {
 
   if (me.status === "pending")
     return (
-      <section className="access-panel">
+      <section className="mb-4 grid max-w-[48rem] justify-items-start gap-4 rounded-lg border border-line bg-panel p-5">
         <p>O seu acesso aguarda aprovação.</p>
         <SignOutButton onSignOut={signOut} />
       </section>
@@ -91,14 +106,14 @@ export function AccessPage() {
 
   if (me.status === "revoked")
     return (
-      <section className="access-panel">
+      <section className="mb-4 grid max-w-[48rem] justify-items-start gap-4 rounded-lg border border-line bg-panel p-5">
         <p>O seu acesso foi revogado.</p>
         <SignOutButton onSignOut={signOut} />
       </section>
     );
 
   return (
-    <section className="access-panel">
+    <section className="mb-4 grid max-w-[48rem] justify-items-start gap-4 rounded-lg border border-line bg-panel p-5">
       <p>
         Sessão iniciada como {me.name} ({me.email}).
       </p>
@@ -110,7 +125,11 @@ export function AccessPage() {
 
 function SignOutButton({ onSignOut }: { onSignOut: () => void }) {
   return (
-    <button type="button" className="access-button access-button--secondary" onClick={onSignOut}>
+    <button
+      type="button"
+      className="cursor-pointer rounded-md border border-accent bg-transparent px-4 py-2 text-accent"
+      onClick={onSignOut}
+    >
       Sair
     </button>
   );
@@ -145,17 +164,34 @@ function ManageAccess({ currentUserId }: { currentUserId: string }) {
   }
 
   return (
-    <section className="access-manage" aria-labelledby="manage-access-title">
-      <h2 id="manage-access-title">Gerir acessos</h2>
-      {message ? <p role="alert">{message}</p> : null}
+    <section
+      className="w-full rounded-lg border border-line bg-panel p-5"
+      aria-labelledby="manage-access-title"
+    >
+      <h2 id="manage-access-title" className="mb-2 text-lg font-semibold">
+        Gerir acessos
+      </h2>
+      {message ? (
+        <p role="alert" className="text-danger">
+          {message}
+        </p>
+      ) : null}
       {people === null ? null : (
-        <table>
+        <table className="w-full border-collapse">
           <thead>
             <tr>
-              <th scope="col">Nome</th>
-              <th scope="col">E-mail</th>
-              <th scope="col">Estado</th>
-              <th scope="col">Ação</th>
+              <th scope="col" className="border-b border-line p-2 text-left">
+                Nome
+              </th>
+              <th scope="col" className="border-b border-line p-2 text-left">
+                E-mail
+              </th>
+              <th scope="col" className="border-b border-line p-2 text-left">
+                Estado
+              </th>
+              <th scope="col" className="border-b border-line p-2 text-left">
+                Ação
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -164,16 +200,18 @@ function ManageAccess({ currentUserId }: { currentUserId: string }) {
 
               return (
                 <tr key={person.userId}>
-                  <td>{person.name}</td>
-                  <td>{person.email}</td>
-                  <td>{statusLabels[person.status]}</td>
-                  <td>
+                  <td className="border-b border-line p-2 text-left">{person.name}</td>
+                  <td className="border-b border-line p-2 text-left">{person.email}</td>
+                  <td className="border-b border-line p-2 text-left">
+                    {statusLabels[person.status]}
+                  </td>
+                  <td className="border-b border-line p-2 text-left">
                     {isSelf ? null : (
                       <>
                         {person.status === "approved" ? null : (
                           <button
                             type="button"
-                            className="access-button"
+                            className="cursor-pointer rounded-md border border-accent bg-accent px-4 py-2 text-onaccent"
                             onClick={() => change(person.userId, "approve")}
                           >
                             Aprovar
@@ -182,7 +220,7 @@ function ManageAccess({ currentUserId }: { currentUserId: string }) {
                         {person.status === "revoked" ? null : (
                           <button
                             type="button"
-                            className="access-button access-button--secondary"
+                            className="cursor-pointer rounded-md border border-accent bg-transparent px-4 py-2 text-accent"
                             onClick={() => change(person.userId, "revoke")}
                           >
                             Revogar
