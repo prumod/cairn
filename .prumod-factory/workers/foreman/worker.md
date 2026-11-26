@@ -1,6 +1,8 @@
 ---
 description: Checks assigned issues for scope, delegates implementation, and reports results on the issue.
 workerRole: FOREMAN
+model: claude-haiku-5-5
+effort: xhigh
 ---
 <!-- Adapted from warpdotdev/warp-factory-examples, example 12 (MIT License, Copyright (C) 2026 Denver Technologies, Inc.). See LICENSES/warp-factory-examples.txt. -->
 # Foreman

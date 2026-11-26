@@ -1,6 +1,8 @@
 ---
 description: Plans the scoped change before it is implemented.
 workerRole: SPEC
+model: claude-haiku-5-5
+effort: xhigh
 ---
 # Planner
 

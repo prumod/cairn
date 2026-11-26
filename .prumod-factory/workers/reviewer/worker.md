@@ -1,7 +1,8 @@
 ---
 description: Reviews a candidate commit adversarially and reports a verdict for human decisions.
 workerRole: REVIEW
-model: claude-opus-5-5
+model: claude-haiku-5-5
+effort: xhigh
 ---
 <!-- Adapted from warpdotdev/warp-factory-examples, example 02 reviewer (MIT License, Copyright (C) 2026 Denver Technologies, Inc.). See LICENSES/warp-factory-examples.txt. -->
 # Review
