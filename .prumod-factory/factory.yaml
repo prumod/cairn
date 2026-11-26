@@ -10,7 +10,8 @@ repositories:
   - owner: prumod
     name: cairn
 workerDefaults:
-  model: claude-sonnet-5-5
+  model: claude-haiku-5-5
+  effort: xhigh
   runner: linux-small
 
 blueprint:
