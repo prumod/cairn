@@ -1,7 +1,96 @@
+/* The one stylesheet. Tailwind's theme and utilities, without its preflight, so unstyled elements keep their current look. */
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/inter/700.css";
+@import "@fontsource/ibm-plex-mono/400.css";
+@import "@fontsource/ibm-plex-mono/500.css";
+@import "@fontsource/ibm-plex-mono/600.css";
+
+/* initial-visual's colour tokens, unchanged. Light on :root; dark under the system setting or data-theme="dark". */
 :root {
-  font-family: system-ui, sans-serif;
-  color: #233329;
-  background: #f7f8f4;
+  color-scheme: light;
+  --canvas: #edf0f4;
+  --panel: #ffffff;
+  --panel2: #f1f4f8;
+  --line: #d3dae3;
+  --fg: #17202b;
+  --muted: #566474;
+  --accent: #1d5fd6;
+  --onaccent: #ffffff;
+  --amber: #b45309;
+  --accentSoft: #e4edfc;
+  --amberSoft: #fbebd7;
+  --danger: #b42318;
+  --onDanger: #ffffff;
+  --shadow: rgba(23, 32, 43, 0.18);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --canvas: #06080b;
+    --panel: #121923;
+    --panel2: #1a222e;
+    --line: #2a3646;
+    --fg: #e1e8f0;
+    --muted: #8e9cae;
+    --accent: #5ba8f5;
+    --onaccent: #04121f;
+    --amber: #f5b041;
+    --accentSoft: #142538;
+    --amberSoft: #33270f;
+    --danger: #f2706a;
+    --onDanger: #1a0605;
+    --shadow: rgba(0, 0, 0, 0.6);
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --canvas: #06080b;
+  --panel: #121923;
+  --panel2: #1a222e;
+  --line: #2a3646;
+  --fg: #e1e8f0;
+  --muted: #8e9cae;
+  --accent: #5ba8f5;
+  --onaccent: #04121f;
+  --amber: #f5b041;
+  --accentSoft: #142538;
+  --amberSoft: #33270f;
+  --danger: #f2706a;
+  --onDanger: #1a0605;
+  --shadow: rgba(0, 0, 0, 0.6);
+}
+
+/* Tailwind: the default palette is removed; colours and fonts come only from these names. */
+@theme {
+  --color-*: initial;
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-panel: var(--panel);
+  --color-panel2: var(--panel2);
+  --color-line: var(--line);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-onaccent: var(--onaccent);
+  --color-amber: var(--amber);
+  --color-accent-soft: var(--accentSoft);
+  --color-amber-soft: var(--amberSoft);
+  --color-danger: var(--danger);
+  --color-on-danger: var(--onDanger);
+  --color-shadow: var(--shadow);
+}
+
+:root {
+  font-family: var(--font-sans);
+  color: var(--fg);
+  background: var(--canvas);
   font-synthesis: none;
   line-height: 1.6;
 }
@@ -10,6 +99,8 @@
 }
 body {
   margin: 0;
+  background: var(--canvas);
+  color: var(--fg);
 }
 header {
   display: flex;
@@ -17,7 +108,7 @@ header {
   justify-content: space-between;
   gap: 1.5rem;
   padding: 1.2rem max(1.5rem, calc((100vw - 72rem) / 2));
-  border-bottom: 1px solid #c9d2c5;
+  border-bottom: 1px solid var(--line);
 }
 .brand {
   font-size: 1.5rem;
@@ -31,7 +122,7 @@ nav {
   gap: 1.25rem;
 }
 a {
-  color: #2b513d;
+  color: var(--accent);
   text-underline-offset: 0.2em;
 }
 main {
@@ -65,9 +156,9 @@ input {
   display: block;
   width: 100%;
   padding: 0.7rem;
-  border: 1px solid #74836f;
+  border: 1px solid var(--muted);
   border-radius: 0.3rem;
-  background: white;
+  background: var(--panel);
   color: inherit;
   font: inherit;
 }
@@ -79,8 +170,8 @@ button {
   font: inherit;
   cursor: pointer;
   padding: 0.6rem 1rem;
-  color: white;
-  background: #2b513d;
+  color: var(--onaccent);
+  background: var(--accent);
   border: 0;
   border-radius: 0.3rem;
 }
@@ -88,27 +179,27 @@ form button {
   margin-top: 1.5rem;
 }
 button:hover {
-  background: #193e2b;
+  filter: brightness(0.92);
 }
 button:disabled {
   opacity: 0.6;
   cursor: wait;
 }
 :focus-visible {
-  outline: 3px solid #86631b;
+  outline: 3px solid var(--amber);
   outline-offset: 3px;
 }
 ::selection {
-  background: #dce9ce;
+  background: var(--accentSoft);
 }
 input {
-  caret-color: #2b513d;
+  caret-color: var(--accent);
 }
 [role="alert"] {
-  color: #9a2525;
+  color: var(--danger);
 }
 [role="status"] {
-  color: #2b513d;
+  color: var(--accent);
   min-height: 1.5rem;
 }
 table {
@@ -118,7 +209,7 @@ table {
 th,
 td {
   padding: 0.8rem 0.5rem;
-  border-bottom: 1px solid #c9d2c5;
+  border-bottom: 1px solid var(--line);
   text-align: left;
   overflow-wrap: anywhere;
 }
@@ -144,55 +235,28 @@ td {
   }
 }
 
+/* Theme toggle in the top bar. Its icon is an inline SVG drawn in the button's colour. */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  color: var(--fg);
+  background: var(--panel);
+  border: 1px solid var(--line);
+}
+.theme-toggle:hover {
+  background: var(--panel2);
+  filter: none;
+}
+.theme-toggle svg {
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
 /* Access page. Colours come from tokens; dark mode redefines them under data-theme or the system setting. */
-:root {
-  --canvas: #edf0f4;
-  --panel: #ffffff;
-  --line: #d3dae3;
-  --fg: #17202b;
-  --muted: #566474;
-  --accent: #1d5fd6;
-  --onaccent: #ffffff;
-  --danger: #b42318;
-}
-:root {
-  background: var(--canvas);
-  color: var(--fg);
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --canvas: #06080b;
-    --panel: #121923;
-    --line: #2a3644;
-    --fg: #e6ebf2;
-    --muted: #9aa8b8;
-    --accent: #5ba8f5;
-    --onaccent: #06080b;
-    --danger: #ff8a80;
-  }
-}
-:root[data-theme="dark"] {
-  --canvas: #06080b;
-  --panel: #121923;
-  --line: #2a3644;
-  --fg: #e6ebf2;
-  --muted: #9aa8b8;
-  --accent: #5ba8f5;
-  --onaccent: #06080b;
-  --danger: #ff8a80;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) a {
-    color: var(--accent);
-  }
-}
-:root[data-theme="dark"] a {
-  color: var(--accent);
-}
-body {
-  background: var(--canvas);
-  color: var(--fg);
-}
 main {
   padding: 2rem max(1.5rem, calc((100vw - 72rem) / 2));
 }
