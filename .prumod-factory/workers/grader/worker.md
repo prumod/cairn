@@ -1,7 +1,8 @@
 ---
 description: Grades a run's unaided stake attachments against the change and the IMPLEMENT transcript.
 workerRole: GRADER
-model: claude-opus-5-5
+model: claude-haiku-5-5
+effort: xhigh
 ---
 # Grader
 
