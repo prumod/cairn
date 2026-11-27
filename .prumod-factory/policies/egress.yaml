@@ -13,3 +13,5 @@ allow:
   - api.anthropic.com
   - daily-cloudcode-pa.googleapis.com
   - oauth2.googleapis.com
+  # Claude gateway (CLIProxyAPI) on the Docker host gateway; see FACTORY_CLAUDE_GATEWAY_URL in the factory's docs/running.md.
+  - 172.17.0.1
