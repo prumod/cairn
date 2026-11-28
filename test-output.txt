@@ -1,0 +1,841 @@
+
+=== STEP: format:check
+$ bun run format:check
+$ oxfmt --check .
+Checking formatting...
+
+All matched files use the correct format.
+Finished in 1528ms on 206 files using 2 threads.
+=== EXIT: 0 (format:check)
+
+=== STEP: lint
+$ bun run lint
+$ oxlint .
+apps/web/tests/acceptance/e2e/access.steps.ts:120:78: warning eslint(no-empty-pattern): Empty object binding pattern help: Passing `null` or `undefined` will result in runtime error because `null` and `undefined` cannot be destructured.
+apps/web/tests/acceptance/e2e/access.steps.ts:127:48: warning eslint(no-empty-pattern): Empty object binding pattern help: Passing `null` or `undefined` will result in runtime error because `null` and `undefined` cannot be destructured.
+apps/web/tests/acceptance/e2e/access.steps.ts:149:10: warning eslint(no-empty-pattern): Empty object binding pattern help: Passing `null` or `undefined` will result in runtime error because `null` and `undefined` cannot be destructured.
+apps/web/tests/acceptance/e2e/access.steps.ts:156:10: warning eslint(no-empty-pattern): Empty object binding pattern help: Passing `null` or `undefined` will result in runtime error because `null` and `undefined` cannot be destructured.
+apps/web/tests/acceptance/e2e/access.steps.ts:202:54: warning eslint(no-empty-pattern): Empty object binding pattern help: Passing `null` or `undefined` will result in runtime error because `null` and `undefined` cannot be destructured.
+apps/web/tests/acceptance/e2e/access.steps.ts:209:54: warning eslint(no-empty-pattern): Empty object binding pattern help: Passing `null` or `undefined` will result in runtime error because `null` and `undefined` cannot be destructured.
+apps/web/tests/acceptance/e2e/access.steps.ts:220:10: warning eslint(no-empty-pattern): Empty object binding pattern help: Passing `null` or `undefined` will result in runtime error because `null` and `undefined` cannot be destructured.
+apps/web/tests/acceptance/e2e/access.steps.ts:231:59: warning eslint(no-empty-pattern): Empty object binding pattern help: Passing `null` or `undefined` will result in runtime error because `null` and `undefined` cannot be destructured.
+apps/web/src/env.server.ts:2:1: warning typescript(triple-slash-reference): Do not use a triple slash reference for ../cloudflare-env.d.ts, use `import` style instead. help: Use of triple-slash reference type directives is generally discouraged in favor of ECMAScript Module imports.
+=== EXIT: 0 (lint)
+
+=== STEP: lint:boundaries
+$ bun run lint:boundaries
+$ node scripts/check-boundaries.mjs
+
+[32m✔[39m no dependency violations found (102 modules, 170 dependencies cruised)
+
+=== EXIT: 0 (lint:boundaries)
+
+=== STEP: typecheck
+$ bun run typecheck
+$ bun run env:generate && bun run --filter '*' check-types && tsc --noEmit -p tsconfig.checks.json && node node_modules/typescript-mappers/bin/tsc --noEmit --runExternalCode -p tsconfig.acceptance.json
+$ varlock codegen --path ./apps/web/ && varlock codegen --path ./packages/db/
+✅ Code generated successfully
+✅ Code generated successfully
+@cairn/db check-types: Exited with code 0
+@cairn/auth check-types: Exited with code 0
+@cairn/alint-plugin-semantic check-types: Exited with code 0
+@cairn/infra check-types: Exited with code 0
+@cairn/web check-types: [36mvite v8.3.5 [32mbuilding client environment for production...[36m[39m
+@cairn/web check-types: transforming...
+@cairn/web check-types: ✓ 253 modules transformed.
+@cairn/web check-types: rendering chunks...
+@cairn/web check-types: computing gzip size...
+@cairn/web check-types: dist/client/assets/inter-vietnamese-400-normal-DMkecbls.woff2              4.97 kB
+@cairn/web check-types: dist/client/assets/inter-vietnamese-600-normal-Cc8MFFhd.woff2              5.10 kB
+@cairn/web check-types: dist/client/assets/inter-vietnamese-700-normal-DlLaEgI2.woff2              5.10 kB
+@cairn/web check-types: dist/client/assets/inter-vietnamese-500-normal-DOriooB6.woff2              5.11 kB
+@cairn/web check-types: dist/client/assets/inter-greek-ext-400-normal-DGGRlc-M.woff2               5.26 kB
+@cairn/web check-types: dist/client/assets/inter-greek-ext-500-normal-C4iEst2y.woff2               5.42 kB
+@cairn/web check-types: dist/client/assets/inter-greek-ext-600-normal-DRtmH8MT.woff2               5.43 kB
+@cairn/web check-types: dist/client/assets/inter-greek-ext-700-normal-qfdV9bQt.woff2               5.44 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-vietnamese-500-normal-C8zxqsMH.woff       5.61 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-vietnamese-400-normal-DDuiU_S-.woff       5.62 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-vietnamese-600-normal-iLQfcSjf.woff       5.71 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-cyrillic-ext-500-normal-BIfNGwUT.woff     5.77 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-cyrillic-ext-600-normal-9HEixskS.woff     5.79 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-cyrillic-ext-400-normal-DMdlQ8Kv.woff     5.82 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-vietnamese-400-normal-BulugwFq.woff2      5.86 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-vietnamese-500-normal-DZ4AoWbu.woff2      6.04 kB
+@cairn/web check-types: dist/client/assets/inter-vietnamese-400-normal-Bbgyi5SW.woff               6.50 kB
+@cairn/web check-types: dist/client/assets/inter-vietnamese-500-normal-mJboJaSs.woff               6.59 kB
+@cairn/web check-types: dist/client/assets/inter-vietnamese-700-normal-BZaoP0fm.woff               6.63 kB
+@cairn/web check-types: dist/client/assets/inter-vietnamese-600-normal-BuLX-rYi.woff               6.64 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-cyrillic-ext-400-normal-xuaO2J-f.woff2    6.91 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-vietnamese-600-normal-D2EvbN8M.woff2      6.93 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-cyrillic-ext-500-normal-BqneJy0T.woff2    6.97 kB
+@cairn/web check-types: dist/client/assets/inter-greek-ext-400-normal-KugGGMne.woff                7.06 kB
+@cairn/web check-types: dist/client/assets/inter-greek-ext-500-normal-2j5mBUwD.woff                7.19 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-cyrillic-400-normal-CEL4l2ZJ.woff         7.20 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-cyrillic-500-normal-Ael50iVv.woff         7.20 kB
+@cairn/web check-types: dist/client/assets/inter-greek-ext-600-normal-B8X0CLgF.woff                7.21 kB
+@cairn/web check-types: dist/client/assets/inter-greek-ext-700-normal-BoQ6DsYi.woff                7.21 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-cyrillic-600-normal-fLZuRloM.woff         7.26 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-cyrillic-ext-600-normal-V-xxqcpd.woff2    7.69 kB
+@cairn/web check-types: dist/client/assets/inter-cyrillic-400-normal-obahsSVq.woff2                7.71 kB
+@cairn/web check-types: dist/client/assets/inter-greek-400-normal-B4URO6DV.woff2                   7.77 kB
+@cairn/web check-types: dist/client/assets/inter-cyrillic-500-normal-BasfLYem.woff2                7.90 kB
+@cairn/web check-types: dist/client/assets/inter-cyrillic-700-normal-CjBOestx.woff2                7.90 kB
+@cairn/web check-types: dist/client/assets/inter-greek-500-normal-BIZE56-Y.woff2                   7.92 kB
+@cairn/web check-types: dist/client/assets/inter-greek-700-normal-C3JjAnD8.woff2                   7.92 kB
+@cairn/web check-types: dist/client/assets/inter-greek-600-normal-plRanbMR.woff2                   7.94 kB
+@cairn/web check-types: dist/client/assets/inter-cyrillic-600-normal-CWCymEST.woff2                7.97 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-cyrillic-400-normal-BSMlKf0J.woff2        8.35 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-cyrillic-500-normal-Bq9vWWag.woff2        8.46 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-cyrillic-600-normal-CTOM6hUh.woff2        9.35 kB
+@cairn/web check-types: dist/client/assets/inter-cyrillic-400-normal-HOLc17fK.woff                 9.78 kB
+@cairn/web check-types: dist/client/assets/inter-cyrillic-700-normal-DrXBdSj3.woff                 9.91 kB
+@cairn/web check-types: dist/client/assets/inter-greek-400-normal-q2sYcFCs.woff                    9.92 kB
+@cairn/web check-types: dist/client/assets/inter-cyrillic-600-normal-4D_pXhcN.woff                 9.93 kB
+@cairn/web check-types: dist/client/assets/inter-cyrillic-500-normal-CxZf_p3X.woff                 9.94 kB
+@cairn/web check-types: dist/client/assets/inter-greek-500-normal-Xzm54t5V.woff                    9.98 kB
+@cairn/web check-types: dist/client/assets/inter-greek-700-normal-BUv2fZ6O.woff                    9.98 kB
+@cairn/web check-types: dist/client/assets/inter-greek-600-normal-BZpKdvQh.woff                   10.03 kB
+@cairn/web check-types: dist/client/assets/inter-cyrillic-ext-400-normal-BQZuk6qB.woff2           10.23 kB
+@cairn/web check-types: dist/client/assets/inter-cyrillic-ext-500-normal-B0yAr1jD.woff2           10.43 kB
+@cairn/web check-types: dist/client/assets/inter-cyrillic-ext-600-normal-Dfes3d0z.woff2           10.48 kB
+@cairn/web check-types: dist/client/assets/inter-cyrillic-ext-700-normal-BjwYoWNd.woff2           10.49 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-latin-ext-400-normal-D3D2R8hC.woff       11.76 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-latin-ext-500-normal-CZ70TYgx.woff       11.76 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-latin-ext-600-normal-DmB0ttJJ.woff       11.83 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-latin-400-normal-CvHOgSBP.woff           13.14 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-latin-500-normal-CB9ihrfo.woff           13.15 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-latin-600-normal-DWFSQ4vo.woff           13.20 kB
+@cairn/web check-types: dist/client/assets/inter-cyrillic-ext-400-normal-DQukG94-.woff            13.33 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-latin-ext-400-normal-BmRBH3aV.woff2      13.34 kB
+@cairn/web check-types: dist/client/assets/inter-cyrillic-ext-700-normal-LO58E6JB.woff            13.40 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-latin-ext-500-normal-CAhNIIs5.woff2      13.43 kB
+@cairn/web check-types: dist/client/assets/inter-cyrillic-ext-500-normal-BmqWE9Dz.woff            13.45 kB
+@cairn/web check-types: dist/client/assets/inter-cyrillic-ext-600-normal-Bcila6Z-.woff            13.46 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-latin-ext-600-normal-D38SheWl.woff2      14.32 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-latin-400-normal-DMJ8VG8y.woff2          14.70 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-latin-500-normal-DSY6xOcd.woff2          14.88 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-latin-600-normal-BgSNZQsw.woff2          15.62 kB
+@cairn/web check-types: dist/client/assets/inter-latin-400-normal-C38fXH4l.woff2                  23.66 kB
+@cairn/web check-types: dist/client/assets/inter-latin-500-normal-Cerq10X2.woff2                  24.27 kB
+@cairn/web check-types: dist/client/assets/inter-latin-700-normal-Yt3aPRUw.woff2                  24.35 kB
+@cairn/web check-types: dist/client/assets/inter-latin-600-normal-LgqL8muc.woff2                  24.45 kB
+@cairn/web check-types: dist/client/assets/inter-latin-400-normal-CyCys3Eg.woff                   30.69 kB
+@cairn/web check-types: dist/client/assets/inter-latin-600-normal-CiBQ2DWP.woff                   31.26 kB
+@cairn/web check-types: dist/client/assets/inter-latin-500-normal-BL9OpVg8.woff                   31.28 kB
+@cairn/web check-types: dist/client/assets/inter-latin-700-normal-BLAVimhd.woff                   31.32 kB
+@cairn/web check-types: dist/client/assets/inter-latin-ext-400-normal-C1nco2VV.woff2              35.00 kB
+@cairn/web check-types: dist/client/assets/inter-latin-ext-500-normal-CV4jyFjo.woff2              36.02 kB
+@cairn/web check-types: dist/client/assets/inter-latin-ext-700-normal-Ca8adRJv.woff2              36.24 kB
+@cairn/web check-types: dist/client/assets/inter-latin-ext-600-normal-D2bJ5OIk.woff2              36.26 kB
+@cairn/web check-types: dist/client/assets/inter-latin-ext-400-normal-77YHD8bZ.woff               47.56 kB
+@cairn/web check-types: dist/client/assets/inter-latin-ext-500-normal-BxGbmqWO.woff               48.49 kB
+@cairn/web check-types: dist/client/assets/inter-latin-ext-700-normal-TidjK2hL.woff               48.63 kB
+@cairn/web check-types: dist/client/assets/inter-latin-ext-600-normal-CIVaiw4L.woff               48.66 kB
+@cairn/web check-types: dist/client/assets/index-CNg8Vkf5.css                                    103.87 kB │ gzip:  14.47 kB
+@cairn/web check-types: dist/client/assets/terms-DmyXAOb7.js                                       0.75 kB │ gzip:   0.42 kB
+@cairn/web check-types: dist/client/assets/privacy-BbKQg8pH.js                                     2.03 kB │ gzip:   0.90 kB
+@cairn/web check-types: dist/client/assets/routes-Doba9-Tv.js                                     39.00 kB │ gzip:  14.51 kB
+@cairn/web check-types: dist/client/assets/index-GMp1V1hl.js                                     367.34 kB │ gzip: 116.92 kB
+@cairn/web check-types: 
+@cairn/web check-types: [32m✓ built in 1.28s[39m
+@cairn/web check-types: [36mvite v8.3.5 [32mbuilding ssr environment for production...[36m[39m
+@cairn/web check-types: transforming...
+@cairn/web check-types: ✓ 710 modules transformed.
+@cairn/web check-types: rendering chunks...
+@cairn/web check-types: computing gzip size...
+@cairn/web check-types: dist/server/assets/kysely-adapter-DlVL7ooI.js                        0.09 kB │ gzip:   0.10 kB
+@cairn/web check-types: dist/server/assets/start-DIJXgVir.js                                 0.24 kB │ gzip:   0.19 kB │ map:     0.33 kB
+@cairn/web check-types: dist/server/assets/core-Dw9UEf1i.js                                  0.27 kB │ gzip:   0.21 kB │ map:     0.35 kB
+@cairn/web check-types: dist/server/assets/empty-plugin-adapters-Cipd4ZH4.js                 0.32 kB │ gzip:   0.21 kB │ map:     0.55 kB
+@cairn/web check-types: dist/server/assets/_tanstack-start-manifest_v-hxlnixrt.js            0.91 kB │ gzip:   0.40 kB
+@cairn/web check-types: dist/server/assets/terms-BI_ibUnc.js                                 1.04 kB │ gzip:   0.52 kB │ map:     1.51 kB
+@cairn/web check-types: dist/server/assets/listPeople.functions-Dg3ZbYz9.js                  1.26 kB │ gzip:   0.58 kB │ map:     2.45 kB
+@cairn/web check-types: dist/server/assets/getMyAccess.functions-BGNZlBHZ.js                 2.13 kB │ gzip:   0.84 kB │ map:     4.46 kB
+@cairn/web check-types: dist/server/assets/changeAccess.functions-BS4v3ouU.js                2.26 kB │ gzip:   1.01 kB │ map:     4.54 kB
+@cairn/web check-types: dist/server/assets/privacy-BBqfs6-F.js                               2.43 kB │ gzip:   1.01 kB │ map:     3.13 kB
+@cairn/web check-types: dist/server/assets/env-impl-vFVrkjAy.js                              2.60 kB │ gzip:   0.97 kB │ map:     4.31 kB
+@cairn/web check-types: dist/server/assets/node-sqlite-dialect-BvroqEg2.js                   3.21 kB │ gzip:   1.14 kB │ map:     5.56 kB
+@cairn/web check-types: dist/server/assets/bun-sqlite-dialect-DoOVo4ja-D138WM_z.js           3.22 kB │ gzip:   1.15 kB │ map:     5.56 kB
+@cairn/web check-types: dist/server/assets/error-D_RvXY5I.js                                 4.80 kB │ gzip:   1.98 kB │ map:     8.32 kB
+@cairn/web check-types: dist/server/assets/d1-sqlite-dialect-m0f01-4z-BUmA4G8B.js            5.30 kB │ gzip:   1.81 kB │ map:     9.15 kB
+@cairn/web check-types: dist/server/assets/context.server-B3jUc3Ut.js                        7.13 kB │ gzip:   2.40 kB │ map:    16.26 kB
+@cairn/web check-types: dist/server/assets/router-CvUevNp4.js                               11.06 kB │ gzip:   3.73 kB │ map:    26.39 kB
+@cairn/web check-types: dist/server/assets/dist-BBSC-oNq.js                                 14.90 kB │ gzip:   4.16 kB │ map:    25.01 kB
+@cairn/web check-types: dist/server/assets/generate-drizzle-schema-iWvrXnu0-IBOnD9Vf.js     17.88 kB │ gzip:   4.67 kB │ map:    30.29 kB
+@cairn/web check-types: dist/server/assets/get-model-name-CsjhZD4W.js                       22.80 kB │ gzip:   5.42 kB │ map:    37.24 kB
+@cairn/web check-types: dist/server/assets/routes-Byx3F6Xn.js                               40.19 kB │ gzip:  11.40 kB │ map:    79.33 kB
+@cairn/web check-types: dist/server/server.js                                              264.90 kB │ gzip:  62.53 kB │ map:   591.31 kB
+@cairn/web check-types: dist/server/assets/sqlite-introspector-DSCAP82F-2hP-Ok9Y.js        285.78 kB │ gzip:  47.69 kB │ map:   541.74 kB
+@cairn/web check-types: dist/server/assets/runtime.server-DMzksYIq.js                    1,282.10 kB │ gzip: 298.48 kB │ map: 2,397.57 kB
+@cairn/web check-types: 
+@cairn/web check-types: [32m✓ built in 1.50s[39m
+@cairn/web check-types: Exited with code 0
+=== EXIT: 0 (typecheck)
+
+=== STEP: build
+$ bun run build
+$ bun run --cwd apps/web build
+$ vite build
+[36mvite v8.3.5 [32mbuilding client environment for production...[36m[39m
+transforming...
+✓ 253 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/client/assets/inter-vietnamese-400-normal-DMkecbls.woff2              4.97 kB
+dist/client/assets/inter-vietnamese-600-normal-Cc8MFFhd.woff2              5.10 kB
+dist/client/assets/inter-vietnamese-700-normal-DlLaEgI2.woff2              5.10 kB
+dist/client/assets/inter-vietnamese-500-normal-DOriooB6.woff2              5.11 kB
+dist/client/assets/inter-greek-ext-400-normal-DGGRlc-M.woff2               5.26 kB
+dist/client/assets/inter-greek-ext-500-normal-C4iEst2y.woff2               5.42 kB
+dist/client/assets/inter-greek-ext-600-normal-DRtmH8MT.woff2               5.43 kB
+dist/client/assets/inter-greek-ext-700-normal-qfdV9bQt.woff2               5.44 kB
+dist/client/assets/ibm-plex-mono-vietnamese-500-normal-C8zxqsMH.woff       5.61 kB
+dist/client/assets/ibm-plex-mono-vietnamese-400-normal-DDuiU_S-.woff       5.62 kB
+dist/client/assets/ibm-plex-mono-vietnamese-600-normal-iLQfcSjf.woff       5.71 kB
+dist/client/assets/ibm-plex-mono-cyrillic-ext-500-normal-BIfNGwUT.woff     5.77 kB
+dist/client/assets/ibm-plex-mono-cyrillic-ext-600-normal-9HEixskS.woff     5.79 kB
+dist/client/assets/ibm-plex-mono-cyrillic-ext-400-normal-DMdlQ8Kv.woff     5.82 kB
+dist/client/assets/ibm-plex-mono-vietnamese-400-normal-BulugwFq.woff2      5.86 kB
+dist/client/assets/ibm-plex-mono-vietnamese-500-normal-DZ4AoWbu.woff2      6.04 kB
+dist/client/assets/inter-vietnamese-400-normal-Bbgyi5SW.woff               6.50 kB
+dist/client/assets/inter-vietnamese-500-normal-mJboJaSs.woff               6.59 kB
+dist/client/assets/inter-vietnamese-700-normal-BZaoP0fm.woff               6.63 kB
+dist/client/assets/inter-vietnamese-600-normal-BuLX-rYi.woff               6.64 kB
+dist/client/assets/ibm-plex-mono-cyrillic-ext-400-normal-xuaO2J-f.woff2    6.91 kB
+dist/client/assets/ibm-plex-mono-vietnamese-600-normal-D2EvbN8M.woff2      6.93 kB
+dist/client/assets/ibm-plex-mono-cyrillic-ext-500-normal-BqneJy0T.woff2    6.97 kB
+dist/client/assets/inter-greek-ext-400-normal-KugGGMne.woff                7.06 kB
+dist/client/assets/inter-greek-ext-500-normal-2j5mBUwD.woff                7.19 kB
+dist/client/assets/ibm-plex-mono-cyrillic-400-normal-CEL4l2ZJ.woff         7.20 kB
+dist/client/assets/ibm-plex-mono-cyrillic-500-normal-Ael50iVv.woff         7.20 kB
+dist/client/assets/inter-greek-ext-600-normal-B8X0CLgF.woff                7.21 kB
+dist/client/assets/inter-greek-ext-700-normal-BoQ6DsYi.woff                7.21 kB
+dist/client/assets/ibm-plex-mono-cyrillic-600-normal-fLZuRloM.woff         7.26 kB
+dist/client/assets/ibm-plex-mono-cyrillic-ext-600-normal-V-xxqcpd.woff2    7.69 kB
+dist/client/assets/inter-cyrillic-400-normal-obahsSVq.woff2                7.71 kB
+dist/client/assets/inter-greek-400-normal-B4URO6DV.woff2                   7.77 kB
+dist/client/assets/inter-cyrillic-500-normal-BasfLYem.woff2                7.90 kB
+dist/client/assets/inter-cyrillic-700-normal-CjBOestx.woff2                7.90 kB
+dist/client/assets/inter-greek-500-normal-BIZE56-Y.woff2                   7.92 kB
+dist/client/assets/inter-greek-700-normal-C3JjAnD8.woff2                   7.92 kB
+dist/client/assets/inter-greek-600-normal-plRanbMR.woff2                   7.94 kB
+dist/client/assets/inter-cyrillic-600-normal-CWCymEST.woff2                7.97 kB
+dist/client/assets/ibm-plex-mono-cyrillic-400-normal-BSMlKf0J.woff2        8.35 kB
+dist/client/assets/ibm-plex-mono-cyrillic-500-normal-Bq9vWWag.woff2        8.46 kB
+dist/client/assets/ibm-plex-mono-cyrillic-600-normal-CTOM6hUh.woff2        9.35 kB
+dist/client/assets/inter-cyrillic-400-normal-HOLc17fK.woff                 9.78 kB
+dist/client/assets/inter-cyrillic-700-normal-DrXBdSj3.woff                 9.91 kB
+dist/client/assets/inter-greek-400-normal-q2sYcFCs.woff                    9.92 kB
+dist/client/assets/inter-cyrillic-600-normal-4D_pXhcN.woff                 9.93 kB
+dist/client/assets/inter-cyrillic-500-normal-CxZf_p3X.woff                 9.94 kB
+dist/client/assets/inter-greek-500-normal-Xzm54t5V.woff                    9.98 kB
+dist/client/assets/inter-greek-700-normal-BUv2fZ6O.woff                    9.98 kB
+dist/client/assets/inter-greek-600-normal-BZpKdvQh.woff                   10.03 kB
+dist/client/assets/inter-cyrillic-ext-400-normal-BQZuk6qB.woff2           10.23 kB
+dist/client/assets/inter-cyrillic-ext-500-normal-B0yAr1jD.woff2           10.43 kB
+dist/client/assets/inter-cyrillic-ext-600-normal-Dfes3d0z.woff2           10.48 kB
+dist/client/assets/inter-cyrillic-ext-700-normal-BjwYoWNd.woff2           10.49 kB
+dist/client/assets/ibm-plex-mono-latin-ext-400-normal-D3D2R8hC.woff       11.76 kB
+dist/client/assets/ibm-plex-mono-latin-ext-500-normal-CZ70TYgx.woff       11.76 kB
+dist/client/assets/ibm-plex-mono-latin-ext-600-normal-DmB0ttJJ.woff       11.83 kB
+dist/client/assets/ibm-plex-mono-latin-400-normal-CvHOgSBP.woff           13.14 kB
+dist/client/assets/ibm-plex-mono-latin-500-normal-CB9ihrfo.woff           13.15 kB
+dist/client/assets/ibm-plex-mono-latin-600-normal-DWFSQ4vo.woff           13.20 kB
+dist/client/assets/inter-cyrillic-ext-400-normal-DQukG94-.woff            13.33 kB
+dist/client/assets/ibm-plex-mono-latin-ext-400-normal-BmRBH3aV.woff2      13.34 kB
+dist/client/assets/inter-cyrillic-ext-700-normal-LO58E6JB.woff            13.40 kB
+dist/client/assets/ibm-plex-mono-latin-ext-500-normal-CAhNIIs5.woff2      13.43 kB
+dist/client/assets/inter-cyrillic-ext-500-normal-BmqWE9Dz.woff            13.45 kB
+dist/client/assets/inter-cyrillic-ext-600-normal-Bcila6Z-.woff            13.46 kB
+dist/client/assets/ibm-plex-mono-latin-ext-600-normal-D38SheWl.woff2      14.32 kB
+dist/client/assets/ibm-plex-mono-latin-400-normal-DMJ8VG8y.woff2          14.70 kB
+dist/client/assets/ibm-plex-mono-latin-500-normal-DSY6xOcd.woff2          14.88 kB
+dist/client/assets/ibm-plex-mono-latin-600-normal-BgSNZQsw.woff2          15.62 kB
+dist/client/assets/inter-latin-400-normal-C38fXH4l.woff2                  23.66 kB
+dist/client/assets/inter-latin-500-normal-Cerq10X2.woff2                  24.27 kB
+dist/client/assets/inter-latin-700-normal-Yt3aPRUw.woff2                  24.35 kB
+dist/client/assets/inter-latin-600-normal-LgqL8muc.woff2                  24.45 kB
+dist/client/assets/inter-latin-400-normal-CyCys3Eg.woff                   30.69 kB
+dist/client/assets/inter-latin-600-normal-CiBQ2DWP.woff                   31.26 kB
+dist/client/assets/inter-latin-500-normal-BL9OpVg8.woff                   31.28 kB
+dist/client/assets/inter-latin-700-normal-BLAVimhd.woff                   31.32 kB
+dist/client/assets/inter-latin-ext-400-normal-C1nco2VV.woff2              35.00 kB
+dist/client/assets/inter-latin-ext-500-normal-CV4jyFjo.woff2              36.02 kB
+dist/client/assets/inter-latin-ext-700-normal-Ca8adRJv.woff2              36.24 kB
+dist/client/assets/inter-latin-ext-600-normal-D2bJ5OIk.woff2              36.26 kB
+dist/client/assets/inter-latin-ext-400-normal-77YHD8bZ.woff               47.56 kB
+dist/client/assets/inter-latin-ext-500-normal-BxGbmqWO.woff               48.49 kB
+dist/client/assets/inter-latin-ext-700-normal-TidjK2hL.woff               48.63 kB
+dist/client/assets/inter-latin-ext-600-normal-CIVaiw4L.woff               48.66 kB
+dist/client/assets/index-CNg8Vkf5.css                                    103.87 kB │ gzip:  14.47 kB
+dist/client/assets/terms-DmyXAOb7.js                                       0.75 kB │ gzip:   0.42 kB
+dist/client/assets/privacy-BbKQg8pH.js                                     2.03 kB │ gzip:   0.90 kB
+dist/client/assets/routes-Doba9-Tv.js                                     39.00 kB │ gzip:  14.51 kB
+dist/client/assets/index-GMp1V1hl.js                                     367.34 kB │ gzip: 116.92 kB
+
+[32m✓ built in 1.30s[39m
+[36mvite v8.3.5 [32mbuilding ssr environment for production...[36m[39m
+transforming...
+✓ 710 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/server/assets/kysely-adapter-DlVL7ooI.js                        0.09 kB │ gzip:   0.10 kB
+dist/server/assets/start-DIJXgVir.js                                 0.24 kB │ gzip:   0.19 kB │ map:     0.33 kB
+dist/server/assets/core-Dw9UEf1i.js                                  0.27 kB │ gzip:   0.21 kB │ map:     0.35 kB
+dist/server/assets/empty-plugin-adapters-Cipd4ZH4.js                 0.32 kB │ gzip:   0.21 kB │ map:     0.55 kB
+dist/server/assets/_tanstack-start-manifest_v-hxlnixrt.js            0.91 kB │ gzip:   0.40 kB
+dist/server/assets/terms-BI_ibUnc.js                                 1.04 kB │ gzip:   0.52 kB │ map:     1.51 kB
+dist/server/assets/listPeople.functions-Dg3ZbYz9.js                  1.26 kB │ gzip:   0.58 kB │ map:     2.45 kB
+dist/server/assets/getMyAccess.functions-BGNZlBHZ.js                 2.13 kB │ gzip:   0.84 kB │ map:     4.46 kB
+dist/server/assets/changeAccess.functions-BS4v3ouU.js                2.26 kB │ gzip:   1.01 kB │ map:     4.54 kB
+dist/server/assets/privacy-BBqfs6-F.js                               2.43 kB │ gzip:   1.01 kB │ map:     3.13 kB
+dist/server/assets/env-impl-vFVrkjAy.js                              2.60 kB │ gzip:   0.97 kB │ map:     4.31 kB
+dist/server/assets/node-sqlite-dialect-BvroqEg2.js                   3.21 kB │ gzip:   1.14 kB │ map:     5.56 kB
+dist/server/assets/bun-sqlite-dialect-DoOVo4ja-D138WM_z.js           3.22 kB │ gzip:   1.15 kB │ map:     5.56 kB
+dist/server/assets/error-D_RvXY5I.js                                 4.80 kB │ gzip:   1.98 kB │ map:     8.32 kB
+dist/server/assets/d1-sqlite-dialect-m0f01-4z-BUmA4G8B.js            5.30 kB │ gzip:   1.81 kB │ map:     9.15 kB
+dist/server/assets/context.server-B3jUc3Ut.js                        7.13 kB │ gzip:   2.40 kB │ map:    16.26 kB
+dist/server/assets/router-CvUevNp4.js                               11.06 kB │ gzip:   3.73 kB │ map:    26.39 kB
+dist/server/assets/dist-BBSC-oNq.js                                 14.90 kB │ gzip:   4.16 kB │ map:    25.01 kB
+dist/server/assets/generate-drizzle-schema-iWvrXnu0-IBOnD9Vf.js     17.88 kB │ gzip:   4.67 kB │ map:    30.29 kB
+dist/server/assets/get-model-name-CsjhZD4W.js                       22.80 kB │ gzip:   5.42 kB │ map:    37.24 kB
+dist/server/assets/routes-Byx3F6Xn.js                               40.19 kB │ gzip:  11.40 kB │ map:    79.33 kB
+dist/server/server.js                                              264.90 kB │ gzip:  62.53 kB │ map:   591.31 kB
+dist/server/assets/sqlite-introspector-DSCAP82F-2hP-Ok9Y.js        285.78 kB │ gzip:  47.69 kB │ map:   541.74 kB
+dist/server/assets/runtime.server-DMzksYIq.js                    1,282.10 kB │ gzip: 298.48 kB │ map: 2,397.57 kB
+
+[32m✓ built in 1.52s[39m
+=== EXIT: 0 (build)
+
+=== STEP: check:links
+$ bun run check:links
+$ node scripts/check-doc-links.mjs
+=== EXIT: 0 (check:links)
+
+=== STEP: test:boundaries
+$ bun run test:boundaries
+$ node scripts/prove-boundaries.mjs
+PASS: public entry points, route-to-server imports, own-module tests, and integration tests.
+PASS: entrypoint-boundary-apps-web-src-pages rejects the import; restored graph passes.
+PASS: tests-private-apps-web-src-pages rejects the import; restored graph passes.
+PASS: entrypoint-boundary-apps-web-src-shared rejects the import; restored graph passes.
+PASS: tests-private-apps-web-src-shared rejects the import; restored graph passes.
+PASS: entrypoint-boundary-apps-web-src-server-modules rejects the import; restored graph passes.
+PASS: tests-private-apps-web-src-server-modules rejects the import; restored graph passes.
+PASS: entrypoint-boundary-apps-web-src-server-shared rejects the import; restored graph passes.
+PASS: tests-private-apps-web-src-server-shared rejects the import; restored graph passes.
+PASS: entrypoint-boundary-shared-src rejects the import; restored graph passes.
+PASS: tests-private-shared-src rejects the import; restored graph passes.
+PASS: entrypoint-boundary-from-app rejects the import; restored graph passes.
+PASS: entrypoint-boundary-from-app rejects the import; restored graph passes.
+PASS: production-cannot-import-tests rejects the import; restored graph passes.
+PASS: app-cannot-import-module-tests rejects the import; restored graph passes.
+PASS: client-cannot-import-server rejects the import; restored graph passes.
+PASS: same-feature UI → RPC → application/server adapter → database.
+PASS: client-cannot-import-server rejects the import; restored graph passes.
+PASS: entrypoint-boundary-apps-web-src-pages rejects the import; restored graph passes.
+PASS: feature-usecase-cannot-import-adapters rejects the import; restored graph passes.
+PASS: feature-usecase-cannot-import-adapters rejects the import; restored graph passes.
+PASS: feature-usecase-is-independent rejects the import; restored graph passes.
+PASS: feature-domain-is-independent rejects the import; restored graph passes.
+PASS: feature-domain-is-independent rejects the import; restored graph passes.
+PASS: feature-usecase-is-independent rejects the import; restored graph passes.
+PASS: feature-usecase-is-independent rejects the import; restored graph passes.
+PASS: feature-usecase-is-independent rejects the import; restored graph passes.
+PASS: rpc-cannot-import-client rejects the import; restored graph passes.
+PASS: cross-application-shared-is-independent rejects the import; restored graph passes.
+PASS: client-cannot-import-server rejects the import; restored graph passes.
+PASS: feature-usecase-is-independent rejects the import; restored graph passes.
+PASS: cross-application-shared-is-independent rejects the import; restored graph passes.
+PASS: feature-usecase-is-independent rejects the import; restored graph passes.
+PASS: cross-application-shared-is-independent rejects the import; restored graph passes.
+PASS: feature-usecase-is-independent rejects the import; restored graph passes.
+PASS: cross-application-shared-is-independent rejects the import; restored graph passes.
+PASS: client-cannot-import-server rejects the import; restored graph passes.
+PASS: client-cannot-import-server rejects the import; restored graph passes.
+PASS: cross-application-shared-is-independent rejects the import; restored graph passes.
+PASS: client-cannot-import-server rejects the import; restored graph passes.
+PASS: client-cannot-import-server rejects the import; restored graph passes.
+PASS: client-cannot-import-server rejects the import; restored graph passes.
+PASS: client-cannot-import-server rejects the import; restored graph passes.
+PASS: server-cannot-import-client rejects the import; restored graph passes.
+PASS: server-cannot-import-client allows a feature root file.
+PASS: server-cannot-import-client rejects the import; restored graph passes.
+PASS: cross-application-shared-is-independent rejects the import; restored graph passes.
+PASS: cross-application-shared-is-independent rejects the import; restored graph passes.
+PASS: frontend-shared-cannot-import-pages rejects the import; restored graph passes.
+PASS: server-shared-cannot-import-domain-modules rejects the import; restored graph passes.
+PASS: no-circular rejects the import; restored graph passes.
+PASS: no-unresolved-imports rejects the import; restored graph passes.
+=== EXIT: 0 (test:boundaries)
+
+=== STEP: audit
+$ bun run audit
+$ bun audit --ignore=GHSA-fc5q-39xc-vjpf
+[0m[1mbun audit [0m[2mv1.3.14 (0d9b296a)[0m
+No vulnerabilities found
+=== EXIT: 0 (audit)
+
+=== STEP: test:fast:run
+$ bun run test:fast:run
+$ node scripts/with-test-postgres.mjs node scripts/run-tests.mjs fast
+ 8 | 
+ 9 | const root = fileURLToPath(new URL("../", import.meta.url));
+10 | const project = "cairn-test-" + randomUUID();
+11 | 
+12 | function compose(...args) {
+13 |   const result = spawnSync(
+                      ^
+error: Executable not found in $PATH: "docker"
+      path: "docker",
+     errno: -2,
+   syscall: "spawnSync docker",
+ spawnargs: [ "compose", "-f", "compose.test.yaml", "-p", "cairn-test-b994b4b8-3f1b-45bb-ae31-f452cb27d1a1",
+  "down", "--volumes", "--remove-orphans"
+],
+      code: "ENOENT"
+
+      at spawnSync (node:child_process:226:22)
+      at compose (/workspace/repo/scripts/with-test-postgres.mjs:13:18)
+      at /workspace/repo/scripts/with-test-postgres.mjs:98:16
+
+Bun v1.3.14 (Linux x64 baseline)
+error: script "test:fast:run" exited with code 1
+=== EXIT: 1 (test:fast:run)
+
+=== STEP: test:browser:run
+$ bun run test:browser:run
+$ node scripts/with-test-postgres.mjs node scripts/run-tests.mjs browser
+ 8 | 
+ 9 | const root = fileURLToPath(new URL("../", import.meta.url));
+10 | const project = "cairn-test-" + randomUUID();
+11 | 
+12 | function compose(...args) {
+13 |   const result = spawnSync(
+                      ^
+error: Executable not found in $PATH: "docker"
+      path: "docker",
+     errno: -2,
+   syscall: "spawnSync docker",
+ spawnargs: [ "compose", "-f", "compose.test.yaml", "-p", "cairn-test-f5692968-17b6-4cbe-b260-b4c7d8b8a6bd",
+  "down", "--volumes", "--remove-orphans"
+],
+      code: "ENOENT"
+
+      at spawnSync (node:child_process:226:22)
+      at compose (/workspace/repo/scripts/with-test-postgres.mjs:13:18)
+      at /workspace/repo/scripts/with-test-postgres.mjs:98:16
+
+Bun v1.3.14 (Linux x64 baseline)
+error: script "test:browser:run" exited with code 1
+=== EXIT: 1 (test:browser:run)
+
+=== DONE
+
+=== STEP: test:fast (run directly, without the Docker Postgres wrapper)
+$ node scripts/run-tests.mjs fast
+
+ RUN  v5.0.5 /workspace/repo
+
+ ❯ apps/web/src/server/modules/access/access.repository.contract.test.ts (12 tests | 6 failed) 45ms
+   ❯ Drizzle repository contract (6)
+     × finds no access for a person who has none 9ms
+     × keeps the first access row for a person 1ms
+     × refuses a second administrator 1ms
+     × saves a status change and reads it back 4ms
+     × lists pending people first, then by name 1ms
+     × reports the installation's company 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 6 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/web/src/server/modules/access/access.repository.contract.test.ts > Drizzle repository contract > finds no access for a person who has none
+ FAIL  apps/web/src/server/modules/access/access.repository.contract.test.ts > Drizzle repository contract > keeps the first access row for a person
+ FAIL  apps/web/src/server/modules/access/access.repository.contract.test.ts > Drizzle repository contract > refuses a second administrator
+ FAIL  apps/web/src/server/modules/access/access.repository.contract.test.ts > Drizzle repository contract > saves a status change and reads it back
+ FAIL  apps/web/src/server/modules/access/access.repository.contract.test.ts > Drizzle repository contract > lists pending people first, then by name
+ FAIL  apps/web/src/server/modules/access/access.repository.contract.test.ts > Drizzle repository contract > reports the installation's company
+Error: Run tests via the PostgreSQL test wrapper.
+ ❯ createDisposableDatabase apps/web/tests/support/disposableDatabase.ts:13:39
+     11|   const neonPort = process.env.TEST_NEON_PORT;
+     12|
+     13|   if (!connectionString || !neonPort) throw new Error("Run tests via t…
+       |                                       ^
+     14|
+     15|   const name = "cairn_disposable_" + randomUUID().replaceAll("-", "");
+ ❯ apps/web/src/server/modules/access/access.repository.contract.test.ts:117:28
+ ❯ apps/web/src/server/modules/access/access.repository.contract.test.ts:28:23
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/12]⎯
+
+ FAIL  apps/web/src/server/modules/access/access.repository.contract.test.ts > Drizzle repository contract > finds no access for a person who has none
+ FAIL  apps/web/src/server/modules/access/access.repository.contract.test.ts > Drizzle repository contract > keeps the first access row for a person
+ FAIL  apps/web/src/server/modules/access/access.repository.contract.test.ts > Drizzle repository contract > refuses a second administrator
+ FAIL  apps/web/src/server/modules/access/access.repository.contract.test.ts > Drizzle repository contract > saves a status change and reads it back
+ FAIL  apps/web/src/server/modules/access/access.repository.contract.test.ts > Drizzle repository contract > lists pending people first, then by name
+ FAIL  apps/web/src/server/modules/access/access.repository.contract.test.ts > Drizzle repository contract > reports the installation's company
+TypeError: undefined is not an object (evaluating 'harness.close')
+ ❯ apps/web/src/server/modules/access/access.repository.contract.test.ts:32:13
+     30|
+     31|     afterEach(async () => {
+     32|       await harness.close();
+       |             ^
+     33|     });
+     34|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/12]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  6 failed | 14 passed (20)
+   Start at  13:15:38
+   Duration  1.04s (import 44%, transform 43%, tests 10%, worker 3%)
+
+=== EXIT: 1 (test:fast direct)
+
+=== STEP: test:browser (bddgen and Playwright list, run directly; the browser run itself needs Docker Postgres and a browser)
+$ node node_modules/playwright-bdd/dist/cli/index.js
+=== EXIT: 0 (bddgen)
+$ node node_modules/@playwright/test/cli.js test --list
+Listing tests:
+  [chromium] › features/access/approve-access.feature.spec.js:6:2 › Aprovar acesso › O administrador aprova um utilizador com o acesso pendente
+  [chromium] › features/access/approve-access.feature.spec.js:14:2 › Aprovar acesso › O administrador aprova um utilizador com o acesso revogado
+  [chromium] › features/access/become-administrator.feature.spec.js:10:2 › Tornar-se administrador › Um utilizador com o e-mail verificado do administrador torna-se administrador
+  [chromium] › features/access/become-administrator.feature.spec.js:17:2 › Tornar-se administrador › Um utilizador com o e-mail do administrador, mas não verificado, não se torna administrador
+  [chromium] › features/access/become-administrator.feature.spec.js:24:2 › Tornar-se administrador › Um utilizador com outro e-mail verificado não se torna administrador
+  [chromium] › features/access/revoke-access.feature.spec.js:6:2 › Revogar acesso › O administrador revoga um utilizador com o acesso aprovado
+  [chromium] › features/access/revoke-access.feature.spec.js:14:2 › Revogar acesso › O administrador revoga um utilizador com o acesso pendente
+  [chromium] › features/access/revoke-access.feature.spec.js:22:2 › Revogar acesso › Um utilizador revogado vê a mensagem de revogação no pedido seguinte
+  [chromium] › features/access/sign-in.feature.spec.js:6:2 › Entrar › Um utilizador que nunca entrou aguarda aprovação
+  [chromium] › features/access/sign-in.feature.spec.js:14:2 › Entrar › Um utilizador com o acesso pendente continua a aguardar aprovação
+  [chromium] › features/access/sign-in.feature.spec.js:22:2 › Entrar › Um utilizador com o acesso revogado vê que o acesso foi revogado
+  [chromium] › features/access/sign-in.feature.spec.js:30:2 › Entrar › Um utilizador aprovado entra sem ver a lista de acessos
+  [chromium] › features/access/sign-out.feature.spec.js:6:2 › Sair › Um utilizador sai
+  [chromium] › features/look/theme-choice.feature.spec.js:8:4 › Tema e páginas legais › Sem escolha guardada, a aplicação segue a preferência do sistema › Exemplos: #1
+  [chromium] › features/look/theme-choice.feature.spec.js:15:4 › Tema e páginas legais › Sem escolha guardada, a aplicação segue a preferência do sistema › Exemplos: #2
+  [chromium] › features/look/theme-choice.feature.spec.js:24:2 › Tema e páginas legais › Sem escolha guardada, a aplicação acompanha uma mudança do sistema
+  [chromium] › features/look/theme-choice.feature.spec.js:32:2 › Tema e páginas legais › Mudar o tema aplica-o de imediato
+  [chromium] › features/look/theme-choice.feature.spec.js:40:2 › Tema e páginas legais › A escolha guardada mantém-se depois de recarregar a aplicação
+  [chromium] › features/look/theme-choice.feature.spec.js:50:4 › Tema e páginas legais › Sem sessão iniciada, a política de privacidade e os termos estão no rodapé de <página> › Sem sessão iniciada, a política de privacidade e os termos estão no rodapé de a aplicação
+  [chromium] › features/look/theme-choice.feature.spec.js:57:4 › Tema e páginas legais › Sem sessão iniciada, a política de privacidade e os termos estão no rodapé de <página> › Sem sessão iniciada, a política de privacidade e os termos estão no rodapé de a política de privacidade
+  [chromium] › features/look/theme-choice.feature.spec.js:64:4 › Tema e páginas legais › Sem sessão iniciada, a política de privacidade e os termos estão no rodapé de <página> › Sem sessão iniciada, a política de privacidade e os termos estão no rodapé de os termos de utilização
+  [chromium] › features/look/theme-choice.feature.spec.js:75:4 › Tema e páginas legais › Com sessão iniciada e o acesso pendente, a política de privacidade e os termos estão no rodapé de <página> › Com sessão iniciada e o acesso pendente, a política de privacidade e os termos estão no rodapé de a aplicação
+  [chromium] › features/look/theme-choice.feature.spec.js:83:4 › Tema e páginas legais › Com sessão iniciada e o acesso pendente, a política de privacidade e os termos estão no rodapé de <página> › Com sessão iniciada e o acesso pendente, a política de privacidade e os termos estão no rodapé de a política de privacidade
+  [chromium] › features/look/theme-choice.feature.spec.js:91:4 › Tema e páginas legais › Com sessão iniciada e o acesso pendente, a política de privacidade e os termos estão no rodapé de <página> › Com sessão iniciada e o acesso pendente, a política de privacidade e os termos estão no rodapé de os termos de utilização
+  [chromium] › features/look/theme-choice.feature.spec.js:101:2 › Tema e páginas legais › Sem sessão iniciada, a Ana abre os termos de utilização a partir do rodapé
+Total: 25 tests in 6 files
+::notice title=🎭 Playwright Run Summary::  25 did not run
+=== EXIT: 0 (playwright test --list)
+
+=== STEP: test command from verify-context (bash scripts/check.sh push)
+$ bash scripts/check.sh push
+
+Checking: bun run format:check
+$ oxfmt --check .
+Checking formatting...
+
+All matched files use the correct format.
+Finished in 1495ms on 206 files using 2 threads.
+
+Checking: bun run lint
+$ oxlint .
+apps/web/src/env.server.ts:2:1: warning typescript(triple-slash-reference): Do not use a triple slash reference for ../cloudflare-env.d.ts, use `import` style instead. help: Use of triple-slash reference type directives is generally discouraged in favor of ECMAScript Module imports.
+apps/web/tests/acceptance/e2e/access.steps.ts:120:78: warning eslint(no-empty-pattern): Empty object binding pattern help: Passing `null` or `undefined` will result in runtime error because `null` and `undefined` cannot be destructured.
+apps/web/tests/acceptance/e2e/access.steps.ts:127:48: warning eslint(no-empty-pattern): Empty object binding pattern help: Passing `null` or `undefined` will result in runtime error because `null` and `undefined` cannot be destructured.
+apps/web/tests/acceptance/e2e/access.steps.ts:149:10: warning eslint(no-empty-pattern): Empty object binding pattern help: Passing `null` or `undefined` will result in runtime error because `null` and `undefined` cannot be destructured.
+apps/web/tests/acceptance/e2e/access.steps.ts:156:10: warning eslint(no-empty-pattern): Empty object binding pattern help: Passing `null` or `undefined` will result in runtime error because `null` and `undefined` cannot be destructured.
+apps/web/tests/acceptance/e2e/access.steps.ts:202:54: warning eslint(no-empty-pattern): Empty object binding pattern help: Passing `null` or `undefined` will result in runtime error because `null` and `undefined` cannot be destructured.
+apps/web/tests/acceptance/e2e/access.steps.ts:209:54: warning eslint(no-empty-pattern): Empty object binding pattern help: Passing `null` or `undefined` will result in runtime error because `null` and `undefined` cannot be destructured.
+apps/web/tests/acceptance/e2e/access.steps.ts:220:10: warning eslint(no-empty-pattern): Empty object binding pattern help: Passing `null` or `undefined` will result in runtime error because `null` and `undefined` cannot be destructured.
+apps/web/tests/acceptance/e2e/access.steps.ts:231:59: warning eslint(no-empty-pattern): Empty object binding pattern help: Passing `null` or `undefined` will result in runtime error because `null` and `undefined` cannot be destructured.
+
+Checking: bun run lint:boundaries
+$ node scripts/check-boundaries.mjs
+
+[32m✔[39m no dependency violations found (102 modules, 170 dependencies cruised)
+
+
+Checking: bun run typecheck
+$ bun run env:generate && bun run --filter '*' check-types && tsc --noEmit -p tsconfig.checks.json && node node_modules/typescript-mappers/bin/tsc --noEmit --runExternalCode -p tsconfig.acceptance.json
+$ varlock codegen --path ./apps/web/ && varlock codegen --path ./packages/db/
+✅ Code generated successfully
+✅ Code generated successfully
+@cairn/db check-types: Exited with code 0
+@cairn/auth check-types: Exited with code 0
+@cairn/alint-plugin-semantic check-types: Exited with code 0
+@cairn/infra check-types: Exited with code 0
+@cairn/web check-types: [36mvite v8.3.5 [32mbuilding client environment for production...[36m[39m
+@cairn/web check-types: transforming...
+@cairn/web check-types: ✓ 253 modules transformed.
+@cairn/web check-types: rendering chunks...
+@cairn/web check-types: computing gzip size...
+@cairn/web check-types: dist/client/assets/inter-vietnamese-400-normal-DMkecbls.woff2              4.97 kB
+@cairn/web check-types: dist/client/assets/inter-vietnamese-600-normal-Cc8MFFhd.woff2              5.10 kB
+@cairn/web check-types: dist/client/assets/inter-vietnamese-700-normal-DlLaEgI2.woff2              5.10 kB
+@cairn/web check-types: dist/client/assets/inter-vietnamese-500-normal-DOriooB6.woff2              5.11 kB
+@cairn/web check-types: dist/client/assets/inter-greek-ext-400-normal-DGGRlc-M.woff2               5.26 kB
+@cairn/web check-types: dist/client/assets/inter-greek-ext-500-normal-C4iEst2y.woff2               5.42 kB
+@cairn/web check-types: dist/client/assets/inter-greek-ext-600-normal-DRtmH8MT.woff2               5.43 kB
+@cairn/web check-types: dist/client/assets/inter-greek-ext-700-normal-qfdV9bQt.woff2               5.44 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-vietnamese-500-normal-C8zxqsMH.woff       5.61 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-vietnamese-400-normal-DDuiU_S-.woff       5.62 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-vietnamese-600-normal-iLQfcSjf.woff       5.71 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-cyrillic-ext-500-normal-BIfNGwUT.woff     5.77 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-cyrillic-ext-600-normal-9HEixskS.woff     5.79 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-cyrillic-ext-400-normal-DMdlQ8Kv.woff     5.82 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-vietnamese-400-normal-BulugwFq.woff2      5.86 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-vietnamese-500-normal-DZ4AoWbu.woff2      6.04 kB
+@cairn/web check-types: dist/client/assets/inter-vietnamese-400-normal-Bbgyi5SW.woff               6.50 kB
+@cairn/web check-types: dist/client/assets/inter-vietnamese-500-normal-mJboJaSs.woff               6.59 kB
+@cairn/web check-types: dist/client/assets/inter-vietnamese-700-normal-BZaoP0fm.woff               6.63 kB
+@cairn/web check-types: dist/client/assets/inter-vietnamese-600-normal-BuLX-rYi.woff               6.64 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-cyrillic-ext-400-normal-xuaO2J-f.woff2    6.91 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-vietnamese-600-normal-D2EvbN8M.woff2      6.93 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-cyrillic-ext-500-normal-BqneJy0T.woff2    6.97 kB
+@cairn/web check-types: dist/client/assets/inter-greek-ext-400-normal-KugGGMne.woff                7.06 kB
+@cairn/web check-types: dist/client/assets/inter-greek-ext-500-normal-2j5mBUwD.woff                7.19 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-cyrillic-400-normal-CEL4l2ZJ.woff         7.20 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-cyrillic-500-normal-Ael50iVv.woff         7.20 kB
+@cairn/web check-types: dist/client/assets/inter-greek-ext-600-normal-B8X0CLgF.woff                7.21 kB
+@cairn/web check-types: dist/client/assets/inter-greek-ext-700-normal-BoQ6DsYi.woff                7.21 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-cyrillic-600-normal-fLZuRloM.woff         7.26 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-cyrillic-ext-600-normal-V-xxqcpd.woff2    7.69 kB
+@cairn/web check-types: dist/client/assets/inter-cyrillic-400-normal-obahsSVq.woff2                7.71 kB
+@cairn/web check-types: dist/client/assets/inter-greek-400-normal-B4URO6DV.woff2                   7.77 kB
+@cairn/web check-types: dist/client/assets/inter-cyrillic-500-normal-BasfLYem.woff2                7.90 kB
+@cairn/web check-types: dist/client/assets/inter-cyrillic-700-normal-CjBOestx.woff2                7.90 kB
+@cairn/web check-types: dist/client/assets/inter-greek-500-normal-BIZE56-Y.woff2                   7.92 kB
+@cairn/web check-types: dist/client/assets/inter-greek-700-normal-C3JjAnD8.woff2                   7.92 kB
+@cairn/web check-types: dist/client/assets/inter-greek-600-normal-plRanbMR.woff2                   7.94 kB
+@cairn/web check-types: dist/client/assets/inter-cyrillic-600-normal-CWCymEST.woff2                7.97 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-cyrillic-400-normal-BSMlKf0J.woff2        8.35 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-cyrillic-500-normal-Bq9vWWag.woff2        8.46 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-cyrillic-600-normal-CTOM6hUh.woff2        9.35 kB
+@cairn/web check-types: dist/client/assets/inter-cyrillic-400-normal-HOLc17fK.woff                 9.78 kB
+@cairn/web check-types: dist/client/assets/inter-cyrillic-700-normal-DrXBdSj3.woff                 9.91 kB
+@cairn/web check-types: dist/client/assets/inter-greek-400-normal-q2sYcFCs.woff                    9.92 kB
+@cairn/web check-types: dist/client/assets/inter-cyrillic-600-normal-4D_pXhcN.woff                 9.93 kB
+@cairn/web check-types: dist/client/assets/inter-cyrillic-500-normal-CxZf_p3X.woff                 9.94 kB
+@cairn/web check-types: dist/client/assets/inter-greek-500-normal-Xzm54t5V.woff                    9.98 kB
+@cairn/web check-types: dist/client/assets/inter-greek-700-normal-BUv2fZ6O.woff                    9.98 kB
+@cairn/web check-types: dist/client/assets/inter-greek-600-normal-BZpKdvQh.woff                   10.03 kB
+@cairn/web check-types: dist/client/assets/inter-cyrillic-ext-400-normal-BQZuk6qB.woff2           10.23 kB
+@cairn/web check-types: dist/client/assets/inter-cyrillic-ext-500-normal-B0yAr1jD.woff2           10.43 kB
+@cairn/web check-types: dist/client/assets/inter-cyrillic-ext-600-normal-Dfes3d0z.woff2           10.48 kB
+@cairn/web check-types: dist/client/assets/inter-cyrillic-ext-700-normal-BjwYoWNd.woff2           10.49 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-latin-ext-400-normal-D3D2R8hC.woff       11.76 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-latin-ext-500-normal-CZ70TYgx.woff       11.76 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-latin-ext-600-normal-DmB0ttJJ.woff       11.83 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-latin-400-normal-CvHOgSBP.woff           13.14 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-latin-500-normal-CB9ihrfo.woff           13.15 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-latin-600-normal-DWFSQ4vo.woff           13.20 kB
+@cairn/web check-types: dist/client/assets/inter-cyrillic-ext-400-normal-DQukG94-.woff            13.33 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-latin-ext-400-normal-BmRBH3aV.woff2      13.34 kB
+@cairn/web check-types: dist/client/assets/inter-cyrillic-ext-700-normal-LO58E6JB.woff            13.40 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-latin-ext-500-normal-CAhNIIs5.woff2      13.43 kB
+@cairn/web check-types: dist/client/assets/inter-cyrillic-ext-500-normal-BmqWE9Dz.woff            13.45 kB
+@cairn/web check-types: dist/client/assets/inter-cyrillic-ext-600-normal-Bcila6Z-.woff            13.46 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-latin-ext-600-normal-D38SheWl.woff2      14.32 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-latin-400-normal-DMJ8VG8y.woff2          14.70 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-latin-500-normal-DSY6xOcd.woff2          14.88 kB
+@cairn/web check-types: dist/client/assets/ibm-plex-mono-latin-600-normal-BgSNZQsw.woff2          15.62 kB
+@cairn/web check-types: dist/client/assets/inter-latin-400-normal-C38fXH4l.woff2                  23.66 kB
+@cairn/web check-types: dist/client/assets/inter-latin-500-normal-Cerq10X2.woff2                  24.27 kB
+@cairn/web check-types: dist/client/assets/inter-latin-700-normal-Yt3aPRUw.woff2                  24.35 kB
+@cairn/web check-types: dist/client/assets/inter-latin-600-normal-LgqL8muc.woff2                  24.45 kB
+@cairn/web check-types: dist/client/assets/inter-latin-400-normal-CyCys3Eg.woff                   30.69 kB
+@cairn/web check-types: dist/client/assets/inter-latin-600-normal-CiBQ2DWP.woff                   31.26 kB
+@cairn/web check-types: dist/client/assets/inter-latin-500-normal-BL9OpVg8.woff                   31.28 kB
+@cairn/web check-types: dist/client/assets/inter-latin-700-normal-BLAVimhd.woff                   31.32 kB
+@cairn/web check-types: dist/client/assets/inter-latin-ext-400-normal-C1nco2VV.woff2              35.00 kB
+@cairn/web check-types: dist/client/assets/inter-latin-ext-500-normal-CV4jyFjo.woff2              36.02 kB
+@cairn/web check-types: dist/client/assets/inter-latin-ext-700-normal-Ca8adRJv.woff2              36.24 kB
+@cairn/web check-types: dist/client/assets/inter-latin-ext-600-normal-D2bJ5OIk.woff2              36.26 kB
+@cairn/web check-types: dist/client/assets/inter-latin-ext-400-normal-77YHD8bZ.woff               47.56 kB
+@cairn/web check-types: dist/client/assets/inter-latin-ext-500-normal-BxGbmqWO.woff               48.49 kB
+@cairn/web check-types: dist/client/assets/inter-latin-ext-700-normal-TidjK2hL.woff               48.63 kB
+@cairn/web check-types: dist/client/assets/inter-latin-ext-600-normal-CIVaiw4L.woff               48.66 kB
+@cairn/web check-types: dist/client/assets/index-CNg8Vkf5.css                                    103.87 kB │ gzip:  14.47 kB
+@cairn/web check-types: dist/client/assets/terms-DmyXAOb7.js                                       0.75 kB │ gzip:   0.42 kB
+@cairn/web check-types: dist/client/assets/privacy-BbKQg8pH.js                                     2.03 kB │ gzip:   0.90 kB
+@cairn/web check-types: dist/client/assets/routes-Doba9-Tv.js                                     39.00 kB │ gzip:  14.51 kB
+@cairn/web check-types: dist/client/assets/index-GMp1V1hl.js                                     367.34 kB │ gzip: 116.92 kB
+@cairn/web check-types: 
+@cairn/web check-types: [32m✓ built in 1.35s[39m
+@cairn/web check-types: [36mvite v8.3.5 [32mbuilding ssr environment for production...[36m[39m
+@cairn/web check-types: transforming...
+@cairn/web check-types: ✓ 710 modules transformed.
+@cairn/web check-types: rendering chunks...
+@cairn/web check-types: computing gzip size...
+@cairn/web check-types: dist/server/assets/kysely-adapter-DlVL7ooI.js                        0.09 kB │ gzip:   0.10 kB
+@cairn/web check-types: dist/server/assets/start-DIJXgVir.js                                 0.24 kB │ gzip:   0.19 kB │ map:     0.33 kB
+@cairn/web check-types: dist/server/assets/core-Dw9UEf1i.js                                  0.27 kB │ gzip:   0.21 kB │ map:     0.35 kB
+@cairn/web check-types: dist/server/assets/empty-plugin-adapters-Cipd4ZH4.js                 0.32 kB │ gzip:   0.21 kB │ map:     0.55 kB
+@cairn/web check-types: dist/server/assets/_tanstack-start-manifest_v-hxlnixrt.js            0.91 kB │ gzip:   0.40 kB
+@cairn/web check-types: dist/server/assets/terms-BI_ibUnc.js                                 1.04 kB │ gzip:   0.52 kB │ map:     1.51 kB
+@cairn/web check-types: dist/server/assets/listPeople.functions-Dg3ZbYz9.js                  1.26 kB │ gzip:   0.58 kB │ map:     2.45 kB
+@cairn/web check-types: dist/server/assets/getMyAccess.functions-BGNZlBHZ.js                 2.13 kB │ gzip:   0.84 kB │ map:     4.46 kB
+@cairn/web check-types: dist/server/assets/changeAccess.functions-BS4v3ouU.js                2.26 kB │ gzip:   1.01 kB │ map:     4.54 kB
+@cairn/web check-types: dist/server/assets/privacy-BBqfs6-F.js                               2.43 kB │ gzip:   1.01 kB │ map:     3.13 kB
+@cairn/web check-types: dist/server/assets/env-impl-vFVrkjAy.js                              2.60 kB │ gzip:   0.97 kB │ map:     4.31 kB
+@cairn/web check-types: dist/server/assets/node-sqlite-dialect-BvroqEg2.js                   3.21 kB │ gzip:   1.14 kB │ map:     5.56 kB
+@cairn/web check-types: dist/server/assets/bun-sqlite-dialect-DoOVo4ja-D138WM_z.js           3.22 kB │ gzip:   1.15 kB │ map:     5.56 kB
+@cairn/web check-types: dist/server/assets/error-D_RvXY5I.js                                 4.80 kB │ gzip:   1.98 kB │ map:     8.32 kB
+@cairn/web check-types: dist/server/assets/d1-sqlite-dialect-m0f01-4z-BUmA4G8B.js            5.30 kB │ gzip:   1.81 kB │ map:     9.15 kB
+@cairn/web check-types: dist/server/assets/context.server-B3jUc3Ut.js                        7.13 kB │ gzip:   2.40 kB │ map:    16.26 kB
+@cairn/web check-types: dist/server/assets/router-CvUevNp4.js                               11.06 kB │ gzip:   3.73 kB │ map:    26.39 kB
+@cairn/web check-types: dist/server/assets/dist-BBSC-oNq.js                                 14.90 kB │ gzip:   4.16 kB │ map:    25.01 kB
+@cairn/web check-types: dist/server/assets/generate-drizzle-schema-iWvrXnu0-IBOnD9Vf.js     17.88 kB │ gzip:   4.67 kB │ map:    30.29 kB
+@cairn/web check-types: dist/server/assets/get-model-name-CsjhZD4W.js                       22.80 kB │ gzip:   5.42 kB │ map:    37.24 kB
+@cairn/web check-types: dist/server/assets/routes-Byx3F6Xn.js                               40.19 kB │ gzip:  11.40 kB │ map:    79.33 kB
+@cairn/web check-types: dist/server/server.js                                              264.90 kB │ gzip:  62.53 kB │ map:   591.31 kB
+@cairn/web check-types: dist/server/assets/sqlite-introspector-DSCAP82F-2hP-Ok9Y.js        285.78 kB │ gzip:  47.69 kB │ map:   541.74 kB
+@cairn/web check-types: dist/server/assets/runtime.server-DMzksYIq.js                    1,282.10 kB │ gzip: 298.48 kB │ map: 2,397.57 kB
+@cairn/web check-types: 
+@cairn/web check-types: [32m✓ built in 1.49s[39m
+@cairn/web check-types: Exited with code 0
+
+Checking: bun run build
+$ bun run --cwd apps/web build
+$ vite build
+[36mvite v8.3.5 [32mbuilding client environment for production...[36m[39m
+transforming...
+✓ 253 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/client/assets/inter-vietnamese-400-normal-DMkecbls.woff2              4.97 kB
+dist/client/assets/inter-vietnamese-600-normal-Cc8MFFhd.woff2              5.10 kB
+dist/client/assets/inter-vietnamese-700-normal-DlLaEgI2.woff2              5.10 kB
+dist/client/assets/inter-vietnamese-500-normal-DOriooB6.woff2              5.11 kB
+dist/client/assets/inter-greek-ext-400-normal-DGGRlc-M.woff2               5.26 kB
+dist/client/assets/inter-greek-ext-500-normal-C4iEst2y.woff2               5.42 kB
+dist/client/assets/inter-greek-ext-600-normal-DRtmH8MT.woff2               5.43 kB
+dist/client/assets/inter-greek-ext-700-normal-qfdV9bQt.woff2               5.44 kB
+dist/client/assets/ibm-plex-mono-vietnamese-500-normal-C8zxqsMH.woff       5.61 kB
+dist/client/assets/ibm-plex-mono-vietnamese-400-normal-DDuiU_S-.woff       5.62 kB
+dist/client/assets/ibm-plex-mono-vietnamese-600-normal-iLQfcSjf.woff       5.71 kB
+dist/client/assets/ibm-plex-mono-cyrillic-ext-500-normal-BIfNGwUT.woff     5.77 kB
+dist/client/assets/ibm-plex-mono-cyrillic-ext-600-normal-9HEixskS.woff     5.79 kB
+dist/client/assets/ibm-plex-mono-cyrillic-ext-400-normal-DMdlQ8Kv.woff     5.82 kB
+dist/client/assets/ibm-plex-mono-vietnamese-400-normal-BulugwFq.woff2      5.86 kB
+dist/client/assets/ibm-plex-mono-vietnamese-500-normal-DZ4AoWbu.woff2      6.04 kB
+dist/client/assets/inter-vietnamese-400-normal-Bbgyi5SW.woff               6.50 kB
+dist/client/assets/inter-vietnamese-500-normal-mJboJaSs.woff               6.59 kB
+dist/client/assets/inter-vietnamese-700-normal-BZaoP0fm.woff               6.63 kB
+dist/client/assets/inter-vietnamese-600-normal-BuLX-rYi.woff               6.64 kB
+dist/client/assets/ibm-plex-mono-cyrillic-ext-400-normal-xuaO2J-f.woff2    6.91 kB
+dist/client/assets/ibm-plex-mono-vietnamese-600-normal-D2EvbN8M.woff2      6.93 kB
+dist/client/assets/ibm-plex-mono-cyrillic-ext-500-normal-BqneJy0T.woff2    6.97 kB
+dist/client/assets/inter-greek-ext-400-normal-KugGGMne.woff                7.06 kB
+dist/client/assets/inter-greek-ext-500-normal-2j5mBUwD.woff                7.19 kB
+dist/client/assets/ibm-plex-mono-cyrillic-400-normal-CEL4l2ZJ.woff         7.20 kB
+dist/client/assets/ibm-plex-mono-cyrillic-500-normal-Ael50iVv.woff         7.20 kB
+dist/client/assets/inter-greek-ext-600-normal-B8X0CLgF.woff                7.21 kB
+dist/client/assets/inter-greek-ext-700-normal-BoQ6DsYi.woff                7.21 kB
+dist/client/assets/ibm-plex-mono-cyrillic-600-normal-fLZuRloM.woff         7.26 kB
+dist/client/assets/ibm-plex-mono-cyrillic-ext-600-normal-V-xxqcpd.woff2    7.69 kB
+dist/client/assets/inter-cyrillic-400-normal-obahsSVq.woff2                7.71 kB
+dist/client/assets/inter-greek-400-normal-B4URO6DV.woff2                   7.77 kB
+dist/client/assets/inter-cyrillic-500-normal-BasfLYem.woff2                7.90 kB
+dist/client/assets/inter-cyrillic-700-normal-CjBOestx.woff2                7.90 kB
+dist/client/assets/inter-greek-500-normal-BIZE56-Y.woff2                   7.92 kB
+dist/client/assets/inter-greek-700-normal-C3JjAnD8.woff2                   7.92 kB
+dist/client/assets/inter-greek-600-normal-plRanbMR.woff2                   7.94 kB
+dist/client/assets/inter-cyrillic-600-normal-CWCymEST.woff2                7.97 kB
+dist/client/assets/ibm-plex-mono-cyrillic-400-normal-BSMlKf0J.woff2        8.35 kB
+dist/client/assets/ibm-plex-mono-cyrillic-500-normal-Bq9vWWag.woff2        8.46 kB
+dist/client/assets/ibm-plex-mono-cyrillic-600-normal-CTOM6hUh.woff2        9.35 kB
+dist/client/assets/inter-cyrillic-400-normal-HOLc17fK.woff                 9.78 kB
+dist/client/assets/inter-cyrillic-700-normal-DrXBdSj3.woff                 9.91 kB
+dist/client/assets/inter-greek-400-normal-q2sYcFCs.woff                    9.92 kB
+dist/client/assets/inter-cyrillic-600-normal-4D_pXhcN.woff                 9.93 kB
+dist/client/assets/inter-cyrillic-500-normal-CxZf_p3X.woff                 9.94 kB
+dist/client/assets/inter-greek-500-normal-Xzm54t5V.woff                    9.98 kB
+dist/client/assets/inter-greek-700-normal-BUv2fZ6O.woff                    9.98 kB
+dist/client/assets/inter-greek-600-normal-BZpKdvQh.woff                   10.03 kB
+dist/client/assets/inter-cyrillic-ext-400-normal-BQZuk6qB.woff2           10.23 kB
+dist/client/assets/inter-cyrillic-ext-500-normal-B0yAr1jD.woff2           10.43 kB
+dist/client/assets/inter-cyrillic-ext-600-normal-Dfes3d0z.woff2           10.48 kB
+dist/client/assets/inter-cyrillic-ext-700-normal-BjwYoWNd.woff2           10.49 kB
+dist/client/assets/ibm-plex-mono-latin-ext-400-normal-D3D2R8hC.woff       11.76 kB
+dist/client/assets/ibm-plex-mono-latin-ext-500-normal-CZ70TYgx.woff       11.76 kB
+dist/client/assets/ibm-plex-mono-latin-ext-600-normal-DmB0ttJJ.woff       11.83 kB
+dist/client/assets/ibm-plex-mono-latin-400-normal-CvHOgSBP.woff           13.14 kB
+dist/client/assets/ibm-plex-mono-latin-500-normal-CB9ihrfo.woff           13.15 kB
+dist/client/assets/ibm-plex-mono-latin-600-normal-DWFSQ4vo.woff           13.20 kB
+dist/client/assets/inter-cyrillic-ext-400-normal-DQukG94-.woff            13.33 kB
+dist/client/assets/ibm-plex-mono-latin-ext-400-normal-BmRBH3aV.woff2      13.34 kB
+dist/client/assets/inter-cyrillic-ext-700-normal-LO58E6JB.woff            13.40 kB
+dist/client/assets/ibm-plex-mono-latin-ext-500-normal-CAhNIIs5.woff2      13.43 kB
+dist/client/assets/inter-cyrillic-ext-500-normal-BmqWE9Dz.woff            13.45 kB
+dist/client/assets/inter-cyrillic-ext-600-normal-Bcila6Z-.woff            13.46 kB
+dist/client/assets/ibm-plex-mono-latin-ext-600-normal-D38SheWl.woff2      14.32 kB
+dist/client/assets/ibm-plex-mono-latin-400-normal-DMJ8VG8y.woff2          14.70 kB
+dist/client/assets/ibm-plex-mono-latin-500-normal-DSY6xOcd.woff2          14.88 kB
+dist/client/assets/ibm-plex-mono-latin-600-normal-BgSNZQsw.woff2          15.62 kB
+dist/client/assets/inter-latin-400-normal-C38fXH4l.woff2                  23.66 kB
+dist/client/assets/inter-latin-500-normal-Cerq10X2.woff2                  24.27 kB
+dist/client/assets/inter-latin-700-normal-Yt3aPRUw.woff2                  24.35 kB
+dist/client/assets/inter-latin-600-normal-LgqL8muc.woff2                  24.45 kB
+dist/client/assets/inter-latin-400-normal-CyCys3Eg.woff                   30.69 kB
+dist/client/assets/inter-latin-600-normal-CiBQ2DWP.woff                   31.26 kB
+dist/client/assets/inter-latin-500-normal-BL9OpVg8.woff                   31.28 kB
+dist/client/assets/inter-latin-700-normal-BLAVimhd.woff                   31.32 kB
+dist/client/assets/inter-latin-ext-400-normal-C1nco2VV.woff2              35.00 kB
+dist/client/assets/inter-latin-ext-500-normal-CV4jyFjo.woff2              36.02 kB
+dist/client/assets/inter-latin-ext-700-normal-Ca8adRJv.woff2              36.24 kB
+dist/client/assets/inter-latin-ext-600-normal-D2bJ5OIk.woff2              36.26 kB
+dist/client/assets/inter-latin-ext-400-normal-77YHD8bZ.woff               47.56 kB
+dist/client/assets/inter-latin-ext-500-normal-BxGbmqWO.woff               48.49 kB
+dist/client/assets/inter-latin-ext-700-normal-TidjK2hL.woff               48.63 kB
+dist/client/assets/inter-latin-ext-600-normal-CIVaiw4L.woff               48.66 kB
+dist/client/assets/index-CNg8Vkf5.css                                    103.87 kB │ gzip:  14.47 kB
+dist/client/assets/terms-DmyXAOb7.js                                       0.75 kB │ gzip:   0.42 kB
+dist/client/assets/privacy-BbKQg8pH.js                                     2.03 kB │ gzip:   0.90 kB
+dist/client/assets/routes-Doba9-Tv.js                                     39.00 kB │ gzip:  14.51 kB
+dist/client/assets/index-GMp1V1hl.js                                     367.34 kB │ gzip: 116.92 kB
+
+[32m✓ built in 1.31s[39m
+[36mvite v8.3.5 [32mbuilding ssr environment for production...[36m[39m
+transforming...
+✓ 710 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/server/assets/kysely-adapter-DlVL7ooI.js                        0.09 kB │ gzip:   0.10 kB
+dist/server/assets/start-DIJXgVir.js                                 0.24 kB │ gzip:   0.19 kB │ map:     0.33 kB
+dist/server/assets/core-Dw9UEf1i.js                                  0.27 kB │ gzip:   0.21 kB │ map:     0.35 kB
+dist/server/assets/empty-plugin-adapters-Cipd4ZH4.js                 0.32 kB │ gzip:   0.21 kB │ map:     0.55 kB
+dist/server/assets/_tanstack-start-manifest_v-hxlnixrt.js            0.91 kB │ gzip:   0.40 kB
+dist/server/assets/terms-BI_ibUnc.js                                 1.04 kB │ gzip:   0.52 kB │ map:     1.51 kB
+dist/server/assets/listPeople.functions-Dg3ZbYz9.js                  1.26 kB │ gzip:   0.58 kB │ map:     2.45 kB
+dist/server/assets/getMyAccess.functions-BGNZlBHZ.js                 2.13 kB │ gzip:   0.84 kB │ map:     4.46 kB
+dist/server/assets/changeAccess.functions-BS4v3ouU.js                2.26 kB │ gzip:   1.01 kB │ map:     4.54 kB
+dist/server/assets/privacy-BBqfs6-F.js                               2.43 kB │ gzip:   1.01 kB │ map:     3.13 kB
+dist/server/assets/env-impl-vFVrkjAy.js                              2.60 kB │ gzip:   0.97 kB │ map:     4.31 kB
+dist/server/assets/node-sqlite-dialect-BvroqEg2.js                   3.21 kB │ gzip:   1.14 kB │ map:     5.56 kB
+dist/server/assets/bun-sqlite-dialect-DoOVo4ja-D138WM_z.js           3.22 kB │ gzip:   1.15 kB │ map:     5.56 kB
+dist/server/assets/error-D_RvXY5I.js                                 4.80 kB │ gzip:   1.98 kB │ map:     8.32 kB
+dist/server/assets/d1-sqlite-dialect-m0f01-4z-BUmA4G8B.js            5.30 kB │ gzip:   1.81 kB │ map:     9.15 kB
+dist/server/assets/context.server-B3jUc3Ut.js                        7.13 kB │ gzip:   2.40 kB │ map:    16.26 kB
+dist/server/assets/router-CvUevNp4.js                               11.06 kB │ gzip:   3.73 kB │ map:    26.39 kB
+dist/server/assets/dist-BBSC-oNq.js                                 14.90 kB │ gzip:   4.16 kB │ map:    25.01 kB
+dist/server/assets/generate-drizzle-schema-iWvrXnu0-IBOnD9Vf.js     17.88 kB │ gzip:   4.67 kB │ map:    30.29 kB
+dist/server/assets/get-model-name-CsjhZD4W.js                       22.80 kB │ gzip:   5.42 kB │ map:    37.24 kB
+dist/server/assets/routes-Byx3F6Xn.js                               40.19 kB │ gzip:  11.40 kB │ map:    79.33 kB
+dist/server/server.js                                              264.90 kB │ gzip:  62.53 kB │ map:   591.31 kB
+dist/server/assets/sqlite-introspector-DSCAP82F-2hP-Ok9Y.js        285.78 kB │ gzip:  47.69 kB │ map:   541.74 kB
+dist/server/assets/runtime.server-DMzksYIq.js                    1,282.10 kB │ gzip: 298.48 kB │ map: 2,397.57 kB
+
+[32m✓ built in 1.40s[39m
+=== EXIT: 0 (check.sh push)
+
+=== STEP: lockfile consistency (bun install --frozen-lockfile)
+$ bun install --frozen-lockfile
+bun install v1.3.14 (0d9b296a)
+
+$ bun run env:generate
+$ varlock codegen --path ./apps/web/ && varlock codegen --path ./packages/db/
+✅ Code generated successfully
+✅ Code generated successfully
+
+Checked 686 installs across 909 packages (no changes) [666.00ms]
+=== EXIT: 0 (frozen lockfile)
