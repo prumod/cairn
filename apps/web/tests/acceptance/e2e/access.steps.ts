@@ -1,4 +1,4 @@
-import { expect, type Browser, type BrowserContext, type Page } from "@playwright/test";
+import { expect, type Browser, type Page } from "@playwright/test";
 import { createBdd, type DataTable } from "playwright-bdd";
 import {
   addSessionCookies,
@@ -7,18 +7,14 @@ import {
   type FakeGoogleIdentity,
 } from "../../support/testAuth.js";
 import { database, resetDatabase } from "./support/database.js";
+import { actorFor, actorNamed, closeActors, ORIGIN } from "./support/actors.js";
 
-// Must match baseURL in playwright.config.ts.
-const ORIGIN = "http://127.0.0.1:4173";
 const SHOW = { timeout: 30_000 };
 
 const { Before, After, Given, When, Then } = createBdd();
 
-type Actor = { context: BrowserContext; page: Page };
-
 // Per-scenario world. Cleared by the Before and After hooks below.
 const identities = new Map<string, FakeGoogleIdentity>();
-const actors = new Map<string, Actor>();
 let administratorName: string | undefined;
 
 const statusByLabel = { aprovado: "approved", pendente: "pending", revogado: "revoked" } as const;
@@ -73,19 +69,6 @@ async function insertPerson(
   );
 }
 
-async function actorFor(browser: Browser, name: string) {
-  const existing = actors.get(name);
-
-  if (existing) return existing;
-
-  const context = await browser.newContext({ baseURL: ORIGIN });
-  const actor = { context, page: await context.newPage() };
-
-  actors.set(name, actor);
-
-  return actor;
-}
-
 // Signs the person in through the public sign-in route, then gives their browser the session.
 async function signIn(
   browser: Browser,
@@ -103,7 +86,7 @@ async function signIn(
 function administratorPage(): Page {
   if (!administratorName) throw new Error("The scenario has no administrator.");
 
-  const actor = actors.get(administratorName);
+  const actor = actorNamed(administratorName);
 
   if (!actor) throw new Error(administratorName + " has no browser session.");
 
@@ -129,9 +112,7 @@ Before(async () => {
 });
 
 After(async () => {
-  for (const actor of actors.values()) await actor.context.close();
-
-  actors.clear();
+  await closeActors();
 });
 
 // Context
@@ -248,7 +229,7 @@ Then(
 
 // The person's own page when they have one (the bootstrap administrator signs in as themself).
 Then(/^o acesso d[ao] (\p{L}+) é «([^»]+)»$/u, async ({}, name, label) => {
-  const page = actors.get(name)?.page ?? administratorPage();
+  const page = actorNamed(name)?.page ?? administratorPage();
 
   await expect(rowFor(page, name).getByRole("cell", { name: label, exact: true })).toBeVisible(
     SHOW,

@@ -1,4 +1,5 @@
-/* The one stylesheet. Tailwind's theme and utilities, without its preflight, so unstyled elements keep their current look. */
+/* The one stylesheet: Tailwind's theme and utilities without its preflight, Fontsource, initial-visual's tokens, the theme and token-based base rules. Utilities win over base rules by layer order. */
+@layer theme, base, utilities;
 @import "tailwindcss/theme.css" layer(theme);
 @import "tailwindcss/utilities.css" layer(utilities);
 @import "@fontsource/inter/400.css";
@@ -87,217 +88,143 @@
   --color-shadow: var(--shadow);
 }
 
-:root {
-  font-family: var(--font-sans);
-  color: var(--fg);
-  background: var(--canvas);
-  font-synthesis: none;
-  line-height: 1.6;
-}
-* {
-  box-sizing: border-box;
-}
-body {
-  margin: 0;
-  background: var(--canvas);
-  color: var(--fg);
-}
-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
-  padding: 1.2rem max(1.5rem, calc((100vw - 72rem) / 2));
-  border-bottom: 1px solid var(--line);
-}
-.brand {
-  font-size: 1.5rem;
-  font-weight: 700;
-  text-decoration: none;
-}
-nav {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 1.25rem;
-}
-a {
-  color: var(--accent);
-  text-underline-offset: 0.2em;
-}
-main {
-  max-width: 52rem;
-  margin: 3rem auto;
-  padding: 0 1.5rem;
-}
-footer {
-  max-width: 52rem;
-  margin: 3rem auto 1.5rem;
-  padding: 0 1.5rem;
-}
-h1 {
-  font-size: 2rem;
-  line-height: 1.2;
-  margin: 0 0 1rem;
-}
-p {
-  max-width: 68ch;
-}
-form {
-  max-width: 38rem;
-  margin-top: 2rem;
-}
-label {
-  display: block;
-  font-weight: 600;
-  margin: 1.25rem 0 0.4rem;
-}
-input {
-  display: block;
-  width: 100%;
-  padding: 0.7rem;
-  border: 1px solid var(--muted);
-  border-radius: 0.3rem;
-  background: var(--panel);
-  color: inherit;
-  font: inherit;
-}
-input[type="number"] {
-  max-width: 12rem;
-  font-variant-numeric: tabular-nums;
-}
-button {
-  font: inherit;
-  cursor: pointer;
-  padding: 0.6rem 1rem;
-  color: var(--onaccent);
-  background: var(--accent);
-  border: 0;
-  border-radius: 0.3rem;
-}
-form button {
-  margin-top: 1.5rem;
-}
-button:hover {
-  filter: brightness(0.92);
-}
-button:disabled {
-  opacity: 0.6;
-  cursor: wait;
-}
-:focus-visible {
-  outline: 3px solid var(--amber);
-  outline-offset: 3px;
-}
-::selection {
-  background: var(--accentSoft);
-}
-input {
-  caret-color: var(--accent);
-}
-[role="alert"] {
-  color: var(--danger);
-}
-[role="status"] {
-  color: var(--accent);
-  min-height: 1.5rem;
-}
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-th,
-td {
-  padding: 0.8rem 0.5rem;
-  border-bottom: 1px solid var(--line);
-  text-align: left;
-  overflow-wrap: anywhere;
-}
-@media (max-width: 600px) {
-  header {
-    align-items: flex-start;
-    flex-direction: column;
+@layer base {
+  * {
+    box-sizing: border-box;
   }
-  main {
-    margin-top: 2rem;
+  body {
+    margin: 0;
+    font: 13px/1.4 var(--font-sans);
+    font-feature-settings:
+      "tnum" 1,
+      "cv11" 1;
+    font-synthesis: none;
+    background: var(--canvas);
+    color: var(--fg);
+  }
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding: 1.2rem max(1.5rem, calc((100vw - 72rem) / 2));
+    border-bottom: 1px solid var(--line);
   }
   nav {
-    gap: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.25rem;
+  }
+  a {
+    color: var(--accent);
+    text-underline-offset: 0.2em;
+  }
+  main {
+    max-width: 52rem;
+    margin: 3rem auto;
+    padding: 2rem max(1.5rem, calc((100vw - 72rem) / 2));
+  }
+  footer {
+    max-width: 52rem;
+    margin: 3rem auto 1.5rem;
+    padding: 0 1.5rem;
+  }
+  h1 {
+    font-size: 2rem;
+    line-height: 1.2;
+    margin: 0 0 1rem;
+  }
+  p {
+    max-width: 68ch;
+  }
+  form {
+    max-width: 38rem;
+    margin-top: 2rem;
+  }
+  label {
+    display: block;
+    font-weight: 600;
+    margin: 1.25rem 0 0.4rem;
+  }
+  input {
+    display: block;
+    width: 100%;
+    padding: 0.7rem;
+    border: 1px solid var(--muted);
+    border-radius: 0.3rem;
+    background: var(--panel);
+    color: inherit;
+    font: inherit;
+    caret-color: var(--accent);
+  }
+  input[type="number"] {
+    max-width: 12rem;
+    font-variant-numeric: tabular-nums;
+  }
+  button {
+    font: inherit;
+    cursor: pointer;
+    padding: 0.6rem 1rem;
+    color: var(--onaccent);
+    background: var(--accent);
+    border: 0;
+    border-radius: 0.3rem;
+  }
+  form button {
+    margin-top: 1.5rem;
+  }
+  button:hover {
+    filter: brightness(0.92);
+  }
+  button:disabled {
+    opacity: 0.6;
+    cursor: wait;
+  }
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+  }
+  ::selection {
+    background: var(--accentSoft);
+  }
+  [role="alert"] {
+    color: var(--danger);
+  }
+  [role="status"] {
+    color: var(--accent);
+    min-height: 1.5rem;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
   }
   th,
   td {
-    padding: 0.6rem 0.3rem;
+    padding: 0.8rem 0.5rem;
+    border-bottom: 1px solid var(--line);
+    text-align: left;
+    overflow-wrap: anywhere;
   }
-}
-@media (prefers-reduced-motion: no-preference) {
-  button {
-    transition: background-color 120ms ease-out;
+  @media (max-width: 600px) {
+    header {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+    main {
+      margin-top: 2rem;
+    }
+    nav {
+      gap: 1rem;
+    }
+    th,
+    td {
+      padding: 0.6rem 0.3rem;
+    }
   }
-}
-
-/* Theme toggle in the top bar. Its icon is an inline SVG drawn in the button's colour. */
-.theme-toggle {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.25rem;
-  height: 2.25rem;
-  padding: 0;
-  color: var(--fg);
-  background: var(--panel);
-  border: 1px solid var(--line);
-}
-.theme-toggle:hover {
-  background: var(--panel2);
-  filter: none;
-}
-.theme-toggle svg {
-  width: 1.125rem;
-  height: 1.125rem;
-}
-
-/* Access page. Colours come from tokens; dark mode redefines them under data-theme or the system setting. */
-main {
-  padding: 2rem max(1.5rem, calc((100vw - 72rem) / 2));
-}
-.access-message,
-.access-panel,
-.access-manage {
-  background: var(--panel);
-  border: 1px solid var(--line);
-  border-radius: 0.5rem;
-  padding: 1.25rem;
-  margin: 0 0 1rem;
-  max-width: 48rem;
-}
-.access-panel {
-  display: grid;
-  gap: 1rem;
-  justify-items: start;
-}
-.access-button {
-  font: inherit;
-  padding: 0.5rem 1rem;
-  border-radius: 0.375rem;
-  border: 1px solid var(--accent);
-  background: var(--accent);
-  color: var(--onaccent);
-  cursor: pointer;
-}
-.access-button--secondary {
-  background: transparent;
-  color: var(--accent);
-}
-.access-manage table {
-  width: 100%;
-  border-collapse: collapse;
-}
-.access-manage th,
-.access-manage td {
-  text-align: left;
-  padding: 0.5rem;
-  border-bottom: 1px solid var(--line);
-}
-.access-manage [role="alert"] {
-  color: var(--danger);
+  @media (prefers-reduced-motion: no-preference) {
+    button {
+      transition: background-color 120ms ease-out;
+    }
+  }
 }

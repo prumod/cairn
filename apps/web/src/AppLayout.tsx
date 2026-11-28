@@ -5,7 +5,7 @@ export function AppLayout() {
   return (
     <>
       <header>
-        <Link className="brand" to="/">
+        <Link className="text-2xl font-bold no-underline" to="/">
           Cairn
         </Link>
         <ThemeToggle />

@@ -16,6 +16,8 @@ The root workspace contains these application packages:
 
 TanStack Start owns UI and server routes in `apps/web/src/routes/`. Client pages and reusable client modules live in `apps/web/src/pages/` and `apps/web/src/shared/`. `apps/web/src/server/modules/access/` holds only the `user_access` table file, which nothing imports; it stays so that `drizzle-kit generate` keeps the table. `apps/web/src/server/shared/` and `apps/web/src/services.ts` provide server-side support. Database access uses the Neon HTTP driver rather than a direct PostgreSQL wire connection.
 
+`apps/web/src/style.css` imports the self-hosted fonts `@fontsource/inter` and `@fontsource/ibm-plex-mono`, which Vite bundles, so the page makes no request to a font service. Styling conventions are in [Coding standards](CODING_STANDARDS.md#styling).
+
 Each router instance creates one TanStack Query `QueryClient` and provides it through the router's `Wrap` component.
 
 Root dependency overrides pin `@hono/node-server` to 2.1.9 and `hono` to 4.13.19, and `seroval` to 1.6.11. Alchemy depends on `@prisma/dev` 0.20.0, which requests `@hono/node-server` 1.19.9; the override crosses the major version because the audited 1.x versions contain advisories and [2.1.3 and later fix the static-path decoding bypass](https://github.com/honojs/node-server/security/advisories/GHSA-rmxm-3fg6-px4f). Seroval 1.6.11 fixes the [typed-array constructor injection](https://github.com/lxsmnsyc/seroval/security/advisories/GHSA-f86p-h4j2-7qgj) and [RegExp source injection](https://github.com/lxsmnsyc/seroval/security/advisories/GHSA-9wx9-5pv9-3349) advisories; the TanStack dependency ranges allow it.

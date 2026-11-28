@@ -74,7 +74,7 @@ export function ThemeToggle() {
   return (
     <button
       type="button"
-      className="theme-toggle"
+      className="inline-flex size-9 items-center justify-center rounded-md border border-line bg-panel p-0 text-fg hover:bg-panel2 hover:filter-none"
       aria-pressed={dark}
       aria-label="Modo escuro"
       title={dark ? "Ativar modo claro" : "Ativar modo escuro"}
@@ -88,6 +88,7 @@ export function ThemeToggle() {
 function SunIcon() {
   return (
     <svg
+      className="size-4.5"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -104,6 +105,7 @@ function SunIcon() {
 function MoonIcon() {
   return (
     <svg
+      className="size-4.5"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
