@@ -12,6 +12,16 @@ type View =
 
 const statusLabels = { pending: "pendente", approved: "aprovado", revoked: "revogado" } as const;
 
+// Token-coloured boxes: the messages, the panel and the administrator's table.
+const box = "mb-4 max-w-3xl rounded-lg border border-line bg-panel p-5";
+const panel = `${box} grid justify-items-start gap-4`;
+
+const primaryButton =
+  "cursor-pointer rounded-md border border-accent bg-accent px-4 py-2 text-onaccent";
+
+const secondaryButton =
+  "cursor-pointer rounded-md border border-accent bg-transparent px-4 py-2 text-accent";
+
 // Better Auth sends a failed or cancelled Google sign-in back to this page with an `error` query.
 function signInFailedFromUrl() {
   return new URLSearchParams(window.location.search).has("error");
@@ -64,16 +74,15 @@ export function AccessPage() {
     setView({ kind: "signedOut", signInFailed: false });
   }
 
-  if (view.kind === "loading") return <p className="access-message">A carregar…</p>;
+  if (view.kind === "loading") return <p className={box}>A carregar…</p>;
 
-  if (view.kind === "failed")
-    return <p className="access-message">Não foi possível carregar o seu acesso.</p>;
+  if (view.kind === "failed") return <p className={box}>Não foi possível carregar o seu acesso.</p>;
 
   if (view.kind === "signedOut")
     return (
-      <section className="access-panel">
+      <section className={panel}>
         {view.signInFailed ? <p role="alert">Não foi possível entrar. Tente outra vez.</p> : null}
-        <button type="button" className="access-button" onClick={signIn}>
+        <button type="button" className={primaryButton} onClick={signIn}>
           Entrar com Google
         </button>
       </section>
@@ -83,7 +92,7 @@ export function AccessPage() {
 
   if (me.status === "pending")
     return (
-      <section className="access-panel">
+      <section className={panel}>
         <p>O seu acesso aguarda aprovação.</p>
         <SignOutButton onSignOut={signOut} />
       </section>
@@ -91,14 +100,14 @@ export function AccessPage() {
 
   if (me.status === "revoked")
     return (
-      <section className="access-panel">
+      <section className={panel}>
         <p>O seu acesso foi revogado.</p>
         <SignOutButton onSignOut={signOut} />
       </section>
     );
 
   return (
-    <section className="access-panel">
+    <section className={panel}>
       <p>
         Sessão iniciada como {me.name} ({me.email}).
       </p>
@@ -110,7 +119,7 @@ export function AccessPage() {
 
 function SignOutButton({ onSignOut }: { onSignOut: () => void }) {
   return (
-    <button type="button" className="access-button access-button--secondary" onClick={onSignOut}>
+    <button type="button" className={secondaryButton} onClick={onSignOut}>
       Sair
     </button>
   );
@@ -145,7 +154,7 @@ function ManageAccess({ currentUserId }: { currentUserId: string }) {
   }
 
   return (
-    <section className="access-manage" aria-labelledby="manage-access-title">
+    <section className={box} aria-labelledby="manage-access-title">
       <h2 id="manage-access-title">Gerir acessos</h2>
       {message ? <p role="alert">{message}</p> : null}
       {people === null ? null : (
@@ -173,7 +182,7 @@ function ManageAccess({ currentUserId }: { currentUserId: string }) {
                         {person.status === "approved" ? null : (
                           <button
                             type="button"
-                            className="access-button"
+                            className={primaryButton}
                             onClick={() => change(person.userId, "approve")}
                           >
                             Aprovar
@@ -182,7 +191,7 @@ function ManageAccess({ currentUserId }: { currentUserId: string }) {
                         {person.status === "revoked" ? null : (
                           <button
                             type="button"
-                            className="access-button access-button--secondary"
+                            className={secondaryButton}
                             onClick={() => change(person.userId, "revoke")}
                           >
                             Revogar

@@ -23,7 +23,7 @@ Also planned: `apps/web/evals/assistant/` for the assistant's evaluation (refere
 
 Also planned for Now, with the first slice that needs each (base: [What is the program design inside each Now module?](https://github.com/prumod/cairn/issues/235#issuecomment-6726996956)):
 
-- **Modules.** `apps/collector/src/modules/recolha/` (the `Concurso` entity, the parser, `CollectAnunciosUseCase`); `apps/web/src/server/modules/company/` (the `Company` domain in its root `company.ts`, the repository and seed in `company.server.ts`); `apps/web/src/pages/discovery/` (the view, `ListLotesUseCase`, `RadiusFilter`, `ChangeViewUseCase` for the view actions and the manual categoria); `apps/web/src/pages/assistant/` (comments, citations, the assistant loop and its model input); `apps/web/src/shared/actions/`, an isomorphic module for the action catalogue, `Step` and `DataChange`; `apps/web/src/shared/theme/`.
+- **Modules.** `apps/collector/src/modules/recolha/` (the `Concurso` entity, the parser, `CollectAnunciosUseCase`); `apps/web/src/server/modules/company/` (the `Company` domain in its root `company.ts`, the repository and seed in `company.server.ts`); `apps/web/src/pages/discovery/` (the view, `ListLotesUseCase`, `RadiusFilter`, `ChangeViewUseCase` for the view actions and the manual categoria); `apps/web/src/pages/assistant/` (comments, citations, the assistant loop and its model input); `apps/web/src/shared/actions/`, an isomorphic module for the action catalogue, `Step` and `DataChange`.
 - **Composition.** One composition file per app: `apps/web/src/server/composition.server.ts`, built per request (it replaces `getRuntime`), and `apps/collector/src/composition.ts`, built once at start.
 - **Imports between modules.** A use case or domain file may import another feature's or server module's public, framework-free root file (for example `pages/discovery/discovery.ts` or `server/modules/company/company.ts`) and `src/shared/actions`. It still never imports another module's `infra/`, `.server.ts` or `.functions.ts` files. Inside a feature, a use case may also import the plain `useCases/*.ts` root helpers (such as the assistant's `assistantLoop.ts`) and another use case of the same feature, which it receives through its constructor (`ChangeViewUseCase` receives `ListLotesUseCase` and `GetConcursoUseCase`). The current rules do not allow this yet. The first slice that needs it changes `.dependency-cruiser.cjs` and `scripts/prove-boundaries.mjs` as follows:
   - **New role, use-case helper:** plain `.ts` files directly under `pages/<feature>/useCases/`, not `*.server.ts`, `*.functions.ts` or tests. Today the `pureUseCase` pattern matches only `useCases/<name>/*.ts`, so these files are unchecked. A helper gets the same bans as a use case: no `infra/`, `.server.ts` or `.functions.ts` import, type-only imports included.
@@ -109,7 +109,8 @@ apps/web/
   src/routes/                         # TanStack Start UI and server-handler routes
   src/pages/<feature>/                # page, useCases/, domain/, and infra/ code
   src/shared/<module>/                # reusable client modules
-  src/style.css                       # the one stylesheet: Tailwind, initial-visual's tokens, theme, base rules
+  src/shared/theme/                   # theme.tsx is the public entry; theme.test.tsx is its colocated unit test
+  src/style.css                       # the one stylesheet: Tailwind, Fontsource, initial-visual's tokens, @theme, base rules
   src/server/modules/<domain>/        # server capabilities shared across feature/route consumers
   src/server/shared/<module>/         # server-only support
   tests/acceptance/integration/       # Vitest bindings of root .feature contracts (*.feature.test.ts)

@@ -1,12 +1,14 @@
 import { Link, Outlet } from "@tanstack/react-router";
+import { ThemeToggle } from "./shared/theme/theme.js";
 
 export function AppLayout() {
   return (
     <>
       <header>
-        <Link className="brand" to="/">
+        <Link className="text-2xl font-bold no-underline" to="/">
           Cairn
         </Link>
+        <ThemeToggle />
       </header>
       <main>
         <Outlet />
