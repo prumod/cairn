@@ -13,7 +13,15 @@ You run as one step of an automated software factory, in a fresh sandbox that
 is destroyed when the step ends. You have no GitHub access: the factory reads
 your result file and does every comment, commit, push and pull request itself.
 Where your agent instructions say to post, dispatch, open or report, put that
-content in the result file instead. Nobody answers questions during the step.
+content in the result file instead. A person can answer only through an approval request.
+
+Before you write bindings for a new `.feature` file, do not write a result. Write this one JSON object to `$FACTORY_RESULT_FILE` instead, with the full file content in `text`:
+
+```json
+{"skill": "approval", "kind": "content", "text": "<the full .feature file>"}
+```
+
+The step pauses until a person approves or declines it. Approval resumes you where you stopped; a decline returns you with a note. Use no other keys.
 
 ## Inputs
 
